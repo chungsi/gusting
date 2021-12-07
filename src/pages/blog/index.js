@@ -4,34 +4,45 @@ import Layout from '../../components/layout'
 
 const BlogPage = ({ data }) => {
 
-  return (
-      <Layout pageTitle="My Blog Posts">
-        {
-          data.allMdx.nodes.map((node) => (
-            <article key={node.id}>
-              <h2>
-                <Link to={`/blog/${node.slug}`}>
-                  {node.frontmatter.title}
-                </Link>
-              </h2>
-              <p>Posted: {node.frontmatter.date}</p>
-            </article>
-          ))
-        }
-      </Layout>
+  const entryListing = (entry) => {
+    return (
+      <article key={entry.id}>
+        <h2>
+          <Link to={`/blog/${entry.slug}`}>
+            {entry.frontmatter.title}
+          </Link>
+        </h2>
+        <p>Posted: {entry.frontmatter.date}</p>
+      </article>
     )
+  }
+
+  return (
+    <Layout pageTitle="My Blog Posts">
+      {
+        data.allFile.nodes.map((node) => {
+          return entryListing(node.childMdx)
+        })
+      }
+    </Layout>
+  )
 }
 
 export const query = graphql`
   query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+    allFile(
+      filter: {dir: {regex: "/blog/"}}
+      sort: {fields: childMdx___frontmatter___date, order: DESC}
+    ) {
       nodes {
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
+        childMdx {
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+          }
+          id
+          slug
         }
-        id
-        slug
       }
     }
   }
