@@ -1,14 +1,10 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 
 const BlogPost = ({data, pageContext}) => {
-  const image = getImage(data.mdx.frontmatter.hero_image)
 
-  console.log(pageContext)
-  console.log(data)
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>Posted: {data.mdx.frontmatter.date}</p>
@@ -16,8 +12,17 @@ const BlogPost = ({data, pageContext}) => {
         {data.mdx.body}
       </MDXRenderer>
 
-      <p>{pageContext.next && (pageContext.next.childMdx.slug)}</p>
-      <p>{pageContext.prev && (pageContext.prev.childMdx.slug)}</p>
+      {pageContext.next &&
+        <Link to={'/blog/'+pageContext.next.childMdx.slug}>
+          <p>{pageContext.next.childMdx.frontmatter.title}</p>
+        </Link>
+      }
+      {pageContext.prev &&
+        <Link to={'/blog/'+pageContext.prev.childMdx.slug}>
+          <p>{pageContext.prev.childMdx.frontmatter.title}</p>
+        </Link>
+      }
+
     </Layout>
   )
 }

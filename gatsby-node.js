@@ -6,12 +6,16 @@ const customCreatePages = async (graphql, actions, dir) => {
     query {
       allFile(
         filter: {sourceInstanceName: {eq: "${dir}"}, extension: {eq: "mdx"}}
+        sort: {fields: childMdx___frontmatter___date, order: DESC}
       ) {
         nodes {
           id
           childMdx {
             slug
             id
+            frontmatter {
+              title
+            }
           }
         }
       }
@@ -36,8 +40,6 @@ const customCreatePages = async (graphql, actions, dir) => {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  console.log(actions)
-
   await customCreatePages(graphql, actions, 'blog')
   await customCreatePages(graphql, actions, 'project')
 }
