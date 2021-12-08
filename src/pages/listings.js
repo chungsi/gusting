@@ -4,10 +4,10 @@ import Layout from '../components/layout'
 
 const ListingsPage = ({ data }) => {
 
-  const entry = (entry) => (
+  const entry = (entry, parentDir) => (
     <article key={entry.id}>
       <h2>
-        <Link to={`/blog/${entry.slug}`}>
+        <Link to={`/${parentDir}/${entry.slug}`}>
           {entry.frontmatter.title}
         </Link>
       </h2>
@@ -20,7 +20,7 @@ const ListingsPage = ({ data }) => {
         data.allFile.group.map(group =>
           <>
             <h2 key={group.fieldValue}>{group.fieldValue}</h2>
-            {group.nodes.map(node => entry(node.childMdx))}
+            {group.nodes.map(node => entry(node.childMdx, group.fieldValue))}
           </>
         )
       }
@@ -30,7 +30,7 @@ const ListingsPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allFile {
+    allFile(filter: {extension: {eq: "mdx"}}) {
       group(field: sourceInstanceName) {
         fieldValue
         nodes {
@@ -40,6 +40,7 @@ export const query = graphql`
               title
             }
             slug
+            id
           }
         }
       }
