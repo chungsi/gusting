@@ -29,30 +29,29 @@ module.exports = {
         path: `${__dirname}/content/project`,
       },
     },
-    // This plugin needs to be both a sub-plugin of gatsby-plugin-mdx and
-    // a string entry in the plugins array.
+    // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
+    // and a string entry in the plugins array.
     'gatsby-remark-images',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        remarkPlugins: [
+        gatsbyRemarkPlugins: [
           {
+            // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
             resolve: `gatsby-remark-images`,
-            options: {}
+            options: {
+              maxWidth: 560
+            }
+          },
+          {
+            // https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/?=gatsby-remark
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              elements: ['h1', 'h2']
+            }
           }
-        ]
+        ],
       }
     },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {}
-          }
-        ]
-      }
-    }
   ],
 };

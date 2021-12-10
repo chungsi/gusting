@@ -10,6 +10,7 @@ const ProjectPost = ({data}) => {
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
+        alt={data.mdx.frontmatter.hero_image_alt}
       />
       <MDXRenderer>
         {data.mdx.body}
@@ -23,6 +24,7 @@ export const query = graphql`
     mdx(id: {eq: $id}) {
       frontmatter {
         title
+        hero_image_alt
         hero_image {
           childImageSharp {
             gatsbyImageData

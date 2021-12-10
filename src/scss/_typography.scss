@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono[wght].woff2') format('woff2 supports variations'),
+       url('../fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Italic[wght].woff2') format('woff2 supports variations'),
+       url('../fonts/JetBrainsMono-Italic[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-stretch: 75% 125%;
+  font-style: italic;
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800');
+
+:root {
+  font-family: 'JetBrains Mono', monospace;
+  --h-wght: 375;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  // font-variation-settings: 'wght' var(--h-wght);
+  // , 'wdth' var(--h-wdth), 'opsz' var(--h-opsz), 'GRAD' var(--h-GRAD)
+  font-weight: var(--h-wght);
+}
+
+h1 {
+  --h-wght: 800;
+}
+
+h2 {
+  --h-wght: 650;
+}
