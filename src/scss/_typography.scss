@@ -16,23 +16,25 @@
   font-style: italic;
 }
 
-// @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800');
+@font-face {
+  font-family: 'Fanwood Text';
+  src: url('../fonts/FanwoodText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: regular;
+}
+
 
 :root {
+  --h-wght: 525;
+
   font-family: 'JetBrains Mono', monospace;
-  --h-wght: 375;
+  font-weight: var(--h-wght);
+  letter-spacing: -.035em;
+  color: grey;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  // font-variation-settings: 'wght' var(--h-wght);
-  // , 'wdth' var(--h-wdth), 'opsz' var(--h-opsz), 'GRAD' var(--h-GRAD)
-  font-weight: var(--h-wght);
-}
-
-h1 {
-  --h-wght: 800;
-}
-
-h2 {
-  --h-wght: 650;
+  font-family: 'Fanwood Text', serif;
+  letter-spacing: .05em;
+  color: black;
 }
