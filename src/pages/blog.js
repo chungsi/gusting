@@ -7,11 +7,11 @@ const BlogPage = ({ data }) => {
   const entryListing = (entry) => {
     return (
       <article key={entry.id}>
-        <h2>
+        <h4>
           <Link to={`/blog/${entry.slug}`}>
             {entry.frontmatter.title}
           </Link>
-        </h2>
+        </h4>
         <p>Posted: {entry.frontmatter.date}</p>
       </article>
     )

@@ -47,7 +47,8 @@ module.exports = {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/?=gatsby-remark
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              elements: ['h1', 'h2']
+              className: `autolink`,
+              elements: [`h1`, `h2`]
             }
           }
         ],

@@ -1,0 +1,17 @@
+$base-rhythm: .875rem;
+
+// taken from Compass-style.org
+@function get-baseline-gradient($color: #d6d6d6) {
+  $gradient: linear-gradient(to top, $color 5%, rgba($color, 0) 5%);
+  @return $gradient;
+}
+
+@mixin baseline-grid-background($baseline: $base-rhythm, $color: #d6d6d6) {
+  background-image: get-baseline-gradient($color);
+  background-size: 100% $baseline;
+  background-position: 0 1px;
+}
+
+.u-baseline-bg {
+  @include baseline-grid-background();
+}

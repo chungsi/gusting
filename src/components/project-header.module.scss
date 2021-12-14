@@ -1,0 +1,9 @@
+@import '../scss/global.scss';
+
+.category {
+  @include mono;
+  font-size: var(--h6);
+  font-style: italic;
+  display: inline-block;
+  padding: 0 1.5em;
+}

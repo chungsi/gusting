@@ -1,3 +1,17 @@
+/* ****************************************************************************
+ * Font Face Declarations
+ *
+ *    Fanwood Text:   only comes in regular weight
+ *    JetBrains Mono: uses variable fonts for both normal and italic styles
+ */
+
+@font-face {
+  font-family: 'Fanwood Text';
+  src: url('../fonts/FanwoodText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'JetBrains Mono';
   src: url('../fonts/JetBrainsMono[wght].woff2') format('woff2 supports variations'),
@@ -16,25 +30,125 @@
   font-style: italic;
 }
 
-@font-face {
-  font-family: 'Fanwood Text';
-  src: url('../fonts/FanwoodText-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: regular;
+
+/* ****************************************************************************
+ * Typography Mixins &  Default Custom Properties
+ */
+
+@mixin fanwood {
+  font-family: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
+  font-weight: normal; // Fanwood only comes in Regular weight
+  letter-spacing: .025em;
 }
 
+// Alias for Fanwood Text
+@mixin serif {
+  @include fanwood;
+}
 
-:root {
-  --h-wght: 525;
-
+@mixin mono {
   font-family: 'JetBrains Mono', monospace;
-  font-weight: var(--h-wght);
-  letter-spacing: -.035em;
-  color: grey;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fanwood Text', serif;
-  letter-spacing: .05em;
-  color: black;
+.fanwood, .serif { @include fanwood; }
+.mono { @include mono; }
+
+// Type-scale: 1.20 -- Minor Third
+$type-scale: 1.2;
+$space-scale: 0.875rem;
+
+// Defaults
+:root {
+  --text-wght: 525;
+  --bold-wght: 768;
+
+  // Note: Space separated values only supported by CSS Colors Lvl4
+  --text-color: rgba(0 0 0 / .7);
+  --header-color: rgba(0 0 0 / 1);
+
+  --p-line-height: #{math.pow($type-scale, 2)};
+  // --p-line-height: calc(#{$space-scale} * 2);
+  --h0: 2.986rem; // Super Heading
+  --h1: 2.488rem;
+  --h2: 2.074rem;
+  --h3: 1.728rem;
+  --h4: 1.44rem;
+  --h5: 1.2rem;
+  --h6: 1rem;
+
+  --transition: all 200ms ease-in-out;
+
+  --max-text-width: 41rem;
+}
+
+
+/* ****************************************************************************
+ * Default Values
+ */
+
+body {
+  @include mono;
+  font-weight: var(--text-wght);
+  color: var(--text-color);
+}
+
+// * Is this a redundant way to use custom properties???
+.h0 { --header-size: var(--h0) }
+h1 { --header-size: var(--h1) }
+h2 { --header-size: var(--h2) }
+h3 { --header-size: var(--h3) }
+h4 { --header-size: var(--h4) }
+h5 { --header-size: var(--h5) }
+h6 { --header-size: var(--h6) }
+
+.h0,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--header-size);
+  line-height: 1;
+  color: var(--header-color);
+  margin: 1.25em 0 .25em 0;
+}
+
+.h0,
+h1,
+h2,
+h3 {
+  @include serif;
+}
+
+h4,
+h5,
+h6 {
+  @include mono;
+  font-weight: var(--bold-wght);
+}
+
+p {
+  line-height: var(--p-line-height);
+  margin: 0 0 1em 0;
+  max-width: var(--max-text-width);
+}
+
+strong {
+  font-weight: var(--bold-wght);
+}
+
+a {
+  text-decoration: none;
+  // * Should properly do vertical rhythm with borders...
+  // border-bottom: 1px solid var(--text-color);
+  transition: var(--transition);
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    // background-color: lighten($cedar, 50%);
+    transition: all 200ms ease-in-out;
+  }
 }

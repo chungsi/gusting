@@ -3,11 +3,13 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
+import ProjectHeader from '../components/project-header'
 
 const ProjectPost = ({data}) => {
 
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
+      <ProjectHeader props={data.mdx.frontmatter} />
       <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
         alt={data.mdx.frontmatter.hero_image_alt}
@@ -24,6 +26,8 @@ export const query = graphql`
     mdx(id: {eq: $id}) {
       frontmatter {
         title
+        subtitle
+        category
         hero_image_alt
         hero_image {
           childImageSharp {

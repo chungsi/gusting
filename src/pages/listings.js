@@ -6,11 +6,11 @@ const ListingsPage = ({ data }) => {
 
   const entry = (entry, parentDir) => (
     <article key={entry.id}>
-      <h2>
+      <h4>
         <Link to={`/${parentDir}/${entry.slug}`}>
           {entry.frontmatter.title}
         </Link>
-      </h2>
+      </h4>
     </article>
   )
 
@@ -19,7 +19,7 @@ const ListingsPage = ({ data }) => {
       {
         data.allFile.group.map(group =>
           <>
-            <h2 key={group.fieldValue}>{group.fieldValue}</h2>
+            <h2 class="mono" key={group.fieldValue}>{group.fieldValue}</h2>
             {group.nodes.map(node => entry(node.childMdx, group.fieldValue))}
           </>
         )

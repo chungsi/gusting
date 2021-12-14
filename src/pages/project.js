@@ -7,11 +7,11 @@ const ProjectPage = ({ data }) => {
   const entryListing = (entry) => {
     return (
       <article key={entry.id}>
-        <h2>
+        <h4>
           <Link to={`/project/${entry.slug}`}>
             {entry.frontmatter.title}
           </Link>
-        </h2>
+        </h4>
       </article>
     )
   }
