@@ -1,9 +1,21 @@
-@import '../scss/global.scss';
+// @import '../scss/global.scss';
 
 .category {
-  @include mono;
+  // @include mono;
   font-size: var(--h6);
   font-style: italic;
   display: inline-block;
   padding: 0 1.5em;
+}
+
+.title {
+  font-weight: var(--bold-wght);
+}
+
+.header {
+  display: block;
+}
+
+.subtitle {
+  font-weight: var(--text-wght);
 }

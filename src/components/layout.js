@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import '../scss/global.scss'
 import * as scss from './layout.module.scss'
 
 
