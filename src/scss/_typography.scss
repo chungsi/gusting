@@ -1,4 +1,7 @@
-/* ****************************************************************************
+@use "sass:math";
+
+
+/*/////////////////////////////////////////////////////////////////////////////
  * Font Face Declarations
  *
  *    Fanwood Text:   only comes in regular weight
@@ -31,7 +34,7 @@
 }
 
 
-/* ****************************************************************************
+/*/////////////////////////////////////////////////////////////////////////////
  * Typography Mixins &  Default Custom Properties
  */
 
@@ -59,15 +62,17 @@ $space-scale: 0.875rem;
 
 // Defaults
 :root {
+  --ff-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
+  --ff-mono: 'JetBrains Mono', monospace;
   --text-wght: 525;
   --bold-wght: 768;
 
-  // Note: Space separated values only supported by CSS Colors Lvl4
+  // Note: Space separated values only supported by CSS Colors Lvl 4
   --text-color: rgba(0 0 0 / .7);
   --header-color: rgba(0 0 0 / 1);
 
   --p-line-height: #{math.pow($type-scale, 2)};
-  // --p-line-height: calc(#{$space-scale} * 2);
+  // --p-line-height: 1.5rem;
   --h0: 2.986rem; // Super Heading
   --h1: 2.488rem;
   --h2: 2.074rem;
@@ -82,7 +87,7 @@ $space-scale: 0.875rem;
 }
 
 
-/* ****************************************************************************
+/*/////////////////////////////////////////////////////////////////////////////
  * Default Values
  */
 

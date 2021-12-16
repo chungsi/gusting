@@ -1,7 +1,9 @@
-// @import '../scss/global.scss';
+// @import '../scss/_typography.scss';
 
 .category {
   // @include mono;
+  font-family: var(--ff-mono);
+  font-weight: var(--text-wght);
   font-size: var(--h6);
   font-style: italic;
   display: inline-block;
@@ -9,13 +11,9 @@
 }
 
 .title {
-  font-weight: var(--bold-wght);
-}
-
-.header {
-  display: block;
+  font-size: var(--h0);
 }
 
 .subtitle {
-  font-weight: var(--text-wght);
+  font-style: italic;
 }

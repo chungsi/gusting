@@ -15,7 +15,8 @@ const ListingsPage = ({ data }) => {
   )
 
   return (
-    <Layout pageTitle="All of the Things">
+    <Layout>
+      <h1>All of the Things</h1>
       {
         data.allFile.group.map(group =>
           <>

@@ -8,8 +8,8 @@ import ProjectHeader from '../components/project-header'
 const ProjectPost = ({data}) => {
 
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
-      <ProjectHeader props={data.mdx.frontmatter} />
+    <Layout>
+      <ProjectHeader content={data.mdx.frontmatter} />
       <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
         alt={data.mdx.frontmatter.hero_image_alt}

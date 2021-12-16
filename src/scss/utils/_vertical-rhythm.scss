@@ -1,5 +1,7 @@
 $base-rhythm: .875rem;
 
+// ////////////////////////////////////////////////////////////////////////////
+// Baseline Utility
 // taken from Compass-style.org
 @function get-baseline-gradient($color: #d6d6d6) {
   $gradient: linear-gradient(to top, $color 5%, rgba($color, 0) 5%);

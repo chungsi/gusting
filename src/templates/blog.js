@@ -6,7 +6,9 @@ import Layout from '../components/layout'
 const BlogPost = ({data, pageContext}) => {
 
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout>
+      <h1>{data.mdx.frontmatter.title}</h1>
+
       <p>Posted: {data.mdx.frontmatter.date}</p>
       <MDXRenderer>
         {data.mdx.body}

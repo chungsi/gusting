@@ -3,8 +3,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import '../scss/global.scss'
 import * as scss from './layout.module.scss'
 
-
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -15,6 +14,36 @@ const Layout = ({ pageTitle, children }) => {
     }
   `)
 
+  const navLink = (path, text) => (
+    <li className={scss.navLinkItem}>
+      <Link
+        to={path}
+        className={scss.navLinkText}
+        activeClassName={scss.navLinkTextActive}
+        // partiallyActive={true}
+        getProps={ ({isCurrent, isPartiallyCurrent}) => {
+          const activeOutput = { className:`${scss.navLinkText} ${scss.navLinkTextActive}` }
+          if (path === '/') {
+            // Need to check for separate flag isCurrent for the home page
+            return isCurrent ? activeOutput : null
+          } else {
+            return isPartiallyCurrent ? activeOutput : null
+          }
+        }}
+        >
+          {text}
+      </Link>
+    </li>
+  )
+
+  const navLinks = [
+    ['/', 'Home'],
+    ['/about', 'About'],
+    ['/blog', 'Blog'],
+    ['/project', 'Projects'],
+    ['/listings', 'Listings']
+  ]
+
   return (
     <div className={scss.container}>
       <header className={scss.siteTitle}>
@@ -22,25 +51,10 @@ const Layout = ({ pageTitle, children }) => {
       </header>
       <nav>
         <ul className={scss.navLinks}>
-          <li className={scss.navLinkItem}>
-            <Link to="/" className={scss.navLinkText}>Home</Link>
-          </li>
-          <li className={scss.navLinkItem}>
-            <Link to="/about" className={scss.navLinkText}>About</Link>
-          </li>
-          <li className={scss.navLinkItem}>
-            <Link to="/blog" className={scss.navLinkText}>Blog</Link>
-          </li>
-          <li className={scss.navLinkItem}>
-            <Link to="/project" className={scss.navLinkText}>Projects</Link>
-          </li>
-          <li className={scss.navLinkItem}>
-            <Link to="/listings" className={scss.navLinkText}>Listings</Link>
-          </li>
+          {navLinks.map(link => navLink(link[0], link[1]))}
         </ul>
       </nav>
       <main>
-        {/* <h1 className={scss.heading}>{pageTitle}</h1> */}
         {children}
       </main>
     </div>
