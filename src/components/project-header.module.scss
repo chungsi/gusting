@@ -2,9 +2,9 @@
 
 .category {
   // @include mono;
-  font-family: var(--ff-mono);
+  font-family: var(--font-mono);
   font-weight: var(--text-wght);
-  font-size: var(--h6);
+  font-size: .35em;
   font-style: italic;
   display: inline-block;
   padding: 0 1.5em;

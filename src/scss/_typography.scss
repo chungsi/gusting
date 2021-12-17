@@ -38,32 +38,34 @@
  * Typography Mixins &  Default Custom Properties
  */
 
-@mixin fanwood {
-  font-family: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-  font-weight: normal; // Fanwood only comes in Regular weight
-  letter-spacing: .025em;
-}
+// @mixin fanwood {
+//   font-family: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
+//   font-weight: normal; // Fanwood only comes in Regular weight
+//   letter-spacing: .025em;
+// }
 
-// Alias for Fanwood Text
-@mixin serif {
-  @include fanwood;
-}
+// // Alias for Fanwood Text
+// @mixin serif {
+//   @include fanwood;
+// }
 
-@mixin mono {
-  font-family: 'JetBrains Mono', monospace;
-}
+// @mixin mono {
+//   font-family: 'JetBrains Mono', monospace;
+// }
 
-.fanwood, .serif { @include fanwood; }
-.mono { @include mono; }
+// .fanwood, .serif { @include fanwood; }
+// .mono { @include mono; }
 
-// Type-scale: 1.20 -- Minor Third
-$type-scale: 1.2;
-$space-scale: 0.875rem;
+$type-scale: 1.25;
+$type-base-size: 1rem;
+// $space-scale: 0.875rem;
 
-// Defaults
+// Typography
 :root {
-  --ff-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-  --ff-mono: 'JetBrains Mono', monospace;
+  --type-scale: #{$type-scale};
+
+  --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --text-wght: 525;
   --bold-wght: 768;
 
@@ -71,19 +73,81 @@ $space-scale: 0.875rem;
   --text-color: rgba(0 0 0 / .7);
   --header-color: rgba(0 0 0 / 1);
 
-  --p-line-height: #{math.pow($type-scale, 2)};
-  // --p-line-height: 1.5rem;
-  --h0: 2.986rem; // Super Heading
-  --h1: 2.488rem;
-  --h2: 2.074rem;
-  --h3: 1.728rem;
-  --h4: 1.44rem;
-  --h5: 1.2rem;
-  --h6: 1rem;
+  --p-line-height: var(--s-lg);
 
-  --transition: all 200ms ease-in-out;
+  // --h0: 3.052rem;  // 3.0rem
+  // --h1: 2.441rem;  // 2.5rem
+  // --h2: 1.953rem;  // 2.0rem
+  // --h3: 1.563rem;  // 1.5rem
+  // --h4: 1.25rem;
+  // --h5: 1.0rem;
+  // --h6: 0.8rem;
+  // --h7: 0.64rem;   // 0.6rem
+
+  // --type-base-size: #{$type-base-size};
+  --type-base-size:1.125rem;
+  --h0: calc( var(--h1) * var(--type-scale) );
+  --h1: calc( var(--h2) * var(--type-scale) );
+  --h2: calc( var(--h3) * var(--type-scale) );
+  --h3: calc( var(--h4) * var(--type-scale) );
+  --h4: calc( var(--h5) * var(--type-scale) );
+  --h5: var(--type-base-size);
+  --h6: calc( var(--h5) / var(--type-scale) );
+  --h7: calc( var(--h6) / var(--type-scale) );
 
   --max-text-width: 41rem;
+
+  --transition: all 200ms ease-in-out;
+}
+
+// Spacing
+// scale, size, room, arrange, place, set, order, shift, translate, tofu, empty
+:root {
+  --s-3xs: #{math.pow($type-scale, -6)};
+  --s-xxs: #{math.pow($type-scale, -4)};
+  --s-xs:  #{math.pow($type-scale, -2)};
+  --s-sm:  #{math.pow($type-scale, -1)};
+  --s-md:  #{$type-scale};
+  --s-lg:  #{math.pow($type-scale, 2)};
+  --s-xl:  #{math.pow($type-scale, 4)};
+  --s-xxl: #{math.pow($type-scale, 6)};
+  --s-3xl: #{math.pow($type-scale, 9)};
+  --s-4xl: #{math.pow($type-scale, 12)};
+
+  // Playing around with defaults: larger on mobile?
+  --space-unit: #{$type-scale * 1rem};
+  --space-unit-em: #{$type-scale * 1em};
+
+  --space-3xs: calc( var(--s-3xs) * var(--space-unit) );
+  --space-xxs: calc( var(--s-xxs) * var(--space-unit) );
+  --space-xs:  calc( var(--s-xs) * var(--space-unit) );
+  --space-sm:  calc( var(--s-sm) * var(--space-unit) );
+  --space-md:  calc( var(--s-md) * var(--space-unit) );
+  --space-lg:  calc( var(--s-lg) * var(--space-unit) );
+  --space-xl:  calc( var(--s-xl) * var(--space-unit) );
+  --space-xxl: calc( var(--s-xxl) * var(--space-unit) );
+  --space-3xl: calc( var(--s-3xl) * var(--space-unit) );
+  --space-4xl: calc( var(--s-4xl) * var(--space-unit) );
+
+  --space-3xs-em: calc( var(--s-3xs) * var(--space-unit-em) );
+  --space-xxs-em: calc( var(--s-xxs) * var(--space-unit-em) );
+  --space-xs-em:  calc( var(--s-xs) * var(--space-unit-em) );
+  --space-sm-em:  calc( var(--s-sm) * var(--space-unit-em) );
+  --space-md-em:  calc( var(--s-md) * var(--space-unit-em) );
+  --space-lg-em:  calc( var(--s-lg) * var(--space-unit-em) );
+  --space-xl-em:  calc( var(--s-xl) * var(--space-unit-em) );
+  --space-xxl-em: calc( var(--s-xxl) * var(--space-unit-em) );
+  --space-3xl-em: calc( var(--s-3xl) * var(--space-unit-em) );
+  --space-4xl-em: calc( var(--s-4xl) * var(--space-unit-em) );
+}
+
+// Playing around with changing defaults to update the whole system
+@include breakpoint(36rem) {
+  :root {
+    --space-unit: 1rem;
+    --space-unit-em: 1em;
+    --type-base-size: 1rem;
+  }
 }
 
 
@@ -92,12 +156,13 @@ $space-scale: 0.875rem;
  */
 
 body {
-  @include mono;
+  // @include mono;
+  font-family: var(--font-mono);
   font-weight: var(--text-wght);
   color: var(--text-color);
+  font-size: var(--type-base-size);
 }
 
-// * Is this a redundant way to use custom properties???
 .h0 { --header-size: var(--h0) }
 h1 { --header-size: var(--h1) }
 h2 { --header-size: var(--h2) }
@@ -116,27 +181,42 @@ h6 {
   font-size: var(--header-size);
   line-height: 1;
   color: var(--header-color);
-  margin: 1.25em 0 .25em 0;
+  margin: var(--space-md-em) 0 var(--space-3xs-em) 0;
 }
 
 .h0,
 h1,
 h2,
 h3 {
-  @include serif;
+  // @include serif;
+  font-family: var(--font-serif);
+  font-weight: normal;
+  letter-spacing: .025em;
 }
 
 h4,
 h5,
 h6 {
-  @include mono;
+  // @include mono;
+  font-family: var(--font-mono);
   font-weight: var(--bold-wght);
 }
 
 p {
   line-height: var(--p-line-height);
-  margin: 0 0 1em 0;
+  margin: 1em 0 1em 0;
   max-width: var(--max-text-width);
+}
+
+ul,
+ol {
+  line-height: var(--p-line-height);
+  padding-left: var(--space-lg);
+  max-width: var(--max-text-width);
+}
+
+blockquote {
+  margin: var(--space-md) var(--space-lg);
 }
 
 strong {
@@ -144,16 +224,19 @@ strong {
 }
 
 a {
-  text-decoration: none;
+  // text-decoration: none;
   // * Should properly do vertical rhythm with borders...
   // border-bottom: 1px solid var(--text-color);
   transition: var(--transition);
+  color: var(--text-color);
 
   &:hover,
   &:focus,
   &:active {
+    font-weight: var(--bold-wght);
+    color: var(--text-color);
     outline: none;
-    // background-color: lighten($cedar, 50%);
     transition: all 200ms ease-in-out;
+    // background-color: lighten($cedar, 50%);
   }
 }
