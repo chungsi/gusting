@@ -3,9 +3,10 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
-import ProjectHeader from '../components/project-header'
+import ProjectHeader from '../components/projectHeader'
+import ProjectPagination from '../components/projectPagination'
 
-const ProjectPost = ({data}) => {
+const ProjectPost = ({data, pageContext}) => {
 
   return (
     <Layout>
@@ -17,6 +18,13 @@ const ProjectPost = ({data}) => {
       <MDXRenderer>
         {data.mdx.body}
       </MDXRenderer>
+
+      <hr />
+      <ProjectPagination
+        pathPrefix='project'
+        next={pageContext.next}
+        prev={pageContext.prev} />
+
     </Layout>
   )
 }

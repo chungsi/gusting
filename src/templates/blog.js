@@ -1,8 +1,12 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layout'
+import ProjectPagination from '../components/projectPagination'
 
+/*
+ * pageContext : from gatsby-node.js getting the next and prev posts
+ */
 const BlogPost = ({data, pageContext}) => {
 
   return (
@@ -14,16 +18,12 @@ const BlogPost = ({data, pageContext}) => {
         {data.mdx.body}
       </MDXRenderer>
 
-      {pageContext.next &&
-        <Link to={'/blog/'+pageContext.next.childMdx.slug}>
-          <p>{pageContext.next.childMdx.frontmatter.title}</p>
-        </Link>
-      }
-      {pageContext.prev &&
-        <Link to={'/blog/'+pageContext.prev.childMdx.slug}>
-          <p>{pageContext.prev.childMdx.frontmatter.title}</p>
-        </Link>
-      }
+      <hr />
+
+      <ProjectPagination
+        pathPrefix='blog'
+        next={pageContext.next}
+        prev={pageContext.prev} />
 
     </Layout>
   )

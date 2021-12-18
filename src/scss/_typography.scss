@@ -68,6 +68,7 @@ $type-base-size: 1rem;
   --font-mono: 'JetBrains Mono', monospace;
   --text-wght: 525;
   --bold-wght: 768;
+  --lght-wght: 380;
 
   // Note: Space separated values only supported by CSS Colors Lvl 4
   --text-color: rgba(0 0 0 / .7);
@@ -85,7 +86,7 @@ $type-base-size: 1rem;
   // --h7: 0.64rem;   // 0.6rem
 
   // --type-base-size: #{$type-base-size};
-  --type-base-size:1.125rem;
+  --type-base-size:1rem;
   --h0: calc( var(--h1) * var(--type-scale) );
   --h1: calc( var(--h2) * var(--type-scale) );
   --h2: calc( var(--h3) * var(--type-scale) );
@@ -98,6 +99,8 @@ $type-base-size: 1rem;
   --max-text-width: 41rem;
 
   --transition: all 200ms ease-in-out;
+  --component-bg-rotate: transform: rotate(2deg);
+  --component-bg-colour: hsl(0, 0%, 95%);
 }
 
 // Spacing
@@ -115,8 +118,8 @@ $type-base-size: 1rem;
   --s-4xl: #{math.pow($type-scale, 12)};
 
   // Playing around with defaults: larger on mobile?
-  --space-unit: #{$type-scale * 1rem};
-  --space-unit-em: #{$type-scale * 1em};
+  --space-unit: #{1rem};
+  --space-unit-em: #{1em};
 
   --space-3xs: calc( var(--s-3xs) * var(--space-unit) );
   --space-xxs: calc( var(--s-xxs) * var(--space-unit) );
@@ -239,4 +242,20 @@ a {
     transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
   }
+}
+
+hr {
+  margin: var(--space-xxl) 0;
+}
+
+code {
+  display: inline-block;
+  background-color: var(--component-bg-colour);
+  padding: 0 var(--space-xs);
+  border-radius: var(--space-xxs-em);
+}
+
+pre {
+  background-color: var(--component-bg-colour);
+  padding: var(--space-md);
 }

@@ -3,8 +3,17 @@
   max-width: 500px;
 }
 
-.heading {
-  color: black;
+.header {
+  margin-top: var(--space-lg);
+}
+
+.logo {
+  display: block;
+  max-width: var(--space-xxl);
+
+  svg {
+    fill: grey;
+  }
 }
 
 .site-title, .site-title > * {

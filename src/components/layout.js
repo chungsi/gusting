@@ -1,18 +1,20 @@
 import * as React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 import '../scss/global.scss'
 import * as scss from './layout.module.scss'
+import Logo from '../images/svg/logo.inline.svg'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   const navLink = (path, text) => (
     <li className={scss.navLinkItem}>
@@ -37,7 +39,7 @@ const Layout = ({ children }) => {
   )
 
   const navLinks = [
-    ['/', 'Home'],
+    // ['/', 'Home'],
     ['/about', 'About'],
     ['/blog', 'Blog'],
     ['/project', 'Projects'],
@@ -46,8 +48,16 @@ const Layout = ({ children }) => {
 
   return (
     <div className={scss.container}>
-      <header className={scss.siteTitle}>
-        <h1>{data.site.siteMetadata.title}</h1>
+      <header className={scss.header}>
+        <Link to='/' className={scss.logo}>
+          {/* <StaticImage
+            alt='Logo'
+            src='../images/logo.svg' /> */}
+          <Logo />
+        </Link>
+        {/* <h1 className={scss.siteTitle}>
+          {data.site.siteMetadata.title}
+        </h1> */}
       </header>
       <nav>
         <ul className={scss.navLinks}>
