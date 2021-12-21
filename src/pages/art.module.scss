@@ -1,0 +1,35 @@
+.featured-projects {
+  display: grid;
+}
+
+.other-projects {
+  display: grid;
+}
+
+.project {
+  display: block;
+}
+
+  .project-link-container {
+    text-decoration: none;
+  }
+
+  .project-title {
+    margin-bottom: 0;
+  }
+
+  .project-subtitle {
+    font-style: italic;
+  }
+
+  .project-categories {
+    font-style: italic;
+    list-style: none;
+    padding-left: 0;
+  }
+
+.footer {
+  border-top: 1px solid grey;
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
+}

@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 import '../scss/global.scss'
 import * as scss from './layout.module.scss'
 import Logo from '../images/svg/logo.inline.svg'
@@ -17,7 +16,7 @@ const Layout = ({ children }) => {
   // `)
 
   const navLink = (path, text) => (
-    <li className={scss.navLinkItem}>
+    <li id={text} className={scss.navLinkItem}>
       <Link
         to={path}
         className={scss.navLinkText}

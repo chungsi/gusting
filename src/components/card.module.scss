@@ -1,0 +1,25 @@
+.card {
+  padding: var(--space-lg) var(--space-sm);
+}
+
+.link-container {
+  text-decoration: none;
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  font-style: italic;
+}
+
+.tags {
+  font-size: var(--h6);
+  list-style: none;
+  padding-left: 0;
+
+  > li:not(:last-of-type) {
+    &::after { content: '/'; }
+  }
+}
