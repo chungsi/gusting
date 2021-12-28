@@ -1,6 +1,48 @@
+@mixin grid-using-rows-cols {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: minmax(16rem, auto);
+  row-gap: 5rem;
+  column-gap: 1rem;
+
+  :nth-child(1) {
+    grid-column: 1 / 5;
+  }
+
+  :nth-child(2) {
+    grid-column: 5 / 9;
+    grid-row: 2 / 4;
+  }
+
+  :nth-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 3 / 5;
+  }
+}
+
+@mixin grid-using-areas {
+  gap: 1rem;
+  grid-template-areas:
+    "bk1 bk1 bk1 bk1 .   .   .   .  "
+    "bk1 bk1 bk1 bk1 .   .   .   .  "
+    // "bk1 bk1 bk1 bk1 bk2 bk2 bk2 bk2"
+    ".   .   .   .   bk2 bk2 bk2 bk2"
+    "bk3 bk3 bk3 .   bk2 bk2 bk2 bk2"
+    "bk3 bk3 bk3 .   .   .   .   .  "
+    "bk3 bk3 bk3 .   .   .   .   .  "
+    "bk3 bk3 bk3 bk4 bk4 bk4 bk4 .  "
+    ".   .   .   bk4 bk4 bk4 bk4 .  ";
+
+  :nth-child(1) { grid-area: bk1; }
+  :nth-child(2) { grid-area: bk2; }
+  :nth-child(3) { grid-area: bk3; }
+  :nth-child(4) { grid-area: bk4; }
+}
+
 .featured-projects {
   display: grid;
+  @include grid-using-areas;
 }
+
 
 .other-projects {
   display: grid;
