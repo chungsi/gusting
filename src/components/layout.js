@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import '../scss/global.scss'
 import * as scss from './layout.module.scss'
 import Logo from '../images/svg/logo.inline.svg'
+import Base from '../components/base'
 
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
@@ -42,11 +42,12 @@ const Layout = ({ children }) => {
     ['/about', 'About'],
     ['/blog', 'Blog'],
     ['/project', 'Projects'],
-    ['/listings', 'Listings']
+    ['/listings', 'Listings'],
+    ['/art', 'Art']
   ]
 
   return (
-    <div className={scss.container}>
+    <Base>
       <header className={scss.header}>
         <Link to='/' className={scss.logo}>
           {/* <StaticImage
@@ -66,7 +67,7 @@ const Layout = ({ children }) => {
       <main>
         {children}
       </main>
-    </div>
+    </Base>
   )
 }
 

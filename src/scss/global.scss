@@ -3,3 +3,8 @@
 @import 'normalize';
 @import 'utils/utils';
 @import 'typography';
+
+.container {
+  margin: auto;
+  max-width: 500px;
+}
