@@ -14,19 +14,23 @@
 }
 
 .title {
+  font-size: var(--h3);
   margin: 0;
 }
 
 .subtitle {
   font-style: italic;
+  font-weight: var(--lght-wght);
+  color: grey;
 }
 
 .tags {
   font-size: var(--h6);
+  color: grey;
   list-style: none;
   padding-left: 0;
 
   > li:not(:last-of-type) {
-    &::after { content: '/'; }
+    &::after { content: ' /'; }
   }
 }

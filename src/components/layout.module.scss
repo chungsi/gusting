@@ -4,22 +4,33 @@
 }
 
 .header {
-  margin-top: var(--space-lg);
+  position: relative;
+  margin: var(--space-3xl) 0 var(--space-xl);
 }
 
-.logo {
-  display: block;
-  max-width: var(--space-xxl);
+  .logo {
+    position: absolute;
+    display: block;
+    width: var(--space-xxl);
+    margin-left: calc(var(--space-3xl) * -1);
 
-  svg {
-    fill: grey;
+    svg {
+      fill: grey;
+    }
   }
-}
+
+  .title-block {
+    
+  }
 
 .site-title, .site-title > * {
   font-size: 3rem;
-  margin: 3rem 0 1rem 0;
   color: silver;
+  margin: 0;
+}
+
+.site-subtitle {
+  margin: 0;
 }
 
 .nav-links {

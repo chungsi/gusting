@@ -1,19 +1,20 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import * as scss from './layout.module.scss'
 import Logo from '../images/svg/logo.inline.svg'
 import Base from '../components/base'
 
 const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          subtitle
+        }
+      }
+    }
+  `)
 
   const navLink = (path, text) => (
     <li id={text} className={scss.navLinkItem}>
@@ -48,17 +49,19 @@ const Layout = ({ children }) => {
 
   return (
     <Base>
-      <header className={scss.header}>
+      {/* <header className={scss.header}>
         <Link to='/' className={scss.logo}>
-          {/* <StaticImage
-            alt='Logo'
-            src='../images/logo.svg' /> */}
           <Logo />
         </Link>
-        {/* <h1 className={scss.siteTitle}>
-          {data.site.siteMetadata.title}
-        </h1> */}
-      </header>
+        <div className={scss.titleBlock}>
+          <h1 className={scss.siteTitle}>
+            {data.site.siteMetadata.title}
+          </h1>
+          <p className={scss.siteSubtitle}>
+            {data.site.siteMetadata.subtitle}
+          </p>
+        </div>
+      </header> */}
       <nav>
         <ul className={scss.navLinks}>
           {navLinks.map(link => navLink(link[0], link[1]))}

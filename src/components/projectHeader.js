@@ -1,16 +1,16 @@
 import * as React from 'react'
 import * as scss from './projectHeader.module.scss'
 
-const ProjectHeader = ({ content }) => {
+const ProjectHeader = ({ title, subtitle, category }) => {
   return (
     <header>
       <h1 className={scss.title}>
-        {content.title}
+        {title}
         <span className={scss.category}>
-          &#123;{content.category}&#125;
+          &#123;{category}&#125;
         </span>
       </h1>
-      <p className={scss.subtitle}>{content.subtitle}</p>
+      <p className={scss.subtitle}>{subtitle}</p>
     </header>
   )
 }

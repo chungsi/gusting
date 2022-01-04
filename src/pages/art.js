@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import * as scss from './art.module.scss'
 import Layout from '../components/layout'
 import Card from '../components/card'
+import Logo from '../images/svg/logo.inline.svg'
 
 const ArtHomepage = ({data}) => {
 
@@ -13,17 +14,38 @@ const ArtHomepage = ({data}) => {
         className={scss.projectLinkContainer}
       >
         <h2>{project.childMdx.frontmatter.title}</h2>
-        <p>{project.childMdx.frontmatter.date}</p>
+        <p>{project.childMdx.frontmatter.subtitle}</p>
+        <ul className={scss.tags}>
+          {project.childMdx.frontmatter.tags.map(tag => (
+            <li>{tag}</li>
+          ))}
+        </ul>
       </Link>
     </section>
   )
 
   return (
     <Layout>
-      <section className={scss.featuredProjects}>
-        {data.projects.nodes.map(project =>
+      <section className={scss.featuredGrid}>
+
+        <header className={scss.header}>
+          <Link to='/' className={scss.logo}>
+            <Logo />
+          </Link>
+          <div className={scss.titleBlock}>
+            <h1 className={scss.siteTitle}>
+              {data.site.siteMetadata.title}
+            </h1>
+            <p className={scss.siteSubtitle}>
+              {data.site.siteMetadata.subtitle}
+            </p>
+          </div>
+        </header>
+
+        {data.featuredProjects.nodes.map(project =>
           <Card
             key={project.childMdx.id}
+            className={scss.projectCard}
             link={`/project/${project.childMdx.slug}`}
             title={project.childMdx.frontmatter.title}
             subtitle={project.childMdx.frontmatter.subtitle}
@@ -33,7 +55,7 @@ const ArtHomepage = ({data}) => {
       </section>
       <section className={scss.otherProjects}>
         {
-          data.blog.nodes.map(project => otherProject(project, project.sourceInstanceName))
+          data.otherProjects.nodes.map(project => otherProject(project, project.sourceInstanceName))
         }
       </section>
       <footer className={scss.footer}>
@@ -46,8 +68,18 @@ const ArtHomepage = ({data}) => {
 
 export const data = graphql`
   query {
-    projects: allFile(
-      filter: {sourceInstanceName: {eq: "project"}, extension: {eq: "mdx"}}
+    site: site {
+      siteMetadata {
+        title
+        subtitle
+      }
+    }
+    featuredProjects: allFile(
+      filter: {
+        sourceInstanceName: {eq: "project"},
+        extension: {eq: "mdx"},
+        childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
+      }
       sort: {fields: childMdx___frontmatter___date, order: DESC}
     ) {
       nodes {
@@ -64,15 +96,21 @@ export const data = graphql`
         sourceInstanceName
       }
     }
-    blog: allFile(
-      filter: {sourceInstanceName: {eq: "blog"}, extension: {eq: "mdx"}}
+    otherProjects: allFile(
+      filter: {
+        sourceInstanceName: {eq: "project"},
+        extension: {eq: "mdx"},
+        childMdx: {frontmatter: {publish: {ne: true}, feature: {ne: true}}}
+      }
       sort: {fields: childMdx___frontmatter___date, order: DESC}
     ) {
       nodes {
         childMdx {
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            subtitle
+            category
+            tags
           }
           id
           slug

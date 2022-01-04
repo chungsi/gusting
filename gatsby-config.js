@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "gusting",
+    title: "chungsi",
+    subtitle: "designer / storymaker / artist",
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,

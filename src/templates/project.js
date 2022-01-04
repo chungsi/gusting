@@ -2,15 +2,19 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import Layout from '../components/layout'
+import ContentTemplate from '../components/contentTemplate'
 import ProjectHeader from '../components/projectHeader'
 import ProjectPagination from '../components/projectPagination'
 
 const ProjectPost = ({data, pageContext}) => {
 
   return (
-    <Layout>
-      <ProjectHeader content={data.mdx.frontmatter} />
+    <ContentTemplate>
+      <ProjectHeader
+        title={data.mdx.frontmatter.title}
+        subtitle={data.mdx.frontmatter.subtitle}
+        category={data.mdx.frontmatter.category} />
+      {/* insert category info for svg shapey */}
       <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
         alt={data.mdx.frontmatter.hero_image_alt}
@@ -25,7 +29,7 @@ const ProjectPost = ({data, pageContext}) => {
         next={pageContext.next}
         prev={pageContext.prev} />
 
-    </Layout>
+    </ContentTemplate>
   )
 }
 
