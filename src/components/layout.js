@@ -1,20 +1,20 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import * as scss from './layout.module.scss'
-import Logo from '../images/svg/logo.inline.svg'
+// import Logo from '../images/svg/logo.inline.svg'
 import Base from '../components/base'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          subtitle
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //         subtitle
+  //       }
+  //     }
+  //   }
+  // `)
 
   const navLink = (path, text) => (
     <li id={text} className={scss.navLinkItem}>

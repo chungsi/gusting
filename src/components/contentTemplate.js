@@ -3,7 +3,7 @@ import * as React from 'react'
 import Base from './base'
 import Logo from '../images/svg/logo.inline.svg'
 
-const ContentTemplate = ({title, subtitle, children}) => {
+const ContentTemplate = ({header, children}) => {
 
   return (
     <Base>
@@ -11,7 +11,14 @@ const ContentTemplate = ({title, subtitle, children}) => {
         <Link to='/' className='logo'>
           <Logo />
         </Link>
-        {children}
+        {header &&
+          <div className='project-header'>
+            {header}
+          </div>
+        }
+        <section className='project-content'>
+          {children}
+        </section>
       </div>
     </Base>
   )

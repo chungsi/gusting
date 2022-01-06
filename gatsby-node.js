@@ -5,7 +5,7 @@ const customCreatePages = async (graphql, actions, dir) => {
   const query = await graphql(`
     query {
       allFile(
-        filter: {sourceInstanceName: {eq: "${dir}"}, extension: {eq: "mdx"}}
+        filter: {sourceInstanceName: {eq: "${dir}"}, extension: {eq: "mdx"}, name: {regex: "/^[^_]/"}}
         sort: {fields: childMdx___frontmatter___date, order: DESC}
       ) {
         nodes {

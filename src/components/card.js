@@ -34,11 +34,13 @@ const Card = ({link, title, subtitle, tags, style, className}) => {
          */}
         <h2 className={scss.title}>{title}</h2>
         <p className={scss.subtitle}>{subtitle}</p>
-        <ul className={scss.tags}>
-          {tags.map(tag => (
-            <li>{tag}</li>
-          ))}
-        </ul>
+        {tags &&
+          <ul className={scss.tags}>
+            {tags.map(tag => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        }
       </Link>
     </article>
   )

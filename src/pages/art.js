@@ -29,7 +29,7 @@ const ArtHomepage = ({data}) => {
       <section className={scss.featuredGrid}>
 
         <header className={scss.header}>
-          <Link to='/' className={scss.logo}>
+          <Link to='/' className='logo'>
             <Logo />
           </Link>
           <div className={scss.titleBlock}>
@@ -78,6 +78,7 @@ export const data = graphql`
       filter: {
         sourceInstanceName: {eq: "project"},
         extension: {eq: "mdx"},
+        name: {regex: "/^[^_]/"},
         childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
       }
       sort: {fields: childMdx___frontmatter___date, order: DESC}

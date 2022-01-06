@@ -6,5 +6,51 @@
 
 .container {
   margin: auto;
-  max-width: 500px;
+  max-width: 60rem;
+  padding: 0 var(--space-lg);
+}
+
+// TODO: Check the display defaults for svgs because its width is being weird
+.logo {
+  position: relative;
+  display: block;
+  z-index: 999;
+  min-width: var(--space-xl);
+  width: var(--space-xxl);
+  max-width: var(--space-xxl);
+
+  svg {
+    fill: grey;
+  }
+}
+
+.project-container {
+  // Q: Where to define width of container????
+  // max-width: 50rem;
+  margin-top: var(--space-xl);
+  display: grid;
+  // grid-column-gap: var(--space-lg);
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-areas:
+    "logo  top  ."
+    "extra head ."
+    ".     body .";
+
+  .logo {
+    grid-area: logo;
+    position: fixed;
+  }
+
+  .project-header {
+    grid-area: head;
+    margin-top: var(--space-xxl);
+  }
+
+  .project-content {
+    grid-area: body;
+
+    .project-image {
+      margin: 0 calc(var(--space-4xl) * -1);
+    }
+  }
 }

@@ -36,7 +36,7 @@
 
   .header {
     display: contents;
-    
+
     .logo { grid-area: logo; }
     .title-block {
       grid-area: hd;
@@ -58,24 +58,32 @@
   margin-bottom: var(--space-3xl);
 }
 
-.logo {
-  svg {
-    fill: grey;
-  }
-}
-
 .site-title {
   font-size: 3rem;
-  color: silver;
   margin: 0;
 }
 
 .site-subtitle {
+  color: silver;
   margin: 0;
 }
 
 .other-projects {
   display: grid;
+}
+
+// Direct copy of card.module.scss
+.tags {
+  font-size: var(--h6);
+  color: grey;
+  list-style: none;
+  padding-left: 0;
+
+  >li:not(:last-of-type) {
+    &::after {
+      content: ' /';
+    }
+  }
 }
 
 .project {

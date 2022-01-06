@@ -1,3 +1,5 @@
+// import remarkUnwrapImages from 'remark-unwrap-images'
+
 module.exports = {
   siteMetadata: {
     title: "chungsi",
@@ -30,18 +32,21 @@ module.exports = {
         path: `${__dirname}/content/project`,
       },
     },
-    // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
-    // and a string entry in the plugins array.
-    'gatsby-remark-images',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: ['.md', '.mdx'],
+        // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
+        // and a string entry in the plugins array.
+        plugins: [
+          'gatsby-remark-images'
+        ],
         gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 560
+              maxWidth: 1000
             }
           },
           {
@@ -51,7 +56,7 @@ module.exports = {
               className: `autolink`,
               elements: [`h1`, `h2`]
             }
-          }
+          },
         ],
       }
     },

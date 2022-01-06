@@ -7,18 +7,25 @@ import ProjectHeader from '../components/projectHeader'
 import ProjectPagination from '../components/projectPagination'
 
 const ProjectPost = ({data, pageContext}) => {
+  const headerBlock = (
+    <>
+      <ProjectHeader
+          title={data.mdx.frontmatter.title}
+          subtitle={data.mdx.frontmatter.subtitle}
+          category={data.mdx.frontmatter.category} />
+    {/* insert category info for svg shapey */}
+    </>
+  )
 
   return (
-    <ContentTemplate>
-      <ProjectHeader
-        title={data.mdx.frontmatter.title}
-        subtitle={data.mdx.frontmatter.subtitle}
-        category={data.mdx.frontmatter.category} />
-      {/* insert category info for svg shapey */}
+    <ContentTemplate
+      header={headerBlock}
+    >
       <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
         alt={data.mdx.frontmatter.hero_image_alt}
       />
+
       <MDXRenderer>
         {data.mdx.body}
       </MDXRenderer>
