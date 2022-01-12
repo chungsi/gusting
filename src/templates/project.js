@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { MDXProvider } from '@mdx-js/react'
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import ContentTemplate from '../components/contentTemplate'
 import ProjectHeader from '../components/projectHeader'
 import ProjectPagination from '../components/projectPagination'
+import MdxImage from '../components/mdxImage'
 
 const ProjectPost = ({data, pageContext}) => {
   const headerBlock = (
@@ -21,14 +23,16 @@ const ProjectPost = ({data, pageContext}) => {
     <ContentTemplate
       header={headerBlock}
     >
-      <GatsbyImage
+      {/* <GatsbyImage
         image={getImage(data.mdx.frontmatter.hero_image)}
         alt={data.mdx.frontmatter.hero_image_alt}
-      />
+      /> */}
 
-      <MDXRenderer>
-        {data.mdx.body}
-      </MDXRenderer>
+      <MDXProvider components={{ MdxImage, StaticImage }}>
+        <MDXRenderer>
+          {data.mdx.body}
+        </MDXRenderer>
+      </MDXProvider>
 
       <hr />
       <ProjectPagination

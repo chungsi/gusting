@@ -6,8 +6,8 @@ import Logo from '../images/svg/logo.inline.svg'
 const ContentTemplate = ({header, children}) => {
 
   return (
-    <Base>
-      <div className='project-container'>
+    <Base className='project-container'>
+      {/* <div className='project-container'> */}
         <Link to='/' className='logo'>
           <Logo />
         </Link>
@@ -19,7 +19,7 @@ const ContentTemplate = ({header, children}) => {
         <section className='project-content'>
           {children}
         </section>
-      </div>
+      {/* </div> */}
     </Base>
   )
 }

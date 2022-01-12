@@ -2,6 +2,14 @@
 @import 'vertical-rhythm';
 
 
+$bp-transition-medium: 33.5rem;
+$bp-transition-xlarge: 61.25rem;
+$bp-xsmall: 25rem;
+$bp-small: 30rem;
+$bp-medium: 44rem;
+$bp-large: 50rem;
+$bp-xlarge: 69.75rem;
+$bp-xxlarge: 77rem;
 
 @mixin breakpoint($point) {
   @media screen and (min-width: #{$point}) {

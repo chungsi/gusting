@@ -5,9 +5,10 @@
 @import 'typography';
 
 .container {
-  margin: auto;
+  position: relative;
   max-width: 60rem;
   padding: 0 var(--space-lg);
+  z-index: 1;
 }
 
 // TODO: Check the display defaults for svgs because its width is being weird
@@ -28,6 +29,8 @@
   // Q: Where to define width of container????
   // max-width: 50rem;
   margin-top: var(--space-xl);
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
   // grid-column-gap: var(--space-lg);
   grid-template-columns: 1fr 6fr 1fr;
@@ -48,9 +51,33 @@
 
   .project-content {
     grid-area: body;
-
-    .project-image {
-      margin: 0 calc(var(--space-4xl) * -1);
-    }
   }
+
+  .project-image {
+    // override gatsby's default styles...
+    img { box-shadow: var(--component-box-shadow) !important; }
+
+    &.landscape {
+      margin: var(--space-xxl) calc(var(--space-4xl) * -1) 0;
+      // reset first ones, in case it's under other text
+      &:first-of-type { margin-top: 0; }
+    }
+    &.cover, &.cover + p { margin-left: 50%; text-align: right; }
+    &.back { margin-right: 50%; }
+  }
+}
+
+.hero-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100%;
+  z-index: -1;
+}
+
+.footer {
+  border-top: 1px solid grey;
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
 }

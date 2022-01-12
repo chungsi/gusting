@@ -9,7 +9,7 @@ import { Link } from 'gatsby'
 const Card = ({link, title, subtitle, tags, style, className}) => {
   var classList = `${scss.card}`
 
-  switch (style) {
+  switch (String(style)) {
     case 'floating':
       classList = `${classList} ${scss.floatingCard}`
       break

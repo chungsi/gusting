@@ -87,7 +87,7 @@ $type-base-size: 1rem;
 
   // --type-base-size: #{$type-base-size};
   --type-base-size:1rem;
-  --h0: calc( var(--h1) * var(--type-scale) );
+  --h0: calc( var(--h1) * var(--type-scale) * var(--type-scale) );
   --h1: calc( var(--h2) * var(--type-scale) );
   --h2: calc( var(--h3) * var(--type-scale) );
   --h3: calc( var(--h4) * var(--type-scale) );
@@ -101,6 +101,7 @@ $type-base-size: 1rem;
   --transition: all 200ms ease-in-out;
   --component-bg-rotate: transform: rotate(2deg);
   --component-bg-colour: hsl(0, 0%, 95%);
+  --component-box-shadow: 0 4px 16px 2px rgba(0 0 0 / .14);
 }
 
 // Spacing
@@ -132,6 +133,7 @@ $type-base-size: 1rem;
   --space-xxl: calc( var(--s-xxl) * var(--space-unit) );
   --space-3xl: calc( var(--s-3xl) * var(--space-unit) );
   --space-4xl: calc( var(--s-4xl) * var(--space-unit) );
+  --space-5xl: calc( var(--s-5xl) * var(--space-unit) );
 
   --space-3xs-em: calc( var(--s-3xs) * var(--space-unit-em) );
   --space-xxs-em: calc( var(--s-xxs) * var(--space-unit-em) );
@@ -143,6 +145,7 @@ $type-base-size: 1rem;
   --space-xxl-em: calc( var(--s-xxl) * var(--space-unit-em) );
   --space-3xl-em: calc( var(--s-3xl) * var(--space-unit-em) );
   --space-4xl-em: calc( var(--s-4xl) * var(--space-unit-em) );
+  --space-5xl-em: calc( var(--s-5xl) * var(--space-unit-em) );
 }
 
 // Playing around with changing defaults to update the whole system
@@ -259,4 +262,8 @@ code {
 pre {
   background-color: var(--component-bg-colour);
   padding: var(--space-md);
+}
+
+img {
+  width: 100%;
 }

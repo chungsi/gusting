@@ -1,0 +1,53 @@
+@import '../scss/utils/_utils.scss';
+
+.design-container {
+  max-width: 52rem;
+
+  // @include breakpoint(#{$bp-small)}) {
+  // }
+
+  @include breakpoint($bp-medium) {
+    margin-left: 10rem;
+    margin-top: 3.25rem;
+  }
+
+  @include breakpoint($bp-large) {
+    margin-left: 12.5rem;
+    margin-top: 4.25rem;
+  }
+
+  @include breakpoint($bp-xlarge) {
+    margin-left: 15rem;
+    margin-top: 5.25rem;
+  }
+}
+
+.hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  .hero-bg {
+    position: relative;
+    max-width: 24rem;
+  }
+
+  .hero-logo {
+    position: absolute;
+    width: 2.75rem;
+    margin: 4.5rem 0 0 3rem;
+
+    @include breakpoint($bp-medium) {
+      margin: 3rem 0 0 6rem;
+    }
+
+    @include breakpoint($bp-large) {
+      margin: 4.125rem 0 0 9rem;
+    }
+
+    @include breakpoint($bp-xlarge) {
+      margin: 5.125rem 0 0 10.5rem;
+    }
+  }
+}

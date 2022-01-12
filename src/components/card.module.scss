@@ -6,7 +6,7 @@
   .floating-card {
     padding: var(--space-xl) var(--space-lg) var(--space-md);
     border: none;
-    box-shadow: 0 4px 16px 2px rgba(0 0 0 / .14);
+    box-shadow: var(--component-box-shadow);
   }
 
 .link-container {

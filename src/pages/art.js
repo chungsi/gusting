@@ -1,9 +1,12 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
 import * as scss from './art.module.scss'
-import Layout from '../components/layout'
+import { graphql, Link } from 'gatsby'
+import { getSrcSet } from 'gatsby-plugin-image'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import Base from '../components/base'
 import Card from '../components/card'
 import Logo from '../images/svg/logo.inline.svg'
+import Footer from '../components/footer'
 
 const ArtHomepage = ({data}) => {
 
@@ -24,20 +27,51 @@ const ArtHomepage = ({data}) => {
     </section>
   )
 
+  const heroImagesSrcSet = [
+    {
+      media: '(min-width: 69.75rem)',
+      srcset: getSrcSet(data.heroImages.nodes[0]),
+    },
+    {
+      media: '(min-width: 50rem)',
+      srcset: getSrcSet(data.heroImages.nodes[1]),
+    },
+    {
+      media: '(min-width: 38.75rem)',
+      srcset: getSrcSet(data.heroImages.nodes[2]),
+    },
+    {
+      media: '(min-width: 30rem)',
+      srcset: getSrcSet(data.heroImages.nodes[3]),
+    },
+    {
+      media: '(min-width: 0rem)',
+      srcset: getSrcSet(data.heroImages.nodes[4]),
+    },
+  ]
+
   return (
-    <Layout>
+    <Base className={scss.artContainer}>
+      <div class="hero-bg">
+        <picture>
+          {heroImagesSrcSet.map(image => (
+            <source media={image.media} srcset={image.srcset} />
+          ))}
+          <img class="bg_img" src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
+        </picture>
+      </div>
       <section className={scss.featuredGrid}>
 
         <header className={scss.header}>
-          <Link to='/' className='logo'>
+          <Link to='/' className={`logo ${scss.logo}`}>
             <Logo />
           </Link>
           <div className={scss.titleBlock}>
             <h1 className={scss.siteTitle}>
-              {data.site.siteMetadata.title}
+              {useSiteMetadata().title}
             </h1>
             <p className={scss.siteSubtitle}>
-              {data.site.siteMetadata.subtitle}
+              {useSiteMetadata().subtitle}
             </p>
           </div>
         </header>
@@ -58,20 +92,24 @@ const ArtHomepage = ({data}) => {
           data.otherProjects.nodes.map(project => otherProject(project, project.sourceInstanceName))
         }
       </section>
-      <footer className={scss.footer}>
-        <p>made with gatsbyjs</p>
-        <p>last updated: december 2021</p>
-      </footer>
-    </Layout>
+
+      <Footer />
+    </Base>
   )
 }
 
 export const data = graphql`
   query {
-    site: site {
-      siteMetadata {
-        title
-        subtitle
+    heroImages: allFile(
+      filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/skypuddle/"}}
+      sort: {fields: name, order: DESC}
+    ) {
+      nodes {
+        id
+        name
+        childImageSharp {
+          gatsbyImageData
+        }
       }
     }
     featuredProjects: allFile(

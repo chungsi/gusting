@@ -1,9 +1,9 @@
 import * as React from 'react'
 import '../scss/global.scss'
 
-const Base = ({children}) => {
+const Base = ({children, className}) => {
   return (
-    <div className='container'>
+    <div className={`container ${className && className}`}>
       {children}
     </div>
   )
