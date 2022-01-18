@@ -1,3 +1,16 @@
+@use 'sass:map';
+
+/*/////////////////////////////////////////////////////////////////////////////
+ * Utilities
+ *
+ *    These files only include scss that are:
+ *      - static global variables,
+ *      - mixins, and
+ *      - functions.
+ *    They don't output css and thus, they can be safely imported by css
+ *    modules without adding additional bloat.
+ */
+@import 'typography';
 @import 'units';
 @import 'vertical-rhythm';
 
@@ -11,8 +24,21 @@ $bp-large: 50rem;
 $bp-xlarge: 69.75rem;
 $bp-xxlarge: 77rem;
 
-@mixin breakpoint($point) {
-  @media screen and (min-width: #{$point}) {
-    @content;
+$bps: (
+  xs: 25rem,
+  sm: 30rem,
+  md: 44rem,
+  lg: 50rem,
+  xl: 69.75rem,
+  xxl: 77rem
+);
+
+@mixin breakpoint($point, $logic: false) {
+  $bp: map.get($bps, $point);
+
+  @if($bp == null) {
+    $bp: #{$point};
   }
+
+  @media screen and (min-width: #{$bp}) { @content; }
 }

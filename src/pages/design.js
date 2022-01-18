@@ -5,6 +5,7 @@ import { getSrcSet } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/base'
 import Logo from '../images/svg/logo.inline.svg'
+import Card from '../components/card'
 import Footer from '../components/footer'
 
 const DesignHomepage = ({data}) => {
@@ -56,6 +57,19 @@ const DesignHomepage = ({data}) => {
       <main>
         <section>
           <h2>Projects</h2>
+          <div class={scss.projectShelf}>
+            {data.featuredProjects.nodes.map(project => (
+              <Card
+                key={project.childMdx.id}
+                className={project.childMdx.frontmatter.category}
+                link={`/project/${project.childMdx.slug}`}
+                title={project.childMdx.frontmatter.title}
+                subtitle={project.childMdx.frontmatter.subtitle}
+                tags={project.childMdx.frontmatter.tags}
+                style={`tilting`}
+                cardId={project.childMdx.slug} />
+            ))}
+          </div>
         </section>
       </main>
       <Footer />

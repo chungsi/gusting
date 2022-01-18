@@ -2,7 +2,10 @@
 
 @import 'normalize';
 @import 'utils/utils';
+@import 'custom-props/custom-props';
 @import 'typography';
+
+
 
 .container {
   position: relative;
@@ -55,7 +58,7 @@
 
   .project-image {
     // override gatsby's default styles...
-    img { box-shadow: var(--component-box-shadow) !important; }
+    img { box-shadow: var(--shadow-md) !important; }
 
     &.landscape {
       margin: var(--space-xxl) calc(var(--space-4xl) * -1) 0;

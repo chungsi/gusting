@@ -1,0 +1,42 @@
+@use 'sass:color';
+
+$sap: #C9D817;
+$evergreen: #73B030;
+$orange: #F66C20;
+$purple: #B27FE7;
+
+$design: $sap;
+$storytelling: $orange;
+$dev: $purple;
+$art: $evergreen;
+
+/*/////////////////////////////////////////////////////////////////////////////
+ * Colour Custom Properties
+ */
+
+// Note: Space separated values only supported by CSS Colors Lvl 4
+:root {
+  --primary-colour: olive;
+  --header-colour: rgba(0 0 0 / 1);
+  --text-colour: rgba(0 0 0 / .7);
+  --meta-colour: grey;
+
+  --component-bg-colour: hsl(0, 0%, 95%);
+  --c-bg-colour: hsl(0, 0%, 95%);
+}
+
+.art {
+  --colour: #{$art};
+  --c-bg-colour: #{rgba($art, .075)};
+  --c-bg-highlight-colour: #{rgba($art, .1)};
+}
+
+.dev {
+  --c-bg-colour: #{rgba($dev, .1)};
+  --c-bg-highlight-colour: #{rgba($dev, .2)};
+}
+
+.design {
+  --c-bg-colour: #{rgba($design, .1)};
+  --c-bg-highlight-colour: #{rgba($design, .2)};
+}

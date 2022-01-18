@@ -1,6 +1,3 @@
-@use "sass:math";
-
-
 /*/////////////////////////////////////////////////////////////////////////////
  * Font Face Declarations
  *
@@ -35,126 +32,34 @@
 
 
 /*/////////////////////////////////////////////////////////////////////////////
- * Typography Mixins &  Default Custom Properties
+ * Custom Properties
  */
-
-// @mixin fanwood {
-//   font-family: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-//   font-weight: normal; // Fanwood only comes in Regular weight
-//   letter-spacing: .025em;
-// }
-
-// // Alias for Fanwood Text
-// @mixin serif {
-//   @include fanwood;
-// }
-
-// @mixin mono {
-//   font-family: 'JetBrains Mono', monospace;
-// }
-
-// .fanwood, .serif { @include fanwood; }
-// .mono { @include mono; }
-
 $type-scale: 1.25;
-$type-base-size: 1rem;
+// $type-base-size: 1rem;
 // $space-scale: 0.875rem;
 
 // Typography
 :root {
-  --type-scale: #{$type-scale};
-
-  --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  // --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
+  // --font-mono: 'JetBrains Mono', monospace;
   --text-wght: 525;
   --bold-wght: 768;
   --lght-wght: 380;
 
-  // Note: Space separated values only supported by CSS Colors Lvl 4
-  --text-color: rgba(0 0 0 / .7);
-  --header-color: rgba(0 0 0 / 1);
-
   --p-line-height: var(--s-lg);
 
-  // --h0: 3.052rem;  // 3.0rem
-  // --h1: 2.441rem;  // 2.5rem
-  // --h2: 1.953rem;  // 2.0rem
-  // --h3: 1.563rem;  // 1.5rem
-  // --h4: 1.25rem;
-  // --h5: 1.0rem;
-  // --h6: 0.8rem;
-  // --h7: 0.64rem;   // 0.6rem
-
   // --type-base-size: #{$type-base-size};
-  --type-base-size:1rem;
-  --h0: calc( var(--h1) * var(--type-scale) * var(--type-scale) );
-  --h1: calc( var(--h2) * var(--type-scale) );
-  --h2: calc( var(--h3) * var(--type-scale) );
-  --h3: calc( var(--h4) * var(--type-scale) );
-  --h4: calc( var(--h5) * var(--type-scale) );
+  --type-base-size: 1rem;
+  --h0: calc(var(--h1) * #{$type-scale} * #{$type-scale});
+  --h1: calc(var(--h2) * #{$type-scale});
+  --h2: calc(var(--h3) * #{$type-scale});
+  --h3: calc(var(--h4) * #{$type-scale});
+  --h4: calc(var(--h5) * #{$type-scale});
   --h5: var(--type-base-size);
-  --h6: calc( var(--h5) / var(--type-scale) );
-  --h7: calc( var(--h6) / var(--type-scale) );
+  --h6: calc(var(--h5) / #{$type-scale});
+  --h7: calc(var(--h6) / #{$type-scale});
 
   --max-text-width: 41rem;
-
-  --transition: all 200ms ease-in-out;
-  --component-bg-rotate: transform: rotate(2deg);
-  --component-bg-colour: hsl(0, 0%, 95%);
-  --component-box-shadow: 0 4px 16px 2px rgba(0 0 0 / .14);
-}
-
-// Spacing
-// scale, size, room, arrange, place, set, order, shift, translate, tofu, empty
-:root {
-  --s-3xs: #{math.pow($type-scale, -6)};
-  --s-xxs: #{math.pow($type-scale, -4)};
-  --s-xs:  #{math.pow($type-scale, -2)};
-  --s-sm:  #{math.pow($type-scale, -1)};
-  --s-md:  #{$type-scale};
-  --s-lg:  #{math.pow($type-scale, 2)};
-  --s-xl:  #{math.pow($type-scale, 4)};
-  --s-xxl: #{math.pow($type-scale, 6)};
-  --s-3xl: #{math.pow($type-scale, 8)};
-  --s-4xl: #{math.pow($type-scale, 10)};
-  --s-5xl: #{math.pow($type-scale, 12)};
-
-  // Playing around with defaults: larger on mobile?
-  --space-unit: #{1rem};
-  --space-unit-em: #{1em};
-
-  --space-3xs: calc( var(--s-3xs) * var(--space-unit) );
-  --space-xxs: calc( var(--s-xxs) * var(--space-unit) );
-  --space-xs:  calc( var(--s-xs) * var(--space-unit) );
-  --space-sm:  calc( var(--s-sm) * var(--space-unit) );
-  --space-md:  calc( var(--s-md) * var(--space-unit) );
-  --space-lg:  calc( var(--s-lg) * var(--space-unit) );
-  --space-xl:  calc( var(--s-xl) * var(--space-unit) );
-  --space-xxl: calc( var(--s-xxl) * var(--space-unit) );
-  --space-3xl: calc( var(--s-3xl) * var(--space-unit) );
-  --space-4xl: calc( var(--s-4xl) * var(--space-unit) );
-  --space-5xl: calc( var(--s-5xl) * var(--space-unit) );
-
-  --space-3xs-em: calc( var(--s-3xs) * var(--space-unit-em) );
-  --space-xxs-em: calc( var(--s-xxs) * var(--space-unit-em) );
-  --space-xs-em:  calc( var(--s-xs) * var(--space-unit-em) );
-  --space-sm-em:  calc( var(--s-sm) * var(--space-unit-em) );
-  --space-md-em:  calc( var(--s-md) * var(--space-unit-em) );
-  --space-lg-em:  calc( var(--s-lg) * var(--space-unit-em) );
-  --space-xl-em:  calc( var(--s-xl) * var(--space-unit-em) );
-  --space-xxl-em: calc( var(--s-xxl) * var(--space-unit-em) );
-  --space-3xl-em: calc( var(--s-3xl) * var(--space-unit-em) );
-  --space-4xl-em: calc( var(--s-4xl) * var(--space-unit-em) );
-  --space-5xl-em: calc( var(--s-5xl) * var(--space-unit-em) );
-}
-
-// Playing around with changing defaults to update the whole system
-@include breakpoint(36rem) {
-  :root {
-    --space-unit: 1rem;
-    --space-unit-em: 1em;
-    --type-base-size: 1rem;
-  }
 }
 
 
@@ -163,10 +68,10 @@ $type-base-size: 1rem;
  */
 
 body {
-  // @include mono;
-  font-family: var(--font-mono);
+  @include mono;
+  // font-family: var(--font-mono);
   font-weight: var(--text-wght);
-  color: var(--text-color);
+  color: var(--text-colour);
   font-size: var(--type-base-size);
 }
 
@@ -187,18 +92,18 @@ h5,
 h6 {
   font-size: var(--header-size);
   line-height: 1;
-  color: var(--header-color);
-  margin: var(--space-md-em) 0 var(--space-3xs-em) 0;
+  color: var(--header-colour);
+  margin: var(--space-md-rel) 0 var(--space-3xs-rel) 0;
 }
 
 .h0,
 h1,
 h2,
 h3 {
-  // @include serif;
-  font-family: var(--font-serif);
-  font-weight: normal;
-  letter-spacing: .025em;
+  @include serif;
+  // font-family: var(--font-serif);
+  // font-weight: normal;
+  // letter-spacing: .025em;
 }
 
 h4,
@@ -235,13 +140,13 @@ a {
   // * Should properly do vertical rhythm with borders...
   // border-bottom: 1px solid var(--text-color);
   transition: var(--transition);
-  color: var(--text-color);
+  color: var(--text-colour);
 
   &:hover,
   &:focus,
   &:active {
     font-weight: var(--bold-wght);
-    color: var(--text-color);
+    color: var(--text-colour);
     outline: none;
     transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
@@ -256,7 +161,7 @@ code {
   display: inline-block;
   background-color: var(--component-bg-colour);
   padding: 0 var(--space-xs);
-  border-radius: var(--space-xxs-em);
+  border-radius: var(--space-xxs-rel);
 }
 
 pre {

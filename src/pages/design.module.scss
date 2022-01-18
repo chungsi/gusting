@@ -1,7 +1,7 @@
 @import '../scss/utils/_utils.scss';
 
 .design-container {
-  max-width: 52rem;
+  max-width: 56rem;
 
   // @include breakpoint(#{$bp-small)}) {
   // }
@@ -49,5 +49,16 @@
     @include breakpoint($bp-xlarge) {
       margin: 5.125rem 0 0 10.5rem;
     }
+  }
+}
+
+
+.project-shelf {
+  display: flex;
+  flex-wrap: wrap;
+
+  > :nth-child(1n) {
+    max-width: 15rem;
+    margin: 0 var(--space-xl) var(--space-xl) 0;
   }
 }

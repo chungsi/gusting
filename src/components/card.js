@@ -6,12 +6,15 @@ import { Link } from 'gatsby'
    Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
    for style in the props => do some processing to output the correct classes
  */
-const Card = ({link, title, subtitle, tags, style, className}) => {
+const Card = ({link, title, subtitle, tags, style, className, cardId}) => {
   var classList = `${scss.card}`
 
   switch (String(style)) {
     case 'floating':
       classList = `${classList} ${scss.floatingCard}`
+      break
+    case 'tilting':
+      classList = `${classList} ${scss.tiltingCard}`
       break
     default:
   }
@@ -21,7 +24,7 @@ const Card = ({link, title, subtitle, tags, style, className}) => {
   }
 
   return (
-    <article className={classList}>
+    <article className={classList} id={cardId ?? cardId}>
       <Link
         to={link}
         className={scss.linkContainer}
@@ -32,7 +35,7 @@ const Card = ({link, title, subtitle, tags, style, className}) => {
           calls to define their own HTML tags and classes...
           Would that be useful for me at this point?
          */}
-        <h2 className={scss.title}>{title}</h2>
+        <h3 className={scss.title}>{title}</h3>
         <p className={scss.subtitle}>{subtitle}</p>
         {tags &&
           <ul className={scss.tags}>

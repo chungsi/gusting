@@ -1,4 +1,4 @@
-// @import '../scss/_typography.scss';
+@import '../scss/utils/_typography.scss';
 
 /*
   Background tile that is slightly rotated
@@ -12,8 +12,8 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  transform: var(--component-bg-rotate);
-  background-color: var(--component-bg-colour);
+  transform: var(--bg-rotate-sm);
+  background-color: var(--c-bg-highlight-colour);
 }
 
 
@@ -22,11 +22,10 @@
   display: inline-block;
   font-size: var(--h0);
   margin-bottom: 0;
+  --bg-rotate-sm: rotate(-3deg) translate(-10px, -12px);
 
   &::after {
     @include bg-tile-styles;
-    --component-bg-rotate: rotate(-3deg) translate(-10px, -12px);
-    --component-bg-colour: hsl(0, 0%, 95%);
   }
 }
 
@@ -36,8 +35,7 @@
 }
 
 .category {
-  // @include mono;
-  font-family: var(--font-mono);
+  @include mono;
   font-weight: var(--lght-wght);
   font-size: var(--h6);
   font-style: italic;

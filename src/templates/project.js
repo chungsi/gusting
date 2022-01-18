@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
-import ContentTemplate from '../components/contentTemplate'
+import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/projectHeader'
 import ProjectPagination from '../components/projectPagination'
 import MdxImage from '../components/mdxImage'
@@ -20,7 +20,7 @@ const ProjectPost = ({data, pageContext}) => {
   )
 
   return (
-    <ContentTemplate
+    <ContentLayout
       header={headerBlock}
     >
       {/* <GatsbyImage
@@ -40,7 +40,7 @@ const ProjectPost = ({data, pageContext}) => {
         next={pageContext.next}
         prev={pageContext.prev} />
 
-    </ContentTemplate>
+    </ContentLayout>
   )
 }
 

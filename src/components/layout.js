@@ -5,16 +5,6 @@ import * as scss from './layout.module.scss'
 import Base from '../components/base'
 
 const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //         subtitle
-  //       }
-  //     }
-  //   }
-  // `)
 
   const navLink = (path, text) => (
     <li id={text} className={scss.navLinkItem}>
@@ -44,7 +34,8 @@ const Layout = ({ children }) => {
     ['/blog', 'Blog'],
     ['/project', 'Projects'],
     ['/listings', 'Listings'],
-    ['/art', 'Art']
+    ['/art', 'Art'],
+    ['/design', 'Design']
   ]
 
   return (
