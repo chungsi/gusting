@@ -1,14 +1,30 @@
 @use 'sass:color';
 
+$pine: #415A20;
+$dark-pine: mix($pine, #000, 50%);
+$light-pine: rgba($pine, .7);
+$cedar: #7D9E41;
+$gold: #FFD540;
+$yellow: #FFEC40;
+
 $sap: #C9D817;
 $evergreen: #73B030;
-$orange: #F66C20;
-$purple: #B27FE7;
+$orange: #FAA56F;
+// $orange: #F66C20;
+$purple: #B894DE;
+// $purple: #B27FE7;
+$blue: #3366ff;
 
+$sapling: #F8FAE2;
+$mandarin: #FFF4EF;
+$brushed-gold: #FFFDE7;
+$baby-breath: #F4FAFF;
+$lavendar: hsl(267, 73%, 97%);
+
+$art: $gold;
 $design: $sap;
 $storytelling: $orange;
 $dev: $purple;
-$art: $evergreen;
 
 /*/////////////////////////////////////////////////////////////////////////////
  * Colour Custom Properties
@@ -16,27 +32,45 @@ $art: $evergreen;
 
 // Note: Space separated values only supported by CSS Colors Lvl 4
 :root {
-  --primary-colour: olive;
-  --header-colour: rgba(0 0 0 / 1);
-  --text-colour: rgba(0 0 0 / .7);
-  --meta-colour: grey;
+  --primary-color: #{$gold};
+  --header-color: rgba(0 0 0 / 1);
+  --text-color: rgba(0 0 0 / .7);
+  --meta-color: grey;
 
-  --component-bg-colour: hsl(0, 0%, 95%);
-  --c-bg-colour: hsl(0, 0%, 95%);
+  --component-bg-color: hsl(0, 0%, 95%);
+  --c-bg-color: hsl(0, 0%, 95%);
 }
 
+// Category Theme Colours
 .art {
-  --colour: #{$art};
-  --c-bg-colour: #{rgba($art, .075)};
-  --c-bg-highlight-colour: #{rgba($art, .1)};
+  --primary-color: #{$art};
+  --c-bg-color: #{rgba($art, .075)};
+  --c-bg-highlight-color: #{rgba($art, .1)};
 }
 
 .dev {
-  --c-bg-colour: #{rgba($dev, .1)};
-  --c-bg-highlight-colour: #{rgba($dev, .2)};
+  --primary-color: #{$dev};
+  --c-bg-color: #{rgba($dev, .1)};
+  --c-bg-highlight-color: #{rgba($dev, .2)};
 }
 
 .design {
-  --c-bg-colour: #{rgba($design, .1)};
-  --c-bg-highlight-colour: #{rgba($design, .2)};
+  --primary-color: #{$design};
+  --c-bg-color: #{rgba($design, .1)};
+  --c-bg-highlight-color: #{rgba($design, .2)};
+}
+
+.storytelling {
+  --primary-color: #{$storytelling};
+  --c-bg-color: #{rgba($storytelling, .1)};
+  --c-bg-highlight-color: #{rgba($storytelling, .2)};
+}
+
+// Website Theme Colours
+#theme-art {
+  --primary-color: #{$blue};
+}
+
+#theme-design {
+  --primary-color: #{$cedar};
 }

@@ -4,9 +4,9 @@ import { Link, graphql } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/base'
-import Logo from '../images/svg/logo.inline.svg'
 import Card from '../components/card'
 import Footer from '../components/footer'
+import Logo from '../images/svg/logo.inline.svg'
 
 const DesignHomepage = ({data}) => {
 
@@ -34,7 +34,7 @@ const DesignHomepage = ({data}) => {
   ]
 
   return (
-    <Base className={scss.designContainer}>
+    <Base className={scss.designContainer} customIds='theme-design'>
       <div className={scss.hero}>
         <Link to='/' className={`logo ${scss.heroLogo}`}>
           <Logo />
@@ -61,7 +61,8 @@ const DesignHomepage = ({data}) => {
             {data.featuredProjects.nodes.map(project => (
               <Card
                 key={project.childMdx.id}
-                className={project.childMdx.frontmatter.category}
+                category={project.childMdx.frontmatter.category}
+                // className={project.childMdx.frontmatter.category}
                 link={`/project/${project.childMdx.slug}`}
                 title={project.childMdx.frontmatter.title}
                 subtitle={project.childMdx.frontmatter.subtitle}

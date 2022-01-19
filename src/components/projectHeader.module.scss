@@ -1,31 +1,16 @@
+@import '../scss/utils/_transformations.scss';
 @import '../scss/utils/_typography.scss';
-
-/*
-  Background tile that is slightly rotated
-*/
-@mixin bg-tile-styles {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transform: var(--bg-rotate-sm);
-  background-color: var(--c-bg-highlight-colour);
-}
-
 
 .title {
   position: relative;
   display: inline-block;
   font-size: var(--h0);
+  margin-top: 0;
   margin-bottom: 0;
   --bg-rotate-sm: rotate(-3deg) translate(-10px, -12px);
 
   &::after {
-    @include bg-tile-styles;
+    @include rotate-bg-box-styles($bg-color: var(--c-bg-highlight-color));
   }
 }
 

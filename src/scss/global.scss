@@ -24,7 +24,21 @@
   max-width: var(--space-xxl);
 
   svg {
-    fill: grey;
+    fill: var(--primary-color);
+  }
+}
+
+.category-icon {
+  position: absolute;
+  width: 1.125rem;
+  left:-0.25rem;
+
+  svg { fill: var(--primary-color); }
+
+  .project-header & {
+    top: .5rem;
+    left: -4.5rem;
+    width: 2rem;
   }
 }
 
@@ -48,8 +62,9 @@
   }
 
   .project-header {
+    position: relative;
     grid-area: head;
-    margin-top: var(--space-xxl);
+    margin-top: var(--space-4xl);
   }
 
   .project-content {

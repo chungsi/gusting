@@ -71,7 +71,7 @@ body {
   @include mono;
   // font-family: var(--font-mono);
   font-weight: var(--text-wght);
-  color: var(--text-colour);
+  color: var(--text-color);
   font-size: var(--type-base-size);
 }
 
@@ -92,7 +92,7 @@ h5,
 h6 {
   font-size: var(--header-size);
   line-height: 1;
-  color: var(--header-colour);
+  color: var(--header-color);
   margin: var(--space-md-rel) 0 var(--space-3xs-rel) 0;
 }
 
@@ -140,13 +140,13 @@ a {
   // * Should properly do vertical rhythm with borders...
   // border-bottom: 1px solid var(--text-color);
   transition: var(--transition);
-  color: var(--text-colour);
+  color: var(--text-color);
 
   &:hover,
   &:focus,
   &:active {
     font-weight: var(--bold-wght);
-    color: var(--text-colour);
+    color: var(--text-color);
     outline: none;
     transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
@@ -159,13 +159,13 @@ hr {
 
 code {
   display: inline-block;
-  background-color: var(--component-bg-colour);
+  background-color: var(--component-bg-color);
   padding: 0 var(--space-xs);
   border-radius: var(--space-xxs-rel);
 }
 
 pre {
-  background-color: var(--component-bg-colour);
+  background-color: var(--component-bg-color);
   padding: var(--space-md);
 }
 

@@ -1,17 +1,20 @@
 import * as React from 'react'
 import * as scss from './card.module.scss'
 import { Link } from 'gatsby'
+import CategoryIcon from './categoryIcon'
 
 /*
    Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
    for style in the props => do some processing to output the correct classes
  */
-const Card = ({link, title, subtitle, tags, style, className, cardId}) => {
-  var classList = `${scss.card}`
+const Card = ({link, title, subtitle, tags, category, style, className, cardId}) => {
+  var classList = `${scss.card} ${category && category}`
+  var hasCategoryIcon = true
 
   switch (String(style)) {
     case 'floating':
       classList = `${classList} ${scss.floatingCard}`
+      hasCategoryIcon = false
       break
     case 'tilting':
       classList = `${classList} ${scss.tiltingCard}`
@@ -25,6 +28,7 @@ const Card = ({link, title, subtitle, tags, style, className, cardId}) => {
 
   return (
     <article className={classList} id={cardId ?? cardId}>
+      {hasCategoryIcon && <CategoryIcon category={category} />}
       <Link
         to={link}
         className={scss.linkContainer}

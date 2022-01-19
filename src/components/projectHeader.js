@@ -1,9 +1,11 @@
 import * as React from 'react'
 import * as scss from './projectHeader.module.scss'
+import CategoryIcon from './categoryIcon'
 
-const ProjectHeader = ({ title, subtitle, category }) => {
+const ProjectHeader = ({ title, subtitle, category, className }) => {
   return (
-    <header>
+    <header className={className ?? ''}>
+      <CategoryIcon category={category} className={scss.categoryIcon} />
       <h1 className={`${scss.title} ${category}`}>
         {title}
         <span className={scss.category}>

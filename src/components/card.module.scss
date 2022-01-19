@@ -1,3 +1,5 @@
+@import '../scss/utils/_transformations.scss';
+
 .card {
   padding: var(--space-xl) var(--space-lg) var(--space-md);
   // padding: var(--space-lg) var(--space-sm);
@@ -39,28 +41,18 @@
   box-shadow: var(--shadow-md);
 }
 
-// Background tile that is slightly rotated
-@mixin bg-tile-styles {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: var(--card-bg-color);
-  transform: var(--card-bg-rotate);
-}
-
 .tilting-card {
   position:relative;
 
-  --card-bg-color: var(--c-bg-colour);
+  --card-bg-color: var(--c-bg-color);
 
   --card-bg-rotate: rotate(-3deg);
   &:nth-child(2n) { --card-bg-rotate: rotate(2deg); }
   &:nth-child(3n) { --card-bg-rotate: rotate(-5deg); }
 
-  &::after { @include bg-tile-styles; }
+  &::after {
+    @include rotate-bg-box-styles(
+      $transform: var(--card-bg-rotate),
+      $bg-color: var(--card-bg-color));
+    }
 }

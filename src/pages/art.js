@@ -51,7 +51,7 @@ const ArtHomepage = ({data}) => {
   ]
 
   return (
-    <Base className={scss.artContainer}>
+    <Base className={scss.artContainer} customIds='theme-art'>
       <div class="hero-bg">
         <picture>
           {heroImagesSrcSet.map(image => (
