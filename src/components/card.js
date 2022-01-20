@@ -7,9 +7,10 @@ import CategoryIcon from './categoryIcon'
    Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
    for style in the props => do some processing to output the correct classes
  */
-const Card = ({link, title, subtitle, tags, category, style, className, cardId}) => {
-  var classList = `${scss.card} ${category && category}`
+const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos, style, className, cardId}) => {
+  var classList = `${scss.card} ${category ?? ''}`
   var hasCategoryIcon = true
+  var hasHeroImage = heroImageSrc != null ? true : false
 
   switch (String(style)) {
     case 'floating':
@@ -28,11 +29,11 @@ const Card = ({link, title, subtitle, tags, category, style, className, cardId})
 
   return (
     <article className={classList} id={cardId ?? cardId}>
-      {hasCategoryIcon && <CategoryIcon category={category} />}
       <Link
         to={link}
         className={scss.linkContainer}
-      >
+        >
+        {hasCategoryIcon && <CategoryIcon category={category} />}
         {/*
           These slots ( {title}, {subtitle} ) can be passed a JSX object,
           so could come without the wrapping tags which lets individual
@@ -49,6 +50,11 @@ const Card = ({link, title, subtitle, tags, category, style, className, cardId})
           </ul>
         }
       </Link>
+      {hasHeroImage &&
+        <img src={heroImageSrc}
+          className={`${scss.heroImage} ${heroImagePos ? scss[heroImagePos] : ''}`}
+          aria-hidden />
+      }
     </article>
   )
 }

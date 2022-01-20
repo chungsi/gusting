@@ -23,7 +23,7 @@ const CategoryIcon = ({category, className}) => {
   }
 
   return (
-    <div class={classList}>
+    <div class={classList} aria-hidden>
       {shape}
     </div>
   )

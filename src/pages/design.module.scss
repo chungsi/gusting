@@ -1,7 +1,7 @@
 @import '../scss/utils/_utils.scss';
 
 .design-container {
-  max-width: 56rem;
+  max-width: 60rem;
 
   // @include breakpoint(#{$bp-small)}) {
   // }
@@ -56,9 +56,11 @@
 .project-shelf {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  // margin-bottom: calc(var(--space-xxl) * -1); // to reset row spacing?
 
   > :nth-child(1n) {
     max-width: 15rem;
-    margin: 0 var(--space-xl) var(--space-xl) 0;
+    margin: 0 var(--space-xxl) var(--space-xxl) 0;
   }
 }

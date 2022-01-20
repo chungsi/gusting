@@ -3,10 +3,10 @@ import * as React from 'react'
 import Base from './base'
 import Logo from '../images/svg/logo.inline.svg'
 
-const ContentLayout = ({header, children}) => {
+const ContentLayout = ({header, className, children}) => {
 
   return (
-    <Base className='project-container'>
+    <Base className={`project-container ${className ?? ''}`}>
       <Link to='/' className='logo'>
         <Logo />
       </Link>

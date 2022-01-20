@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/base'
 import Card from '../components/card'
@@ -84,7 +84,10 @@ const ArtHomepage = ({data}) => {
             title={project.childMdx.frontmatter.title}
             subtitle={project.childMdx.frontmatter.subtitle}
             tags={project.childMdx.frontmatter.tags}
-            style={`floating`} />
+            heroImageSrc={getSrc(project.childMdx.frontmatter.hero_image)}
+            heroImagePos={project.childMdx.frontmatter.hero_image_pos}
+            style={`floating`}
+            cardId={project.childMdx.slug} />
         )}
       </section>
       <section className={scss.otherProjects}>
@@ -117,20 +120,30 @@ export const data = graphql`
         sourceInstanceName: {eq: "project"},
         extension: {eq: "mdx"},
         name: {regex: "/^[^_]/"},
-        childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
+        childMdx: {frontmatter: {
+          publish: {eq: true},
+          feature: {eq: true},
+          category: {in: ["art", "storytelling"]}
+        }}
       }
       sort: {fields: childMdx___frontmatter___date, order: DESC}
     ) {
       nodes {
         childMdx {
+          id
+          slug
           frontmatter {
             title
             subtitle
             category
             tags
+            hero_image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            hero_image_pos
           }
-          id
-          slug
         }
         sourceInstanceName
       }

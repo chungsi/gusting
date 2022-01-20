@@ -91,12 +91,10 @@
 }
 
 .site-title {
-  font-size: 3rem;
   margin: 0;
 }
 
 .site-subtitle {
-  color: silver;
   margin: 0;
 }
 
@@ -107,7 +105,6 @@
 // Direct copy of card.module.scss
 .tags {
   font-size: var(--h6);
-  color: grey;
   list-style: none;
   padding-left: 0;
 

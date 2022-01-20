@@ -1,5 +1,6 @@
 @use 'sass:color';
 
+$grey: #787878;
 $pine: #415A20;
 $dark-pine: mix($pine, #000, 50%);
 $light-pine: rgba($pine, .7);
@@ -35,10 +36,11 @@ $dev: $purple;
   --primary-color: #{$gold};
   --header-color: rgba(0 0 0 / 1);
   --text-color: rgba(0 0 0 / .7);
-  --meta-color: grey;
+  --meta-color: #{$grey};
+  --link-color: #{$cedar};
 
-  --component-bg-color: hsl(0, 0%, 95%);
   --c-bg-color: hsl(0, 0%, 95%);
+  --c-bg-highlight-color: hsl(0, 0%, 95%);
 }
 
 // Category Theme Colours
@@ -69,8 +71,16 @@ $dev: $purple;
 // Website Theme Colours
 #theme-art {
   --primary-color: #{$blue};
+  --header-color: #{darken($blue, 20%)};
+  --text-color: #{mix($grey, $blue)};
+  --link-color: #{$blue};
+  --meta-color: #{mix($grey, $blue)};
 }
 
 #theme-design {
   --primary-color: #{$cedar};
+  --header-color: #{$dark-pine};
+  --text-color: #{rgba($pine, .7)};
+  --link-color: #{$cedar};
+  --meta-color: #{rgba($pine, .85)};
 }

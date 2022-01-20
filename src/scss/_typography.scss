@@ -42,7 +42,7 @@ $type-scale: 1.25;
 :root {
   // --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
   // --font-mono: 'JetBrains Mono', monospace;
-  --text-wght: 525;
+  --text-wght: 425;
   --bold-wght: 768;
   --lght-wght: 380;
 
@@ -50,8 +50,8 @@ $type-scale: 1.25;
 
   // --type-base-size: #{$type-base-size};
   --type-base-size: 1rem;
-  --h0: calc(var(--h1) * #{$type-scale} * #{$type-scale});
-  --h1: calc(var(--h2) * #{$type-scale});
+  --h0: calc(var(--h1) * #{$type-scale});
+  --h1: calc(var(--h2) * #{$type-scale} * #{$type-scale});
   --h2: calc(var(--h3) * #{$type-scale});
   --h3: calc(var(--h4) * #{$type-scale});
   --h4: calc(var(--h5) * #{$type-scale});
@@ -115,6 +115,7 @@ h6 {
 }
 
 p {
+  color: var(--text-color);
   line-height: var(--p-line-height);
   margin: 1em 0 1em 0;
   max-width: var(--max-text-width);
@@ -122,12 +123,14 @@ p {
 
 ul,
 ol {
+  color: var(--text-color);
   line-height: var(--p-line-height);
   padding-left: var(--space-lg);
   max-width: var(--max-text-width);
 }
 
 blockquote {
+  color: var(--text-color);
   margin: var(--space-md) var(--space-lg);
 }
 
@@ -140,13 +143,12 @@ a {
   // * Should properly do vertical rhythm with borders...
   // border-bottom: 1px solid var(--text-color);
   transition: var(--transition);
-  color: var(--text-color);
+  color: var(--link-color);
 
   &:hover,
   &:focus,
   &:active {
     font-weight: var(--bold-wght);
-    color: var(--text-color);
     outline: none;
     transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
@@ -159,14 +161,16 @@ hr {
 
 code {
   display: inline-block;
-  background-color: var(--component-bg-color);
+  background-color: var(--c-bg-highlight-color);
   padding: 0 var(--space-xs);
   border-radius: var(--space-xxs-rel);
 }
 
 pre {
-  background-color: var(--component-bg-color);
+  background-color: var(--c-bg-highlight-color);
   padding: var(--space-md);
+
+  code { background-color: transparent; } // reset if nested
 }
 
 img {

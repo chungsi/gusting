@@ -2,7 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
-import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getSrc, StaticImage } from 'gatsby-plugin-image'
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/projectHeader'
 import ProjectPagination from '../components/projectPagination'
@@ -14,13 +14,15 @@ const ProjectPost = ({data, pageContext}) => {
       <ProjectHeader
           title={data.mdx.frontmatter.title}
           subtitle={data.mdx.frontmatter.subtitle}
-          category={data.mdx.frontmatter.category} />
+          category={data.mdx.frontmatter.category}
+          heroImgSrc={getSrc(data.mdx.frontmatter.hero_image)} />
     {/* insert category info for svg shapey */}
     </>
   )
 
   return (
     <ContentLayout
+      className={data.mdx.frontmatter.category}
       header={headerBlock}
     >
       {/* <GatsbyImage
@@ -28,7 +30,11 @@ const ProjectPost = ({data, pageContext}) => {
         alt={data.mdx.frontmatter.hero_image_alt}
       /> */}
 
-      <MDXProvider components={{ MdxImage, StaticImage }}>
+      {/* Do I want to automatically parse h1's as h2's etc in the mdx??? */}
+      <MDXProvider components={{
+        MdxImage,
+        StaticImage
+      }}>
         <MDXRenderer>
           {data.mdx.body}
         </MDXRenderer>
@@ -51,7 +57,6 @@ export const query = graphql`
         title
         subtitle
         category
-        hero_image_alt
         hero_image {
           childImageSharp {
             gatsbyImageData

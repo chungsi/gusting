@@ -1,12 +1,15 @@
 @import '../scss/utils/_transformations.scss';
 
 .card {
-  padding: var(--space-xl) var(--space-lg) var(--space-md);
+  position: relative;
   // padding: var(--space-lg) var(--space-sm);
   // border: 1px solid silver;
 }
 
+  // Default
   .link-container {
+    display: block;
+    padding: var(--space-xl) var(--space-lg) var(--space-md);
     text-decoration: none;
   }
 
@@ -19,12 +22,10 @@
 .subtitle {
   font-style: italic;
   font-weight: var(--lght-wght);
-  color: grey;
 }
 
 .tags {
   font-size: var(--h6);
-  color: grey;
   list-style: none;
   padding-left: 0;
 
@@ -36,13 +37,16 @@
 // Different styles of the card
 .floating-card,
 .zine-card {
-  padding: var(--space-xl) var(--space-lg) var(--space-md);
   border: none;
   box-shadow: var(--shadow-md);
+
+  .link-container {
+    padding: var(--space-xl) var(--space-lg) var(--space-md);
+  }
 }
 
 .tilting-card {
-  position:relative;
+  // position:relative;
 
   --card-bg-color: var(--c-bg-color);
 
@@ -55,4 +59,37 @@
       $transform: var(--card-bg-rotate),
       $bg-color: var(--card-bg-color));
     }
+}
+
+.hero-image {
+  position: absolute;
+  display: block;
+  max-width: 7.25rem;
+  right: 0;
+  z-index: 0;
+  transition: var(--transition);
+
+  &.top {
+    right: -2rem;
+    top: -2rem;
+  }
+
+  &.bottom {
+    right: 0;
+    bottom: -1.5rem;
+  }
+
+  &.right {
+    right: -2.5rem;
+    bottom: 0;
+  }
+
+  // TODO: This looks messy! Should clean it up
+  // And make the translate be different depending on the position
+  .card:hover &,
+  .card:active &,
+  .card:focus & {
+    transform: translate(.25rem, -.25rem);
+    transition: var(--transition);
+  }
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as scss from './design.module.scss'
 import { Link, graphql } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { GatsbyImage, getSrcSet, getSrc, getImage } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/base'
 import Card from '../components/card'
@@ -49,10 +49,8 @@ const DesignHomepage = ({data}) => {
         </div>
       </div>
       <header>
-        <div>
-          <h1>{useSiteMetadata().title}</h1>
-          <p>{useSiteMetadata().subtitle}</p>
-        </div>
+        <h1>{useSiteMetadata().title}</h1>
+        <p>{useSiteMetadata().subtitle}</p>
       </header>
       <main>
         <section>
@@ -67,6 +65,8 @@ const DesignHomepage = ({data}) => {
                 title={project.childMdx.frontmatter.title}
                 subtitle={project.childMdx.frontmatter.subtitle}
                 tags={project.childMdx.frontmatter.tags}
+                heroImageSrc={getSrc(project.childMdx.frontmatter.hero_image)}
+                heroImagePos={project.childMdx.frontmatter.hero_image_pos}
                 style={`tilting`}
                 cardId={project.childMdx.slug} />
             ))}
@@ -104,14 +104,20 @@ export const data = graphql`
       nodes {
         sourceInstanceName
         childMdx {
+          id
+          slug
           frontmatter {
             title
             subtitle
             category
             tags
+            hero_image_pos
+            hero_image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
-          id
-          slug
         }
       }
     }
