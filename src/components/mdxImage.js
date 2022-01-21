@@ -20,7 +20,7 @@ const MdxImage = ({style, caption, children}) => {
 
   return (
     <>
-      <div class={classList}>
+      <div className={classList}>
         {children}
       </div>
       {caption &&

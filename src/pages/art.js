@@ -16,7 +16,7 @@ const ArtHomepage = ({data}) => {
         to={`/${dir}/${project.childMdx.slug}`}
         className={scss.projectLinkContainer}
       >
-        <h2>{project.childMdx.frontmatter.title}</h2>
+        <h3>{project.childMdx.frontmatter.title}</h3>
         <p>{project.childMdx.frontmatter.subtitle}</p>
         <ul className={scss.tags}>
           {project.childMdx.frontmatter.tags.map(tag => (
@@ -76,6 +76,8 @@ const ArtHomepage = ({data}) => {
           </div>
         </header>
 
+        {/* <h2>Projects</h2> */}
+
         {data.featuredProjects.nodes.map(project =>
           <Card
             key={project.childMdx.id}
@@ -91,6 +93,7 @@ const ArtHomepage = ({data}) => {
         )}
       </section>
       <section className={scss.otherProjects}>
+        {/* <h2>Other Projects</h2> */}
         {
           data.otherProjects.nodes.map(project => otherProject(project, project.sourceInstanceName))
         }

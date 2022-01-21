@@ -72,8 +72,9 @@
   }
 
   .project-image {
+    box-shadow: var(--shadow-md);
     // override gatsby's default styles...
-    img { box-shadow: var(--shadow-md) !important; }
+    // img { box-shadow: var(--shadow-md) !important; }
 
     &.landscape {
       margin: var(--space-xxl) calc(var(--space-4xl) * -1) 0;
@@ -95,7 +96,7 @@
 }
 
 .footer {
-  border-top: 1px solid grey;
+  border-top: 1px solid var(--c-bg-highlight-color);
   margin: var(--space-xl) 0;
   padding: var(--space-lg) 0;
 }

@@ -1,0 +1,30 @@
+$horiz-offset: var(--space-4xl);
+
+.gallery-page {
+  margin-top: var(--space-xxl);
+  &:first-of-type { margin-top: 0; }
+}
+  .gallery-page-image {
+    box-shadow: var(--shadow-md);
+
+    // Offsets to either sides making the image larger than the container
+    .landscape & {
+      margin: 0 calc(#{$horiz-offset} * -1) 0;
+    }
+  }
+
+
+.cover {
+  .gallery-page-image {
+    margin-left: 50%;
+  }
+  .gallery-page-text {
+    margin-left: calc(50% + var(--space-xxl));
+  }
+}
+
+.back-cover {
+  .gallery-page-image {
+    margin-right: 50%;
+  }
+}
