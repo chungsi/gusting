@@ -5,7 +5,8 @@ const Footer = () => {
   return (
     <footer class='footer'>
       <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
-      <p>Made with <a href='https://www.gatsbyjs.com/' target='_blank' rel="noreferrer">GatsbyJs</a></p>
+      <p><a href='https://github.com/chungsi/gusting' target='_blank' rel='noreferrer'>Github repo</a></p>
+      <p>Made with <a href='https://www.gatsbyjs.com/' target='_blank' rel='noreferrer'>GatsbyJs</a></p>
     </footer>
   )
 }
