@@ -22,8 +22,8 @@ const ProjectPost = ({data, pageContext}) => {
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
   var galleryImages = {}
-  if (data.mdx.frontmatter.gallery) {
-    data.mdx.frontmatter.gallery.forEach((image, i) => {
+  if (data.mdx.frontmatter.images) {
+    data.mdx.frontmatter.images.forEach((image, i) => {
       galleryImages[`image${i}`] = getImage(image)
     })
   }
@@ -67,7 +67,7 @@ export const query = graphql`
             gatsbyImageData
           }
         }
-        gallery {
+        images {
           childImageSharp {
             gatsbyImageData
           }
