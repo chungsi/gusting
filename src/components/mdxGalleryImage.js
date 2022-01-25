@@ -19,6 +19,7 @@ const MdxGalleryImage = ({style, caption, gatsbyImageData, children}) => {
           break
         case 'back-cover':
           pageClassList = `${pageClassList} ${scss[`back-cover`]}`
+          break
         default:
       }
     })

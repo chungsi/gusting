@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as scss from './design.module.scss'
 import { Link, graphql } from 'gatsby'
-import { GatsbyImage, getSrcSet, getSrc, getImage } from 'gatsby-plugin-image'
+import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/base'
 import Card from '../components/card'

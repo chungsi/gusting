@@ -9,8 +9,15 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: ['auto', 'webp', 'avif']
+        }
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

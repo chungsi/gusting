@@ -42,6 +42,18 @@
   }
 }
 
+.shape-bg {
+  position: absolute;
+  z-index: -1;
+  width: 15rem;
+  margin: -1rem -2rem 0 -3rem;
+
+  svg {
+    fill: var(--primary-color);
+    opacity: 0.15;
+  }
+}
+
 .project-container {
   // Q: Where to define width of container????
   // max-width: 50rem;

@@ -17,6 +17,7 @@ const ProjectHeader = ({ title, subtitle, category, heroImgSrc, className }) => 
       <p className={scss.subtitle}>{subtitle}</p>
       {hasHeroImage &&
         <img src={heroImgSrc}
+          alt=''
           className={`${scss.heroImage}`}
           aria-hidden />
       }

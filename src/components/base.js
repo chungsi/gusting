@@ -8,9 +8,9 @@ const Base = ({children, className, customIds}) => {
   }
 
   return (
-    <div className={classList} id={customIds ?? ''}>
+    <main className={classList} id={customIds ?? ''}>
       {children}
-    </div>
+    </main>
   )
 }
 

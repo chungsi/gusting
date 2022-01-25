@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as scss from './card.module.scss'
 import { Link } from 'gatsby'
 import CategoryIcon from './categoryIcon'
+import ShapeSvg from './shapeSvg'
 
 /*
    Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
@@ -11,6 +12,7 @@ const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos
   var classList = `${scss.card} ${category ?? ''}`
   var hasCategoryIcon = true
   var hasHeroImage = heroImageSrc != null ? true : false
+  var hasShapeBg = false
 
   switch (String(style)) {
     case 'floating':
@@ -19,6 +21,9 @@ const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos
       break
     case 'tilting':
       classList = `${classList} ${scss.tiltingCard}`
+      break
+    case 'shapes':
+      hasShapeBg = true
       break
     default:
   }
@@ -34,6 +39,7 @@ const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos
         className={scss.linkContainer}
         >
         {hasCategoryIcon && <CategoryIcon category={category} />}
+        {hasShapeBg && <ShapeSvg category={category} />}
         {/*
           These slots ( {title}, {subtitle} ) can be passed a JSX object,
           so could come without the wrapping tags which lets individual
@@ -52,6 +58,7 @@ const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos
       </Link>
       {hasHeroImage &&
         <img src={heroImageSrc}
+          alt=''
           className={`${scss.heroImage} ${heroImagePos ? scss[heroImagePos] : ''}`}
           aria-hidden />
       }
