@@ -61,7 +61,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               className: `autolink`,
-              elements: [`h1`, `h2`]
+              elements: [`h1`, `h2`, `h3`]
             }
           },
         ],

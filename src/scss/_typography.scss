@@ -42,7 +42,7 @@ $type-scale: 1.25;
 :root {
   // --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
   // --font-mono: 'JetBrains Mono', monospace;
-  --text-wght: 425;
+  --text-wght: 475;
   --bold-wght: 768;
   --lght-wght: 380;
 
@@ -51,8 +51,8 @@ $type-scale: 1.25;
   // --type-base-size: #{$type-base-size};
   --type-base-size: 1rem;
   --h0: calc(var(--h1) * #{$type-scale});
-  --h1: calc(var(--h2) * #{$type-scale} * #{$type-scale});
-  --h2: calc(var(--h3) * #{$type-scale});
+  --h1: calc(var(--h2) * #{$type-scale});
+  --h2: calc(var(--h3) * #{$type-scale} * #{$type-scale});
   --h3: calc(var(--h4) * #{$type-scale});
   --h4: calc(var(--h5) * #{$type-scale});
   --h5: var(--type-base-size);
@@ -93,7 +93,7 @@ h6 {
   font-size: var(--header-size);
   line-height: 1;
   color: var(--header-color);
-  margin: var(--space-md-rel) 0 var(--space-3xs-rel) 0;
+  margin: var(--space-xl-rel) 0 var(--space-md) 0;
 }
 
 .h0,
@@ -101,8 +101,6 @@ h1,
 h2,
 h3 {
   @include serif;
-  // font-family: var(--font-serif);
-  // font-weight: normal;
   // letter-spacing: .025em;
 }
 
