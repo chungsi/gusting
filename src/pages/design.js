@@ -3,9 +3,9 @@ import * as scss from './design.module.scss'
 import { Link, graphql } from 'gatsby'
 import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import Base from '../components/base'
-import Card from '../components/card'
-import Footer from '../components/footer'
+import Base from '../components/Base'
+import Card from '../components/Card'
+import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 
 const DesignHomepage = ({data}) => {
@@ -58,17 +58,11 @@ const DesignHomepage = ({data}) => {
           <div class={scss.projectShelf}>
             {data.featuredProjects.nodes.map(project => (
               <Card
-                key={project.childMdx.id}
-                category={project.childMdx.frontmatter.category}
-                // className={project.childMdx.frontmatter.category}
-                link={`/project/${project.childMdx.slug}`}
-                title={project.childMdx.frontmatter.title}
-                subtitle={project.childMdx.frontmatter.subtitle}
-                tags={project.childMdx.frontmatter.tags}
-                heroImageSrc={getSrc(project.childMdx.frontmatter.hero_image)}
-                heroImagePos={project.childMdx.frontmatter.hero_image_pos}
                 style={`tilting`}
-                cardId={project.childMdx.slug} />
+                key={project.childMdx.id}
+                cardId={project.childMdx.slug}
+                link={`/project/${project.childMdx.slug}`}
+                frontmatter={project.childMdx.frontmatter} />
             ))}
           </div>
         </section>
@@ -106,18 +100,7 @@ export const data = graphql`
         childMdx {
           id
           slug
-          frontmatter {
-            title
-            subtitle
-            category
-            tags
-            hero_image_pos
-            hero_image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
+          ...ProjectMdxFrontmatterFragment
         }
       }
     }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as scss from './projectPagination.module.scss'
+import * as scss from './ProjectPagination.module.scss'
 import { Link } from 'gatsby'
 
 const ProjectPagination = ({pathPrefix, next, prev}) => {

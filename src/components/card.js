@@ -1,17 +1,25 @@
 import * as React from 'react'
 import * as scss from './card.module.scss'
 import { Link } from 'gatsby'
-import CategoryIcon from './categoryIcon'
-import ShapeSvg from './shapeSvg'
+import { getSrc } from 'gatsby-plugin-image'
+import CategoryIcon from './CategoryIcon'
+import ShapeSvg from './ShapeSvg'
 
 /*
    Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
    for style in the props => do some processing to output the correct classes
  */
-const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos, style, className, cardId}) => {
+const Card = ({
+  link,
+  style,
+  cardId,
+  className,
+  frontmatter: {
+    title, subtitle, tags, category, heroImage, heroImagePos
+  }}) => {
   var classList = `${scss.card} ${category ?? ''}`
   var hasCategoryIcon = true
-  var hasHeroImage = heroImageSrc != null ? true : false
+  var hasHeroImage = heroImage != null ? true : false
   var hasShapeBg = false
 
   switch (String(style)) {
@@ -57,7 +65,7 @@ const Card = ({link, title, subtitle, tags, category, heroImageSrc, heroImagePos
         }
       </Link>
       {hasHeroImage &&
-        <img src={heroImageSrc}
+        <img src={getSrc(heroImage)}
           alt=''
           className={`${scss.heroImage} ${heroImagePos ? scss[heroImagePos] : ''}`}
           aria-hidden />

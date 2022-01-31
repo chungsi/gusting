@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Layout from '../components/layout'
-import ProjectPagination from '../components/projectPagination'
+import Layout from '../components/Layout'
+import ProjectPagination from '../components/ProjectPagination'
 
 /*
  * pageContext : from gatsby-node.js getting the next and prev posts

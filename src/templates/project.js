@@ -3,27 +3,23 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { getSrc, getImage } from 'gatsby-plugin-image'
-import ContentLayout from '../components/contentLayout'
-import ProjectHeader from '../components/projectHeader'
-import ProjectPagination from '../components/projectPagination'
-import MdxImage from '../components/mdxImage'
-import MdxGalleryImage from '../components/mdxGalleryImage'
+import ContentLayout from '../components/ContentLayout'
+import ProjectHeader from '../components/ProjectHeader'
+import ProjectPagination from '../components/ProjectPagination'
+import MdxImage from '../components/MdxImage'
+import MdxGalleryImage from '../components/MdxGalleryImage'
 
 
 const ProjectPost = ({data, pageContext}) => {
   const headerBlock = (
-    <ProjectHeader
-        title={data.mdx.frontmatter.title}
-        subtitle={data.mdx.frontmatter.subtitle}
-        category={data.mdx.frontmatter.category}
-        heroImgSrc={getSrc(data.mdx.frontmatter.hero_image)} />
+    <ProjectHeader frontmatter={data.mdx.frontmatter} />
   )
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
   var galleryImages = {}
-  if (data.mdx.frontmatter.images) {
-    data.mdx.frontmatter.images.forEach((image, i) => {
+  if (data.mdx.frontmatter.gallery) {
+    data.mdx.frontmatter.gallery.forEach((image, i) => {
       galleryImages[`image${i}`] = getImage(image)
     })
   }
@@ -58,16 +54,9 @@ export const query = graphql`
   query ($id: String) {
     mdx(id: {eq: $id}) {
       body
+      ...ProjectMdxFrontmatterFragment
       frontmatter {
-        title
-        subtitle
-        category
-        hero_image {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
-        images {
+        gallery {
           childImageSharp {
             gatsbyImageData
           }

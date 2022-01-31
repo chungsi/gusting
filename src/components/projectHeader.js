@@ -1,9 +1,11 @@
 import * as React from 'react'
 import * as scss from './projectHeader.module.scss'
-import CategoryIcon from './categoryIcon'
+import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
+import CategoryIcon from './CategoryIcon'
 
-const ProjectHeader = ({ title, subtitle, category, heroImgSrc, className }) => {
-  var hasHeroImage = heroImgSrc != null ? true : false
+const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroImage }, className }) => {
+  var hasHeroImage = heroImage != null ? true : false
 
   return (
     <header className={className ?? ''}>
@@ -15,8 +17,11 @@ const ProjectHeader = ({ title, subtitle, category, heroImgSrc, className }) => 
         </span>
       </h1>
       <p className={scss.subtitle}>{subtitle}</p>
+      <p><small>
+        {tags.map(tag => `${tag} / `)}
+      </small></p>
       {hasHeroImage &&
-        <img src={heroImgSrc}
+        <img src={getSrc(heroImage)}
           alt=''
           className={`${scss.heroImage}`}
           aria-hidden />
@@ -24,5 +29,20 @@ const ProjectHeader = ({ title, subtitle, category, heroImgSrc, className }) => 
     </header>
   )
 }
+
+// export const query = graphql`
+//   fragment ProjectHeaderFragment on Mdx {
+//     frontmatter {
+//       title
+//       subtitle
+//       category
+//       heroImage {
+//         childImageSharp {
+//           gatsbyImageData
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default ProjectHeader

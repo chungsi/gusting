@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
-import Base from './base'
+import Base from './Base'
 import Logo from '../images/svg/logo.inline.svg'
 
 const ContentLayout = ({header, className, children}) => {

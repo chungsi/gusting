@@ -3,10 +3,10 @@ import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
 import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import Base from '../components/base'
-import Card from '../components/card'
+import Base from '../components/Base'
+import Card from '../components/Card'
+import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
-import Footer from '../components/footer'
 
 const ArtHomepage = ({data}) => {
 
@@ -80,16 +80,12 @@ const ArtHomepage = ({data}) => {
 
         {data.featuredProjects.nodes.map(project =>
           <Card
+            style={`floating`}
             key={project.childMdx.id}
             className={scss.projectCard}
+            cardId={project.childMdx.slug}
             link={`/project/${project.childMdx.slug}`}
-            title={project.childMdx.frontmatter.title}
-            subtitle={project.childMdx.frontmatter.subtitle}
-            tags={project.childMdx.frontmatter.tags}
-            heroImageSrc={getSrc(project.childMdx.frontmatter.hero_image)}
-            heroImagePos={project.childMdx.frontmatter.hero_image_pos}
-            style={`floating`}
-            cardId={project.childMdx.slug} />
+            frontmatter={project.childMdx.frontmatter} />
         )}
       </section>
       <section className={scss.otherProjects}>
@@ -135,18 +131,7 @@ export const data = graphql`
         childMdx {
           id
           slug
-          frontmatter {
-            title
-            subtitle
-            category
-            tags
-            hero_image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-            hero_image_pos
-          }
+          ...ProjectMdxFrontmatterFragment
         }
         sourceInstanceName
       }
