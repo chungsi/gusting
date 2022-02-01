@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
-import { getSrcSet, getSrc } from 'gatsby-plugin-image'
+import { getSrcSet } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/Base'
 import Card from '../components/Card'
@@ -9,6 +9,9 @@ import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 
 const ArtHomepage = ({data}) => {
+
+  const artHome = useSiteMetadata().artHome
+  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=art`
 
   const otherProject = (project, dir) => (
     <section id={project.childMdx.id}>
@@ -52,26 +55,26 @@ const ArtHomepage = ({data}) => {
 
   return (
     <Base className={scss.artContainer} customIds='theme-art'>
-      <div class="hero-bg">
+      <div className="hero-bg">
         <picture>
           {heroImagesSrcSet.map(image => (
             <source media={image.media} srcset={image.srcset} />
           ))}
-          <img class="bg_img" src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
+          <img className="bg_img" src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
         </picture>
       </div>
       <section className={scss.featuredGrid}>
 
         <header className={scss.header}>
-          <Link to='/' className={`logo ${scss.logo}`}>
+          <div className={`logo ${scss.logo}`}>
             <Logo />
-          </Link>
+          </div>
           <div className={scss.titleBlock}>
             <h1 className={scss.siteTitle}>
-              {useSiteMetadata().title}
+              {artHome.title}
             </h1>
             <p className={scss.siteSubtitle}>
-              {useSiteMetadata().subtitle}
+              {artHome.subtitle}
             </p>
           </div>
         </header>
@@ -84,7 +87,7 @@ const ArtHomepage = ({data}) => {
             key={project.childMdx.id}
             className={scss.projectCard}
             cardId={project.childMdx.slug}
-            link={`/project/${project.childMdx.slug}`}
+            link={`/project/${project.childMdx.slug}${homeUrlParam}`}
             frontmatter={project.childMdx.frontmatter} />
         )}
       </section>

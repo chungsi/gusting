@@ -2,8 +2,19 @@
 
 module.exports = {
   siteMetadata: {
-    title: "chungsi",
-    subtitle: "designer / storymaker / artist",
+    title: 'chungsi',
+    subtitle: 'designer / storymaker / artist',
+    homeUrlParamName: 'home',
+    artHome: {
+      title: 'chungsi',
+      subtitle: 'designer / storymaker / artist',
+      homeUrlParam: 'art',
+    },
+    designHome: {
+      title: 'ashley',
+      subtitle: 'web developer / ux',
+      homeUrlParam: 'design',
+    }
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,

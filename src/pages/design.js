@@ -1,14 +1,17 @@
 import * as React from 'react'
 import * as scss from './design.module.scss'
-import { Link, graphql } from 'gatsby'
-import { getSrcSet, getSrc } from 'gatsby-plugin-image'
+import { graphql } from 'gatsby'
+import { getSrcSet } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/Base'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 
-const DesignHomepage = ({data}) => {
+const DesignHomepage = ({ data}) => {
+
+  const designHome = useSiteMetadata().designHome
+  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=design`
 
   const heroImagesSrcSet = [
     {
@@ -36,9 +39,9 @@ const DesignHomepage = ({data}) => {
   return (
     <Base className={scss.designContainer} customIds='theme-design'>
       <div className={scss.hero}>
-        <Link to='/' className={`logo ${scss.heroLogo}`}>
+        <div className={`logo ${scss.heroLogo}`}>
           <Logo />
-        </Link>
+        </div>
         <div className={scss.heroBg}>
           <picture>
             {heroImagesSrcSet.map(image => (
@@ -49,19 +52,19 @@ const DesignHomepage = ({data}) => {
         </div>
       </div>
       <header>
-        <h1>{useSiteMetadata().title}</h1>
-        <p>{useSiteMetadata().subtitle}</p>
+        <h1 className='u-margin-none'>{designHome.title}</h1>
+        <p className='u-margin-none'>{designHome.subtitle}</p>
       </header>
       <main>
         <section>
-          <h2>Projects</h2>
-          <div class={scss.projectShelf}>
+          <h2>Featured Projects</h2>
+          <div className={scss.projectShelf}>
             {data.featuredProjects.nodes.map(project => (
               <Card
                 style={`tilting`}
                 key={project.childMdx.id}
                 cardId={project.childMdx.slug}
-                link={`/project/${project.childMdx.slug}`}
+                link={`/project/${project.childMdx.slug}${homeUrlParam}`}
                 frontmatter={project.childMdx.frontmatter} />
             ))}
           </div>

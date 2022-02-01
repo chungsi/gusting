@@ -2,7 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
-import { getSrc, getImage } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
@@ -10,10 +10,11 @@ import MdxImage from '../components/MdxImage'
 import MdxGalleryImage from '../components/MdxGalleryImage'
 
 
-const ProjectPost = ({data, pageContext}) => {
-  const headerBlock = (
-    <ProjectHeader frontmatter={data.mdx.frontmatter} />
-  )
+const ProjectPost = ({location, data, pageContext}) => {
+  // Get the param for which homepage the user navigated to ths page from;
+  // The query param is set on the individual homepages
+  const urlParams = new URL(location.href).searchParams
+  const homeUrlParam = urlParams.get('home')
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
@@ -29,11 +30,10 @@ const ProjectPost = ({data, pageContext}) => {
 
   return (
     <ContentLayout
+      homeUrl={homeUrlParam}
       className={data.mdx.frontmatter.category}
-      header={headerBlock}
-    >
+      header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>} >
 
-      {/* Do I want to automatically parse h1's as h2's etc in the mdx??? */}
       <MDXProvider components={{MdxGalleryImage, MdxImage}}>
         <MDXRenderer gallery={galleryImages}>
           {data.mdx.body}
