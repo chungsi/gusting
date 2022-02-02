@@ -12,7 +12,7 @@ module.exports = {
     },
     designHome: {
       title: 'ashley',
-      subtitle: 'web developer / ux',
+      subtitle: 'web developer / designer / storymaker',
       homeUrlParam: 'design',
     }
   },

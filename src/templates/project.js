@@ -13,8 +13,8 @@ import MdxGalleryImage from '../components/MdxGalleryImage'
 const ProjectPost = ({location, data, pageContext}) => {
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
-  const urlParams = new URL(location.href).searchParams
-  const homeUrlParam = urlParams.get('home')
+  const urlParams = location ?? (new URL(location.href)).searchParams
+  const homeUrlParam = urlParams ?? urlParams.get('home')
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
