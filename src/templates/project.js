@@ -12,8 +12,8 @@ import MdxGalleryImage from '../components/MdxGalleryImage'
 
 
 const ProjectPost = ({location, data, pageContext}) => {
-  console.log('location: ', location)
-  console.log('URL href: ', (new URL(location.href)))
+  // console.log('location: ', location)
+  // console.log('URL href: ', (new URL(location.href)))
 
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
