@@ -15,13 +15,14 @@
 
 // For text info inside the card
 .title {
-  font-size: var(--h3);
+  font-size: var(--h4);
   margin: 0;
 }
 
 .subtitle {
   font-style: italic;
   font-weight: var(--lght-wght);
+  margin: var(--space-xxs) 0 var(--space-md);
 }
 
 .tags {

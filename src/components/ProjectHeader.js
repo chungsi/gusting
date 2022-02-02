@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as scss from './projectHeader.module.scss'
-import { graphql } from 'gatsby'
+import * as scss from './ProjectHeader.module.scss'
+// import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import CategoryIcon from './CategoryIcon'
 

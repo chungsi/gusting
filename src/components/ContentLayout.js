@@ -1,13 +1,15 @@
-import { Link } from 'gatsby'
 import * as React from 'react'
+import { Link } from 'gatsby'
 import Base from './Base'
 import Logo from '../images/svg/logo.inline.svg'
 
-const ContentLayout = ({header, className, children}) => {
+const ContentLayout = ({header, homeUrl, className, children}) => {
+
+  // Here detect location stuff and change the logo link
 
   return (
     <Base className={`project-container ${className ?? ''}`}>
-      <Link to='/' className='logo'>
+      <Link to={homeUrl ? `/${homeUrl}` : '/'} className='logo'>
         <Logo />
       </Link>
       {header &&

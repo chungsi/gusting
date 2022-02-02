@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as scss from './card.module.scss'
+import * as scss from './Card.module.scss'
 import { Link } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import CategoryIcon from './CategoryIcon'
@@ -18,7 +18,7 @@ const Card = ({
     title, subtitle, tags, category, heroImage, heroImagePos
   }}) => {
   var classList = `${scss.card} ${category ?? ''}`
-  var hasCategoryIcon = true
+  var hasCategoryIcon = category ? true : false
   var hasHeroImage = heroImage != null ? true : false
   var hasShapeBg = false
 

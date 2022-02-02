@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as scss from './mdxGalleryImage.module.scss'
+import * as scss from './MdxGalleryImage.module.scss'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const MdxGalleryImage = ({style, caption, gatsbyImageData, children}) => {
