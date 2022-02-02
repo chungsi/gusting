@@ -6,6 +6,7 @@ import Logo from '../images/svg/logo.inline.svg'
 const ContentLayout = ({header, homeUrl, className, children}) => {
 
   // Here detect location stuff and change the logo link
+  // console.log(homeUrl)
 
   return (
     <Base className={`project-container ${className ?? ''}`}>

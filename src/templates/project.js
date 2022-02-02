@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { getImage } from 'gatsby-plugin-image'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
@@ -11,10 +12,19 @@ import MdxGalleryImage from '../components/MdxGalleryImage'
 
 
 const ProjectPost = ({location, data, pageContext}) => {
+  console.log('location: ', location)
+  console.log('URL href: ', (new URL(location.href)))
+
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
-  const urlParams = location ?? (new URL(location.href)).searchParams
-  const homeUrlParam = urlParams ?? urlParams.get('home')
+  const paramKey = useSiteMetadata().homeUrlParamName
+  var homeUrlParam = null
+  if (location.href) {
+    const urlParams = (new URL(location.href)).searchParams
+    homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
+  }
+  // const homeUrlParam = null
+
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
@@ -24,9 +34,6 @@ const ProjectPost = ({location, data, pageContext}) => {
       galleryImages[`image${i}`] = getImage(image)
     })
   }
-
-  console.log(galleryImages)
-  console.log(pageContext)
 
   return (
     <ContentLayout
