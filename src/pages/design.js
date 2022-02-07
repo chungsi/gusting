@@ -37,7 +37,8 @@ const DesignHomepage = ({ data}) => {
   ]
 
   return (
-    <Base className={scss.designContainer} customIds='theme-design'>
+    <Base customIds='theme-design'>
+
       <div className={scss.hero}>
         <div className={`logo ${scss.heroLogo}`}>
           <Logo />
@@ -51,11 +52,12 @@ const DesignHomepage = ({ data}) => {
           </picture>
         </div>
       </div>
-      <header>
-        <h1 className='u-margin-none'>{designHome.title}</h1>
-        <p className='u-margin-none'>{designHome.subtitle}</p>
-      </header>
-      <main>
+
+      <section className={scss.designContainer}>
+        <header>
+          <h1 className='u-margin-none'>{designHome.title}</h1>
+          <p className='u-margin-none'>{designHome.subtitle}</p>
+        </header>
         <section>
           <h2>Featured Projects</h2>
           <div className={scss.projectShelf}>
@@ -69,8 +71,8 @@ const DesignHomepage = ({ data}) => {
             ))}
           </div>
         </section>
-      </main>
-      <Footer />
+        <Footer />
+      </section>
     </Base>
   )
 }

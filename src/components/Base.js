@@ -2,7 +2,8 @@ import * as React from 'react'
 import '../scss/global.scss'
 
 const Base = ({children, className, customIds}) => {
-  var classList = 'container';
+  // var classList = 'container';
+  var classList = '';
   if (className) {
     classList += ` ${className}`;
   }

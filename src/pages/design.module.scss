@@ -2,6 +2,8 @@
 
 .design-container {
   max-width: 60rem;
+  padding: 0 var(--space-lg);
+  z-index: 1;
 
   // @include breakpoint(#{$bp-small)}) {
   // }
@@ -23,14 +25,27 @@
 }
 
 .hero {
-  position: fixed;
-  top: 0;
+  position: relative;
   left: 0;
+  top: 0;
   z-index: -1;
+
+  @include breakpoint($bp-medium) {
+    position: fixed;
+    left: 0;
+  }
 
   .hero-bg {
     position: relative;
-    max-width: 24rem;
+    width: 18.75rem;
+
+    @include breakpoint($bp-large) {
+      width: 21rem;
+    }
+
+    @include breakpoint($bp-xlarge) {
+      width: 24rem;
+    }
   }
 
   .hero-logo {
