@@ -63,6 +63,7 @@ const ArtHomepage = ({data}) => {
           <img className="bg_img" src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
         </picture>
       </div>
+
       <section className={scss.featuredGrid}>
 
         <header className={scss.header}>

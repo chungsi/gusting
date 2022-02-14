@@ -26,24 +26,24 @@
   width: var(--space-xxl);
   max-width: var(--space-xxl);
 
-  svg {
-    fill: var(--primary-color);
-  }
+  // svg {
+  //   fill: var(--primary-color);
+  // }
 }
 
-.category-icon {
-  position: absolute;
-  width: 1.125rem;
-  left:-0.25rem;
+// .category-icon {
+  // position: absolute;
+  // width: 1.125rem;
+  // left:-0.25rem;
 
-  svg { fill: var(--primary-color); }
+  // svg { fill: var(--primary-color); }
 
-  .project-header & {
-    top: .5rem;
-    left: -4.5rem;
-    width: 2rem;
-  }
-}
+//   .project-header & {
+//     top: .5rem;
+//     left: -4.5rem;
+//     width: 2rem;
+//   }
+// }
 
 .shape-bg {
   position: absolute;

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Helmet } from 'react-helmet';
 import '../scss/global.scss'
 
 const Base = ({children, className, customIds}) => {
@@ -9,9 +10,14 @@ const Base = ({children, className, customIds}) => {
   }
 
   return (
-    <main className={classList} id={customIds ?? ''}>
-      {children}
-    </main>
+    <>
+      <Helmet>
+        <body className='' />
+      </Helmet>
+      <main className={classList} id={customIds ?? ''}>
+        {children}
+      </main>
+    </>
   )
 }
 

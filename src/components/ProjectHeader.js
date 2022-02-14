@@ -1,6 +1,4 @@
 import * as React from 'react'
-import * as scss from './ProjectHeader.module.scss'
-// import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import CategoryIcon from './CategoryIcon'
 
@@ -9,40 +7,41 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
 
   return (
     <header className={className ?? ''}>
-      <CategoryIcon category={category} className={scss.categoryIcon} />
-      <h1 className={scss.title}>
+      <CategoryIcon
+        category={category}
+        className='absolute w-8 top-2 left-[-4.5rem]' />
+
+      <h1 className='relative inline-block my-0'>
         {title}
-        <span className={scss.category}>
+
+        <span
+          className='font-mono italic font-light text-xs
+                     inline-block p-[0_1em]'>
           &#123;{category}&#125;
         </span>
+        <span
+          aria-hidden
+          className='absolute block top-[-12px] left-[-10px] w-full h-full
+                     rotate-[-2deg] z-[-1]
+                     bg-th-highlight' ></span>
       </h1>
-      <p className={scss.subtitle}>{subtitle}</p>
+
+      <p className='italic text-lg'>{subtitle}</p>
+
       <p><small>
         {tags.map(tag => `${tag} / `)}
       </small></p>
+
       {hasHeroImage &&
-        <img src={getSrc(heroImage)}
+        <img
+          src={getSrc(heroImage)}
           alt=''
-          className={`${scss.heroImage}`}
+          className='absolute block max-w-[10rem] right-[-2rem] top-[-1rem]
+                     z-[-1] opacity-70'
           aria-hidden />
       }
     </header>
   )
 }
-
-// export const query = graphql`
-//   fragment ProjectHeaderFragment on Mdx {
-//     frontmatter {
-//       title
-//       subtitle
-//       category
-//       heroImage {
-//         childImageSharp {
-//           gatsbyImageData
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default ProjectHeader

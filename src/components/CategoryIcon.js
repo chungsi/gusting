@@ -6,7 +6,6 @@ import Pentagon from '../images/svg/icon-pentagon.inline.svg'
 
 const CategoryIcon = ({category, className}) => {
   var shape = <Triangle />
-  var classList = `category-icon ${category} ${className ?? ''}`;
 
   switch (String(category)) {
     case 'storytelling':
@@ -23,7 +22,7 @@ const CategoryIcon = ({category, className}) => {
   }
 
   return (
-    <div className={classList} aria-hidden>
+    <div className={className ?? ''} aria-hidden>
       {shape}
     </div>
   )

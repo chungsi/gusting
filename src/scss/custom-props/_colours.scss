@@ -48,24 +48,28 @@ $dev: $purple;
   --primary-color: #{$art};
   --c-bg-color: #{rgba($art, .075)};
   --c-bg-highlight-color: #{rgba($art, .1)};
+  svg { fill: #{$art}; }
 }
 
 .dev {
   --primary-color: #{$dev};
   --c-bg-color: #{rgba($dev, .1)};
   --c-bg-highlight-color: #{rgba($dev, .2)};
+  svg { fill: #{$dev}; }
 }
 
 .design {
   --primary-color: #{$design};
   --c-bg-color: #{rgba($design, .1)};
   --c-bg-highlight-color: #{rgba($design, .2)};
+  svg { fill: #{$design}; }
 }
 
 .storytelling {
   --primary-color: #{$storytelling};
   --c-bg-color: #{rgba($storytelling, .1)};
   --c-bg-highlight-color: #{rgba($storytelling, .2)};
+  svg { fill: #{$storytelling}; }
 }
 
 // Website Theme Colours
@@ -75,6 +79,7 @@ $dev: $purple;
   --text-color: #{mix($grey, $blue)};
   --link-color: #{$blue};
   --meta-color: #{mix($grey, $blue)};
+  svg { fill: var(--primary-color); }
 }
 
 #theme-design {
@@ -83,4 +88,5 @@ $dev: $purple;
   --text-color: #{rgba($pine, .7)};
   --link-color: #{$cedar};
   --meta-color: #{rgba($pine, .85)};
+  svg { fill: var(--primary-color); }
 }

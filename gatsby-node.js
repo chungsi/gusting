@@ -31,7 +31,7 @@ const customCreatePages = async (graphql, actions, dir) => {
 
   const allEntries = query.data.allFile.nodes
 
-  query.data.allFile.nodes.forEach((node, index) => {
+  allEntries.forEach((node, index) => {
     createPage({
       path: `${dir}/${node.childMdx.slug}`,
       component: path.resolve(`./src/templates/${dir}.js`),

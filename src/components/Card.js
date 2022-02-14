@@ -44,9 +44,13 @@ const Card = ({
     <article className={classList} id={cardId ?? cardId}>
       <Link
         to={link}
-        className={scss.linkContainer}
-        >
-        {hasCategoryIcon && <CategoryIcon category={category} />}
+        className={scss.linkContainer} >
+
+        {hasCategoryIcon &&
+          <CategoryIcon
+            category={category}
+            className='absolute w-5 left-[-.25rem]' />
+        }
         {hasShapeBg && <ShapeSvg category={category} />}
         {/*
           These slots ( {title}, {subtitle} ) can be passed a JSX object,
