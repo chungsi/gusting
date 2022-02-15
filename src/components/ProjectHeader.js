@@ -15,7 +15,7 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
         {title}
 
         <span
-          className='font-mono italic font-light text-xs
+          className='font-mono italic font-light text-sm
                      inline-block p-[0_1em]'>
           &#123;{category}&#125;
         </span>
@@ -28,9 +28,9 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
 
       <p className='italic text-lg'>{subtitle}</p>
 
-      <p><small>
+      <p className='text-sm'>
         {tags.map(tag => `${tag} / `)}
-      </small></p>
+      </p>
 
       {hasHeroImage &&
         <img

@@ -12,7 +12,7 @@ const Base = ({children, className, customIds}) => {
   return (
     <>
       <Helmet>
-        <body className='' />
+        <body className='text-th-text font-mono text-md font-[length:var(--text-wght)]' />
       </Helmet>
       <main className={classList} id={customIds ?? ''}>
         {children}

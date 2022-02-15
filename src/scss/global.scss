@@ -2,7 +2,7 @@
 
 // @import 'normalize';
 @tailwind base;
-@tailwind components;
+// @tailwind components;
 @tailwind utilities;
 
 @import 'utils/utils';
@@ -111,7 +111,7 @@
 }
 
 .footer {
-  border-top: 1px solid var(--c-bg-highlight-color);
+  border-top: 1px solid var(--c-highlight-color);
   margin: var(--space-xl) 0;
   padding: var(--space-lg) 0;
 }

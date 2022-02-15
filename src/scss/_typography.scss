@@ -50,14 +50,15 @@ $type-scale: 1.25;
 
   // --type-base-size: #{$type-base-size};
   --type-base-size: 1rem;
-  --h0: calc(var(--h1) * #{$type-scale});
-  --h1: calc(var(--h2) * #{$type-scale});
-  --h2: calc(var(--h3) * #{$type-scale});
-  --h3: calc(var(--h4) * #{$type-scale});
-  --h4: calc(var(--h5) * #{$type-scale} * #{$type-scale});
-  --h5: var(--type-base-size);
-  --h6: calc(var(--h5) / #{$type-scale});
-  --h7: calc(var(--h6) / #{$type-scale});
+  --h-5xl: calc(var(--h-4xl) * #{$type-scale});
+  --h-4xl: calc(var(--h-3xl) * #{$type-scale});
+  --h-3xl: calc(var(--h-2xl) * #{$type-scale});
+  --h-2xl: calc(var(--h-xl) * #{$type-scale});
+  --h-xl:  calc(var(--h-lg) * #{$type-scale});
+  --h-lg:  calc(var(--h-md) * #{$type-scale});
+  --h-md:  var(--type-base-size);
+  --h-sm:  calc(var(--h-md) / #{$type-scale});
+  --h-xs:  calc(var(--h-sm) / #{$type-scale});
 
   --max-text-width: 41rem;
 }
@@ -67,21 +68,21 @@ $type-scale: 1.25;
  * Default Values
  */
 
-body {
-  @include mono;
-  // font-family: var(--font-mono);
-  font-weight: var(--text-wght);
-  color: var(--text-color);
-  font-size: var(--type-base-size);
-}
+// body {
+  // @include mono;
+  // // font-family: var(--font-mono);
+  // font-weight: var(--text-wght);
+  // color: var(--text-color);
+  // font-size: var(--type-base-size);
+// }
 
-.h0 { --header-size: var(--h0) }
-h1 { --header-size: var(--h1) }
-h2 { --header-size: var(--h2) }
-h3 { --header-size: var(--h3) }
-h4 { --header-size: var(--h4) }
-h5 { --header-size: var(--h5) }
-h6 { --header-size: var(--h6) }
+.h0 { --header-size: var(--h-5xl) }
+h1 { --header-size: var(--h-4xl) }
+h2 { --header-size: var(--h-3xl) }
+h3 { --header-size: var(--h-2xl) }
+h4 { --header-size: var(--h-xl) }
+h5 { --header-size: var(--h-md) }
+h6 { --header-size: var(--h-sm) }
 
 .h0,
 h1,
@@ -146,9 +147,10 @@ a {
   &:hover,
   &:focus,
   &:active {
-    font-weight: var(--bold-wght);
+    // font-weight: var(--bold-wght);
+    // text-decoration: wavy underline var(--primary-color);
     outline: none;
-    transition: all 200ms ease-in-out;
+    // transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
   }
 }
@@ -160,13 +162,13 @@ hr {
 
 code {
   display: inline-block;
-  background-color: var(--c-bg-highlight-color);
+  background-color: var(--c-highlight-color);
   padding: 0 var(--space-xs);
   border-radius: var(--space-xxs-rel);
 }
 
 pre {
-  background-color: var(--c-bg-highlight-color);
+  background-color: var(--c-highlight-color);
   padding: var(--space-md);
 
   code { background-color: transparent; } // reset if nested

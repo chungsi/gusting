@@ -1,39 +1,39 @@
 @import '../scss/utils/_transformations.scss';
 
-.card {
-  position: relative;
+// .card {
+  // position: relative;
   // padding: var(--space-lg) var(--space-sm);
   // border: 1px solid silver;
-}
+// }
 
   // Default
-  .link-container {
-    display: block;
-    padding: var(--space-xl) var(--space-lg) var(--space-md);
-    text-decoration: none;
-  }
+  // .link-container {
+  //   display: block;
+  //   padding: var(--space-xl) var(--space-lg) var(--space-md);
+  //   text-decoration: none;
+  // }
 
 // For text info inside the card
-.title {
-  font-size: var(--h4);
-  margin: 0;
-}
+// .title {
+//   font-size: var(--h4);
+//   margin: 0;
+// }
 
-.subtitle {
-  font-style: italic;
-  font-weight: var(--lght-wght);
-  margin: var(--space-xxs) 0 var(--space-md);
-}
+// .subtitle {
+//   font-style: italic;
+//   font-weight: var(--lght-wght);
+//   margin: var(--space-xxs) 0 var(--space-md);
+// }
 
-.tags {
-  font-size: var(--h6);
-  list-style: none;
-  padding-left: 0;
+// .tags {
+//   font-size: var(--h-sm);
+//   list-style: none;
+//   padding-left: 0;
 
-  > li:not(:last-of-type) {
-    &::after { content: ' /'; }
-  }
-}
+//   > li:not(:last-of-type) {
+//     &::after { content: ' /'; }
+//   }
+// }
 
 // Different styles of the card
 .floating-card,
@@ -87,10 +87,10 @@
 
   // TODO: This looks messy! Should clean it up
   // And make the translate be different depending on the position
-  .card:hover &,
-  .card:active &,
-  .card:focus & {
-    transform: translate(.25rem, -.25rem);
-    transition: var(--transition);
-  }
+  // .card:hover &,
+  // .card:active &,
+  // .card:focus & {
+  //   transform: translate(.25rem, -.25rem);
+  //   transition: var(--transition);
+  // }
 }

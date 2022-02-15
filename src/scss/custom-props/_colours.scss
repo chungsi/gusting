@@ -40,35 +40,35 @@ $dev: $purple;
   --link-color: #{$cedar};
 
   --c-bg-color: hsl(0, 0%, 95%);
-  --c-bg-highlight-color: hsl(0, 0%, 95%);
+  --c-highlight-color: hsl(0, 0%, 95%);
 }
 
 // Category Theme Colours
 .art {
   --primary-color: #{$art};
   --c-bg-color: #{rgba($art, .075)};
-  --c-bg-highlight-color: #{rgba($art, .1)};
+  --c-highlight-color: #{rgba($art, .1)};
   svg { fill: #{$art}; }
 }
 
 .dev {
   --primary-color: #{$dev};
   --c-bg-color: #{rgba($dev, .1)};
-  --c-bg-highlight-color: #{rgba($dev, .2)};
+  --c-highlight-color: #{rgba($dev, .2)};
   svg { fill: #{$dev}; }
 }
 
 .design {
   --primary-color: #{$design};
   --c-bg-color: #{rgba($design, .1)};
-  --c-bg-highlight-color: #{rgba($design, .2)};
+  --c-highlight-color: #{rgba($design, .2)};
   svg { fill: #{$design}; }
 }
 
 .storytelling {
   --primary-color: #{$storytelling};
   --c-bg-color: #{rgba($storytelling, .1)};
-  --c-bg-highlight-color: #{rgba($storytelling, .2)};
+  --c-highlight-color: #{rgba($storytelling, .2)};
   svg { fill: #{$storytelling}; }
 }
 
