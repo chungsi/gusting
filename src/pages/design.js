@@ -1,12 +1,13 @@
 import * as React from 'react'
 import * as scss from './design.module.scss'
-import { graphql } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { Link, graphql } from 'gatsby'
+import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/Base'
-import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import CategoryIcon from '../components/CategoryIcon'
+import ProjectExcerpt from '../components/ProjectExcerpt'
 
 const DesignHomepage = ({ data}) => {
 
@@ -53,25 +54,57 @@ const DesignHomepage = ({ data}) => {
         </div>
       </div>
 
+
       <section className={scss.designContainer}>
+
         <header>
           <h1 className='u-margin-none'>{designHome.title}</h1>
           <p className='u-margin-none'>{designHome.subtitle}</p>
         </header>
+
         <section>
           <h2>Featured Projects</h2>
-          <div className={scss.projectShelf}>
+
+          <div className='grid grid-cols-3 gap-2xl items-center'>
             {data.featuredProjects.nodes.map(project => (
-              <Card
-                style={`tilting`}
-                key={project.childMdx.id}
-                cardId={project.childMdx.slug}
-                link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-                frontmatter={project.childMdx.frontmatter} />
+              <article
+                className={`${project.childMdx.frontmatter.category}
+                            relative`}
+                key={project.childMdx.id} >
+                <Link
+                  to={`/project/${project.childMdx.slug}${homeUrlParam}`}
+                  className='block px-lg py-xl [text-decoration:none] group' >
+
+                  <CategoryIcon
+                    category={project.childMdx.frontmatter.category}
+                    className='absolute w-5 -left-1' />
+
+                  <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
+
+                  {project.childMdx.frontmatter.heroImage &&
+                    <img src={getSrc(project.childMdx.frontmatter.heroImage)}
+                      alt=''
+                      className={`project-hero-image
+                                ${project.childMdx.frontmatter.heroImagePos ?? ''}
+                                group-hover:translate-x-1 group-hover:-translate-y-1`}
+                      aria-hidden />
+                  }
+                </Link>
+                <span className='absolute block top-0 left-0 w-full h-full
+                                 -z-[1] bg-th-bg'></span>
+              </article>
+              // <Card
+              //   style={`tilting`}
+              //   key={project.childMdx.id}
+              //   cardId={project.childMdx.slug}
+              //   link={`/project/${project.childMdx.slug}${homeUrlParam}`}
+              //   frontmatter={project.childMdx.frontmatter} />
             ))}
           </div>
         </section>
+
         <Footer />
+
       </section>
     </Base>
   )

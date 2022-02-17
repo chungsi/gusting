@@ -33,11 +33,11 @@ $dev: $purple;
 
 // Note: Space separated values only supported by CSS Colors Lvl 4
 :root {
-  --primary-color: #{$gold};
+  --primary-color: theme('colors.buttercup.500');
   --header-color: rgba(0 0 0 / 1);
   --text-color: rgba(0 0 0 / .7);
   --meta-color: #{$grey};
-  --link-color: #{$cedar};
+  --link-color: theme('colors.cedar.400');
 
   --c-bg-color: hsl(0, 0%, 95%);
   --c-highlight-color: hsl(0, 0%, 95%);
@@ -45,48 +45,48 @@ $dev: $purple;
 
 // Category Theme Colours
 .art {
-  --primary-color: #{$art};
-  --c-bg-color: #{rgba($art, .075)};
-  --c-highlight-color: #{rgba($art, .1)};
-  svg { fill: #{$art}; }
+  --primary-color: theme('colors.buttercup.500');
+  --c-bg-color: theme('colors.buttercup.50');
+  --c-highlight-color: theme('colors.buttercup.100');
+  svg { fill: var(--primary-color); }
 }
 
 .dev {
-  --primary-color: #{$dev};
-  --c-bg-color: #{rgba($dev, .1)};
-  --c-highlight-color: #{rgba($dev, .2)};
-  svg { fill: #{$dev}; }
+  --primary-color: theme('colors.allium.500');
+  --c-bg-color: theme('colors.allium.50');
+  --c-highlight-color: theme('colors.allium.100');
+  svg { fill: var(--primary-color); }
 }
 
 .design {
-  --primary-color: #{$design};
-  --c-bg-color: #{rgba($design, .1)};
-  --c-highlight-color: #{rgba($design, .2)};
-  svg { fill: #{$design}; }
+  --primary-color: theme('colors.cedar.400');
+  --c-bg-color: theme('colors.cedar.50');
+  --c-highlight-color: theme('colors.cedar.100');
+  svg { fill:var(--primary-color); }
 }
 
 .storytelling {
-  --primary-color: #{$storytelling};
-  --c-bg-color: #{rgba($storytelling, .1)};
-  --c-highlight-color: #{rgba($storytelling, .2)};
-  svg { fill: #{$storytelling}; }
+  --primary-color: theme('colors.mandarin.500');
+  --c-bg-color: theme('colors.mandarin.50');
+  --c-highlight-color: theme('colors.mandarin.100');
+  svg { fill:var(--primary-color); }
 }
 
 // Website Theme Colours
 #theme-art {
-  --primary-color: #{$blue};
-  --header-color: #{darken($blue, 20%)};
-  --text-color: #{mix($grey, $blue)};
-  --link-color: #{$blue};
-  --meta-color: #{mix($grey, $blue)};
+  --primary-color: theme('colors.sky.600');
+  --header-color: theme('colors.sky.700');
+  --text-color: theme('colors.sky.900');
+  --meta-color: theme('colors.sky.800');
+  --link-color: theme('colors.sky.600');
   svg { fill: var(--primary-color); }
 }
 
 #theme-design {
-  --primary-color: #{$cedar};
-  --header-color: #{$dark-pine};
-  --text-color: #{rgba($pine, .7)};
-  --link-color: #{$cedar};
-  --meta-color: #{rgba($pine, .85)};
+  --primary-color: theme('colors.cedar.600');
+  --header-color: theme('colors.cedar.950');
+  --text-color: theme('colors.cedar.800');
+  --link-color: theme('colors.cedar.600');
+  --meta-color: theme('colors.cedar.900');
   svg { fill: var(--primary-color); }
 }

@@ -6,10 +6,6 @@ import ProjectExcerpt from './ProjectExcerpt'
 import CategoryIcon from './CategoryIcon'
 import ShapeSvg from './ShapeSvg'
 
-/*
-   Note: Instead of having a 'Card' and a 'FloatingCard', could make a flag
-   for style in the props => do some processing to output the correct classes
- */
 const Card = ({
   link,
   style,
@@ -19,7 +15,6 @@ const Card = ({
     title, subtitle, tags, category, heroImage, heroImagePos
   }}) => {
   var hasCategoryIcon = category ? true : false
-  var hasHeroImage = heroImage != null ? true : false
   var hasShapeBg = false
 
   var classList = `${category ?? ''} ${className ?? ''}`;
@@ -37,14 +32,10 @@ const Card = ({
     default:
   }
 
-  // if (className) {
-  //   classList = `${classList} ${className}`
-  // }
-
   return (
     <article
       className={`relative ${classList}`}
-      id={cardId ?? cardId} >
+      id={cardId ?? ''} >
       <Link
         to={link}
         className='block px-lg py-xl [text-decoration:none] group' >
@@ -56,13 +47,13 @@ const Card = ({
         }
         {hasShapeBg && <ShapeSvg category={category} />}
 
-        <ProjectExcerpt frontmatter={this.frontmatter} />
+        <ProjectExcerpt frontmatter={{title, subtitle, tags}} />
 
-        {hasHeroImage &&
+        {heroImage &&
           <img src={getSrc(heroImage)}
           alt=''
           className={`${scss.heroImage} ${heroImagePos ? scss[heroImagePos] : ''}
-                    group-hover:translate-x-1 group-hover:translate-y-[-.25rem]`}
+                    group-hover:translate-x-1 group-hover:-translate-y-1`}
           aria-hidden />
         }
       </Link>

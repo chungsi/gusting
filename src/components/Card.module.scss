@@ -62,28 +62,28 @@
     }
 }
 
-.hero-image {
-  position: absolute;
-  display: block;
-  max-width: 7.25rem;
-  right: 0;
-  z-index: 0;
-  transition: var(--transition);
+// .hero-image {
+//   position: absolute;
+//   display: block;
+//   max-width: 7.25rem;
+//   right: 0;
+//   z-index: 0;
+//   transition: var(--transition);
 
-  &.top {
-    right: -2rem;
-    top: -2rem;
-  }
+//   &.top {
+//     right: -2rem;
+//     top: -2rem;
+//   }
 
-  &.bottom {
-    right: 0;
-    bottom: -1.5rem;
-  }
+//   &.bottom {
+//     right: 0;
+//     bottom: -1.5rem;
+//   }
 
-  &.right {
-    right: -2.5rem;
-    bottom: 0;
-  }
+//   &.right {
+//     right: -2.5rem;
+//     bottom: 0;
+//   }
 
   // TODO: This looks messy! Should clean it up
   // And make the translate be different depending on the position
@@ -93,4 +93,4 @@
   //   transform: translate(.25rem, -.25rem);
   //   transition: var(--transition);
   // }
-}
+// }

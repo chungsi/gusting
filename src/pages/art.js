@@ -1,12 +1,12 @@
 import * as React from 'react'
 import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import Base from '../components/Base'
-import Card from '../components/Card'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import ProjectExcerpt from '../components/ProjectExcerpt'
 
 const ArtHomepage = ({data}) => {
 
@@ -82,15 +82,32 @@ const ArtHomepage = ({data}) => {
 
         {/* <h2>Projects</h2> */}
 
-        {data.featuredProjects.nodes.map(project =>
-          <Card
-            style={`floating`}
-            key={project.childMdx.id}
-            className={scss.projectCard}
-            cardId={project.childMdx.slug}
-            link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-            frontmatter={project.childMdx.frontmatter} />
-        )}
+        {data.featuredProjects.nodes.map(project => (
+          <article className={`${scss.projectCard} relative shadow-xl shadow-aquamarine-800/20`}>
+            <Link
+              to={`/project/${project.childMdx.slug}${homeUrlParam}`}
+              className='block px-lg py-xl [text-decoration:none] group' >
+
+              <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
+
+              {project.childMdx.frontmatter.heroImage &&
+                <img src={getSrc(project.childMdx.frontmatter.heroImage)}
+                  alt=''
+                  className={`project-hero-image
+                            ${project.childMdx.frontmatter.heroImagePos ?? ''}
+                            group-hover:translate-x-1 group-hover:-translate-y-1`}
+                  aria-hidden />
+              }
+            </Link>
+          </article>
+          // <Card
+          //   style={`floating`}
+          //   key={project.childMdx.id}
+          //   className={scss.projectCard}
+          //   cardId={project.childMdx.slug}
+          //   link={`/project/${project.childMdx.slug}${homeUrlParam}`}
+          //   frontmatter={project.childMdx.frontmatter} />
+        ))}
       </section>
       <section className={scss.otherProjects}>
         {/* <h2>Other Projects</h2> */}

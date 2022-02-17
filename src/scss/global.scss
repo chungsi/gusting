@@ -23,8 +23,8 @@
   display: block;
   z-index: 999;
   min-width: var(--space-xl);
-  width: var(--space-xxl);
-  max-width: var(--space-xxl);
+  width: var(--space-2xl);
+  max-width: var(--space-2xl);
 
   // svg {
   //   fill: var(--primary-color);
@@ -117,3 +117,27 @@
 }
 
 .u-margin-none { margin: 0; }
+
+.project-hero-image {
+  position: absolute;
+  display: block;
+  max-width: 7.25rem;
+  right: 0;
+  z-index: 0;
+  transition: var(--transition);
+
+  &.top {
+    right: -2rem;
+    top: -2rem;
+  }
+
+  &.bottom {
+    right: 0;
+    bottom: -1.5rem;
+  }
+
+  &.right {
+    right: -2.5rem;
+    bottom: 0;
+  }
+}

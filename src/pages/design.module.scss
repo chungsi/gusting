@@ -68,14 +68,14 @@
 }
 
 
-.project-shelf {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  // margin-bottom: calc(var(--space-xxl) * -1); // to reset row spacing?
+// .project-shelf {
+//   display: flex;
+//   flex-wrap: wrap;
+//   align-items: center;
+//   // margin-bottom: calc(var(--space-xxl) * -1); // to reset row spacing?
 
-  > :nth-child(1n) {
-    max-width: 15rem;
-    margin: 0 var(--space-2xl) var(--space-2xl) 0;
-  }
-}
+//   > :nth-child(1n) {
+//     max-width: 15rem;
+//     margin: 0 var(--space-2xl) var(--space-2xl) 0;
+//   }
+// }
