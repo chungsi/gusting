@@ -74,11 +74,11 @@ $dev: $purple;
 
 // Website Theme Colours
 #theme-art {
-  --primary-color: theme('colors.sky.600');
-  --header-color: theme('colors.sky.700');
-  --text-color: theme('colors.sky.900');
-  --meta-color: theme('colors.sky.800');
-  --link-color: theme('colors.sky.600');
+  --primary-color: theme('colors.cobalt.600');
+  --header-color: theme('colors.cobalt.700');
+  --text-color: theme('colors.cobalt.900');
+  --meta-color: theme('colors.cobalt.800');
+  --link-color: theme('colors.cobalt.600');
   svg { fill: var(--primary-color); }
 }
 

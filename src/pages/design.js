@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 import CategoryIcon from '../components/CategoryIcon'
 import ProjectExcerpt from '../components/ProjectExcerpt'
+import TiltingCard from '../components/Card/TiltingCard'
 
 const DesignHomepage = ({ data}) => {
 
@@ -67,38 +68,38 @@ const DesignHomepage = ({ data}) => {
 
           <div className='grid grid-cols-3 gap-2xl items-center'>
             {data.featuredProjects.nodes.map(project => (
-              <article
-                className={`${project.childMdx.frontmatter.category}
-                            relative`}
-                key={project.childMdx.id} >
-                <Link
-                  to={`/project/${project.childMdx.slug}${homeUrlParam}`}
-                  className='block px-lg py-xl [text-decoration:none] group' >
+              // <article
+              //   className={`${project.childMdx.frontmatter.category}
+              //               relative`}
+              //   key={project.childMdx.id} >
+              //   <Link
+              //     to={`/project/${project.childMdx.slug}${homeUrlParam}`}
+              //     className='block px-lg py-xl [text-decoration:none] group' >
 
-                  <CategoryIcon
-                    category={project.childMdx.frontmatter.category}
-                    className='absolute w-5 -left-1' />
+              //     <CategoryIcon
+              //       category={project.childMdx.frontmatter.category}
+              //       className='absolute w-5 -left-1' />
 
-                  <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
+              //     <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
 
-                  {project.childMdx.frontmatter.heroImage &&
-                    <img src={getSrc(project.childMdx.frontmatter.heroImage)}
-                      alt=''
-                      className={`project-hero-image
-                                ${project.childMdx.frontmatter.heroImagePos ?? ''}
-                                group-hover:translate-x-1 group-hover:-translate-y-1`}
-                      aria-hidden />
-                  }
-                </Link>
-                <span className='absolute block top-0 left-0 w-full h-full
-                                 -z-[1] bg-th-bg'></span>
-              </article>
-              // <Card
-              //   style={`tilting`}
-              //   key={project.childMdx.id}
-              //   cardId={project.childMdx.slug}
-              //   link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-              //   frontmatter={project.childMdx.frontmatter} />
+              //     {project.childMdx.frontmatter.heroImage &&
+              //       <img src={getSrc(project.childMdx.frontmatter.heroImage)}
+              //         alt=''
+              //         className={`project-hero-image
+              //                   ${project.childMdx.frontmatter.heroImagePos ?? ''}
+              //                   group-hover:translate-x-1 group-hover:-translate-y-1`}
+              //         aria-hidden />
+              //     }
+              //   </Link>
+              //   <span className='absolute block top-0 left-0 w-full h-full
+              //                    -z-[1] bg-th-bg'></span>
+              // </article>
+              <TiltingCard
+                // style={`tilting`}
+                key={project.childMdx.id}
+                cardId={project.childMdx.slug}
+                link={`/project/${project.childMdx.slug}${homeUrlParam}`}
+                frontmatter={project.childMdx.frontmatter} />
             ))}
           </div>
         </section>

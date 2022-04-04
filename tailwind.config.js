@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   content: ["./src/**/*.{html,js}"],
@@ -35,7 +36,7 @@ module.exports = {
           500: '#B894DE',
           600: '#9D6BD1',
         },
-        aquamarine: {
+        cobalt: {
           500: '#7598FF',
           600: '#3366ff',
           700: '#0A3FDB',
@@ -84,5 +85,9 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addVariant }) {
+      addVariant('third', '&:nth-child(3n)')
+    })
+  ],
 }
