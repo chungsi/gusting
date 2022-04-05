@@ -76,6 +76,7 @@ $type-scale: 1.25;
   // font-size: var(--type-base-size);
 // }
 
+// TODO: Split some of these stylings to be prose specific (only for content)
 .h0 { --header-size: var(--h-5xl) }
 h1 { --header-size: var(--h-4xl) }
 h2 { --header-size: var(--h-3xl) }

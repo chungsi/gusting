@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { concat } from '../utils/helpers'
 
 const ProjectExcerpt = ( { frontmatter: { title, subtitle, tags } } ) => {
 
@@ -10,8 +11,21 @@ const ProjectExcerpt = ( { frontmatter: { title, subtitle, tags } } ) => {
         calls to define their own HTML tags and classes...
         Would that be useful for me at this point?
         */}
-      <h3 className='text-xl m-0
-                      group-hover:[text-decoration:wavy_underline_var(--primary-color)]'>
+      <h3 className={concat(
+          'relative text-xl m-0',
+          // '[text-decoration:wavy_underline_transparent] transition-colors',
+          // 'group-hover:[text-decoration:wavy_underline_var(--primary-color)]'
+        )}
+      >
+        {/* <span
+          aria-hidden
+          content={title}
+          className={concat(
+            'after:content-[attr(content)]',
+            'absolute w-full h-full top-0 left-0',
+            '[text-decoration:wavy_underline_transparent]',
+            'group-hover:decoration-[color:var(--primary-color)]'
+          )} /> */}
         {title}
       </h3>
       <p className='italic [font-[length:var(--lght-wght)]]

@@ -3,10 +3,13 @@ import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
 import { getSrcSet, getSrc } from 'gatsby-plugin-image'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
+
 import Base from '../components/Base'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import FloatingCard from '../components/Card/FloatingCard'
 import ProjectExcerpt from '../components/ProjectExcerpt'
+import { concat } from '../utils/helpers'
 
 const ArtHomepage = ({data}) => {
 
@@ -55,12 +58,12 @@ const ArtHomepage = ({data}) => {
 
   return (
     <Base className={scss.artContainer} customIds='theme-art'>
-      <div className="hero-bg">
+      <div className='fixed top-0 left-0 h-auto w-full -z-[1]'>
         <picture>
           {heroImagesSrcSet.map(image => (
             <source media={image.media} srcset={image.srcset} />
           ))}
-          <img className="bg_img" src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
+          <img src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
         </picture>
       </div>
 
@@ -83,30 +86,13 @@ const ArtHomepage = ({data}) => {
         {/* <h2>Projects</h2> */}
 
         {data.featuredProjects.nodes.map(project => (
-          <article className={`${scss.projectCard} relative shadow-xl shadow-aquamarine-800/20`}>
-            <Link
-              to={`/project/${project.childMdx.slug}${homeUrlParam}`}
-              className='block px-lg py-xl [text-decoration:none] group' >
-
-              <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
-
-              {project.childMdx.frontmatter.heroImage &&
-                <img src={getSrc(project.childMdx.frontmatter.heroImage)}
-                  alt=''
-                  className={`project-hero-image
-                            ${project.childMdx.frontmatter.heroImagePos ?? ''}
-                            group-hover:translate-x-1 group-hover:-translate-y-1`}
-                  aria-hidden />
-              }
-            </Link>
-          </article>
-          // <Card
-          //   style={`floating`}
-          //   key={project.childMdx.id}
-          //   className={scss.projectCard}
-          //   cardId={project.childMdx.slug}
-          //   link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-          //   frontmatter={project.childMdx.frontmatter} />
+          <FloatingCard
+            key={project.childMdx.id}
+            className={scss.projectCard}
+            cardId={project.childMdx.slug}
+            link={`/project/${project.childMdx.slug}${homeUrlParam}`}
+            frontmatter={project.childMdx.frontmatter}
+          />
         ))}
       </section>
       <section className={scss.otherProjects}>

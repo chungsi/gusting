@@ -2,7 +2,6 @@
 
 // @import 'normalize';
 @tailwind base;
-// @tailwind components;
 @tailwind utilities;
 
 @import 'utils/utils';
@@ -45,17 +44,17 @@
 //   }
 // }
 
-.shape-bg {
-  position: absolute;
-  z-index: -1;
-  width: 15rem;
-  margin: -1rem -2rem 0 -3rem;
+// .shape-bg {
+//   position: absolute;
+//   z-index: -1;
+//   width: 15rem;
+//   margin: -1rem -2rem 0 -3rem;
 
-  svg {
-    fill: var(--primary-color);
-    opacity: 0.15;
-  }
-}
+//   svg {
+//     fill: var(--primary-color);
+//     opacity: 0.15;
+//   }
+// }
 
 .project-container {
   // Q: Where to define width of container????
@@ -101,14 +100,14 @@
   }
 }
 
-.hero-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: auto;
-  width: 100%;
-  z-index: -1;
-}
+// .hero-bg {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   height: auto;
+//   width: 100%;
+//   z-index: -1;
+// }
 
 .footer {
   border-top: 1px solid var(--c-highlight-color);
@@ -118,26 +117,26 @@
 
 .u-margin-none { margin: 0; }
 
-.project-hero-image {
-  position: absolute;
-  display: block;
-  max-width: 7.25rem;
-  right: 0;
-  z-index: 0;
-  transition: var(--transition);
+// .project-hero-image {
+//   position: absolute;
+//   display: block;
+//   max-width: 7.25rem;
+//   right: 0;
+//   z-index: 0;
+//   transition: var(--transition);
 
-  &.top {
-    right: -2rem;
-    top: -2rem;
-  }
+//   &.top {
+//     right: -2rem;
+//     top: -2rem;
+//   }
 
-  &.bottom {
-    right: 0;
-    bottom: -1.5rem;
-  }
+//   &.bottom {
+//     right: 0;
+//     bottom: -1.5rem;
+//   }
 
-  &.right {
-    right: -2.5rem;
-    bottom: 0;
-  }
-}
+//   &.right {
+//     right: -2.5rem;
+//     bottom: 0;
+//   }
+// }

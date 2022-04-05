@@ -1,31 +1,38 @@
 import * as React from 'react'
+
 import BaseCard from './BaseCard'
-import { concat } from '../../utils/helpers'
 import CategoryIcon from '../CategoryIcon'
+import HeroImage from './HeroImage'
+import { concat } from '../../utils/helpers'
 
 const TiltingCard = ({
   link,
+  frontmatter,
   cardId,
   className,
-  frontmatter
 }) => {
+  const { category, heroImage, heroImagePos } = frontmatter
 
-  var categoryIcon = <CategoryIcon
-    category={frontmatter.category}
-    className='absolute w-5 left-[-.25rem]' />
+  const categoryIcon = <CategoryIcon
+    category={category}
+    className='absolute w-5 left-[-.25rem]'
+  />
 
   return (
     <BaseCard
+      id={cardId}
       link={link}
       frontmatter={frontmatter}
       accents={categoryIcon}
       className={concat(
         '[--bg-rotate:-3deg]',
         'even:[--bg-rotate:2deg]',
-        'third:[--bg-rotate:-5deg]'
+        'third:[--bg-rotate:-5deg]',
+        className
       )}
     >
 
+      {/* BG box */}
       <span
         aria-hidden
         class={concat(
@@ -34,6 +41,8 @@ const TiltingCard = ({
           'rotate-[length:var(--bg-rotate)]',
         )}
       />
+
+      {heroImage && <HeroImage image={heroImage} pos={heroImagePos} />}
 
     </BaseCard>
   )
