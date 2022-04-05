@@ -1,15 +1,16 @@
 import * as React from 'react'
 import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
-import { getSrcSet, getSrc } from 'gatsby-plugin-image'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Base'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 import FloatingCard from '../components/Card/FloatingCard'
-import ProjectExcerpt from '../components/ProjectExcerpt'
+
 import { concat } from '../utils/helpers'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import BaseCard from '../components/Card/BaseCard'
 
 const ArtHomepage = ({data}) => {
 
@@ -18,7 +19,7 @@ const ArtHomepage = ({data}) => {
 
   const otherProject = (project, dir) => (
     <section id={project.childMdx.id}>
-      <Link
+      {/* <Link
         to={`/${dir}/${project.childMdx.slug}`}
         className={scss.projectLinkContainer}
       >
@@ -29,7 +30,11 @@ const ArtHomepage = ({data}) => {
             <li>{tag}</li>
           ))}
         </ul>
-      </Link>
+      </Link> */}
+      <BaseCard
+        link={`/${dir}/${project.childMdx.slug}`}
+        frontmatter={project.childMdx.frontmatter}
+      />
     </section>
   )
 
@@ -83,7 +88,7 @@ const ArtHomepage = ({data}) => {
           </div>
         </header>
 
-        {/* <h2>Projects</h2> */}
+        <h2 className='sr-only'>Projects</h2>
 
         {data.featuredProjects.nodes.map(project => (
           <FloatingCard
@@ -96,10 +101,10 @@ const ArtHomepage = ({data}) => {
         ))}
       </section>
       <section className={scss.otherProjects}>
-        {/* <h2>Other Projects</h2> */}
-        {
-          data.otherProjects.nodes.map(project => otherProject(project, project.sourceInstanceName))
-        }
+        <h2 className='sr-only'>Other Projects</h2>
+        {data.otherProjects.nodes.map(project =>
+          otherProject(project, project.sourceInstanceName)
+        )}
       </section>
 
       <Footer />

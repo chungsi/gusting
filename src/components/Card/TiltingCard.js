@@ -36,7 +36,7 @@ const TiltingCard = ({
       <span
         aria-hidden
         class={concat(
-          'absolute block h-full w-full top-0 left-0 -z-10',
+          'absolute block h-full w-full top-0 left-0 -z-[1]',
           'bg-th-bg',
           'rotate-[length:var(--bg-rotate)]',
         )}

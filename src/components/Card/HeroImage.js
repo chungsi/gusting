@@ -14,9 +14,9 @@ const HeroImage = ({ image, pos }) => {
         'group-hover:translate-x-1 group-hover:-translate-y-1',
 
         'right-0', // Default
-        pos == 'top' ? '!-right-8 -top-8' : '',
-        pos == 'bottom' ? 'right-0 -bottom-6' : '',
-        pos == 'right' ? '!-right-10 bottom-0' : '',
+        pos === 'top' ? '!-right-8 -top-8' : '',
+        pos === 'bottom' ? 'right-0 -bottom-6' : '',
+        pos === 'right' ? '!-right-10 bottom-0' : '',
       )}
     />
   )

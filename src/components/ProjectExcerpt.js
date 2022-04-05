@@ -1,7 +1,23 @@
 import * as React from 'react'
 import { concat } from '../utils/helpers'
 
-const ProjectExcerpt = ( { frontmatter: { title, subtitle, tags } } ) => {
+const ProjectExcerpt = ({
+  frontmatter: { title, subtitle, tags },
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+}) => {
+  var HeaderTag = 'h3'
+
+  if (h1) HeaderTag = 'h1'
+  else if (h2) HeaderTag = 'h2'
+  else if (h3) HeaderTag = 'h3'
+  else if (h4) HeaderTag = 'h4'
+  else if (h5) HeaderTag = 'h5'
+  else if (h6) HeaderTag = 'h6'
 
   return (
     <>
@@ -11,7 +27,7 @@ const ProjectExcerpt = ( { frontmatter: { title, subtitle, tags } } ) => {
         calls to define their own HTML tags and classes...
         Would that be useful for me at this point?
         */}
-      <h3 className={concat(
+      <HeaderTag className={concat(
           'relative text-xl m-0',
           // '[text-decoration:wavy_underline_transparent] transition-colors',
           // 'group-hover:[text-decoration:wavy_underline_var(--primary-color)]'
@@ -27,7 +43,7 @@ const ProjectExcerpt = ( { frontmatter: { title, subtitle, tags } } ) => {
             'group-hover:decoration-[color:var(--primary-color)]'
           )} /> */}
         {title}
-      </h3>
+      </HeaderTag>
       <p className='italic [font-[length:var(--lght-wght)]]
                     mx-0 mt-2xs mb-md'>
         {subtitle}

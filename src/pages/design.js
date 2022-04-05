@@ -1,14 +1,15 @@
 import * as React from 'react'
 import * as scss from './design.module.scss'
-import { Link, graphql } from 'gatsby'
-import { getSrcSet, getSrc } from 'gatsby-plugin-image'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { graphql } from 'gatsby'
+import { getSrcSet } from 'gatsby-plugin-image'
+
 import Base from '../components/Base'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
-import CategoryIcon from '../components/CategoryIcon'
-import ProjectExcerpt from '../components/ProjectExcerpt'
 import TiltingCard from '../components/Card/TiltingCard'
+
+import { concat } from '../utils/helpers'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 const DesignHomepage = ({ data}) => {
 
@@ -63,10 +64,13 @@ const DesignHomepage = ({ data}) => {
           <p className='u-margin-none'>{designHome.subtitle}</p>
         </header>
 
-        <section>
-          <h2>Featured Projects</h2>
+        <section className='mt-20'>
+          <h2 className='sr-only'>Featured Projects</h2>
 
-          <div className='grid grid-cols-3 gap-2xl items-center'>
+          <div className={concat(
+            'grid grid-cols-2 gap-2xl items-center',
+            'lg:grid-cols-3'
+          )}>
             {data.featuredProjects.nodes.map(project => (
               // <article
               //   className={`${project.childMdx.frontmatter.category}
