@@ -1,14 +1,17 @@
 import * as React from 'react'
+import { getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
-import { getImage } from 'gatsby-plugin-image'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
 import MdxImage from '../components/MdxImage'
 import MdxGalleryImage from '../components/MdxGalleryImage'
+
+import { concat } from '../utils/helpers'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
 const ProjectPost = ({location, data, pageContext}) => {
@@ -38,8 +41,9 @@ const ProjectPost = ({location, data, pageContext}) => {
   return (
     <ContentLayout
       homeUrl={homeUrlParam}
-      className={data.mdx.frontmatter.category}
-      header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>} >
+      className={concat(data.mdx.frontmatter.category, 'max-w-6xl')}
+      header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>}
+    >
 
       <MDXProvider components={{MdxGalleryImage, MdxImage}}>
         <MDXRenderer gallery={galleryImages}>

@@ -60,8 +60,8 @@ const DesignHomepage = ({ data}) => {
       <section className={scss.designContainer}>
 
         <header>
-          <h1 className='u-margin-none'>{designHome.title}</h1>
-          <p className='u-margin-none'>{designHome.subtitle}</p>
+          <h1 className='m-0'>{designHome.title}</h1>
+          <p className='m-0'>{designHome.subtitle}</p>
         </header>
 
         <section className='mt-20'>

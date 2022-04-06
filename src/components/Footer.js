@@ -1,10 +1,10 @@
 import * as React from 'react'
-// import { format } from 'date-fns'
+import { format } from 'date-fns'
 
 const Footer = () => {
   return (
-    <footer className='footer'>
-      {/* <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p> */}
+    <footer className='my-xl py-lg border-t border-solid border-th-highlight'>
+      <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
       <p>
         Sketchblog: [instagram] [twitter]
       </p>

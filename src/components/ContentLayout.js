@@ -10,7 +10,10 @@ const ContentLayout = ({header, homeUrl, className, children}) => {
 
   return (
     <Base className={`project-container ${className ?? ''}`}>
-      <Link to={homeUrl ? `/${homeUrl}` : '/'} className='logo'>
+      <Link
+        to={homeUrl ? `/${homeUrl}` : '/'}
+        className='logo'
+      >
         <Logo />
       </Link>
       {header &&
@@ -18,7 +21,7 @@ const ContentLayout = ({header, homeUrl, className, children}) => {
           {header}
         </div>
       }
-      <section className='project-content'>
+      <section className='project-content prose'>
         {children}
       </section>
     </Base>

@@ -44,7 +44,7 @@ const ProjectExcerpt = ({
           )} /> */}
         {title}
       </HeaderTag>
-      <p className='italic [font-[length:var(--lght-wght)]]
+      <p className='italic font-light
                     mx-0 mt-2xs mb-md'>
         {subtitle}
       </p>
