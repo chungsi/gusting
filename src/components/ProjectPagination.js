@@ -1,26 +1,47 @@
 import * as React from 'react'
-import * as scss from './ProjectPagination.module.scss'
 import { Link } from 'gatsby'
 
-const ProjectPagination = ({pathPrefix, next, prev}) => {
+import { concat } from '../utils/helpers'
+import ProjectExcerpt from './ProjectExcerpt'
+
+const ProjectPagination = ({ pathPrefix, next, prev }) => {
   return (
-    <section className={scss.container}>
+    <section className='mb-4xl mt-2xl'>
+
       {prev &&
         <Link
           to={`/${pathPrefix}/${prev.childMdx.slug}`}
-          className={scss.prev}
+          className='block text-right group'
         >
           {prev.childMdx.frontmatter.title}
+          {/* <ProjectExcerpt frontmatter={prev.childMdx.frontmatter} /> */}
+
+          <span
+            aria-hidden
+            className='inline-block ml-xs transition-transform group-hover:translate-x-1'
+          >
+            »
+          </span>
         </Link>
       }
+
       {next &&
         <Link
           to={`/${pathPrefix}/${next.childMdx.slug}`}
-          className={scss.next}
+          className='block group'
         >
+          <span
+            aria-hidden
+            className='inline-block mr-xs transition-transform group-hover:-translate-x-1'
+          >
+            «
+          </span>
+
           {next.childMdx.frontmatter.title}
+          {/* <ProjectExcerpt frontmatter={next.childMdx.frontmatter} /> */}
         </Link>
       }
+
     </section>
   )
 }

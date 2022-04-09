@@ -25,7 +25,7 @@ const TiltingCard = ({
       frontmatter={frontmatter}
       accents={categoryIcon}
       className={concat(
-        '[--bg-rotate:-3deg]',
+        '[--bg-rotate:-1.5deg]',
         'even:[--bg-rotate:2deg]',
         'third:[--bg-rotate:-5deg]',
         className

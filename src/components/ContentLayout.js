@@ -17,7 +17,7 @@ const ContentLayout = ({header, homeUrl, className, children}) => {
         <Logo />
       </Link>
       {header &&
-        <div className='project-header'>
+        <div className='project-header mt-4xl mb-md'>
           {header}
         </div>
       }

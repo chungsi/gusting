@@ -44,10 +44,14 @@ const ProjectExcerpt = ({
           )} /> */}
         {title}
       </HeaderTag>
-      <p className='italic font-light
-                    mx-0 mt-2xs mb-md'>
+
+      <p className={concat(
+        'italic font-light leading-snug',
+        'mx-0 mt-2xs mb-md'
+      )}>
         {subtitle}
       </p>
+
       {tags &&
         <ul className='text-sm list-none p-0'>
           {tags.map((tag, i) => (

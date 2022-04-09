@@ -1,31 +1,31 @@
-.container {
-  margin: auto;
-  max-width: 500px;
-}
+// .container {
+//   margin: auto;
+//   max-width: 500px;
+// }
 
-.header {
-  position: relative;
-  margin: var(--space-3xl) 0 var(--space-xl);
-}
+// .header {
+//   position: relative;
+//   margin: var(--space-3xl) 0 var(--space-xl);
+// }
 
-  .logo {
-    position: absolute;
-    margin-left: calc(var(--space-3xl) * -1);
-  }
+//   .logo {
+//     position: absolute;
+//     margin-left: calc(var(--space-3xl) * -1);
+//   }
 
-  .title-block {
+//   .title-block {
     
-  }
+//   }
 
-.site-title, .site-title > * {
-  font-size: 3rem;
-  color: silver;
-  margin: 0;
-}
+// .site-title, .site-title > * {
+//   font-size: 3rem;
+//   color: silver;
+//   margin: 0;
+// }
 
-.site-subtitle {
-  margin: 0;
-}
+// .site-subtitle {
+//   margin: 0;
+// }
 
 .nav-links {
   display: flex;

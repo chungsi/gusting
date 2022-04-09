@@ -4,6 +4,7 @@ import * as scss from './Layout.module.scss'
 // import Logo from '../images/svg/logo.inline.svg'
 import Base from './Base'
 
+// TODO: Update this component, because currently only used on the home/landing page
 const Layout = ({ children }) => {
 
   const navLink = (path, text) => (
@@ -40,19 +41,6 @@ const Layout = ({ children }) => {
 
   return (
     <Base>
-      {/* <header className={scss.header}>
-        <Link to='/' className={scss.logo}>
-          <Logo />
-        </Link>
-        <div className={scss.titleBlock}>
-          <h1 className={scss.siteTitle}>
-            {data.site.siteMetadata.title}
-          </h1>
-          <p className={scss.siteSubtitle}>
-            {data.site.siteMetadata.subtitle}
-          </p>
-        </div>
-      </header> */}
       <nav>
         <ul className={scss.navLinks}>
           {navLinks.map(link => navLink(link[0], link[1]))}
