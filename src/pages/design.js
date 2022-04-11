@@ -68,7 +68,8 @@ const DesignHomepage = ({ data}) => {
           <h2 className='sr-only'>Featured Projects</h2>
 
           <div className={concat(
-            'grid grid-cols-2 gap-2xl items-center',
+            'grid grid-cols-1 gap-2xl items-center',
+            'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
             {data.featuredProjects.nodes.map(project => (

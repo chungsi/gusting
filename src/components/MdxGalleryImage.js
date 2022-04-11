@@ -1,42 +1,49 @@
 import * as React from 'react'
-import * as scss from './MdxGalleryImage.module.scss'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-const MdxGalleryImage = ({style, caption, gatsbyImageData, children}) => {
-  var pageClassList = scss.galleryPage
+import { concat } from '../utils/helpers'
 
-  console.log(pageClassList)
-
-  if (style) {
-    var styleList = style.split(' ')
-    styleList.forEach(spec => {
-      switch (String(spec)) {
-        case 'landscape':
-          pageClassList = `${pageClassList} ${scss[`landscape`]}`
-          break
-        case 'cover':
-          pageClassList = `${pageClassList} ${scss[`cover`]}`
-          break
-        case 'back-cover':
-          pageClassList = `${pageClassList} ${scss[`back-cover`]}`
-          break
-        default:
-      }
-    })
-  }
+// TODO: Create something in here or in another component for making
+// a grid of images; or just more layout control in general
+// TODO: Create a container for other media as well (like videos); do
+// I want it to be expanded beyond the content container too?
+const MdxGalleryImage = ({
+  gatsbyImageData,
+  caption,
+  cover,
+  backCover,
+  landscape,
+  children
+}) => {
 
   return (
-    <article className={pageClassList}>
-      <div className={scss.galleryPageImage}>
-        <GatsbyImage
-          // imgClassName='project-image'
-          image={gatsbyImageData}
-          alt={caption ?? ''}
-          loading='lazy' />
-      </div>
-      <section className={scss.galleryPageText}>
-        {children}
-      </section>
+    <article className='mt-2xl first:mt-0'>
+      <GatsbyImage
+        image={gatsbyImageData}
+        alt={caption ?? ''}
+        loading='lazy'
+        className={concat(
+          'drop-shadow-xl',
+          landscape ? '-mx-4xl' : '',
+          cover ? 'ml-[50%]' : '',
+          backCover ? 'mr-[50%]' : ''
+        )}
+      />
+      {(children || caption) &&
+        <section className={cover ? 'ml-[calc(50%_+_var(--space-xl))]' : ''}>
+          {caption &&
+            <p className={concat(
+              // Add some space between caption and any other text
+              '!mb-xl',
+              // Offset to right a bit in portrait mode
+              !landscape ? '!ml-2xl' : ''
+            )}>
+              {caption}
+            </p>
+          }
+          {children}
+        </section>
+      }
     </article>
   )
 }

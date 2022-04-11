@@ -148,7 +148,7 @@ a {
 }
 
 hr {
-  margin: var(--space-xxl) 0;
+  margin: theme('spacing.2xl') 0;
   color: theme('colors.th.primary');
 }
 

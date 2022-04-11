@@ -1,5 +1,6 @@
 const path = require('path')
 
+/* TODO: Proper sorting of entries -> put an actual date field in entries? */
 const customCreatePages = async (graphql, actions, dir) => {
   const { createPage } = actions
   const query = await graphql(`

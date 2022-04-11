@@ -11,7 +11,11 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
     <header className={className ?? ''}>
       <CategoryIcon
         category={category}
-        className='absolute w-8 top-2 left-[-4.5rem]' />
+        className={concat(
+          'absolute w-7 -top-8 left-2',
+          'md:w-8 md:top-2 md:left-[-4.5rem]'
+        )}
+      />
 
       <h1 className='relative inline-block mb-xs'>
         {title}
@@ -27,8 +31,7 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
           aria-hidden
           className={concat(
             'absolute block top-[-12px] left-[-10px] w-full h-full',
-            'rotate-[-2deg] z-[-1]',
-            'bg-th-highlight'
+            'rotate-[-2deg] z-[-1] bg-th-highlight'
           )}
         />
       </h1>
@@ -41,11 +44,15 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
 
       {hasHeroImage &&
         <img
+          aria-hidden
           src={getSrc(heroImage)}
           alt=''
-          className='absolute block max-w-[10rem] right-[-2rem] top-[-1rem]
-                     z-[-1] opacity-70'
-          aria-hidden />
+          className={concat(
+            'absolute right-[-2rem] top-[-1rem] z-[-1] opacity-70',
+            'hidden max-w-[7rem]',
+            'sm:block md:max-w-[10rem]',
+          )}
+        />
       }
     </header>
   )

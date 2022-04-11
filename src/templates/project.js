@@ -7,7 +7,6 @@ import { MDXProvider } from '@mdx-js/react'
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
-import MdxImage from '../components/MdxImage'
 import MdxGalleryImage from '../components/MdxGalleryImage'
 
 import { concat } from '../utils/helpers'
@@ -34,24 +33,28 @@ const ProjectPost = ({location, data, pageContext}) => {
   var galleryImages = {}
   if (data.mdx.frontmatter.gallery) {
     data.mdx.frontmatter.gallery.forEach((image, i) => {
-      galleryImages[`image${i}`] = getImage(image)
+      galleryImages[`image${i+1}`] = getImage(image)
     })
   }
 
   return (
     <ContentLayout
       homeUrl={homeUrlParam}
-      className={concat(data.mdx.frontmatter.category, 'max-w-6xl')}
       header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>}
+      className={concat(
+        data.mdx.frontmatter.category,
+        'max-w-6xl'
+      )}
     >
 
-      <MDXProvider components={{MdxGalleryImage, MdxImage}}>
+      <MDXProvider components={{MdxGalleryImage}}>
         <MDXRenderer gallery={galleryImages}>
           {data.mdx.body}
         </MDXRenderer>
       </MDXProvider>
 
       <hr />
+
       <ProjectPagination
         pathPrefix='project'
         next={pageContext.next}

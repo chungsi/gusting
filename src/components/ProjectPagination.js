@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { concat } from '../utils/helpers'
 import ProjectExcerpt from './ProjectExcerpt'
 
+/* TODO: Redesign this to be more descriptive */
 const ProjectPagination = ({ pathPrefix, next, prev }) => {
   return (
     <section className='mb-4xl mt-2xl'>
