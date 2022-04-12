@@ -53,4 +53,9 @@ $type-base-size: 1rem;
   --space-3xl-rel: calc(var(--s-3xl) * var(--base-space-unit-rel));
   --space-4xl-rel: calc(var(--s-4xl) * var(--base-space-unit-rel));
   --space-5xl-rel: calc(var(--s-5xl) * var(--base-space-unit-rel));
+
+  --space-container-offset: var(--space-lg);
+  @screen md { --space-container-offset: var(--space-2xl); }
+  @screen lg { --space-container-offset: var(--space-3xl); }
+  @screen xl { --space-container-offset: var(--space-4xl); }
 }

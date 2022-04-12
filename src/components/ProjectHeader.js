@@ -13,7 +13,7 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
         category={category}
         className={concat(
           'absolute w-7 -top-8 left-2',
-          'md:w-8 md:top-2 md:left-[-4.5rem]'
+          'lg:w-8 lg:top-2 lg:left-[-4.5rem]'
         )}
       />
 

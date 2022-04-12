@@ -60,8 +60,8 @@ const DesignHomepage = ({ data}) => {
       <section className={scss.designContainer}>
 
         <header>
-          <h1 className='m-0'>{designHome.title}</h1>
-          <p className='m-0'>{designHome.subtitle}</p>
+          <h1>{designHome.title}</h1>
+          <p>{designHome.subtitle}</p>
         </header>
 
         <section className='mt-20'>
@@ -73,38 +73,12 @@ const DesignHomepage = ({ data}) => {
             'lg:grid-cols-3'
           )}>
             {data.featuredProjects.nodes.map(project => (
-              // <article
-              //   className={`${project.childMdx.frontmatter.category}
-              //               relative`}
-              //   key={project.childMdx.id} >
-              //   <Link
-              //     to={`/project/${project.childMdx.slug}${homeUrlParam}`}
-              //     className='block px-lg py-xl [text-decoration:none] group' >
-
-              //     <CategoryIcon
-              //       category={project.childMdx.frontmatter.category}
-              //       className='absolute w-5 -left-1' />
-
-              //     <ProjectExcerpt frontmatter={project.childMdx.frontmatter} />
-
-              //     {project.childMdx.frontmatter.heroImage &&
-              //       <img src={getSrc(project.childMdx.frontmatter.heroImage)}
-              //         alt=''
-              //         className={`project-hero-image
-              //                   ${project.childMdx.frontmatter.heroImagePos ?? ''}
-              //                   group-hover:translate-x-1 group-hover:-translate-y-1`}
-              //         aria-hidden />
-              //     }
-              //   </Link>
-              //   <span className='absolute block top-0 left-0 w-full h-full
-              //                    -z-[1] bg-th-bg'></span>
-              // </article>
               <TiltingCard
-                // style={`tilting`}
                 key={project.childMdx.id}
                 cardId={project.childMdx.slug}
                 link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-                frontmatter={project.childMdx.frontmatter} />
+                frontmatter={project.childMdx.frontmatter}
+              />
             ))}
           </div>
         </section>

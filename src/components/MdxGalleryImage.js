@@ -23,20 +23,20 @@ const MdxGalleryImage = ({
         alt={caption ?? ''}
         loading='lazy'
         className={concat(
-          'drop-shadow-xl',
-          landscape ? '-mx-4xl' : '',
-          cover ? 'ml-[50%]' : '',
-          backCover ? 'mr-[50%]' : ''
+          'shadow-xl',
+          landscape ? '-mx-[calc(var(--space-container-offset)_-_1rem)]' : '',
+          cover ? 'md:ml-[50%]' : '',
+          backCover ? 'md:mr-[50%]' : ''
         )}
       />
       {(children || caption) &&
-        <section className={cover ? 'ml-[calc(50%_+_var(--space-xl))]' : ''}>
+        <section className={cover ? 'md:ml-[calc(50%_+_var(--space-xl))]' : ''}>
           {caption &&
             <p className={concat(
               // Add some space between caption and any other text
               '!mb-xl',
               // Offset to right a bit in portrait mode
-              !landscape ? '!ml-2xl' : ''
+              !landscape ? '!md:ml-2xl' : ''
             )}>
               {caption}
             </p>
