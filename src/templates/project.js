@@ -7,7 +7,8 @@ import { MDXProvider } from '@mdx-js/react'
 import ContentLayout from '../components/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
-import MdxGalleryImage from '../components/MdxGalleryImage'
+import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
+import MdxGrid from '../components/Mdx/MdxGrid'
 
 import { concat } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
@@ -25,7 +26,6 @@ const ProjectPost = ({location, data, pageContext}) => {
     const urlParams = (new URL(location.href)).searchParams
     homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
   }
-  // const homeUrlParam = null
 
 
   // Parsing the gallery images into an object of (GatsbyImage components)
@@ -47,7 +47,7 @@ const ProjectPost = ({location, data, pageContext}) => {
       )}
     >
 
-      <MDXProvider components={{MdxGalleryImage}}>
+      <MDXProvider components={{MdxGalleryImage, MdxGrid}}>
         <MDXRenderer gallery={galleryImages}>
           {data.mdx.body}
         </MDXRenderer>
@@ -57,8 +57,10 @@ const ProjectPost = ({location, data, pageContext}) => {
 
       <ProjectPagination
         pathPrefix='project'
+        pathSuffix={`?${paramKey}=${homeUrlParam}`}
         next={pageContext.next}
-        prev={pageContext.prev} />
+        prev={pageContext.prev}
+      />
 
     </ContentLayout>
   )

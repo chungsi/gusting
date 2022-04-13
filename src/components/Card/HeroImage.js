@@ -10,7 +10,7 @@ const HeroImage = ({ image, pos }) => {
       alt=''
       src={getSrc(image)}
       className={concat(
-        'absolute block max-w-[7.25rem] z-0 transition',
+        'absolute block max-w-[7.25rem] -z-[1] transition',
         'group-hover:translate-x-1 group-hover:-translate-y-1',
 
         'right-0', // Default

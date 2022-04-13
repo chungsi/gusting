@@ -16,6 +16,7 @@ const DesignHomepage = ({ data}) => {
   const designHome = useSiteMetadata().designHome
   const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=design`
 
+  // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
     {
       media: '(min-width: 69.75rem)',
@@ -42,11 +43,22 @@ const DesignHomepage = ({ data}) => {
   return (
     <Base customIds='theme-design'>
 
-      <div className={scss.hero}>
-        <div className={`logo ${scss.heroLogo}`}>
+      <div className={concat(
+        'relative left-0 top-0 -z-[1]',
+        'th-md:fixed'
+      )}>
+
+        <div className={concat(
+          'absolute w-11 z-[1] m-[4.5rem_0_0_3rem]',
+          'th-md:m-[3rem_0_0_6rem] th-lg:m-[4.125rem_0_0_9rem] th-xl:m-[5.125rem_0_0_10.5rem]'
+        )}>
           <Logo />
         </div>
-        <div className={scss.heroBg}>
+
+        <div className={concat(
+          'relative w-[18.75rem]',
+          'th-lg:w-[21rem] th-xl:w-[24rem]'
+        )}>
           <picture>
             {heroImagesSrcSet.map(image => (
               <source media={image.media} srcset={image.srcset} />
@@ -54,10 +66,16 @@ const DesignHomepage = ({ data}) => {
             <img src={heroImagesSrcSet[4].srcset} alt='background of branches' />
           </picture>
         </div>
+
       </div>
 
 
-      <section className={scss.designContainer}>
+      <section className={concat(
+        'max-w-5xl px-lg z-[1]',
+        'th-md:ml-40 th-md:mt-[3.25rem]',
+        'th-lg:ml-[12.5rem] th-lg:mt-[4.25rem]',
+        'th-xl:ml-60 th-xl:mt-[5.25rem]'
+      )}>
 
         <header>
           <h1>{designHome.title}</h1>

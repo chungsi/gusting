@@ -59,12 +59,12 @@ module.exports = {
 
         th: {
           primary: 'var(--primary)',
-          bg: 'var(--c-bg-color)',
-          highlight: 'var(--c-highlight-color)',
           header: 'var(--header-color)',
           text: 'var(--text-color)',
           link: 'var(--link-color)',
           meta: 'var(--meta-color)',
+          highlight: 'var(--c-highlight-color)',
+          bg: 'var(--c-bg-color)',
         }
       },
       fontFamily: {
@@ -85,6 +85,14 @@ module.exports = {
         '3xl': 'var(--space-3xl)',
         '4xl': 'var(--space-4xl)',
         '5xl': 'var(--space-5xl)',
+      },
+      screens: {
+        'th-xs': '25rem',
+        'th-sm': '30rem',
+        'th-md': '44rem',
+        'th-lg': '50rem',
+        'th-xl': '69.75rem',
+        'th-xxl': '77rem'
       }
     },
   },

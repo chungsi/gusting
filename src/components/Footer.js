@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 
 const Footer = () => {
   return (
-    <footer className='my-xl py-lg border-t border-solid border-th-highlight'>
+    <footer className='mt-3xl mb-xl py-lg border-t border-solid border-th-highlight'>
       <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
       <p>
         Sketchblog: [instagram] [twitter]

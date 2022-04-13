@@ -5,13 +5,13 @@ import { concat } from '../utils/helpers'
 import ProjectExcerpt from './ProjectExcerpt'
 
 /* TODO: Redesign this to be more descriptive */
-const ProjectPagination = ({ pathPrefix, next, prev }) => {
+const ProjectPagination = ({ pathPrefix, pathSuffix, next, prev }) => {
   return (
     <section className='mb-4xl mt-2xl'>
 
       {prev &&
         <Link
-          to={`/${pathPrefix}/${prev.childMdx.slug}`}
+          to={`/${pathPrefix}/${prev.childMdx.slug}/${pathSuffix ?? ''}`}
           className='block text-right group'
         >
           {prev.childMdx.frontmatter.title}
@@ -28,7 +28,7 @@ const ProjectPagination = ({ pathPrefix, next, prev }) => {
 
       {next &&
         <Link
-          to={`/${pathPrefix}/${next.childMdx.slug}`}
+          to={`/${pathPrefix}/${next.childMdx.slug}/${pathSuffix ?? ''}`}
           className='block group'
         >
           <span

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import { concat } from '../utils/helpers'
+import { concat } from '../../utils/helpers'
 
 // TODO: Create something in here or in another component for making
 // a grid of images; or just more layout control in general
