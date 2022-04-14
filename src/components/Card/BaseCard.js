@@ -17,6 +17,7 @@ const BaseCard = ({
   return (
     <Link
       to={link}
+      id={cardId}
       className={concat(
         'relative block px-lg py-xl [text-decoration:none] group',
         category,

@@ -20,7 +20,7 @@ const ListingsPage = ({ data }) => {
       {
         data.allFile.group.map(group =>
           <>
-            <h2 class="mono" key={group.fieldValue}>{group.fieldValue}</h2>
+            <h2 className="mono" key={group.fieldValue}>{group.fieldValue}</h2>
             {group.nodes.map(node => entry(node.childMdx, group.fieldValue))}
           </>
         )

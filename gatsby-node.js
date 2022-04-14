@@ -12,7 +12,7 @@ const customCreatePages = async (graphql, actions, dir) => {
           name: {regex: "/^[^_]/"},
           childMdx: {frontmatter: {publish: {eq: true}}}
         }
-        sort: {fields: childMdx___frontmatter___date, order: DESC}
+        sort: {fields: childMdx___frontmatter___date, order: ASC}
       ) {
         nodes {
           id

@@ -9,6 +9,9 @@ tags:
   - user experience
   - interface design
 
+gallery:
+  - ./../assets/wolfgang-hasselmann-yhH7ER4T0JI-unsplash.jpg
+
 publish: true
 feature: true
 ---
@@ -49,12 +52,9 @@ body {
 
 <MdxGalleryImage
   caption='1/3 or some other cpation could go here...'
+  gatsbyImageData={props.gallery.image1}
   landscape
->
-
-  <img src='./../assets/wolfgang-hasselmann-yhH7ER4T0JI-unsplash.jpg' alt='Photo of the mountains' />
-
-</MdxGalleryImage>
+/>
 
 Or should the caption go outside the enclosing image component?  
 A line break

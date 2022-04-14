@@ -55,7 +55,7 @@ const ProjectExcerpt = ({
       {tags &&
         <ul className='text-sm list-none p-0'>
           {tags.map((tag, i) => (
-            <li>
+            <li key={i}>
               {tag}
               {/* Print a forward-slash after the text if it's not last */}
               {(i+1)<tags.length ? ' /' : ''}

@@ -25,6 +25,7 @@ $type-base-size: 1rem;
   --s-3xl: #{math.pow($type-scale, 8)};
   --s-4xl: #{math.pow($type-scale, 10)};
   --s-5xl: #{math.pow($type-scale, 12)};
+  --s-6xl: #{math.pow($type-scale, 14)};
 
   // Playing around with defaults: larger/smaller on mobile?
   --base-space-unit: 1rem;
@@ -41,6 +42,7 @@ $type-base-size: 1rem;
   --space-3xl: calc(var(--s-3xl) * var(--base-space-unit));
   --space-4xl: calc(var(--s-4xl) * var(--base-space-unit));
   --space-5xl: calc(var(--s-5xl) * var(--base-space-unit));
+  --space-6xl: calc(var(--s-6xl) * var(--base-space-unit));
 
   --space-3xs-rel: calc(var(--s-3xs) * var(--base-space-unit-rel));
   --space-xxs-rel: calc(var(--s-xxs) * var(--base-space-unit-rel));
@@ -53,6 +55,7 @@ $type-base-size: 1rem;
   --space-3xl-rel: calc(var(--s-3xl) * var(--base-space-unit-rel));
   --space-4xl-rel: calc(var(--s-4xl) * var(--base-space-unit-rel));
   --space-5xl-rel: calc(var(--s-5xl) * var(--base-space-unit-rel));
+  --space-6xl-rel: calc(var(--s-6xl) * var(--base-space-unit-rel));
 
 
   // Reused custom prop for layout functionality on containers and images

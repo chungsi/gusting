@@ -5,7 +5,7 @@ import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Base'
 import Footer from '../components/Footer'
-import Logo from '../images/svg/logo.inline.svg'
+import Logo from '../components/Logo'
 import FloatingCard from '../components/Card/FloatingCard'
 
 import { concat } from '../utils/helpers'
@@ -17,30 +17,9 @@ const ArtHomepage = ({data}) => {
   const artHome = useSiteMetadata().artHome
   const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=art`
 
-  const otherProject = (project, dir) => (
-    <section id={project.childMdx.id}>
-      {/* <Link
-        to={`/${dir}/${project.childMdx.slug}`}
-        className={scss.projectLinkContainer}
-      >
-        <h3>{project.childMdx.frontmatter.title}</h3>
-        <p>{project.childMdx.frontmatter.subtitle}</p>
-        <ul className={scss.tags}>
-          {project.childMdx.frontmatter.tags.map(tag => (
-            <li>{tag}</li>
-          ))}
-        </ul>
-      </Link> */}
-      <BaseCard
-        link={`/${dir}/${project.childMdx.slug}`}
-        frontmatter={project.childMdx.frontmatter}
-      />
-    </section>
-  )
-
   const heroImagesSrcSet = [
     {
-      media: '(min-width: 69.75rem)',
+      media: '(min-width: 70rem)',
       srcset: getSrcSet(data.heroImages.nodes[0]),
     },
     {
@@ -48,7 +27,7 @@ const ArtHomepage = ({data}) => {
       srcset: getSrcSet(data.heroImages.nodes[1]),
     },
     {
-      media: '(min-width: 38.75rem)',
+      media: '(min-width: 39rem)',
       srcset: getSrcSet(data.heroImages.nodes[2]),
     },
     {
@@ -62,49 +41,64 @@ const ArtHomepage = ({data}) => {
   ]
 
   return (
-    <Base className={scss.artContainer} customIds='theme-art'>
+    <Base
+      customIds='theme-art'
+      className={concat(
+        // scss.artContainer,
+        'max-w-xl mt-[24%] ml-[4rem] mr-md',
+        'xs-th:mr-2xl xs-th:ml-[20%]',
+        'md-th:mt-4xl md-th:ml-[50%] md-th:mr-xl ',
+        'lg-th:mt-5xl lg-th:ml-[58%]',
+        '2xl-th:mt-6xl 2xl-th:ml-[60%]'
+      )}
+    >
       <div className='fixed top-0 left-0 h-auto w-full -z-[1]'>
         <picture>
-          {heroImagesSrcSet.map(image => (
-            <source media={image.media} srcset={image.srcset} />
+          {heroImagesSrcSet.map((image, i) => (
+            <source media={image.media} srcSet={image.srcset} key={i} />
           ))}
           <img src={heroImagesSrcSet[0].srcset} alt='background of skypuddle' />
         </picture>
       </div>
 
-      <section className={scss.featuredGrid}>
+      <header className='md-th:flex'>
+        <Logo className={concat(
+          'w-12 mb-xl mr-sm',
+          'md-th:-mt-2xs'
+        )}/>
+        <div className={scss.titleBlock}>
+          <h1 className='tracking-widest'>{artHome.title}</h1>
+          <p className='font-light'>{artHome.subtitle}</p>
+        </div>
+      </header>
 
-        <header className={scss.header}>
-          <div className={`logo ${scss.logo}`}>
-            <Logo />
-          </div>
-          <div className={scss.titleBlock}>
-            <h1 className={scss.siteTitle}>
-              {artHome.title}
-            </h1>
-            <p className={scss.siteSubtitle}>
-              {artHome.subtitle}
-            </p>
-          </div>
-        </header>
+      <section className={scss.featuredGrid}>
 
         <h2 className='sr-only'>Projects</h2>
 
-        {data.featuredProjects.nodes.map(project => (
+        {data.featuredProjects.nodes.map((project, i) => (
           <FloatingCard
-            key={project.childMdx.id}
+            key={i}
             className={scss.projectCard}
             cardId={project.childMdx.slug}
             link={`/project/${project.childMdx.slug}${homeUrlParam}`}
             frontmatter={project.childMdx.frontmatter}
           />
         ))}
+
       </section>
-      <section className={scss.otherProjects}>
+
+      <section className='grid'>
         <h2 className='sr-only'>Other Projects</h2>
-        {data.otherProjects.nodes.map(project =>
-          otherProject(project, project.sourceInstanceName)
+
+        {data.otherProjects.nodes.map((project, i) =>
+          <BaseCard
+            key={i}
+            link={`/project/${project.childMdx.slug}`}
+            frontmatter={project.childMdx.frontmatter}
+          />
         )}
+
       </section>
 
       <Footer />

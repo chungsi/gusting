@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as scss from './design.module.scss'
 import { graphql } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
@@ -19,7 +18,7 @@ const DesignHomepage = ({ data}) => {
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
     {
-      media: '(min-width: 69.75rem)',
+      media: '(min-width: 70rem)',
       srcset: getSrcSet(data.heroImages.nodes[0]),
     },
     {
@@ -45,23 +44,25 @@ const DesignHomepage = ({ data}) => {
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',
-        'th-md:fixed'
+        'sm-th:fixed'
       )}>
 
         <div className={concat(
           'absolute w-11 z-[1] m-[4.5rem_0_0_3rem]',
-          'th-md:m-[3rem_0_0_6rem] th-lg:m-[4.125rem_0_0_9rem] th-xl:m-[5.125rem_0_0_10.5rem]'
+          'sm-th:m-[3rem_0_0_6rem]',
+          'md-th:m-[4.125rem_0_0_9rem]',
+          'lg-th:m-[5.125rem_0_0_10.5rem]'
         )}>
           <Logo />
         </div>
 
         <div className={concat(
           'relative w-[18.75rem]',
-          'th-lg:w-[21rem] th-xl:w-[24rem]'
+          'md-th:w-[21rem] lg-th:w-[24rem]'
         )}>
           <picture>
-            {heroImagesSrcSet.map(image => (
-              <source media={image.media} srcset={image.srcset} />
+            {heroImagesSrcSet.map((image, i) => (
+              <source media={image.media} srcSet={image.srcset} key={i} />
               ))}
             <img src={heroImagesSrcSet[4].srcset} alt='background of branches' />
           </picture>
@@ -72,9 +73,9 @@ const DesignHomepage = ({ data}) => {
 
       <section className={concat(
         'max-w-5xl px-lg z-[1]',
-        'th-md:ml-40 th-md:mt-[3.25rem]',
-        'th-lg:ml-[12.5rem] th-lg:mt-[4.25rem]',
-        'th-xl:ml-60 th-xl:mt-[5.25rem]'
+        'sm-th:ml-40 sm-th:mt-[3.25rem]',
+        'md-th:ml-[12.5rem] md-th:mt-[4.25rem]',
+        'lg-th:ml-60 lg-th:mt-[5.25rem]'
       )}>
 
         <header>
@@ -90,9 +91,9 @@ const DesignHomepage = ({ data}) => {
             'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
-            {data.featuredProjects.nodes.map(project => (
+            {data.featuredProjects.nodes.map((project, i) => (
               <TiltingCard
-                key={project.childMdx.id}
+                key={i}
                 cardId={project.childMdx.slug}
                 link={`/project/${project.childMdx.slug}${homeUrlParam}`}
                 frontmatter={project.childMdx.frontmatter}
@@ -129,7 +130,7 @@ export const data = graphql`
         name: {regex: "/^[^_]/"},
         childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
       }
-      sort: {fields: childMdx___frontmatter___date, order: DESC}
+      sort: {fields: childMdx___frontmatter___date, order: ASC}
     ) {
       nodes {
         sourceInstanceName

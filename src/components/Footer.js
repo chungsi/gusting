@@ -4,11 +4,11 @@ import { format } from 'date-fns'
 const Footer = () => {
   return (
     <footer className='mt-3xl mb-xl py-lg border-t border-solid border-th-highlight'>
-      <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
-      <p>
+      <p className='font-light'>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
+      <p className='font-light'>
         Sketchblog: [instagram] [twitter]
       </p>
-      <p>
+      <p className='font-light'>
         Made with <a href='https://www.gatsbyjs.com/' target='_blank' rel='noreferrer'>GatsbyJs</a>:
         [<a href='https://github.com/chungsi/gusting' target='_blank' rel='noreferrer'>Github repo</a>]
       </p>

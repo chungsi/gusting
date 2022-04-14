@@ -85,14 +85,15 @@ module.exports = {
         '3xl': 'var(--space-3xl)',
         '4xl': 'var(--space-4xl)',
         '5xl': 'var(--space-5xl)',
+        '6xl': 'var(--space-6xl)',
       },
       screens: {
-        'th-xs': '25rem',
-        'th-sm': '30rem',
-        'th-md': '44rem',
-        'th-lg': '50rem',
-        'th-xl': '69.75rem',
-        'th-xxl': '77rem'
+        'xs-th': '39rem', // 624px
+        'sm-th': '44rem', // 704px
+        'md-th': '50rem', // 800px
+        'lg-th': '70rem', // 1120px
+        'xl-th': '96rem', // 1536px
+        '2xl-th': '120rem', // 1920px
       }
     },
   },

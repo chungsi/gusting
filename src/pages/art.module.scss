@@ -1,27 +1,5 @@
 @import '../scss/utils/_utils.scss';
 
-.art-container {
-  max-width: 35rem;
-  margin-top: var(--space-5xl);
-  margin-right: 0;
-
-  @include breakpoint(366px) {
-    margin-left: 0;
-  }
-
-  @include breakpoint(620px) {
-    margin-left: 10%;
-  }
-
-  @include breakpoint(800px) {
-    margin-left: 44%;
-  }
-
-  @include breakpoint(1100px) {
-    margin-left: 54%;
-  }
-}
-
 @mixin grid-using-rows-cols {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: minmax(16rem, auto);
@@ -58,23 +36,12 @@
   //   ".   bk3 bk3 bk3 bk3 bk4 bk4 bk4 bk4 .  "
   //   ".   .   .   .   .   bk4 bk4 bk4 bk4 .  ";
   grid-template-areas:
-    "logo hd  hd  hd  hd  hd  hd "
     "bk1  bk1 bk1 bk1 .   .   .  "
     ".    .   .   .   bk2 bk2 bk2"
     "bk3  bk3 bk3 .   bk2 bk2 bk2"
     "bk3  bk3 bk3 .   .   .   .  "
     "bk3  bk3 bk3 bk4 bk4 bk4 .  "
     ".    .   .   bk4 bk4 bk4 .  ";
-
-  .header {
-    display: contents;
-
-    .logo { grid-area: logo; }
-    .title-block {
-      grid-area: hd;
-      margin-bottom: var(--space-xxl);
-    }
-  }
 
   .project-card {
     &:nth-of-type(1) {grid-area: bk1;}
@@ -88,51 +55,4 @@
   display: grid;
   @include grid-using-areas;
   margin-bottom: var(--space-3xl);
-}
-
-.site-title {
-  margin: 0;
-}
-
-.site-subtitle {
-  margin: 0;
-}
-
-.other-projects {
-  display: grid;
-}
-
-// Direct copy of card.module.scss
-.tags {
-  font-size: var(--h6);
-  list-style: none;
-  padding-left: 0;
-
-  >li:not(:last-of-type) {
-    &::after {
-      content: ' /';
-    }
-  }
-}
-
-.project {
-  display: block;
-}
-
-.project-link-container {
-  text-decoration: none;
-}
-
-.project-title {
-  margin-bottom: 0;
-}
-
-.project-subtitle {
-  font-style: italic;
-}
-
-.project-categories {
-  font-style: italic;
-  list-style: none;
-  padding-left: 0;
 }
