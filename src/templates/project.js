@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
-import ContentLayout from '../components/ContentLayout'
+import ContentLayout from '../components/Layout/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
 import ProjectPagination from '../components/ProjectPagination'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
@@ -27,7 +27,6 @@ const ProjectPost = ({location, data, pageContext}) => {
     homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
   }
 
-
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
   var galleryImages = {}
@@ -41,10 +40,11 @@ const ProjectPost = ({location, data, pageContext}) => {
     <ContentLayout
       homeUrl={homeUrlParam}
       header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>}
-      className={concat(
+      bodyClassName={concat(
         data.mdx.frontmatter.category,
-        'max-w-6xl'
+        'border-b-8 border-solid border-th-primary'
       )}
+      className='max-w-6xl pb-2xl'
     >
 
       <MDXProvider components={{MdxGalleryImage, MdxGrid}}>
@@ -53,14 +53,12 @@ const ProjectPost = ({location, data, pageContext}) => {
         </MDXRenderer>
       </MDXProvider>
 
-      <hr />
-
-      <ProjectPagination
+      {/* <ProjectPagination
         pathPrefix='project'
         pathSuffix={`?${paramKey}=${homeUrlParam}`}
         next={pageContext.next}
         prev={pageContext.prev}
-      />
+      /> */}
 
     </ContentLayout>
   )

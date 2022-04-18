@@ -25,19 +25,20 @@ module.exports = {
           50: '#FFFCF1',
           100: '#FFFAE5',
           400: '#FFEC40',
-          500: '#FFD540'
+          500: '#FFD540',
+          600: '#F6A507'
         },
         mandarin: {
           50: '#FFF6F1',
           100: '#FEEDE2',
           500: '#FAA56F',
-          600: '#F66C20',
+          600: '#F66C20'
         },
         allium: {
           50: '#F8F5FC',
           100: '#F5EFFA',
           500: '#B894DE',
-          600: '#9D6BD1',
+          600: '#9D6BD1'
         },
         cobalt: {
           500: '#7598FF',
@@ -54,11 +55,11 @@ module.exports = {
           700: '#799B3B',
           800: '#68853D',
           900: '#415A20',
-          950: '#304413',
+          950: '#304413'
         },
 
         th: {
-          primary: 'var(--primary)',
+          primary: 'var(--primary-color)',
           header: 'var(--header-color)',
           text: 'var(--text-color)',
           link: 'var(--link-color)',
@@ -88,6 +89,7 @@ module.exports = {
         '6xl': 'var(--space-6xl)',
       },
       screens: {
+        '2xs-th': '30rem', // 428px
         'xs-th': '39rem', // 624px
         'sm-th': '44rem', // 704px
         'md-th': '50rem', // 800px

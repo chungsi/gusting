@@ -3,7 +3,7 @@ import * as scss from './art.module.scss'
 import { graphql, Link } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
-import Base from '../components/Base'
+import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
 import FloatingCard from '../components/Card/FloatingCard'
@@ -15,11 +15,11 @@ import BaseCard from '../components/Card/BaseCard'
 const ArtHomepage = ({data}) => {
 
   const artHome = useSiteMetadata().artHome
-  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=art`
+  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${artHome.homeUrlParam}`
 
   const heroImagesSrcSet = [
     {
-      media: '(min-width: 70rem)',
+      media: '(min-width: 96rem)',
       srcset: getSrcSet(data.heroImages.nodes[0]),
     },
     {
@@ -42,17 +42,21 @@ const ArtHomepage = ({data}) => {
 
   return (
     <Base
-      customIds='theme-art'
+      id='theme-art'
       className={concat(
-        // scss.artContainer,
-        'max-w-xl mt-[24%] ml-[4rem] mr-md',
+        'max-w-xl mt-[24%] ml-[2rem] mr-md',
+        '2xs-th:ml-[20%]',
         'xs-th:mr-2xl xs-th:ml-[20%]',
-        'md-th:mt-4xl md-th:ml-[50%] md-th:mr-xl ',
-        'lg-th:mt-5xl lg-th:ml-[58%]',
-        '2xl-th:mt-6xl 2xl-th:ml-[60%]'
+        'md-th:mt-[16%] md-th:ml-[48%] md-th:mr-xl ',
+        'lg-th:ml-[52%]',
+        'xl-th:ml-[60%]',
+        '2xl-th:mt-[12%] 2xl-th:ml-[52%]'
       )}
     >
-      <div className='fixed top-0 left-0 h-auto w-full -z-[1]'>
+      <div className={concat(
+        'fixed top-0 left-0 h-auto w-full -z-[1]',
+        '2xl-th:w-[86vw]'
+      )}>
         <picture>
           {heroImagesSrcSet.map((image, i) => (
             <source media={image.media} srcSet={image.srcset} key={i} />
@@ -72,10 +76,9 @@ const ArtHomepage = ({data}) => {
         </div>
       </header>
 
+      <h2 className='sr-only'>Projects</h2>
+
       <section className={scss.featuredGrid}>
-
-        <h2 className='sr-only'>Projects</h2>
-
         {data.featuredProjects.nodes.map((project, i) => (
           <FloatingCard
             key={i}
@@ -85,7 +88,6 @@ const ArtHomepage = ({data}) => {
             frontmatter={project.childMdx.frontmatter}
           />
         ))}
-
       </section>
 
       <section className='grid'>

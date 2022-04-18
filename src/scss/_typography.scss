@@ -40,12 +40,6 @@ $type-scale: 1.25;
 
 // Typography
 :root {
-  // --font-serif: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-  // --font-mono: 'JetBrains Mono', monospace;
-  // --text-wght: 475;
-  // --bold-wght: 768;
-  // --lght-wght: 380;
-
   --p-line-height: var(--s-lg);
 
   // --type-base-size: #{$type-base-size};
@@ -60,7 +54,7 @@ $type-scale: 1.25;
   --h-sm:  calc(var(--h-md) / #{$type-scale});
   --h-xs:  calc(var(--h-sm) / #{$type-scale});
 
-  --max-text-width: 41rem;
+  --max-text-width: 40rem;
 }
 
 
@@ -68,22 +62,14 @@ $type-scale: 1.25;
  * Default Values
  */
 
-// body {
-  // @include mono;
-  // // font-family: var(--font-mono);
-  // font-weight: var(--text-wght);
-  // color: var(--text-color);
-  // font-size: var(--type-base-size);
-// }
-
 // TODO: Split some of these stylings to be prose specific (only for content)
-.h0 { --header-size: theme('fontSize.5xl') }
-h1 { --header-size: theme('fontSize.4xl') }
-h2 { --header-size: theme('fontSize.3xl') }
-h3 { --header-size: theme('fontSize.2xl') }
-h4 { --header-size: theme('fontSize.xl') }
-h5 { --header-size: theme('fontSize.md') }
-h6 { --header-size: theme('fontSize.sm') }
+.h0 { --header-size: theme('fontSize.5xl'); }
+h1 { --header-size: theme('fontSize.4xl'); }
+h2 { --header-size: theme('fontSize.3xl'); }
+h3 { --header-size: theme('fontSize.2xl'); }
+h4 { --header-size: theme('fontSize.xl'); }
+h5 { --header-size: theme('fontSize.md'); }
+h6 { --header-size: theme('fontSize.sm'); }
 
 .h0,
 h1,
@@ -102,7 +88,6 @@ h1,
 h2,
 h3 {
   @include serif;
-  // letter-spacing: .025em;
 }
 
 h4,
@@ -116,7 +101,6 @@ h6 {
 p {
   color: theme('colors.th.text');
   line-height: var(--p-line-height);
-  font-weight: theme('fontWeight.normal');
 }
 
 ul,
@@ -168,8 +152,10 @@ img {
   }
 
   p {
-    margin: 1em 0 1em 0;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
     max-width: var(--max-text-width);
+    font-weight: theme('fontWeight.normal');
   }
 
   ul,

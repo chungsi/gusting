@@ -1,19 +1,28 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import Base from './Base'
-import Logo from '../images/svg/logo.inline.svg'
-import { concat } from '../utils/helpers'
+import Base from './BaseLayout'
+import Logo from '../../images/svg/logo.inline.svg'
+import { concat } from '../../utils/helpers'
 
-const ContentLayout = ({ header, homeUrl, className, children }) => {
+const ContentLayout = ({
+  header,
+  homeUrl,
+  className,
+  bodyClassName,
+  children
+}) => {
 
   // Here detect location stuff and change the logo link
   // console.log(homeUrl)
 
   return (
-    <Base className={concat(
-      'pt-4xl mx-auto max-w-6xl px-[length:var(--space-container-offset)]',
-      className ?? ''
-    )}>
+    <Base
+      bodyClassName={bodyClassName}
+      className={concat(
+        'pt-4xl mx-auto max-w-6xl px-[length:var(--space-container-offset)]',
+        className ?? ''
+      )}
+    >
 
       <Link
         to={homeUrl ? `/${homeUrl}` : '/'}

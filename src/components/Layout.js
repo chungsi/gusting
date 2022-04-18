@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import * as scss from './Layout.module.scss'
 // import Logo from '../images/svg/logo.inline.svg'
-import Base from './Base'
+import Base from './Layout/BaseLayout'
 
 // TODO: Update this component, because currently only used on the home/landing page
 const Layout = ({ children }) => {

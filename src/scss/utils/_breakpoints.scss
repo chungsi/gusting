@@ -1,19 +1,19 @@
 $bp-transition-medium: 33.5rem;
 $bp-transition-xlarge: 61.25rem;
-$bp-xsmall: 25rem;
-$bp-small: 30rem;
-$bp-medium: 44rem;
-$bp-large: 50rem;
-$bp-xlarge: 69.75rem;
-$bp-xxlarge: 77rem;
+$bp-xsmall: 39rem;
+$bp-small: 44rem;
+$bp-medium: 50rem;
+$bp-large: 70rem;
+$bp-xlarge: 96rem;
+$bp-xxlarge: 120rem;
 
 $bps: (
-  xs: 25rem,
-  sm: 30rem,
-  md: 44rem,
-  lg: 50rem,
-  xl: 69.75rem,
-  xxl: 77rem
+  xs: 39rem,
+  sm: 44rem,
+  md: 50rem,
+  lg: 70rem,
+  xl: 96rem,
+  2xl: 120rem
 );
 
 @mixin breakpoint($point, $logic: false) {

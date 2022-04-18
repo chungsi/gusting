@@ -2,7 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
-import Base from '../components/Base'
+import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 import TiltingCard from '../components/Card/TiltingCard'
@@ -13,7 +13,7 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 const DesignHomepage = ({ data}) => {
 
   const designHome = useSiteMetadata().designHome
-  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=design`
+  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${designHome.homeUrlParam}`
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
@@ -40,7 +40,7 @@ const DesignHomepage = ({ data}) => {
   ]
 
   return (
-    <Base customIds='theme-design'>
+    <Base id='theme-design'>
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',
@@ -80,7 +80,7 @@ const DesignHomepage = ({ data}) => {
 
         <header>
           <h1>{designHome.title}</h1>
-          <p>{designHome.subtitle}</p>
+          <p className='italic'>{designHome.subtitle}</p>
         </header>
 
         <section className='mt-20'>
