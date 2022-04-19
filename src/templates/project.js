@@ -38,8 +38,8 @@ const ProjectPost = ({location, data, pageContext}) => {
         galleryImages[`image${i+1}`] = getImage(image)
       } else {
         galleryImages[`image${i+1}`] = image.publicURL
-        console.log(`image${i+1}`, image.publicURL)
       }
+      console.log(`image${i+1}`, galleryImages[`image${i+1}`])
     })
   }
 
