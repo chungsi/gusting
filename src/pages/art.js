@@ -70,7 +70,7 @@ const ArtHomepage = ({data}) => {
           'w-12 mb-xl mr-sm',
           'md-th:-mt-2xs'
         )}/>
-        <div className={scss.titleBlock}>
+        <div>
           <h1 className='tracking-widest'>{artHome.title}</h1>
           <p className='font-light'>{artHome.subtitle}</p>
         </div>

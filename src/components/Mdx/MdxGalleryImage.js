@@ -15,7 +15,7 @@ const MdxGalleryImage = ({
 }) => {
 
   return (
-    <article className='mt-2xl first:mt-0'>
+    <article className='mb-2xl'>
       <GatsbyImage
         image={gatsbyImageData}
         alt={caption ?? ''}

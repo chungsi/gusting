@@ -6,7 +6,8 @@ import { MDXProvider } from '@mdx-js/react'
 
 import ContentLayout from '../components/Layout/ContentLayout'
 import ProjectHeader from '../components/ProjectHeader'
-import ProjectPagination from '../components/ProjectPagination'
+// import ProjectPagination from '../components/ProjectPagination'
+import MdxImage from '../components/Mdx/MdxImage'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
 
@@ -32,7 +33,13 @@ const ProjectPost = ({location, data, pageContext}) => {
   var galleryImages = {}
   if (data.mdx.frontmatter.gallery) {
     data.mdx.frontmatter.gallery.forEach((image, i) => {
-      galleryImages[`image${i+1}`] = getImage(image)
+      // If gatsbyImageData exists
+      if (getImage(image) != null) {
+        galleryImages[`image${i+1}`] = getImage(image)
+      } else {
+        galleryImages[`image${i+1}`] = image.publicURL
+        console.log(`image${i+1}`, image.publicURL)
+      }
     })
   }
 
@@ -47,7 +54,7 @@ const ProjectPost = ({location, data, pageContext}) => {
       className='max-w-6xl pb-2xl'
     >
 
-      <MDXProvider components={{MdxGalleryImage, MdxGrid}}>
+      <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
         <MDXRenderer gallery={galleryImages}>
           {data.mdx.body}
         </MDXRenderer>
@@ -71,6 +78,7 @@ export const query = graphql`
       ...ProjectMdxFrontmatterFragment
       frontmatter {
         gallery {
+          publicURL
           childImageSharp {
             gatsbyImageData
           }
