@@ -125,7 +125,7 @@ a {
   &:active {
     // font-weight: var(--bold-wght);
     // text-decoration: wavy underline theme('colors.th.primary');
-    outline: none;
+    // outline: none;
     // transition: all 200ms ease-in-out;
     // background-color: lighten($cedar, 50%);
   }
@@ -156,6 +156,15 @@ img {
     margin-bottom: var(--space-md);
     max-width: var(--max-text-width);
     font-weight: theme('fontWeight.normal');
+  }
+
+  a {
+    text-decoration: underline wavy theme('colors.th.link') 0.025em;
+
+    // &:hover,
+    // &:focus,
+    // &:active {
+    // }
   }
 
   ul,

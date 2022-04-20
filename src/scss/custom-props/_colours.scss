@@ -1,9 +1,7 @@
-@use 'sass:color';
-
 $grey: #787878;
 $pine: #415A20;
-$dark-pine: mix($pine, #000, 50%);
-$light-pine: rgba($pine, .7);
+// $dark-pine: mix($pine, #000, 50%);
+// $light-pine: rgba($pine, .7);
 $cedar: #7D9E41;
 $gold: #FFD540;
 $yellow: #FFEC40;
@@ -20,7 +18,7 @@ $sapling: #F8FAE2;
 $mandarin: #FFF4EF;
 $brushed-gold: #FFFDE7;
 $baby-breath: #F4FAFF;
-$lavendar: hsl(267, 73%, 97%);
+$lavendar: #f7f2fd;
 
 $art: $gold;
 $design: $sap;
@@ -39,8 +37,8 @@ $dev: $purple;
   --meta-color: #{$grey};
   --link-color: rgba(0 0 0 / .7);
 
-  --c-bg-color: hsl(0, 0%, 95%);
-  --c-highlight-color: hsl(0, 0%, 95%);
+  --c-bg-color: #f2f2f2;
+  --c-highlight-color: #f2f2f2;
 }
 
 // Category Theme Colours

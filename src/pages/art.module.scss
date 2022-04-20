@@ -25,7 +25,7 @@
   gap: 2rem;
   max-width: var(--space-6xl);
 
-  @include breakpoint(xs) {
+  @screen xs-th {
     max-width: 100%;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: minmax(4rem, auto);
@@ -44,7 +44,7 @@
     }
   }
 
-  @include breakpoint(lg) {
+  @screen lg-th {
     gap: 1rem;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: minmax(4rem, auto);
