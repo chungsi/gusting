@@ -2,10 +2,11 @@
  * Typography Mixins
  */
 
-// Alias for Fanwood Text
-@mixin serif {
+/* Alias for Fanwood Text */
+/* @mixin serif {
   font-family: 'Fanwood Text', Georgia, 'Times New Roman', Times, serif;
-  font-weight: normal; // Fanwood only comes in Regular weight
+  // Fanwood only comes in Regular weight
+  font-weight: normal;
   letter-spacing: .025em;
 }
 
@@ -14,4 +15,4 @@
 }
 
 @mixin heading-font { @include serif; }
-@mixin body-font { @include mono; }
+@mixin body-font { @include mono; } */

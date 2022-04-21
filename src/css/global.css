@@ -1,0 +1,50 @@
+@import "custom-props/custom-props.css";
+@import "typography.css";
+
+@tailwind base;
+@tailwind utilities;
+
+
+.container {
+  position: relative;
+  max-width: 60rem;
+  padding: 0 var(--space-lg);
+  z-index: 1;
+}
+
+.project-container {
+  margin-top: var(--space-xl);
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-areas:
+    "logo  top  ."
+    "extra head ."
+    ".     body .";
+
+  .logo {
+    grid-area: logo;
+    position: fixed;
+  }
+
+  .project-header {
+    position: relative;
+    grid-area: head;
+  }
+
+  .project-content {
+    grid-area: body;
+  }
+
+  .project-image {
+    box-shadow: var(--shadow-md);
+
+    &.landscape {
+      margin: var(--space-xxl) calc(var(--space-4xl) * -1) 0;
+      &:first-of-type { margin-top: 0; }
+    }
+    &.cover, &.cover + p { margin-left: 50%; text-align: right; }
+    &.back { margin-right: 50%; }
+  }
+}

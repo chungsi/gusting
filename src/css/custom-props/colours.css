@@ -1,4 +1,4 @@
-$grey: #787878;
+/* $grey: #787878;
 $pine: #415A20;
 // $dark-pine: mix($pine, #000, 50%);
 // $light-pine: rgba($pine, .7);
@@ -23,13 +23,13 @@ $lavendar: #f7f2fd;
 $art: $gold;
 $design: $sap;
 $storytelling: $orange;
-$dev: $purple;
+$dev: $purple; */
 
 /*/////////////////////////////////////////////////////////////////////////////
  * Colour Custom Properties
  */
 
-// Note: Space separated values only supported by CSS Colors Lvl 4
+/* // Note: Space separated values only supported by CSS Colors Lvl 4 */
 :root {
   --primary-color: theme('colors.buttercup.500');
   --header-color: rgba(0 0 0 / 1);
@@ -41,7 +41,7 @@ $dev: $purple;
   --c-highlight-color: #f2f2f2;
 }
 
-// Category Theme Colours
+/* // Category Theme Colours */
 .art {
   --primary-color: theme('colors.buttercup.500');
   --link-color: theme('colors.buttercup.600');
@@ -74,7 +74,7 @@ $dev: $purple;
   svg { fill:var(--primary-color); }
 }
 
-// Website Theme Colours
+/* // Website Theme Colours */
 #theme-art {
   --primary-color: theme('colors.cobalt.600');
   --header-color: theme('colors.cobalt.700');

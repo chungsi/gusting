@@ -1,5 +1,3 @@
-@use "sass:math";
-
 /*/////////////////////////////////////////////////////////////////////////////
  * Spacing Custom Properties
  *
@@ -8,26 +6,26 @@
  *    Relative: usually based on ems; base amount can be adjusted
  */
 
-// NOTE: Should these variables be declared here???
-$type-scale: 1.25;
-$type-base-size: 1rem;
+@value v-type-scale: 1.25;
 
-// scale, size, room, arrange, place, set, order, shift, translate, tofu, empty, width
+/* // scale, size, room, arrange, place, set, order, shift, translate, tofu, empty, width */
 :root {
-  --s-3xs: #{math.pow($type-scale, -6)};
-  --s-xxs: #{math.pow($type-scale, -4)};
-  --s-xs: #{math.pow($type-scale, -2)};
-  --s-sm: #{math.pow($type-scale, -1)};
-  --s-md: #{$type-scale};
-  --s-lg: #{math.pow($type-scale, 2)};
-  --s-xl: #{math.pow($type-scale, 4)};
-  --s-2xl: #{math.pow($type-scale, 6)};
-  --s-3xl: #{math.pow($type-scale, 8)};
-  --s-4xl: #{math.pow($type-scale, 10)};
-  --s-5xl: #{math.pow($type-scale, 12)};
-  --s-6xl: #{math.pow($type-scale, 14)};
+  --type-scale: 1.25;
 
-  // Playing around with defaults: larger/smaller on mobile?
+  --s-3xs: calc(pow(var(--type-scale), -6));
+  --s-xxs: calc(pow(var(--type-scale), -4));
+  --s-xs: calc(pow(var(--type-scale), -2));
+  --s-sm: calc(pow(var(--type-scale), -1));
+  --s-md: var(--type-scale);
+  --s-lg: calc(pow(var(--type-scale), 2));
+  --s-xl: calc(pow(var(--type-scale), 4));
+  --s-2xl: calc(pow(var(--type-scale), 6));
+  --s-3xl: calc(pow(var(--type-scale), 8));
+  --s-4xl: calc(pow(var(--type-scale), 10));
+  --s-5xl: calc(pow(var(--type-scale), 12));
+  --s-6xl: calc(pow(var(--type-scale), 14));
+
+  /* // Playing around with defaults: larger/smaller on mobile? */
   --base-space-unit: 1rem;
   --base-space-unit-rel: 1em;
 
@@ -58,7 +56,7 @@ $type-base-size: 1rem;
   --space-6xl-rel: calc(var(--s-6xl) * var(--base-space-unit-rel));
 
 
-  // Reused custom prop for layout functionality on containers and images
+  /* // Reused custom prop for layout functionality on containers and images */
   --space-container-offset: var(--space-lg);
   @screen md { --space-container-offset: var(--space-2xl); }
   @screen lg { --space-container-offset: var(--space-3xl); }

@@ -1,4 +1,4 @@
-$base-rhythm: .875rem;
+/* $base-rhythm: .875rem;
 
 // ////////////////////////////////////////////////////////////////////////////
 // Baseline Utility
@@ -16,4 +16,4 @@ $base-rhythm: .875rem;
 
 .u-baseline-bg {
   @include baseline-grid-background();
-}
+} */

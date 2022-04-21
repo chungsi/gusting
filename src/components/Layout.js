@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import * as scss from './Layout.module.scss'
+import * as scss from './Layout.module.css'
 // import Logo from '../images/svg/logo.inline.svg'
 import Base from './Layout/BaseLayout'
 

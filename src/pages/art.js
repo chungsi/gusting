@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as scss from './art.module.scss'
+import * as scss from './art.module.css'
 import { graphql, Link } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 

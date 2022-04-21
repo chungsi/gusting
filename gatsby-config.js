@@ -19,12 +19,28 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
+    // {
+    //   resolve: `gatsby-plugin-sass`,
+    //   options: {
+    //     postCssPlugins: [
+    //       require('tailwindcss'),
+    //       require('./tailwind.config.js')
+    //     ]
+    //   }
+    // },
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: `gatsby-plugin-postcss`,
       options: {
+        cssLoaderOptions: {
+          import: true,
+          modules: true,
+        },
         postCssPlugins: [
-          require('tailwindcss'),
-          require('./tailwind.config.js')
+            require('postcss-import'),
+            require('postcss-pow'),
+            require('tailwindcss/nesting'),
+            require('tailwindcss'),
+            require('autoprefixer'),
         ]
       }
     },
