@@ -39,9 +39,10 @@ const ProjectPost = ({location, data, pageContext}) => {
       } else {
         galleryImages[`image${i+1}`] = image.publicURL
       }
-      console.log(`image${i+1}`, galleryImages[`image${i+1}`])
     })
   }
+
+  console.log('frontmatter test', data.mdx.frontmatter)
 
   return (
     <ContentLayout
