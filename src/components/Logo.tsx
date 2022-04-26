@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const Logo = ({ className }) => (
+const Logo = ({ className }: { className?: string}) => (
   <svg
     version="1.1"
     id="Layer_1"
@@ -8,7 +8,7 @@ const Logo = ({ className }) => (
     x="0px"
     y="0px"
     viewBox="0 0 48.2 48.2"
-    className={className}
+    className={className ?? ''}
   >
     <path d="M45.5,31.9c-0.8-2.8-1.8-5.2-2.9-7.3c-1-1.9-2.4-3.8-4.3-6c-2.3-2.6-4.5-4.3-7-5.3l-0.1,0
       c-0.2-0.1-0.4-0.2-0.7-0.2c-0.1,0-0.3,0-0.4,0.1c-0.5,0.3-1,0.5-1.5,0.7c-1.3,0.5-2.6,1-3.5,2.2c-0.4,0.5-1.4,0.8-2.4,0.8

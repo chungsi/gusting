@@ -1,16 +1,25 @@
 import * as React from 'react'
 import { concat } from '../utils/helpers'
 
+type ProjectExcerptProps = {
+  frontmatter: {
+    title: string
+    subtitle: string
+    tags?: string[]
+  }
+  h1?: boolean
+  h2?: boolean
+  h3?: boolean
+  h4?: boolean
+  h5?: boolean
+  h6?: boolean
+}
+
 const ProjectExcerpt = ({
   frontmatter: { title, subtitle, tags },
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
-}) => {
-  var HeaderTag = 'h3'
+  h1, h2, h3, h4, h5, h6
+}: ProjectExcerptProps) => {
+  var HeaderTag: keyof JSX.IntrinsicElements = 'h3'
 
   if (h1) HeaderTag = 'h1'
   else if (h2) HeaderTag = 'h2'

@@ -1,8 +1,18 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+
 import Base from './BaseLayout'
 import Logo from '../../images/svg/logo.inline.svg'
+
 import { concat } from '../../utils/helpers'
+
+type ContentLayoutProps = {
+  header?: string
+  homeUrl?: string
+  className?: string
+  bodyClassName?: string
+  children?: React.ReactNode
+}
 
 const ContentLayout = ({
   header,
@@ -10,7 +20,7 @@ const ContentLayout = ({
   className,
   bodyClassName,
   children
-}) => {
+}: ContentLayoutProps) => {
 
   // Here detect location stuff and change the logo link
   // console.log(homeUrl)

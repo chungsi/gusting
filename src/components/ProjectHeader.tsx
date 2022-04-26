@@ -1,11 +1,25 @@
 import * as React from 'react'
-import { getSrc } from 'gatsby-plugin-image'
+import { getSrc, ImageDataLike } from 'gatsby-plugin-image'
 
 import CategoryIcon from './CategoryIcon'
+
 import { concat } from '../utils/helpers'
 
-const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroImage }, className }) => {
-  var hasHeroImage = heroImage != null ? true : false
+type ProjectHeaderProps = {
+  frontmatter: {
+    title: string
+    subtitle: string
+    category: string
+    tags: string[]
+    heroImage?: ImageDataLike
+  }
+  className?: string
+}
+
+const ProjectHeader = ({
+  frontmatter: { title, subtitle, category, tags, heroImage },
+  className
+}: ProjectHeaderProps) => {
 
   return (
     <header className={className ?? ''}>
@@ -42,7 +56,7 @@ const ProjectHeader = ({ frontmatter: { title, subtitle, category, tags, heroIma
         {tags.map(tag => `${tag} / `)}
       </p>
 
-      {hasHeroImage &&
+      {heroImage &&
         <img
           aria-hidden
           src={getSrc(heroImage)}

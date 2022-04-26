@@ -4,7 +4,7 @@
  * @param  {...String} classNames
  * @returns A string of classnames separated by a space.
  */
-const concat = (...classNames) => {
+export const concat = (...classNames: string[]): string => {
   return classNames.filter(Boolean).join(' ')
 }
 
@@ -14,7 +14,7 @@ const concat = (...classNames) => {
  * @param {String} path Any path to be converted into a valid string path
  * @returns A valid string path
  */
-const slugify = (path) => {
+export const slugify = (path: string): string => {
   const slug = path
     .toLowerCase()
     .replace(/[^a-z0-9/#]+/g, '-')
@@ -26,8 +26,9 @@ const slugify = (path) => {
 /**
  * TODO: Insert a generatePath function here...
  */
-
-module.exports = {
-  concat: concat,
-  slugify: slugify,
-}
+// If need to use functions in gatsby-node, need this format for js,
+// but might be different for tsx?
+// module.exports = {
+//   concat: concat,
+//   slugify: slugify,
+// }

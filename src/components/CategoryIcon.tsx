@@ -4,10 +4,15 @@ import Trapezoid from '../images/svg/icon-trapezoid.inline.svg'
 import Triangle from '../images/svg/icon-triangle.inline.svg'
 import Pentagon from '../images/svg/icon-pentagon.inline.svg'
 
-const CategoryIcon = ({category, className}) => {
-  var shape = <Triangle />
+type CategoryIconProps = {
+  category: string
+  className?: string
+}
 
-  switch (String(category)) {
+const CategoryIcon = ({category, className}: CategoryIconProps) => {
+  var shape: JSX.Element = <Triangle />
+
+  switch (category) {
     case 'storytelling':
       shape = <Pentagon />
       break
