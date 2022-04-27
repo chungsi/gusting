@@ -10,7 +10,7 @@ import TiltingCard from '../components/Card/TiltingCard'
 import { concat } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-const DesignHomepage = ({ data}) => {
+const DesignHomepage = ({ data }) => {
 
   const designHome = useSiteMetadata().designHome
   const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${designHome.homeUrlParam}`
@@ -110,7 +110,7 @@ const DesignHomepage = ({ data}) => {
 }
 
 export const data = graphql`
-  query {
+  query DesignHomepage {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/branch/"}}
       sort: {fields: name, order: DESC}

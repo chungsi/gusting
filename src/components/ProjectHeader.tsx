@@ -8,9 +8,9 @@ import { concat } from '../utils/helpers'
 type ProjectHeaderProps = {
   frontmatter: {
     title: string
-    subtitle: string
-    category: string
-    tags: string[]
+    subtitle?: string
+    category?: string
+    tags?: string[]
     heroImage?: ImageDataLike
   }
   className?: string
@@ -24,7 +24,7 @@ const ProjectHeader = ({
   return (
     <header className={className ?? ''}>
       <CategoryIcon
-        category={category}
+        category={category ?? ''}
         className={concat(
           'absolute w-7 -top-8 left-2',
           'lg:w-8 lg:top-2 lg:left-[-4.5rem]'
@@ -53,7 +53,7 @@ const ProjectHeader = ({
       <p className='italic text-lg'>{subtitle}</p>
 
       <p className='text-sm'>
-        {tags.map(tag => `${tag} / `)}
+        {tags?.map(tag => `${tag} / `)}
       </p>
 
       {heroImage &&

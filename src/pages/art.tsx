@@ -109,7 +109,7 @@ const ArtHomepage = ({data}) => {
 }
 
 export const data = graphql`
-  query {
+  query ArtHomepageQuery {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/skypuddle/"}}
       sort: {fields: name, order: DESC}

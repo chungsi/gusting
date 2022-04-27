@@ -7,8 +7,8 @@ import Logo from '../../images/svg/logo.inline.svg'
 import { concat } from '../../utils/helpers'
 
 type ContentLayoutProps = {
-  header?: string
-  homeUrl?: string
+  header?: JSX.Element
+  homeUrl?: string | null
   className?: string
   bodyClassName?: string
   children?: React.ReactNode

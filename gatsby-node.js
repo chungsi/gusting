@@ -35,7 +35,7 @@ const customCreatePages = async (graphql, actions, dir) => {
   allEntries.forEach((node, index) => {
     createPage({
       path: `${dir}/${node.childMdx.slug}`,
-      component: path.resolve(`./src/templates/${dir}.js`),
+      component: path.resolve(`./src/templates/${dir}.tsx`),
       context: {
         id: node.childMdx.id,
         next: index === 0 ? null : allEntries[index - 1],

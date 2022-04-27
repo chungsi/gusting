@@ -1,4 +1,4 @@
-// import remarkUnwrapImages from 'remark-unwrap-images'
+// import type { GatsbyConfig } from 'gatsby'
 
 module.exports = {
   siteMetadata: {
@@ -19,10 +19,24 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
+    // {
+    //   resolve: `gatsby-plugin-typegen`,
+    //   options: {
+    //     outputPath: `./src/@types/graphql-types-typegen.d.ts`,
+    //   }
+    // },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+        jsxPragma: 'jsx',
+      }
+    },
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        fileName: `./src/@types/graphql-types.d.ts`
+        fileName: `./src/@types/graphql-types.d.ts`,
       }
     },
     // {
@@ -119,4 +133,6 @@ module.exports = {
       }
     }
   ],
-};
+}
+
+// export default config
