@@ -1,34 +1,36 @@
 import * as React from 'react'
 
-import BaseCard from './BaseCard'
+import BaseCard, { BaseCardProps } from './BaseCard'
 import CategoryIcon from '../CategoryIcon'
 import HeroImage from './HeroImage'
+
 import { concat } from '../../utils/helpers'
+import { ProjectMdxFrontmatterFragment } from '../../@types/graphql-generated-types'
 
 const TiltingCard = ({
   link,
   frontmatter,
-  cardId,
+  id,
   className,
-}) => {
-  const { category, heroImage, heroImagePos } = frontmatter
+}: BaseCardProps) => {
+  const { category, heroImage, heroImagePos } = frontmatter ?? {}
 
   const categoryIcon = <CategoryIcon
-    category={category}
+    category={category ?? ''}
     className='absolute w-5 left-[-.25rem]'
   />
 
   return (
     <BaseCard
-      id={cardId}
-      link={link}
+      id={id ?? ''}
+      link={link ?? ''}
       frontmatter={frontmatter}
       accents={categoryIcon}
       className={concat(
         '[--bg-rotate:-1.5deg]',
         'even:[--bg-rotate:2deg]',
         'third:[--bg-rotate:-5deg]',
-        className
+        className ?? ''
       )}
     >
 

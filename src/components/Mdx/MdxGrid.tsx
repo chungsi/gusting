@@ -1,6 +1,16 @@
 import * as React from 'react'
 import { concat } from '../../utils/helpers'
 
+type MdxGridProps = {
+  offset?: boolean
+  fullOffset?: boolean
+  two?: boolean
+  three?: boolean
+  four?: boolean
+  five?: boolean
+  children?: React.ReactNode
+}
+
 const MdxGrid = ({
   offset,
   fullOffset,
@@ -9,7 +19,7 @@ const MdxGrid = ({
   four,
   five,
   children
-}) => {
+}: MdxGridProps) => {
 
   return (
     <div className={concat(

@@ -22,9 +22,6 @@ const ContentLayout = ({
   children
 }: ContentLayoutProps) => {
 
-  // Here detect location stuff and change the logo link
-  // console.log(homeUrl)
-
   return (
     <Base
       bodyClassName={bodyClassName}

@@ -1,10 +1,10 @@
 overwrite: true
-schema: "http://localhost:8000/___graphql"
+schema: 'http://localhost:8000/___graphql'
 documents:
-  - "src/**/*.{ts,tsx}"
+  - 'src/**/*.{ts,tsx}'
   - ./node_modules/gatsby*/!(node_modules)/**/*.js
 generates:
-  src/@types/graphql-types.d.ts:
+  ./src/@types/graphql-generated-types.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
+      - typescript
+      - typescript-operations

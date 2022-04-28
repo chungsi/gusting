@@ -12,23 +12,21 @@ import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
 
 import { concat } from '../utils/helpers'
-import type { ProjectTemplateQuery } from '../@types/graphql-types'
+import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
 type ProjectTemplateProps = {
-  mdx: ProjectTemplateQuery
-  location: object
-  pageContext: object
+  mdx: ProjectTemplateQuery["mdx"]
+  location?: PageProps["location"]
+  pageContext?: PageProps["pageContext"]
 }
 
-const ProjectTemplate = ({ data: {mdx: {mdx}}, location, pageContext }: PageProps<ProjectTemplateProps>) => {
-  // console.log('location: ', location)
-  // console.log('URL href: ', (new URL(location.href)))
+const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<ProjectTemplateProps>) => {
 
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
-  const paramKey = useSiteMetadata().homeUrlParamName
+  const paramKey = useSiteMetadata()?.homeUrlParamName ?? ''
   var homeUrlParam: string | null = null
   if (location.href) {
     const urlParams = (new URL(location.href)).searchParams
@@ -41,9 +39,10 @@ const ProjectTemplate = ({ data: {mdx: {mdx}}, location, pageContext }: PageProp
   if (mdx?.frontmatter?.gallery) {
     mdx.frontmatter.gallery.forEach((image, i) => {
       // If gatsbyImageData exists
+      // TODO: better way to check existence and cast as type?
       const imageData = image?.childImageSharp?.gatsbyImageData
-      if (imageData != null) {
-        galleryImages[`image${i+1}`] = getImage(imageData) ?? ''
+      if (image?.childImageSharp?.gatsbyImageData) {
+        galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
       } else {
         galleryImages[`image${i+1}`] = image?.publicURL ?? ''
       }
@@ -55,7 +54,7 @@ const ProjectTemplate = ({ data: {mdx: {mdx}}, location, pageContext }: PageProp
   return (
     <ContentLayout
       homeUrl={homeUrlParam}
-      header={<ProjectHeader frontmatter={mdx?.frontmatter}/>}
+      header={<ProjectHeader frontmatter={mdx?.frontmatter!}/>}
       bodyClassName={concat(
         mdx?.frontmatter?.category ?? '',
         'border-b-8 border-solid border-th-primary'
@@ -84,7 +83,7 @@ export const query = graphql`
   query ProjectTemplate ($id: String) {
     mdx(id: {eq: $id}) {
       body
-      ...ProjectMdxFrontmatterFragment
+      ...ProjectMdxFrontmatter
       frontmatter {
         gallery {
           publicURL

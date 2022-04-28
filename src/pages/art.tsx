@@ -139,7 +139,7 @@ export const data = graphql`
         childMdx {
           id
           slug
-          ...ProjectMdxFrontmatterFragment
+          ...ProjectMdxFrontmatter
         }
         sourceInstanceName
       }

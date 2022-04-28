@@ -1,7 +1,16 @@
 import * as React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { concat } from '../../utils/helpers'
+
+type MdxGalleryImageProps = {
+  gatsbyImageData: IGatsbyImageData
+  caption?: string
+  cover?: boolean
+  backCover?: boolean
+  offset?: boolean
+  children?: React.ReactNode
+}
 
 // TODO: Create generic image container that this component calls for gatsby image
 // so that it can be used within grid
@@ -12,7 +21,7 @@ const MdxGalleryImage = ({
   backCover,
   offset,
   children
-}) => {
+}: MdxGalleryImageProps) => {
 
   return (
     <article className='mb-2xl'>

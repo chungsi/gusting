@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
@@ -8,12 +8,13 @@ import Logo from '../images/svg/logo.inline.svg'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat } from '../utils/helpers'
+import { DesignHomepageQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-const DesignHomepage = ({ data }) => {
+const DesignHomepage = ({ data }: { data: PageProps<DesignHomepageQuery> }) => {
 
-  const designHome = useSiteMetadata().designHome
-  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${designHome.homeUrlParam}`
+  const designHome = useSiteMetadata()?.designHome
+  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
@@ -137,7 +138,7 @@ export const data = graphql`
         childMdx {
           id
           slug
-          ...ProjectMdxFrontmatterFragment
+          ...ProjectMdxFrontmatter
         }
       }
     }

@@ -8,13 +8,14 @@
     "gatsby"
   ],
   "scripts": {
-    "dev": "gatsby develop",
+    "dev": "gatsby develop & graphql-codegen --config codegen.yml -w",
     "start": "npm run dev",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
-    "gen-graphql": "graphql-codegen --config codegen.yml"
+    "generate-graphql": "graphql-codegen --config codegen.yml",
+    "watch-graphql": "graphql-codegen --config codegen.yml -w"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -59,7 +60,6 @@
     "@graphql-codegen/cli": "2.6.2",
     "@graphql-codegen/typescript": "2.4.8",
     "@graphql-codegen/typescript-operations": "^2.3.5",
-    "@graphql-codegen/typescript-react-apollo": "3.2.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@types/jest": "^27.4.1",

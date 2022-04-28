@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getSrc, ImageDataLike } from 'gatsby-plugin-image'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import CategoryIcon from './CategoryIcon'
 
@@ -8,10 +8,10 @@ import { concat } from '../utils/helpers'
 type ProjectHeaderProps = {
   frontmatter: {
     title: string
-    subtitle?: string
-    category?: string
-    tags?: string[]
-    heroImage?: ImageDataLike
+    subtitle?: string | null | undefined
+    category?: string | null | undefined
+    tags?: (string | null)[] | null | undefined
+    heroImage?: object | null | undefined
   }
   className?: string
 }
@@ -23,23 +23,27 @@ const ProjectHeader = ({
 
   return (
     <header className={className ?? ''}>
-      <CategoryIcon
-        category={category ?? ''}
-        className={concat(
-          'absolute w-7 -top-8 left-2',
-          'lg:w-8 lg:top-2 lg:left-[-4.5rem]'
-        )}
-      />
+      {category &&
+        <CategoryIcon
+          category={category}
+          className={concat(
+            'absolute w-7 -top-8 left-2',
+            'lg:w-8 lg:top-2 lg:left-[-4.5rem]'
+          )}
+        />
+      }
 
       <h1 className='relative inline-block mb-xs'>
         {title}
 
-        <span className={concat(
-          'font-mono italic font-light text-sm',
-          'inline-block p-[0_1em]'
-        )}>
-          &#123;{category}&#125;
-        </span>
+        {category &&
+          <span className={concat(
+            'font-mono italic font-light text-sm',
+            'inline-block p-[0_1em]'
+          )}>
+            &#123;{category}&#125;
+          </span>
+        }
 
         <span
           aria-hidden
@@ -50,16 +54,20 @@ const ProjectHeader = ({
         />
       </h1>
 
-      <p className='italic text-lg'>{subtitle}</p>
+      {subtitle &&
+        <p className='italic text-lg'>{subtitle}</p>
+      }
 
-      <p className='text-sm'>
-        {tags?.map(tag => `${tag} / `)}
-      </p>
+      {tags &&
+        <p className='text-sm'>
+          {tags.map(tag => `${tag} / `)}
+        </p>
+      }
 
       {heroImage &&
         <img
           aria-hidden
-          src={getSrc(heroImage)}
+          src={getSrc(heroImage as IGatsbyImageData)}
           alt=''
           className={concat(
             'absolute right-[-2rem] top-[-1rem] z-[-1] opacity-70',

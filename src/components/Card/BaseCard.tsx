@@ -1,0 +1,46 @@
+import * as React from 'react'
+import { Link } from 'gatsby'
+import ProjectExcerpt from '../ProjectExcerpt'
+
+import { concat } from '../../utils/helpers'
+import { ProjectMdxFrontmatterFragment } from '../../@types/graphql-generated-types'
+
+export type BaseCardProps = {
+  link: string
+  frontmatter: ProjectMdxFrontmatterFragment["frontmatter"]
+  accents?: string | JSX.Element
+  id?: string
+  className?: string
+  children?: React.ReactNode
+}
+
+const BaseCard = ({
+  link,
+  id,
+  className,
+  frontmatter,
+  accents,
+  children
+}: BaseCardProps) => {
+  // const { title, subtitle, category, tags } = frontmatter ?? {}
+
+  return (
+    <Link
+      to={link ?? ''}
+      id={id ?? ''}
+      className={concat(
+        'relative block px-lg py-xl [text-decoration:none] group',
+        frontmatter?.category ?? '',
+        className ?? '',
+      )}
+    >
+
+      {accents}
+      <ProjectExcerpt frontmatter={ frontmatter! } />
+      {children}
+
+    </Link>
+  )
+}
+
+export default BaseCard

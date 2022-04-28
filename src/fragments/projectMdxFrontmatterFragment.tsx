@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  fragment ProjectMdxFrontmatterFragment on Mdx {
+  fragment ProjectMdxFrontmatter on Mdx {
     frontmatter {
       title
       subtitle
