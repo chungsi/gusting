@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
@@ -8,34 +8,52 @@ import Logo from '../images/svg/logo.inline.svg'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat } from '../utils/helpers'
+import { DesignHomepageQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-const DesignHomepage = ({ data}) => {
 
-  const designHome = useSiteMetadata().designHome
-  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${designHome.homeUrlParam}`
+// TODO: consolidate or make common type for art and design homepages
+type DesignHomepageProps = {
+  // TODO: why can't this one use the "nodes" to get that array?
+  // Always throws errors with the returned data being an object and not an array
+  heroImages: DesignHomepageQuery["heroImages"]
+  featuredProjects: DesignHomepageQuery["featuredProjects"]
+  // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
+}
+
+const DesignHomepage = ({
+  data: {
+    heroImages,
+    featuredProjects
+  }
+}: PageProps<DesignHomepageProps>) => {
+
+  const designHome = useSiteMetadata()?.designHome
+  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
+
+  console.log('heroImages test: ', heroImages)
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
     {
       media: '(min-width: 70rem)',
-      srcset: getSrcSet(data.heroImages.nodes[0]),
+      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(data.heroImages.nodes[1]),
+      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 44rem)',
-      srcset: getSrcSet(data.heroImages.nodes[2]),
+      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(data.heroImages.nodes[3]),
+      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(data.heroImages.nodes[4]),
+      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData),
     },
   ]
 
@@ -79,8 +97,8 @@ const DesignHomepage = ({ data}) => {
       )}>
 
         <header>
-          <h1>{designHome.title}</h1>
-          <p className='italic'>{designHome.subtitle}</p>
+          <h1>{designHome?.title}</h1>
+          <p className='italic'>{designHome?.subtitle}</p>
         </header>
 
         <section className='mt-20'>
@@ -91,12 +109,12 @@ const DesignHomepage = ({ data}) => {
             'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
-            {data.featuredProjects.nodes.map((project, i) => (
+            {featuredProjects?.nodes.map((project, i) => (
               <TiltingCard
                 key={i}
-                cardId={project.childMdx.slug}
-                link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-                frontmatter={project.childMdx.frontmatter}
+                id={project?.childMdx?.slug}
+                link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+                frontmatter={project?.childMdx?.frontmatter}
               />
             ))}
           </div>
@@ -110,7 +128,7 @@ const DesignHomepage = ({ data}) => {
 }
 
 export const data = graphql`
-  query {
+  query DesignHomepage {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/branch/"}}
       sort: {fields: name, order: DESC}
@@ -137,7 +155,7 @@ export const data = graphql`
         childMdx {
           id
           slug
-          ...ProjectMdxFrontmatterFragment
+          ...ProjectMdxFrontmatter
         }
       }
     }

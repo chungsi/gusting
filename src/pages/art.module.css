@@ -58,7 +58,40 @@
 }
 
 .featured-grid {
-  display: grid;
-  @include grid-using-areas;
   margin-bottom: var(--space-3xl);
+  display: grid;
+  gap: 2rem;
+  max-width: var(--space-6xl);
+
+  @screen xs-th {
+    max-width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: minmax(4rem, auto);
+    grid-template-areas:
+      "bk1 bk1 bk1 .   .   .  "
+      ".   .   .   bk2 bk2 bk2"
+      "bk3 bk3 bk3 bk2 bk2 bk2"
+      "bk3 bk3 bk3 bk4 bk4 bk4"
+      ".   .   .   bk4 bk4 bk4";
+
+    .project-card {
+      &:nth-of-type(1) {grid-area: bk1;}
+      &:nth-of-type(2) {grid-area: bk2;}
+      &:nth-of-type(3) {grid-area: bk3;}
+      &:nth-of-type(4) {grid-area: bk4;}
+    }
+  }
+
+  @screen lg-th {
+    gap: 1rem;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: minmax(4rem, auto);
+    grid-template-areas:
+      "bk1 bk1 bk1 bk1 .   .   .  "
+      ".   .   .   .   bk2 bk2 bk2"
+      "bk3 bk3 bk3 .   bk2 bk2 bk2"
+      "bk3 bk3 bk3 .   .   .   .  "
+      "bk3 bk3 bk3 bk4 bk4 bk4 .  "
+      ".   .   .   bk4 bk4 bk4 .  ";
+  }
 }

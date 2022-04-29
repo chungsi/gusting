@@ -1,27 +1,28 @@
 import * as React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, PageProps } from 'gatsby'
+
 import Layout from '../components/Layout'
 
-const ListingsPage = ({ data }) => {
+import { ListingsPageQuery } from '../@types/graphql-generated-types'
 
-  const entry = (entry, parentDir) => (
-    <article key={entry.id}>
-      <h4>
-        <Link to={`/${parentDir}/${entry.slug}`}>
-          {entry.frontmatter.title}
-        </Link>
-      </h4>
-    </article>
-  )
+const ListingsPage = ({ data: {allFile} }: PageProps<{allFile:ListingsPageQuery["allFile"]}>) => {
 
   return (
     <Layout>
       <h1>All of the Things</h1>
       {
-        data.allFile.group.map(group =>
+        allFile.group.map(group =>
           <>
             <h2 className="mono" key={group.fieldValue}>{group.fieldValue}</h2>
-            {group.nodes.map(node => entry(node.childMdx, group.fieldValue))}
+            {group.nodes.map(node =>
+              <article key={node?.childMdx?.id}>
+                <h4>
+                  <Link to={`/${group.fieldValue}/${node?.childMdx?.slug}`}>
+                    {node?.childMdx?.frontmatter?.title}
+                  </Link>
+                </h4>
+              </article>
+            )}
           </>
         )
       }
@@ -30,7 +31,7 @@ const ListingsPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query {
+  query ListingsPage {
     allFile(filter: {extension: {eq: "mdx"}}) {
       group(field: sourceInstanceName) {
         fieldValue

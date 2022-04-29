@@ -10,7 +10,7 @@ type BaseLayoutProps = {
   className?: string
   bodyClassName?: string
   id?: string
-  children?: React.ReactNode
+  children?: React.ReactNode | React.ReactNode[]
 }
 
 const BaseLayout = ({

@@ -1,4 +1,4 @@
-// import remarkUnwrapImages from 'remark-unwrap-images'
+// import type { GatsbyConfig } from 'gatsby'
 
 module.exports = {
   siteMetadata: {
@@ -20,9 +20,11 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
     {
-      resolve: `gatsby-plugin-graphql-codegen`,
+      resolve: `gatsby-plugin-typescript`,
       options: {
-        fileName: `./src/@types/graphql-types.d.ts`
+        isTSX: true,
+        allExtensions: true,
+        jsxPragma: 'jsx',
       }
     },
     // {
@@ -119,4 +121,6 @@ module.exports = {
       }
     }
   ],
-};
+}
+
+// export default config

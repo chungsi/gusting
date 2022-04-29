@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { getImage } from 'gatsby-plugin-image'
-import { graphql } from 'gatsby'
+import { getImage, IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image'
+import { graphql, PageProps } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -12,17 +12,22 @@ import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
 
 import { concat } from '../utils/helpers'
+import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
-const ProjectPost = ({location, data, pageContext}) => {
-  // console.log('location: ', location)
-  // console.log('URL href: ', (new URL(location.href)))
+type ProjectTemplateProps = {
+  mdx: ProjectTemplateQuery["mdx"]
+  location?: PageProps["location"]
+  pageContext?: PageProps["pageContext"]
+}
+
+const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<ProjectTemplateProps>) => {
 
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
-  const paramKey = useSiteMetadata().homeUrlParamName
-  var homeUrlParam = null
+  const paramKey = useSiteMetadata()?.homeUrlParamName ?? ''
+  var homeUrlParam: string | null = null
   if (location.href) {
     const urlParams = (new URL(location.href)).searchParams
     homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
@@ -30,26 +35,27 @@ const ProjectPost = ({location, data, pageContext}) => {
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
-  var galleryImages = {}
-  if (data.mdx.frontmatter.gallery) {
-    data.mdx.frontmatter.gallery.forEach((image, i) => {
-      // If gatsbyImageData exists
-      if (getImage(image) != null) {
-        galleryImages[`image${i+1}`] = getImage(image)
+  var galleryImages: Record<string, string | IGatsbyImageData> = {}
+  if (mdx?.frontmatter?.gallery) {
+    mdx.frontmatter.gallery.forEach((image, i) => {
+      // TODO: better way to check existence and cast as type?
+      console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
+      if (image?.childImageSharp != null) {
+        galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
       } else {
-        galleryImages[`image${i+1}`] = image.publicURL
+        galleryImages[`image${i+1}`] = image?.publicURL ?? ''
       }
     })
   }
 
-  console.log('frontmatter test', data.mdx.frontmatter)
+  console.log('gallery test', galleryImages)
 
   return (
     <ContentLayout
       homeUrl={homeUrlParam}
-      header={<ProjectHeader frontmatter={data.mdx.frontmatter}/>}
+      header={<ProjectHeader frontmatter={mdx?.frontmatter!}/>}
       bodyClassName={concat(
-        data.mdx.frontmatter.category,
+        mdx?.frontmatter?.category ?? '',
         'border-b-8 border-solid border-th-primary'
       )}
       className='max-w-6xl pb-2xl'
@@ -57,7 +63,7 @@ const ProjectPost = ({location, data, pageContext}) => {
 
       <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
         <MDXRenderer gallery={galleryImages}>
-          {data.mdx.body}
+          {mdx?.body ?? ''}
         </MDXRenderer>
       </MDXProvider>
 
@@ -73,10 +79,10 @@ const ProjectPost = ({location, data, pageContext}) => {
 }
 
 export const query = graphql`
-  query ($id: String) {
+  query ProjectTemplate ($id: String) {
     mdx(id: {eq: $id}) {
       body
-      ...ProjectMdxFrontmatterFragment
+      ...ProjectMdxFrontmatter
       frontmatter {
         gallery {
           publicURL
@@ -89,4 +95,4 @@ export const query = graphql`
   }
 `
 
-export default ProjectPost
+export default ProjectTemplate

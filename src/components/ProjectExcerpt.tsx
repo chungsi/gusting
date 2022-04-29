@@ -4,8 +4,8 @@ import { concat } from '../utils/helpers'
 type ProjectExcerptProps = {
   frontmatter: {
     title: string
-    subtitle: string
-    tags?: string[]
+    subtitle?: string | null | undefined
+    tags?: (string | null)[] | null | undefined
   }
   h1?: boolean
   h2?: boolean
@@ -54,12 +54,14 @@ const ProjectExcerpt = ({
         {title}
       </HeaderTag>
 
-      <p className={concat(
+      {subtitle &&
+        <p className={concat(
         'italic font-light leading-snug',
         'mx-0 mt-2xs mb-md'
-      )}>
-        {subtitle}
-      </p>
+        )}>
+          {subtitle}
+        </p>
+      }
 
       {tags &&
         <ul className='text-sm list-none p-0'>

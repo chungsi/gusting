@@ -1,10 +1,12 @@
+// import type { GatsbyNode } from 'gatsby'
+// import * as path from 'path'
 const path = require('path')
 
 /* TODO: Proper sorting of entries -> put an actual date field in entries? */
 const customCreatePages = async (graphql, actions, dir) => {
   const { createPage } = actions
   const query = await graphql(`
-    query {
+    query CreatePages {
       allFile(
         filter: {
           sourceInstanceName: {eq: "${dir}"},
@@ -35,7 +37,7 @@ const customCreatePages = async (graphql, actions, dir) => {
   allEntries.forEach((node, index) => {
     createPage({
       path: `${dir}/${node.childMdx.slug}`,
-      component: path.resolve(`./src/templates/${dir}.js`),
+      component: path.resolve(`./src/templates/${dir}.tsx`),
       context: {
         id: node.childMdx.id,
         next: index === 0 ? null : allEntries[index - 1],
@@ -44,6 +46,11 @@ const customCreatePages = async (graphql, actions, dir) => {
     })
   });
 }
+
+// export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
+//   await customCreatePages(graphql, actions, 'blog')
+//   await customCreatePages(graphql, actions, 'project')
+// }
 
 exports.createPages = async ({ graphql, actions }) => {
   await customCreatePages(graphql, actions, 'blog')

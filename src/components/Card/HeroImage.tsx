@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { getSrc } from 'gatsby-plugin-image'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { concat } from '../../utils/helpers'
 
-const HeroImage = ({ image, pos }) => {
+const HeroImage = ({ image, pos }: { image: object, pos?: string | null}) => {
   return (
     <img
       aria-hidden
       alt=''
-      src={getSrc(image)}
+      src={getSrc(image as IGatsbyImageData)}
       className={concat(
         'absolute block max-w-[7.25rem] -z-[1] transition',
         'group-hover:translate-x-1 group-hover:-translate-y-1',

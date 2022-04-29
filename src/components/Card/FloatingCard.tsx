@@ -1,26 +1,26 @@
 import * as React from 'react'
 
-import BaseCard from './BaseCard'
+import BaseCard, { BaseCardProps } from './BaseCard'
 import { concat } from '../../utils/helpers'
 import HeroImage from './HeroImage'
 
 const FloatingCard = ({
   link,
   frontmatter,
-  cardId,
+  id,
   className,
-}) => {
-  const { heroImage, heroImagePos } = frontmatter
+}: BaseCardProps) => {
+  const { heroImage, heroImagePos } = frontmatter ?? {}
 
   return (
     <BaseCard
-      id={cardId}
+      id={id}
       link={link}
       frontmatter={frontmatter}
       className={concat(
         'relative',
         'shadow-xl shadow-cobalt-800/20',
-        className
+        className ?? ''
       )}
     >
       {heroImage && <HeroImage image={heroImage} pos={heroImagePos} />}

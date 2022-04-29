@@ -1,13 +1,19 @@
 import * as React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { concat } from '../../utils/helpers'
+
+type MdxImageProps = {
+  gatsbyImageData: IGatsbyImageData
+  imageURL?: string
+  offset?: string
+}
 
 const MdxImage = ({
   gatsbyImageData,
   imageURL,
   offset
-}) => {
+}: MdxImageProps) => {
 
   return (
     <article className='mt-lg first:mt-0'>

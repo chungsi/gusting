@@ -6,7 +6,7 @@ import * as scss from './Layout.module.css'
 import Base from './Layout/BaseLayout'
 
 // TODO: Update this component, because currently only used on the home/landing page
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode | React.ReactNode[] }) => {
 
   const navLink = (path: string, text: string) => (
     <li id={text} className={scss.navLinkItem}>
@@ -34,7 +34,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     // ['/', 'Home'],
     ['/about', 'About'],
     ['/blog', 'Blog'],
-    ['/project', 'Projects'],
     ['/listings', 'Listings'],
     ['/art', 'Art'],
     ['/design', 'Design']
