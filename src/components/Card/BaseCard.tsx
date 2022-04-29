@@ -11,7 +11,7 @@ export type BaseCardProps = {
   accents?: string | JSX.Element
   id?: string | null | undefined
   className?: string
-  children?: React.ReactNode
+  children?: React.ReactNode | React.ReactNode[]
 }
 
 const BaseCard = ({

@@ -21,7 +21,13 @@ type PageContextProps = {
 /*
  * pageContext : from gatsby-node.js getting the next and prev posts
  */
-const BlogPost = ({data: {mdx}, pageContext: {id, next, prev}}: PageProps<BlogPostProps, PageContextProps>) => {
+const BlogPost = ({
+  data: {mdx},
+  pageContext: {
+    id,
+    next,
+    prev
+  }}: PageProps<BlogPostProps, PageContextProps>) => {
 
   // console.log('pageContext test', pageContext)
 

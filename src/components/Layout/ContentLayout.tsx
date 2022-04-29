@@ -11,7 +11,7 @@ type ContentLayoutProps = {
   homeUrl?: string | null
   className?: string
   bodyClassName?: string
-  children?: React.ReactNode
+  children?: React.ReactNode | React.ReactNode[]
 }
 
 const ContentLayout = ({

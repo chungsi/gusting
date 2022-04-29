@@ -14,8 +14,10 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 // TODO: consolidate or make common type for art and design homepages
 type DesignHomepageProps = {
-  heroImages: DesignHomepageQuery["heroImages"]["nodes"]
-  featuredProjects: DesignHomepageQuery["featuredProjects"]["nodes"]
+  // TODO: why can't this one use the "nodes" to get that array?
+  // Always throws errors with the returned data being an object and not an array
+  heroImages: DesignHomepageQuery["heroImages"]
+  featuredProjects: DesignHomepageQuery["featuredProjects"]
   // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
 }
 
@@ -29,27 +31,29 @@ const DesignHomepage = ({
   const designHome = useSiteMetadata()?.designHome
   const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
+  console.log('heroImages test: ', heroImages)
+
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
     {
       media: '(min-width: 70rem)',
-      srcset: getSrcSet(heroImages[0]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(heroImages[1]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 44rem)',
-      srcset: getSrcSet(heroImages[2]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(heroImages[3]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(heroImages[4]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData),
     },
   ]
 
@@ -105,7 +109,7 @@ const DesignHomepage = ({
             'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
-            {featuredProjects.map((project, i) => (
+            {featuredProjects?.nodes.map((project, i) => (
               <TiltingCard
                 key={i}
                 id={project?.childMdx?.slug}

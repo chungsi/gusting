@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as scss from './art.module.css'
 import { graphql, Link, PageProps } from 'gatsby'
-import { getSrcSet, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
 import BaseCard from '../components/Card/BaseCard'
@@ -15,9 +15,9 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
 type ArtHomepageProps = {
-  heroImages: ArtHomepageQuery["heroImages"]["nodes"]
-  featuredProjects: ArtHomepageQuery["featuredProjects"]["nodes"]
-  otherProjects: ArtHomepageQuery["otherProjects"]["nodes"]
+  heroImages: ArtHomepageQuery["heroImages"]
+  featuredProjects: ArtHomepageQuery["featuredProjects"]
+  otherProjects: ArtHomepageQuery["otherProjects"]
 }
 
 const ArtHomepage = ({
@@ -34,23 +34,23 @@ const ArtHomepage = ({
   const heroImagesSrcSet = [
     {
       media: '(min-width: 96rem)',
-      srcset: getSrcSet(heroImages[0]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(heroImages[1]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 39rem)',
-      srcset: getSrcSet(heroImages[2]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(heroImages[3]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(heroImages[4]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData),
     },
   ]
 
@@ -93,7 +93,7 @@ const ArtHomepage = ({
       <h2 className='sr-only'>Projects</h2>
 
       <section className={scss.featuredGrid}>
-        {featuredProjects.map((project, i) => (
+        {featuredProjects?.nodes.map((project, i) => (
           <FloatingCard
             key={i}
             className={scss.projectCard}
@@ -107,7 +107,7 @@ const ArtHomepage = ({
       <section className='grid'>
         <h2 className='sr-only'>Other Projects</h2>
 
-        {otherProjects.map((project, i) =>
+        {otherProjects?.nodes.map((project, i) =>
           <BaseCard
             key={i}
             link={`/project/${project?.childMdx?.slug}`}
