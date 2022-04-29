@@ -4,12 +4,13 @@ import { Link } from 'gatsby'
 import ProjectExcerpt from './ProjectExcerpt'
 
 import { concat } from '../utils/helpers'
+import { Mdx } from '../@types/graphql-generated-types'
 
 type ProjectPaginationProps = {
-  pathPrefix: string
-  pathSuffix: string
-  next: object
-  prev: object
+  pathPrefix?: string
+  pathSuffix?: string
+  next?: Mdx
+  prev?: Mdx
 }
 
 /* TODO: Redesign this to be more descriptive */
@@ -24,11 +25,11 @@ const ProjectPagination = ({
 
       {prev &&
         <Link
-          to={`/${pathPrefix}/${prev.childMdx.slug}/${pathSuffix ?? ''}`}
+          to={`/${pathPrefix}/${prev?.slug}/${pathSuffix ?? ''}`}
           className='block text-right group'
         >
-          {prev.childMdx.frontmatter.title}
-          {/* <ProjectExcerpt frontmatter={prev.childMdx.frontmatter} /> */}
+          {prev?.frontmatter?.title}
+          {/* <ProjectExcerpt frontmatter={prev?.frontmatter} /> */}
 
           <span
             aria-hidden
@@ -41,7 +42,7 @@ const ProjectPagination = ({
 
       {next &&
         <Link
-          to={`/${pathPrefix}/${next.childMdx.slug}/${pathSuffix ?? ''}`}
+          to={`/${pathPrefix}/${next?.slug}/${pathSuffix ?? ''}`}
           className='block group'
         >
           <span
@@ -51,7 +52,7 @@ const ProjectPagination = ({
             «
           </span>
 
-          {next.childMdx.frontmatter.title}
+          {next?.frontmatter?.title}
           {/* <ProjectExcerpt frontmatter={next.childMdx.frontmatter} /> */}
         </Link>
       }

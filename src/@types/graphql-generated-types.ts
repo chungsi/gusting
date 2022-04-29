@@ -3990,12 +3990,12 @@ export type ListingsPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ListingsPageQuery = { __typename?: 'Query', allFile: { __typename?: 'FileConnection', group: Array<{ __typename?: 'FileGroupConnection', fieldValue?: string | null, nodes: Array<{ __typename?: 'File', childMdx?: { __typename?: 'Mdx', slug?: string | null, id: string, frontmatter?: { __typename?: 'MdxFrontmatter', date?: any | null, title: string } | null } | null }> }> } };
 
-export type Unnamed_1_QueryVariables = Exact<{
+export type BlogPostQueryVariables = Exact<{
   id?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, date?: any | null } | null } | null };
+export type BlogPostQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, date?: any | null } | null } | null };
 
 export type ProjectTemplateQueryVariables = Exact<{
   id?: InputMaybe<Scalars['String']>;
