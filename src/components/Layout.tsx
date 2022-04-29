@@ -34,7 +34,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     // ['/', 'Home'],
     ['/about', 'About'],
     ['/blog', 'Blog'],
-    ['/project', 'Projects'],
     ['/listings', 'Listings'],
     ['/art', 'Art'],
     ['/design', 'Design']

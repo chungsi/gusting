@@ -1,42 +1,56 @@
 import * as React from 'react'
 import * as scss from './art.module.css'
-import { graphql, Link } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { graphql, Link, PageProps } from 'gatsby'
+import { getSrcSet, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
+import BaseCard from '../components/Card/BaseCard'
+import FloatingCard from '../components/Card/FloatingCard'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
-import FloatingCard from '../components/Card/FloatingCard'
 
+import { ArtHomepageQuery } from '../@types/graphql-generated-types'
 import { concat } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import BaseCard from '../components/Card/BaseCard'
 
-const ArtHomepage = ({data}) => {
 
-  const artHome = useSiteMetadata().artHome
-  const homeUrlParam = `?${useSiteMetadata().homeUrlParamName}=${artHome.homeUrlParam}`
+type ArtHomepageProps = {
+  heroImages: ArtHomepageQuery["heroImages"]["nodes"]
+  featuredProjects: ArtHomepageQuery["featuredProjects"]["nodes"]
+  otherProjects: ArtHomepageQuery["otherProjects"]["nodes"]
+}
+
+const ArtHomepage = ({
+  data: {
+    heroImages,
+    featuredProjects,
+    otherProjects,
+  }
+}: PageProps<ArtHomepageProps>) => {
+
+  const artHome = useSiteMetadata()?.artHome
+  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${artHome?.homeUrlParam}`
 
   const heroImagesSrcSet = [
     {
       media: '(min-width: 96rem)',
-      srcset: getSrcSet(data.heroImages.nodes[0]),
+      srcset: getSrcSet(heroImages[0]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(data.heroImages.nodes[1]),
+      srcset: getSrcSet(heroImages[1]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 39rem)',
-      srcset: getSrcSet(data.heroImages.nodes[2]),
+      srcset: getSrcSet(heroImages[2]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(data.heroImages.nodes[3]),
+      srcset: getSrcSet(heroImages[3]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(data.heroImages.nodes[4]),
+      srcset: getSrcSet(heroImages[4]?.childImageSharp?.gatsbyImageData),
     },
   ]
 
@@ -71,21 +85,21 @@ const ArtHomepage = ({data}) => {
           'md-th:-mt-2xs'
         )}/>
         <div>
-          <h1 className='tracking-widest'>{artHome.title}</h1>
-          <p className='font-light'>{artHome.subtitle}</p>
+          <h1 className='tracking-widest'>{artHome?.title}</h1>
+          <p className='font-light'>{artHome?.subtitle}</p>
         </div>
       </header>
 
       <h2 className='sr-only'>Projects</h2>
 
       <section className={scss.featuredGrid}>
-        {data.featuredProjects.nodes.map((project, i) => (
+        {featuredProjects.map((project, i) => (
           <FloatingCard
             key={i}
             className={scss.projectCard}
-            cardId={project.childMdx.slug}
-            link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-            frontmatter={project.childMdx.frontmatter}
+            id={project?.childMdx?.slug}
+            link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+            frontmatter={project?.childMdx?.frontmatter}
           />
         ))}
       </section>
@@ -93,11 +107,11 @@ const ArtHomepage = ({data}) => {
       <section className='grid'>
         <h2 className='sr-only'>Other Projects</h2>
 
-        {data.otherProjects.nodes.map((project, i) =>
+        {otherProjects.map((project, i) =>
           <BaseCard
             key={i}
-            link={`/project/${project.childMdx.slug}`}
-            frontmatter={project.childMdx.frontmatter}
+            link={`/project/${project?.childMdx?.slug}`}
+            frontmatter={project?.childMdx?.frontmatter}
           />
         )}
 
@@ -109,7 +123,7 @@ const ArtHomepage = ({data}) => {
 }
 
 export const data = graphql`
-  query ArtHomepageQuery {
+  query ArtHomepage {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/skypuddle/"}}
       sort: {fields: name, order: DESC}

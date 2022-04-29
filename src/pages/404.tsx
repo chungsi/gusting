@@ -24,6 +24,7 @@ const codeStyles = {
   borderRadius: 4,
 }
 
+// TODO: Remake this page
 // markup
 const NotFoundPage = () => {
   return (

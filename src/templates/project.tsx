@@ -38,10 +38,9 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
   var galleryImages: Record<string, string | IGatsbyImageData> = {}
   if (mdx?.frontmatter?.gallery) {
     mdx.frontmatter.gallery.forEach((image, i) => {
-      // If gatsbyImageData exists
       // TODO: better way to check existence and cast as type?
-      const imageData = image?.childImageSharp?.gatsbyImageData
-      if (image?.childImageSharp?.gatsbyImageData) {
+      console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
+      if (image?.childImageSharp != null) {
         galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
       } else {
         galleryImages[`image${i+1}`] = image?.publicURL ?? ''
@@ -49,7 +48,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     })
   }
 
-  console.log('frontmatter test', mdx?.frontmatter)
+  console.log('gallery test', galleryImages)
 
   return (
     <ContentLayout

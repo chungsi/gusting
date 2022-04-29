@@ -11,7 +11,20 @@ import { concat } from '../utils/helpers'
 import { DesignHomepageQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-const DesignHomepage = ({ data }: { data: PageProps<DesignHomepageQuery> }) => {
+
+// TODO: consolidate or make common type for art and design homepages
+type DesignHomepageProps = {
+  heroImages: DesignHomepageQuery["heroImages"]["nodes"]
+  featuredProjects: DesignHomepageQuery["featuredProjects"]["nodes"]
+  // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
+}
+
+const DesignHomepage = ({
+  data: {
+    heroImages,
+    featuredProjects
+  }
+}: PageProps<DesignHomepageProps>) => {
 
   const designHome = useSiteMetadata()?.designHome
   const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
@@ -20,23 +33,23 @@ const DesignHomepage = ({ data }: { data: PageProps<DesignHomepageQuery> }) => {
   const heroImagesSrcSet = [
     {
       media: '(min-width: 70rem)',
-      srcset: getSrcSet(data.heroImages.nodes[0]),
+      srcset: getSrcSet(heroImages[0]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(data.heroImages.nodes[1]),
+      srcset: getSrcSet(heroImages[1]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 44rem)',
-      srcset: getSrcSet(data.heroImages.nodes[2]),
+      srcset: getSrcSet(heroImages[2]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(data.heroImages.nodes[3]),
+      srcset: getSrcSet(heroImages[3]?.childImageSharp?.gatsbyImageData),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(data.heroImages.nodes[4]),
+      srcset: getSrcSet(heroImages[4]?.childImageSharp?.gatsbyImageData),
     },
   ]
 
@@ -80,8 +93,8 @@ const DesignHomepage = ({ data }: { data: PageProps<DesignHomepageQuery> }) => {
       )}>
 
         <header>
-          <h1>{designHome.title}</h1>
-          <p className='italic'>{designHome.subtitle}</p>
+          <h1>{designHome?.title}</h1>
+          <p className='italic'>{designHome?.subtitle}</p>
         </header>
 
         <section className='mt-20'>
@@ -92,12 +105,12 @@ const DesignHomepage = ({ data }: { data: PageProps<DesignHomepageQuery> }) => {
             'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
-            {data.featuredProjects.nodes.map((project, i) => (
+            {featuredProjects.map((project, i) => (
               <TiltingCard
                 key={i}
-                cardId={project.childMdx.slug}
-                link={`/project/${project.childMdx.slug}${homeUrlParam}`}
-                frontmatter={project.childMdx.frontmatter}
+                id={project?.childMdx?.slug}
+                link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+                frontmatter={project?.childMdx?.frontmatter}
               />
             ))}
           </div>

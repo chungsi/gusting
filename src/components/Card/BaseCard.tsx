@@ -9,7 +9,7 @@ export type BaseCardProps = {
   link: string
   frontmatter: ProjectMdxFrontmatterFragment["frontmatter"]
   accents?: string | JSX.Element
-  id?: string
+  id?: string | null | undefined
   className?: string
   children?: React.ReactNode
 }

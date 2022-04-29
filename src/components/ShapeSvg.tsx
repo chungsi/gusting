@@ -4,12 +4,12 @@ import Shape1 from '../images/svg/shape-1.inline.svg'
 import Shape3 from '../images/svg/shape-3.inline.svg'
 import Shape4 from '../images/svg/shape-4.inline.svg'
 import Shape5 from '../images/svg/shape-5.inline.svg'
+import { concat } from '../utils/helpers'
 
-const ShapeSvg = ({category, className}) => {
+const ShapeSvg = ({category, className}: {category?: string, className?: string}) => {
   var shape = <Shape1 />
-  var classList = `shape-bg ${category} ${className ?? ''}`;
 
-  switch (String(category)) {
+  switch (category) {
     case 'storytelling':
       shape = <Shape5 />
       break
@@ -24,7 +24,14 @@ const ShapeSvg = ({category, className}) => {
   }
 
   return (
-    <div className={classList} aria-hidden>
+    <div
+      className={concat(
+        'shape-bg',
+        category ?? '',
+        className ?? ''
+      )}
+      aria-hidden
+    >
       {shape}
     </div>
   )
