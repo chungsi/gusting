@@ -1,6 +1,7 @@
-// import type { GatsbyConfig } from 'gatsby'
+import type { GatsbyConfig } from 'gatsby'
 
-module.exports = {
+// module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: 'chungsi',
     subtitle: 'designer / storymaker / artist',
@@ -123,4 +124,4 @@ module.exports = {
   ],
 }
 
-// export default config
+export default config

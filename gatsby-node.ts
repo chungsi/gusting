@@ -1,6 +1,6 @@
-// import type { GatsbyNode } from 'gatsby'
-// import * as path from 'path'
-const path = require('path')
+import type { GatsbyNode } from 'gatsby'
+import * as path from 'path'
+// const path = require('path')
 
 /* TODO: Proper sorting of entries -> put an actual date field in entries? */
 const customCreatePages = async (graphql, actions, dir) => {
@@ -47,12 +47,12 @@ const customCreatePages = async (graphql, actions, dir) => {
   });
 }
 
-// export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
-//   await customCreatePages(graphql, actions, 'blog')
-//   await customCreatePages(graphql, actions, 'project')
-// }
-
-exports.createPages = async ({ graphql, actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
   await customCreatePages(graphql, actions, 'blog')
   await customCreatePages(graphql, actions, 'project')
 }
+
+// exports.createPages = async ({ graphql, actions }) => {
+//   await customCreatePages(graphql, actions, 'blog')
+//   await customCreatePages(graphql, actions, 'project')
+// }
