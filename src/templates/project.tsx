@@ -16,6 +16,7 @@ import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
+// TODO: Remove PageContext if I'm not using it; otherwise need to fix it
 type ProjectTemplateProps = {
   mdx: ProjectTemplateQuery["mdx"]
   location?: PageProps["location"]

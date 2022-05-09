@@ -1,4 +1,4 @@
-@mixin grid-using-rows-cols {
+/* @mixin grid-using-rows-cols {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: minmax(16rem, auto);
   row-gap: 5rem;
@@ -55,7 +55,7 @@
       ".   .   .   bk4 bk4 bk4 .  ";
   }
 
-}
+} */
 
 .featured-grid {
   margin-bottom: var(--space-3xl);

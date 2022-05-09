@@ -10,6 +10,7 @@
 
 /* // scale, size, room, arrange, place, set, order, shift, translate, tofu, empty, width */
 :root {
+  /* TODO: Adjust this for different screen sizes to improve readability */
   --type-scale: 1.25;
 
   --s-3xs: calc(pow(var(--type-scale), -6));

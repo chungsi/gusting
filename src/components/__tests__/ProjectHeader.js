@@ -19,6 +19,7 @@ describe('ProjectHeader', () => {
   })
 })
 
+// Using the other library for testing components
 const TestProjectHeader = () => <ProjectHeader
   frontmatter={{
     title: 'Project Header',
