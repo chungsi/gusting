@@ -20,18 +20,18 @@ describe('ProjectHeader', () => {
 })
 
 // Using the other library for testing components
-const TestProjectHeader = () => <ProjectHeader
-  frontmatter={{
-    title: 'Project Header',
-    subtitle: 'test project header',
-    category: 'art',
-    tags: ['one', 'two', 'three'],
-  }}
-  data-testid="project-header"
-/>
+// const TestProjectHeader = () => <ProjectHeader
+//   frontmatter={{
+//     title: 'Project Header',
+//     subtitle: 'test project header',
+//     category: 'art',
+//     tags: ['one', 'two', 'three'],
+//   }}
+//   data-testid="project-header"
+// />
 
-test=("Display correct project header", () => {
-  const { getByTestId } = render(<TestProjectHeader />)
-  // Assertion
-  expect(getByTestId('project-header')).toHaveTextContent('Project Header')
-})
+// test("Display correct project header", () => {
+//   const { getByTestId } = render(<TestProjectHeader />)
+//   // Assertion
+//   expect(getByTestId('project-header')).toHaveTextContent('Project Header')
+// })
