@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "gatsby develop & graphql-codegen --config codegen.yml -w",
     "start": "npm run dev",
-    "build": "gatsby build",
+    "build": "jest && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",

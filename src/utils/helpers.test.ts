@@ -20,13 +20,22 @@ describe('the concat helper function', () => {
 describe('the slugify helper function', () => {
   it('should replace invalid characters', () => {
     expect(slugify('/*nv^1i&&d string#?param=value//'))
-      .toBe('/-nv-1i-d-string#?param=value/')
+      .toBe('/-nv-1i&&d-string#?param=value/')
   })
 })
 
 describe('the getQueryParams helper function', () => {
   it('should concat the object into a string', () => {
-    const queryParams = { paramname: "paramvalue", test: "testvalue" }
+    const queryParams = [
+      {
+        name: 'paramname',
+        value: 'paramvalue'
+      },
+      {
+        name: 'test',
+        value: 'testvalue'
+      }
+    ]
     expect(getQueryParams(queryParams))
       .toBe('paramname=paramvalue&test=testvalue')
   })
@@ -41,7 +50,17 @@ describe('the getQueryParams helper function', () => {
 
 describe('the project path helper function', () => {
   it('should return a project path', () => {
-    expect(getProjectPath("test-project", { paramname: "parameter-value" }))
-      .toBe("/project/test-project?paramname=parameter-value")
+    const queryParams = [
+      {
+        name: "paramname",
+        value: "paramvalue",
+      },
+      {
+        name: "test",
+        value: "testvalue",
+      },
+    ]
+    expect(getProjectPath("test-project", queryParams))
+      .toBe("/project/test-project?paramname=paramvalue&test=testvalue")
   })
 })

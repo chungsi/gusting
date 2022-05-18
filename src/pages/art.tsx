@@ -10,7 +10,7 @@ import Footer from '../components/Footer'
 import Logo from '../components/Logo'
 
 import { ArtHomepageQuery } from '../@types/graphql-generated-types'
-import { concat } from '../utils/helpers'
+import { concat, getProjectPath } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
@@ -29,7 +29,10 @@ const ArtHomepage = ({
 }: PageProps<ArtHomepageProps>) => {
 
   const artHome = useSiteMetadata()?.artHome
-  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${artHome?.homeUrlParam}`
+  const artHomeParamName = useSiteMetadata()?.homeUrlParamName
+  const artHomeParamValue = artHome?.homeUrlParam
+  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${artHomeParamValue}`
+
 
   const heroImagesSrcSet = [
     {
@@ -98,7 +101,11 @@ const ArtHomepage = ({
             key={i}
             className={scss.projectCard}
             id={project?.childMdx?.slug}
-            link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+            // link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+            link={getProjectPath(
+              project?.childMdx?.slug ?? '',
+              [{name: artHomeParamName ?? '', value: artHomeParamValue ?? ''}]
+            )}
             frontmatter={project?.childMdx?.frontmatter}
           />
         ))}

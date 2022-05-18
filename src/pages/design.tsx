@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
 import TiltingCard from '../components/Card/TiltingCard'
 
-import { concat } from '../utils/helpers'
+import { concat, getProjectPath } from '../utils/helpers'
 import { DesignHomepageQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
@@ -29,7 +29,9 @@ const DesignHomepage = ({
 }: PageProps<DesignHomepageProps>) => {
 
   const designHome = useSiteMetadata()?.designHome
-  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
+  const designHomeParamName = useSiteMetadata()?.homeUrlParamName
+  const designHomeParamValue = designHome?.homeUrlParam
+  // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
   console.log('heroImages test: ', heroImages)
 
@@ -113,7 +115,10 @@ const DesignHomepage = ({
               <TiltingCard
                 key={i}
                 id={project?.childMdx?.slug}
-                link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
+                link={getProjectPath(
+                  project?.childMdx?.slug ?? '',
+                  [{name: designHomeParamName ?? '', value: designHomeParamValue ?? ''}]
+                )}
                 frontmatter={project?.childMdx?.frontmatter}
               />
             ))}
