@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "gatsby develop & graphql-codegen --config codegen.yml -w",
     "start": "npm run dev",
-    "build": "gatsby build",
+    "build": "jest && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
@@ -62,14 +62,16 @@
     "@graphql-codegen/typescript": "2.4.8",
     "@graphql-codegen/typescript-operations": "^2.3.5",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
+    "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.4.1",
     "@types/react-test-renderer": "^17.0.2",
     "babel-jest": "^28.0.0",
     "babel-preset-gatsby": "^2.12.1",
     "cypress": "^9.6.0",
+    "gatsby-plugin-testing": "^0.3.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.0.0",
+    "jest-environment-jsdom": "^28.1.0",
     "react-test-renderer": "^17.0.2"
   }
 }
