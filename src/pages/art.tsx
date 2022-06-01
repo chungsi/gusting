@@ -169,7 +169,10 @@ export const data = graphql`
       filter: {
         sourceInstanceName: {eq: "project"},
         extension: {eq: "mdx"},
-        childMdx: {frontmatter: {publish: {ne: true}, feature: {ne: true}}}
+        childMdx: {frontmatter: {
+          publish: {eq: true},
+          feature: {ne: true}
+        }}
       }
       sort: {fields: childMdx___frontmatter___date, order: DESC}
     ) {
