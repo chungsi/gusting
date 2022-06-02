@@ -10,6 +10,7 @@ import ProjectHeader from '../components/ProjectHeader'
 import MdxImage from '../components/Mdx/MdxImage'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
+import Seo from '../components/Seo'
 
 import { concat } from '../utils/helpers'
 import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
@@ -40,7 +41,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
   if (mdx?.frontmatter?.gallery) {
     mdx.frontmatter.gallery.forEach((image, i) => {
       // TODO: better way to check existence and cast as type?
-      console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
+      // console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
       if (image?.childImageSharp != null) {
         galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
       } else {
@@ -49,7 +50,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     })
   }
 
-  console.log('gallery test', galleryImages)
+  // console.log('gallery test', galleryImages)
 
   return (
     <ContentLayout
@@ -61,6 +62,11 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
       )}
       className='max-w-6xl pb-2xl'
     >
+
+      <Seo
+        title={mdx?.frontmatter?.title ?? ''}
+        description={mdx?.frontmatter?.description ?? ''}
+      />
 
       <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
         <MDXRenderer gallery={galleryImages}>

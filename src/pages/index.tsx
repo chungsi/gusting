@@ -5,6 +5,7 @@ import { getSrcSet } from 'gatsby-plugin-image'
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import Seo from '../components/Seo'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat, getProjectPath } from '../utils/helpers'
@@ -33,7 +34,7 @@ const DesignHomepageIndex = ({
   const designHomeParamValue = designHome?.homeUrlParam
   // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
-  console.log('heroImages test: ', heroImages)
+  // console.log('heroImages test: ', heroImages)
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
@@ -61,6 +62,7 @@ const DesignHomepageIndex = ({
 
   return (
     <Base id='theme-design'>
+      <Seo title='web dev & design' />
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',

@@ -33,7 +33,7 @@ const DesignHomepage = ({
   const designHomeParamValue = designHome?.homeUrlParam
   // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
-  console.log('heroImages test: ', heroImages)
+  // console.log('heroImages test: ', heroImages)
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [

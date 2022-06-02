@@ -690,6 +690,7 @@ export enum FileFieldsEnum {
   ChildMdxFileAbsolutePath = 'childMdx___fileAbsolutePath',
   ChildMdxFrontmatterCategory = 'childMdx___frontmatter___category',
   ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
+  ChildMdxFrontmatterDescription = 'childMdx___frontmatter___description',
   ChildMdxFrontmatterFeature = 'childMdx___frontmatter___feature',
   ChildMdxFrontmatterGallery = 'childMdx___frontmatter___gallery',
   ChildMdxFrontmatterGalleryAbsolutePath = 'childMdx___frontmatter___gallery___absolutePath',
@@ -935,6 +936,7 @@ export enum FileFieldsEnum {
   ChildrenMdxFileAbsolutePath = 'childrenMdx___fileAbsolutePath',
   ChildrenMdxFrontmatterCategory = 'childrenMdx___frontmatter___category',
   ChildrenMdxFrontmatterDate = 'childrenMdx___frontmatter___date',
+  ChildrenMdxFrontmatterDescription = 'childrenMdx___frontmatter___description',
   ChildrenMdxFrontmatterFeature = 'childrenMdx___frontmatter___feature',
   ChildrenMdxFrontmatterGallery = 'childrenMdx___frontmatter___gallery',
   ChildrenMdxFrontmatterGalleryAbsolutePath = 'childrenMdx___frontmatter___gallery___absolutePath',
@@ -1982,6 +1984,7 @@ export enum MdxFieldsEnum {
   FileAbsolutePath = 'fileAbsolutePath',
   FrontmatterCategory = 'frontmatter___category',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterDescription = 'frontmatter___description',
   FrontmatterFeature = 'frontmatter___feature',
   FrontmatterGallery = 'frontmatter___gallery',
   FrontmatterGalleryAbsolutePath = 'frontmatter___gallery___absolutePath',
@@ -2257,6 +2260,7 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   category?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
+  description?: Maybe<Scalars['String']>;
   feature?: Maybe<Scalars['Boolean']>;
   gallery?: Maybe<Array<Maybe<File>>>;
   heroImage?: Maybe<File>;
@@ -2278,6 +2282,7 @@ export type MdxFrontmatterDateArgs = {
 export type MdxFrontmatterFilterInput = {
   category?: InputMaybe<StringQueryOperatorInput>;
   date?: InputMaybe<DateQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
   feature?: InputMaybe<BooleanQueryOperatorInput>;
   gallery?: InputMaybe<FileFilterListInput>;
   heroImage?: InputMaybe<FileFilterInput>;
@@ -3963,7 +3968,7 @@ export type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PagesQueryQuery = { __typename?: 'Query', allSiteFunction: { __typename?: 'SiteFunctionConnection', nodes: Array<{ __typename?: 'SiteFunction', functionRoute: string }> }, allSitePage: { __typename?: 'SitePageConnection', nodes: Array<{ __typename?: 'SitePage', path: string }> } };
 
-export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null };
+export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null };
 
 export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3973,7 +3978,7 @@ export type SiteMetadataQuery = { __typename?: 'Query', site?: { __typename?: 'S
 export type ArtHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> }, otherProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null } | null } | null }> } };
+export type ArtHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> }, otherProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null } | null } | null }> } };
 
 export type BlogPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3983,7 +3988,12 @@ export type BlogPageQuery = { __typename?: 'Query', allFile: { __typename?: 'Fil
 export type DesignHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DesignHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
+export type DesignHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
+
+export type DesignHomepageIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DesignHomepageIndexQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
 
 export type ListingsPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4002,4 +4012,4 @@ export type ProjectTemplateQueryVariables = Exact<{
 }>;
 
 
-export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null };
+export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null };
