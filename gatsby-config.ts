@@ -3,19 +3,27 @@ import type { GatsbyConfig } from 'gatsby'
 // module.exports = {
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: 'chungsi',
-    subtitle: 'designer / storymaker / artist',
-    homeUrlParamName: 'home',
+    title: "chungsi",
+    subtitle: "designer / storymaker / artist",
+    homeUrlParamName: "home",
     artHome: {
-      title: 'chungsi',
-      subtitle: 'designer / storymaker / artist',
-      homeUrlParam: 'art',
+      title: "chungsi",
+      subtitle: "designer / storymaker / artist",
+      homeUrlParam: "art",
+      metaTitle: "chungsi | designer & storymaker",
+      metaDescription: "",
     },
     designHome: {
-      title: 'ashley',
-      subtitle: 'web developer / designer / storymaker',
-      homeUrlParam: 'design',
-    }
+      title: "ashley",
+      subtitle: "web developer / designer / storymaker",
+      homeUrlParam: "design",
+      metaTitle: "ashley | web dev & design",
+      metaDescription: "",
+    },
+    socials: {
+      twitter: "chungsi_",
+      instagram: "chungsi_",
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -25,8 +33,8 @@ const config: GatsbyConfig = {
       options: {
         isTSX: true,
         allExtensions: true,
-        jsxPragma: 'jsx',
-      }
+        jsxPragma: "jsx",
+      },
     },
     // {
     //   resolve: `gatsby-plugin-sass`,
@@ -45,13 +53,13 @@ const config: GatsbyConfig = {
           modules: true,
         },
         postCssPlugins: [
-            require('postcss-import'),
-            require('postcss-pow'),
-            require('tailwindcss/nesting'),
-            require('tailwindcss'),
-            require('autoprefixer'),
-        ]
-      }
+          require("postcss-import"),
+          require("postcss-pow"),
+          require("tailwindcss/nesting"),
+          require("tailwindcss"),
+          require("autoprefixer"),
+        ],
+      },
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
@@ -59,9 +67,9 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ['auto', 'webp', 'avif']
-        }
-      }
+          formats: ["auto", "webp", "avif"],
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -87,41 +95,39 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: ['.md', '.mdx'],
+        extensions: [".md", ".mdx"],
         // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
         // and a string entry in the plugins array.
-        plugins: [
-          'gatsby-remark-images'
-        ],
+        plugins: ["gatsby-remark-images"],
         gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1000
-            }
+              maxWidth: 1000,
+            },
           },
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/?=gatsby-remark
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               className: `autolink`,
-              elements: [`h1`, `h2`, `h3`, `h4`]
-            }
+              elements: [`h1`, `h2`, `h3`, `h4`],
+            },
           },
         ],
-      }
+      },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /\.inline\.svg$/
+          include: /\.inline\.svg$/,
           // include: `${__dirname}/src/`
-        }
-      }
-    }
+        },
+      },
+    },
   ],
-}
+};
 
 export default config

@@ -34,7 +34,6 @@ const DesignHomepageIndex = ({
   const designHomeParamValue = designHome?.homeUrlParam
   // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
-  // console.log('heroImages test: ', heroImages)
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
@@ -62,7 +61,7 @@ const DesignHomepageIndex = ({
 
   return (
     <Base id='theme-design'>
-      <Seo title='web dev & design' />
+      <Seo home title={designHome?.metaTitle ?? ''} />
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',

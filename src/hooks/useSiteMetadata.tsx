@@ -14,11 +14,19 @@ export const useSiteMetadata = () => {
               title
               subtitle
               homeUrlParam
+              metaTitle
+              metaDescription
             }
             designHome {
               title
               subtitle
               homeUrlParam
+              metaTitle
+              metaDescription
+            }
+            socials {
+              twitter
+              instagram
             }
           }
         }

@@ -3082,13 +3082,19 @@ export enum SiteFieldsEnum {
   Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataArtHomeHomeUrlParam = 'siteMetadata___artHome___homeUrlParam',
+  SiteMetadataArtHomeMetaDescription = 'siteMetadata___artHome___metaDescription',
+  SiteMetadataArtHomeMetaTitle = 'siteMetadata___artHome___metaTitle',
   SiteMetadataArtHomeSubtitle = 'siteMetadata___artHome___subtitle',
   SiteMetadataArtHomeTitle = 'siteMetadata___artHome___title',
   SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataDesignHomeHomeUrlParam = 'siteMetadata___designHome___homeUrlParam',
+  SiteMetadataDesignHomeMetaDescription = 'siteMetadata___designHome___metaDescription',
+  SiteMetadataDesignHomeMetaTitle = 'siteMetadata___designHome___metaTitle',
   SiteMetadataDesignHomeSubtitle = 'siteMetadata___designHome___subtitle',
   SiteMetadataDesignHomeTitle = 'siteMetadata___designHome___title',
   SiteMetadataHomeUrlParamName = 'siteMetadata___homeUrlParamName',
+  SiteMetadataSocialsInstagram = 'siteMetadata___socials___instagram',
+  SiteMetadataSocialsTwitter = 'siteMetadata___socials___twitter',
   SiteMetadataSubtitle = 'siteMetadata___subtitle',
   SiteMetadataTitle = 'siteMetadata___title',
   TrailingSlash = 'trailingSlash'
@@ -3866,6 +3872,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   designHome?: Maybe<SiteSiteMetadataDesignHome>;
   homeUrlParamName?: Maybe<Scalars['String']>;
+  socials?: Maybe<SiteSiteMetadataSocials>;
   subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
@@ -3873,12 +3880,16 @@ export type SiteSiteMetadata = {
 export type SiteSiteMetadataArtHome = {
   __typename?: 'SiteSiteMetadataArtHome';
   homeUrlParam?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataArtHomeFilterInput = {
   homeUrlParam?: InputMaybe<StringQueryOperatorInput>;
+  metaDescription?: InputMaybe<StringQueryOperatorInput>;
+  metaTitle?: InputMaybe<StringQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -3886,12 +3897,16 @@ export type SiteSiteMetadataArtHomeFilterInput = {
 export type SiteSiteMetadataDesignHome = {
   __typename?: 'SiteSiteMetadataDesignHome';
   homeUrlParam?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataDesignHomeFilterInput = {
   homeUrlParam?: InputMaybe<StringQueryOperatorInput>;
+  metaDescription?: InputMaybe<StringQueryOperatorInput>;
+  metaTitle?: InputMaybe<StringQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -3901,8 +3916,20 @@ export type SiteSiteMetadataFilterInput = {
   description?: InputMaybe<StringQueryOperatorInput>;
   designHome?: InputMaybe<SiteSiteMetadataDesignHomeFilterInput>;
   homeUrlParamName?: InputMaybe<StringQueryOperatorInput>;
+  socials?: InputMaybe<SiteSiteMetadataSocialsFilterInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataSocials = {
+  __typename?: 'SiteSiteMetadataSocials';
+  instagram?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataSocialsFilterInput = {
+  instagram?: InputMaybe<StringQueryOperatorInput>;
+  twitter?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -3973,7 +4000,7 @@ export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: 
 export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SiteMetadataQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, subtitle?: string | null, homeUrlParamName?: string | null, artHome?: { __typename?: 'SiteSiteMetadataArtHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null } | null, designHome?: { __typename?: 'SiteSiteMetadataDesignHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null } | null } | null } | null };
+export type SiteMetadataQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, subtitle?: string | null, homeUrlParamName?: string | null, artHome?: { __typename?: 'SiteSiteMetadataArtHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null, metaTitle?: string | null, metaDescription?: string | null } | null, designHome?: { __typename?: 'SiteSiteMetadataDesignHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null, metaTitle?: string | null, metaDescription?: string | null } | null, socials?: { __typename?: 'SiteSiteMetadataSocials', twitter?: string | null, instagram?: string | null } | null } | null } | null };
 
 export type ArtHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
