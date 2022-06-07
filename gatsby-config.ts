@@ -4,7 +4,8 @@ import type { GatsbyConfig } from 'gatsby'
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "chungsi",
-    subtitle: "designer / storymaker / artist",
+    subtitle: "web developer / designer / storymaker",
+    description: "",
     homeUrlParamName: "home",
     artHome: {
       title: "chungsi",

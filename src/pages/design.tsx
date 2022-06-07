@@ -5,6 +5,7 @@ import { getSrcSet } from 'gatsby-plugin-image'
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import Seo from '../components/Seo'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat, getProjectPath } from '../utils/helpers'
@@ -61,6 +62,7 @@ const DesignHomepage = ({
 
   return (
     <Base id='theme-design'>
+      <Seo home title={designHome?.metaTitle ?? ''} />
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',

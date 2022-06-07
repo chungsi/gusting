@@ -50,7 +50,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     })
   }
 
-  // console.log('gallery test', galleryImages)
+  console.log('test mdx graphql object', mdx?.frontmatter)
 
   return (
     <ContentLayout
@@ -64,8 +64,8 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     >
 
       <Seo
-        title={mdx?.frontmatter?.title ?? ''}
-        description={mdx?.frontmatter?.description ?? ''}
+        title={mdx?.frontmatter?.title}
+        description={mdx?.frontmatter?.description}
       />
 
       <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
