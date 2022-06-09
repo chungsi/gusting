@@ -3,28 +3,26 @@ import type { GatsbyConfig } from 'gatsby'
 // module.exports = {
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: "chungsi",
-    subtitle: "web developer / designer / storymaker",
-    description: "",
-    homeUrlParamName: "home",
+    title: 'chungsi',
+    // TODO: is this needed?
+    description: 'web dev & design & art',
+    siteUrl: 'https://www.chungsi.io',
+    homeUrlParamName: 'home',
     artHome: {
-      title: "chungsi",
-      subtitle: "designer / storymaker / artist",
-      homeUrlParam: "art",
-      metaTitle: "chungsi | designer & storymaker",
-      metaDescription: "",
+      title: 'chungsi',
+      subtitle: 'designer / storymaker / artist',
+      metaTitle: 'chungsi | designer & storymaker',
+      homeUrlParam: 'art',
+      // TODO: Do I want a meta description for the pages?
+      // metaDescription: '',
     },
     designHome: {
-      title: "ashley",
-      subtitle: "web developer / designer / storymaker",
-      homeUrlParam: "design",
-      metaTitle: "ashley | web dev & design",
-      metaDescription: "",
-    },
-    socials: {
-      twitter: "chungsi_",
-      instagram: "chungsi_",
-    },
+      title: 'ashley',
+      subtitle: 'web developer / designer / storymaker',
+      metaTitle: 'ashley | web dev & design',
+      homeUrlParam: 'design',
+      // metaDescription: '',
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,6 +34,18 @@ const config: GatsbyConfig = {
         allExtensions: true,
         jsxPragma: "jsx",
       },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'chungsi | web dev & design & art',
+        short_name: 'chungsi',
+        description: 'a portfolio',
+        start_url: '/',
+        // TODO: update favicon later with multiple sizes
+        icon: 'src/images/icon.png',
+        theme_color_in_head: false,
+      }
     },
     // {
     //   resolve: `gatsby-plugin-sass`,

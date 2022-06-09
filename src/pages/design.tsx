@@ -62,7 +62,11 @@ const DesignHomepage = ({
 
   return (
     <Base id='theme-design'>
-      <Seo home title={designHome?.metaTitle ?? ''} />
+      <Seo
+        home
+        title={designHome?.metaTitle ?? ''}
+        slug={location.pathname}
+      />
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',

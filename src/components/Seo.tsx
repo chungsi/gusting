@@ -5,35 +5,37 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 type SeoProps = {
   title: string | undefined
+  slug: string,
   description?: string | null | undefined
+  homeTitle?: string | null | undefined
   home?: boolean
-  // image?: 
+  // TODO: Add image capabilities
+  // image?:
 }
 
-// TODO: add a condition for home page title that will be different
-const Seo = ({ title, description, home }: SeoProps) => {
+const Seo = ({
+  title,
+  description,
+  slug,
+  home,
+  homeTitle
+}: SeoProps) => {
   const siteSeo = useSiteMetadata()
 
-  var titleTemplate = `%s | ${siteSeo?.title}`
+  var titleTemplate = `%s | ${homeTitle ?? siteSeo?.title}`
   if (home) titleTemplate = '%s'
 
   const seo = {
-    title: title ?? siteSeo?.title,
+    title: title ?? siteSeo?.title ?? undefined,
     description: description ?? undefined,
-    // description: description ?? siteSeo?.description,
-    // Site Settings image is called placeholderImage (not image!)
+    canonicalUrl: useSiteMetadata()?.siteUrl + slug
     // image: image ?? siteSeo?.placeholderImage?.asset.url,
-    // favicon: siteSeo?.favicon?.asset.url
   }
 
   return (
     <Helmet titleTemplate={titleTemplate}>
       <title>{seo.title}</title>
-      <meta property='og:title' content={seo.title ?? undefined} />
-
       <meta name='description' content={seo.description} />
-      <meta property='og:description' content={seo.description} />
-      <meta property='twitter:description' content={seo.description} />
 
       {/*
       {seo.image &&
@@ -44,13 +46,16 @@ const Seo = ({ title, description, home }: SeoProps) => {
       }
       */}
 
-      <meta name='og:type' content='website' />
-      {/* <meta property='og:url' content='' /> */}
+      <meta property='og:title' content={seo.title} />
+      <meta property='og:type' content='website' />
+      <meta property='og:url' content={seo.canonicalUrl} />
+      <meta property='og:description' content={seo.description} />
 
-      {/* TODO: Should I use the config variables or just hardcode since I won't be changing this...? */}
+      <meta property='twitter:description' content={seo.description} />
       <meta property='twitter:site' content='@chungsi_' />
       <meta property='twitter:card' content='summary' />
 
+      {/* TODO: A custom set favicon here? Only if I want different icons for different parts of the site */}
       {/* {seo.favicon && <link rel='shortcut icon' type='image/png' href={seo.favicon} />} */}
     </Helmet>
   )

@@ -8,6 +8,7 @@ import BaseCard from '../components/Card/BaseCard'
 import FloatingCard from '../components/Card/FloatingCard'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
+import Seo from '../components/Seo'
 
 import { ArtHomepageQuery } from '../@types/graphql-generated-types'
 import { concat, getProjectPath } from '../utils/helpers'
@@ -18,6 +19,7 @@ type ArtHomepageProps = {
   heroImages: ArtHomepageQuery["heroImages"]
   featuredProjects: ArtHomepageQuery["featuredProjects"]
   otherProjects: ArtHomepageQuery["otherProjects"]
+  location: PageProps["location"]
 }
 
 const ArtHomepage = ({
@@ -25,14 +27,13 @@ const ArtHomepage = ({
     heroImages,
     featuredProjects,
     otherProjects,
-  }
+  },
+  location
 }: PageProps<ArtHomepageProps>) => {
 
   const artHome = useSiteMetadata()?.artHome
   const artHomeParamName = useSiteMetadata()?.homeUrlParamName
   const artHomeParamValue = artHome?.homeUrlParam
-  const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${artHomeParamValue}`
-
 
   const heroImagesSrcSet = [
     {
@@ -70,6 +71,12 @@ const ArtHomepage = ({
         '2xl-th:mt-[12%] 2xl-th:ml-[52%]'
       )}
     >
+      <Seo
+        home
+        title={artHome?.metaTitle ?? ''}
+        slug={location.pathname}
+      />
+
       <div className={concat(
         'fixed top-0 left-0 h-auto w-full -z-[1]',
         '2xl-th:w-[86vw]'
@@ -101,7 +108,6 @@ const ArtHomepage = ({
             key={i}
             className={scss.projectCard}
             id={project?.childMdx?.slug}
-            // link={`/project/${project?.childMdx?.slug}${homeUrlParam}`}
             link={getProjectPath(
               project?.childMdx?.slug ?? '',
               [{name: artHomeParamName ?? '', value: artHomeParamValue ?? ''}]
