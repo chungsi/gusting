@@ -21,13 +21,15 @@ type DesignHomepageProps = {
   heroImages: DesignHomepageQuery["heroImages"]
   featuredProjects: DesignHomepageQuery["featuredProjects"]
   // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
+  location: PageProps["location"]
 }
 
 const DesignHomepage = ({
   data: {
     heroImages,
     featuredProjects
-  }
+  },
+  location
 }: PageProps<DesignHomepageProps>) => {
 
   const designHome = useSiteMetadata()?.designHome
