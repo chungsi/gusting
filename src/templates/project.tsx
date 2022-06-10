@@ -10,6 +10,7 @@ import ProjectHeader from '../components/ProjectHeader'
 import MdxImage from '../components/Mdx/MdxImage'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
+import Seo from '../components/Seo'
 
 import { concat } from '../utils/helpers'
 import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
@@ -27,12 +28,8 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
 
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
-  const paramKey = useSiteMetadata()?.homeUrlParamName ?? ''
-  var homeUrlParam: string | null = null
-  if (location.href) {
-    const urlParams = (new URL(location.href)).searchParams
-    homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
-  }
+  const paramKeyForHome = useSiteMetadata()?.homeUrlParamName ?? ''
+  const homeSlug = getHomeUrlParam(location, paramKeyForHome)
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
@@ -40,7 +37,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
   if (mdx?.frontmatter?.gallery) {
     mdx.frontmatter.gallery.forEach((image, i) => {
       // TODO: better way to check existence and cast as type?
-      console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
+      // console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
       if (image?.childImageSharp != null) {
         galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
       } else {
@@ -49,11 +46,9 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     })
   }
 
-  console.log('gallery test', galleryImages)
-
   return (
     <ContentLayout
-      homeUrl={homeUrlParam}
+      homeUrl={homeSlug}
       header={<ProjectHeader frontmatter={mdx?.frontmatter!}/>}
       bodyClassName={concat(
         mdx?.frontmatter?.category ?? '',
@@ -61,6 +56,14 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
       )}
       className='max-w-6xl pb-2xl'
     >
+
+      <Seo
+        title={mdx?.frontmatter?.title}
+        description={mdx?.frontmatter?.description}
+        homeTitle={getHomeTitle(homeSlug)}
+        slug={location.pathname + location.search}
+        image={mdx?.frontmatter?.metaImage?.publicURL}
+      />
 
       <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
         <MDXRenderer gallery={galleryImages}>
@@ -70,13 +73,35 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
 
       {/* <ProjectPagination
         pathPrefix='project'
-        pathSuffix={`?${paramKey}=${homeUrlParam}`}
+        pathSuffix={`?${paramKey}=${homeSlug}`}
         next={pageContext.next}
         prev={pageContext.prev}
       /> */}
 
     </ContentLayout>
   )
+}
+
+const getHomeUrlParam = (
+  location: PageProps["location"],
+  paramKey: string
+): string | null => {
+  var homeUrlParam: string | null = null
+
+  if (location.href) {
+    const urlParams = (new URL(location.href)).searchParams
+    homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
+  }
+
+  return homeUrlParam
+}
+
+const getHomeTitle = (homeKey: string | null) => {
+  if (homeKey === "design")
+    return useSiteMetadata()?.designHome?.title ?? null
+  else if (homeKey === "art")
+    return useSiteMetadata()?.artHome?.title ?? null
+  return null
 }
 
 export const query = graphql`

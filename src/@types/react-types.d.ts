@@ -4,5 +4,13 @@ declare module "*.svg" {
   export default content
 }
 
+declare module "*.jpg" {
+  export default "" as string;
+}
+
+declare module "*.png" {
+  export default "" as string
+}
+
 // Allow css modules to work
 declare module "*.module.css"

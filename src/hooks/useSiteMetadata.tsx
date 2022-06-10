@@ -8,17 +8,22 @@ export const useSiteMetadata = () => {
         site {
           siteMetadata {
             title
-            subtitle
+            description
+            siteUrl
             homeUrlParamName
             artHome {
               title
               subtitle
               homeUrlParam
+              metaTitle
+              # metaDescription
             }
             designHome {
               title
               subtitle
               homeUrlParam
+              metaTitle
+              # metaDescription
             }
           }
         }

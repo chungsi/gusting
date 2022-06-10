@@ -7,8 +7,8 @@ const Footer = () => {
       <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
       <p>
         Sketchblog:
-        [<a href='https://www.instagram.com/chungsi_/' target='_blank' rel='noreferrer'>instagram</a>]
-        [<a href='https://www.twitter.com/chungsi_/' target='_blank' rel='noreferrer'>twitter</a>]
+        [<a href={`https://www.instagram.com/chungsi_/`} target='_blank' rel='noreferrer'>instagram</a>]
+        [<a href={`https://www.twitter.com/chungsi_/`} target='_blank' rel='noreferrer'>twitter</a>]
       </p>
       <p>
         Made with <a href='https://www.gatsbyjs.com/' target='_blank' rel='noreferrer'>GatsbyJs</a>:

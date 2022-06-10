@@ -5,6 +5,8 @@ import { getSrcSet } from 'gatsby-plugin-image'
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import OgImageDesign from '../images/ogImage_square_design.jpg'
+import Seo from '../components/Seo'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat, getProjectPath } from '../utils/helpers'
@@ -19,13 +21,15 @@ type DesignHomepageProps = {
   heroImages: DesignHomepageQuery["heroImages"]
   featuredProjects: DesignHomepageQuery["featuredProjects"]
   // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
+  location: PageProps["location"]
 }
 
 const DesignHomepage = ({
   data: {
     heroImages,
     featuredProjects
-  }
+  },
+  location
 }: PageProps<DesignHomepageProps>) => {
 
   const designHome = useSiteMetadata()?.designHome
@@ -33,7 +37,7 @@ const DesignHomepage = ({
   const designHomeParamValue = designHome?.homeUrlParam
   // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
-  console.log('heroImages test: ', heroImages)
+  // console.log('heroImages test: ', heroImages)
 
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
@@ -61,6 +65,12 @@ const DesignHomepage = ({
 
   return (
     <Base id='theme-design'>
+      <Seo
+        home
+        title={designHome?.metaTitle ?? ''}
+        slug={location.pathname}
+        image={OgImageDesign}
+      />
 
       <div className={concat(
         'relative left-0 top-0 -z-[1]',

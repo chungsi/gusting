@@ -20,8 +20,6 @@ const BaseLayout = ({
   children
 }: BaseLayoutProps) => {
 
-  console.log('custom id', id)
-
   return (
     <>
       <Helmet>

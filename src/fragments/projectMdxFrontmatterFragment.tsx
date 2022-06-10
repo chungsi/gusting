@@ -5,8 +5,15 @@ export const query = graphql`
     frontmatter {
       title
       subtitle
+      description
       category
       tags
+      metaImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
       heroImagePos
       heroImage {
         childImageSharp {

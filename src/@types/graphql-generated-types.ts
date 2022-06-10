@@ -690,6 +690,7 @@ export enum FileFieldsEnum {
   ChildMdxFileAbsolutePath = 'childMdx___fileAbsolutePath',
   ChildMdxFrontmatterCategory = 'childMdx___frontmatter___category',
   ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
+  ChildMdxFrontmatterDescription = 'childMdx___frontmatter___description',
   ChildMdxFrontmatterFeature = 'childMdx___frontmatter___feature',
   ChildMdxFrontmatterGallery = 'childMdx___frontmatter___gallery',
   ChildMdxFrontmatterGalleryAbsolutePath = 'childMdx___frontmatter___gallery___absolutePath',
@@ -769,6 +770,44 @@ export enum FileFieldsEnum {
   ChildMdxFrontmatterHeroImageSize = 'childMdx___frontmatter___heroImage___size',
   ChildMdxFrontmatterHeroImageSourceInstanceName = 'childMdx___frontmatter___heroImage___sourceInstanceName',
   ChildMdxFrontmatterHeroImageUid = 'childMdx___frontmatter___heroImage___uid',
+  ChildMdxFrontmatterMetaImageAbsolutePath = 'childMdx___frontmatter___metaImage___absolutePath',
+  ChildMdxFrontmatterMetaImageAccessTime = 'childMdx___frontmatter___metaImage___accessTime',
+  ChildMdxFrontmatterMetaImageAtime = 'childMdx___frontmatter___metaImage___atime',
+  ChildMdxFrontmatterMetaImageAtimeMs = 'childMdx___frontmatter___metaImage___atimeMs',
+  ChildMdxFrontmatterMetaImageBase = 'childMdx___frontmatter___metaImage___base',
+  ChildMdxFrontmatterMetaImageBirthTime = 'childMdx___frontmatter___metaImage___birthTime',
+  ChildMdxFrontmatterMetaImageBirthtime = 'childMdx___frontmatter___metaImage___birthtime',
+  ChildMdxFrontmatterMetaImageBirthtimeMs = 'childMdx___frontmatter___metaImage___birthtimeMs',
+  ChildMdxFrontmatterMetaImageBlksize = 'childMdx___frontmatter___metaImage___blksize',
+  ChildMdxFrontmatterMetaImageBlocks = 'childMdx___frontmatter___metaImage___blocks',
+  ChildMdxFrontmatterMetaImageChangeTime = 'childMdx___frontmatter___metaImage___changeTime',
+  ChildMdxFrontmatterMetaImageChildren = 'childMdx___frontmatter___metaImage___children',
+  ChildMdxFrontmatterMetaImageChildrenImageSharp = 'childMdx___frontmatter___metaImage___childrenImageSharp',
+  ChildMdxFrontmatterMetaImageChildrenMdx = 'childMdx___frontmatter___metaImage___childrenMdx',
+  ChildMdxFrontmatterMetaImageCtime = 'childMdx___frontmatter___metaImage___ctime',
+  ChildMdxFrontmatterMetaImageCtimeMs = 'childMdx___frontmatter___metaImage___ctimeMs',
+  ChildMdxFrontmatterMetaImageDev = 'childMdx___frontmatter___metaImage___dev',
+  ChildMdxFrontmatterMetaImageDir = 'childMdx___frontmatter___metaImage___dir',
+  ChildMdxFrontmatterMetaImageExt = 'childMdx___frontmatter___metaImage___ext',
+  ChildMdxFrontmatterMetaImageExtension = 'childMdx___frontmatter___metaImage___extension',
+  ChildMdxFrontmatterMetaImageGid = 'childMdx___frontmatter___metaImage___gid',
+  ChildMdxFrontmatterMetaImageId = 'childMdx___frontmatter___metaImage___id',
+  ChildMdxFrontmatterMetaImageIno = 'childMdx___frontmatter___metaImage___ino',
+  ChildMdxFrontmatterMetaImageMode = 'childMdx___frontmatter___metaImage___mode',
+  ChildMdxFrontmatterMetaImageModifiedTime = 'childMdx___frontmatter___metaImage___modifiedTime',
+  ChildMdxFrontmatterMetaImageMtime = 'childMdx___frontmatter___metaImage___mtime',
+  ChildMdxFrontmatterMetaImageMtimeMs = 'childMdx___frontmatter___metaImage___mtimeMs',
+  ChildMdxFrontmatterMetaImageName = 'childMdx___frontmatter___metaImage___name',
+  ChildMdxFrontmatterMetaImageNlink = 'childMdx___frontmatter___metaImage___nlink',
+  ChildMdxFrontmatterMetaImagePrettySize = 'childMdx___frontmatter___metaImage___prettySize',
+  ChildMdxFrontmatterMetaImagePublicUrl = 'childMdx___frontmatter___metaImage___publicURL',
+  ChildMdxFrontmatterMetaImageRdev = 'childMdx___frontmatter___metaImage___rdev',
+  ChildMdxFrontmatterMetaImageRelativeDirectory = 'childMdx___frontmatter___metaImage___relativeDirectory',
+  ChildMdxFrontmatterMetaImageRelativePath = 'childMdx___frontmatter___metaImage___relativePath',
+  ChildMdxFrontmatterMetaImageRoot = 'childMdx___frontmatter___metaImage___root',
+  ChildMdxFrontmatterMetaImageSize = 'childMdx___frontmatter___metaImage___size',
+  ChildMdxFrontmatterMetaImageSourceInstanceName = 'childMdx___frontmatter___metaImage___sourceInstanceName',
+  ChildMdxFrontmatterMetaImageUid = 'childMdx___frontmatter___metaImage___uid',
   ChildMdxFrontmatterPublish = 'childMdx___frontmatter___publish',
   ChildMdxFrontmatterSubtitle = 'childMdx___frontmatter___subtitle',
   ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
@@ -935,6 +974,7 @@ export enum FileFieldsEnum {
   ChildrenMdxFileAbsolutePath = 'childrenMdx___fileAbsolutePath',
   ChildrenMdxFrontmatterCategory = 'childrenMdx___frontmatter___category',
   ChildrenMdxFrontmatterDate = 'childrenMdx___frontmatter___date',
+  ChildrenMdxFrontmatterDescription = 'childrenMdx___frontmatter___description',
   ChildrenMdxFrontmatterFeature = 'childrenMdx___frontmatter___feature',
   ChildrenMdxFrontmatterGallery = 'childrenMdx___frontmatter___gallery',
   ChildrenMdxFrontmatterGalleryAbsolutePath = 'childrenMdx___frontmatter___gallery___absolutePath',
@@ -1014,6 +1054,44 @@ export enum FileFieldsEnum {
   ChildrenMdxFrontmatterHeroImageSize = 'childrenMdx___frontmatter___heroImage___size',
   ChildrenMdxFrontmatterHeroImageSourceInstanceName = 'childrenMdx___frontmatter___heroImage___sourceInstanceName',
   ChildrenMdxFrontmatterHeroImageUid = 'childrenMdx___frontmatter___heroImage___uid',
+  ChildrenMdxFrontmatterMetaImageAbsolutePath = 'childrenMdx___frontmatter___metaImage___absolutePath',
+  ChildrenMdxFrontmatterMetaImageAccessTime = 'childrenMdx___frontmatter___metaImage___accessTime',
+  ChildrenMdxFrontmatterMetaImageAtime = 'childrenMdx___frontmatter___metaImage___atime',
+  ChildrenMdxFrontmatterMetaImageAtimeMs = 'childrenMdx___frontmatter___metaImage___atimeMs',
+  ChildrenMdxFrontmatterMetaImageBase = 'childrenMdx___frontmatter___metaImage___base',
+  ChildrenMdxFrontmatterMetaImageBirthTime = 'childrenMdx___frontmatter___metaImage___birthTime',
+  ChildrenMdxFrontmatterMetaImageBirthtime = 'childrenMdx___frontmatter___metaImage___birthtime',
+  ChildrenMdxFrontmatterMetaImageBirthtimeMs = 'childrenMdx___frontmatter___metaImage___birthtimeMs',
+  ChildrenMdxFrontmatterMetaImageBlksize = 'childrenMdx___frontmatter___metaImage___blksize',
+  ChildrenMdxFrontmatterMetaImageBlocks = 'childrenMdx___frontmatter___metaImage___blocks',
+  ChildrenMdxFrontmatterMetaImageChangeTime = 'childrenMdx___frontmatter___metaImage___changeTime',
+  ChildrenMdxFrontmatterMetaImageChildren = 'childrenMdx___frontmatter___metaImage___children',
+  ChildrenMdxFrontmatterMetaImageChildrenImageSharp = 'childrenMdx___frontmatter___metaImage___childrenImageSharp',
+  ChildrenMdxFrontmatterMetaImageChildrenMdx = 'childrenMdx___frontmatter___metaImage___childrenMdx',
+  ChildrenMdxFrontmatterMetaImageCtime = 'childrenMdx___frontmatter___metaImage___ctime',
+  ChildrenMdxFrontmatterMetaImageCtimeMs = 'childrenMdx___frontmatter___metaImage___ctimeMs',
+  ChildrenMdxFrontmatterMetaImageDev = 'childrenMdx___frontmatter___metaImage___dev',
+  ChildrenMdxFrontmatterMetaImageDir = 'childrenMdx___frontmatter___metaImage___dir',
+  ChildrenMdxFrontmatterMetaImageExt = 'childrenMdx___frontmatter___metaImage___ext',
+  ChildrenMdxFrontmatterMetaImageExtension = 'childrenMdx___frontmatter___metaImage___extension',
+  ChildrenMdxFrontmatterMetaImageGid = 'childrenMdx___frontmatter___metaImage___gid',
+  ChildrenMdxFrontmatterMetaImageId = 'childrenMdx___frontmatter___metaImage___id',
+  ChildrenMdxFrontmatterMetaImageIno = 'childrenMdx___frontmatter___metaImage___ino',
+  ChildrenMdxFrontmatterMetaImageMode = 'childrenMdx___frontmatter___metaImage___mode',
+  ChildrenMdxFrontmatterMetaImageModifiedTime = 'childrenMdx___frontmatter___metaImage___modifiedTime',
+  ChildrenMdxFrontmatterMetaImageMtime = 'childrenMdx___frontmatter___metaImage___mtime',
+  ChildrenMdxFrontmatterMetaImageMtimeMs = 'childrenMdx___frontmatter___metaImage___mtimeMs',
+  ChildrenMdxFrontmatterMetaImageName = 'childrenMdx___frontmatter___metaImage___name',
+  ChildrenMdxFrontmatterMetaImageNlink = 'childrenMdx___frontmatter___metaImage___nlink',
+  ChildrenMdxFrontmatterMetaImagePrettySize = 'childrenMdx___frontmatter___metaImage___prettySize',
+  ChildrenMdxFrontmatterMetaImagePublicUrl = 'childrenMdx___frontmatter___metaImage___publicURL',
+  ChildrenMdxFrontmatterMetaImageRdev = 'childrenMdx___frontmatter___metaImage___rdev',
+  ChildrenMdxFrontmatterMetaImageRelativeDirectory = 'childrenMdx___frontmatter___metaImage___relativeDirectory',
+  ChildrenMdxFrontmatterMetaImageRelativePath = 'childrenMdx___frontmatter___metaImage___relativePath',
+  ChildrenMdxFrontmatterMetaImageRoot = 'childrenMdx___frontmatter___metaImage___root',
+  ChildrenMdxFrontmatterMetaImageSize = 'childrenMdx___frontmatter___metaImage___size',
+  ChildrenMdxFrontmatterMetaImageSourceInstanceName = 'childrenMdx___frontmatter___metaImage___sourceInstanceName',
+  ChildrenMdxFrontmatterMetaImageUid = 'childrenMdx___frontmatter___metaImage___uid',
   ChildrenMdxFrontmatterPublish = 'childrenMdx___frontmatter___publish',
   ChildrenMdxFrontmatterSubtitle = 'childrenMdx___frontmatter___subtitle',
   ChildrenMdxFrontmatterTags = 'childrenMdx___frontmatter___tags',
@@ -1982,6 +2060,7 @@ export enum MdxFieldsEnum {
   FileAbsolutePath = 'fileAbsolutePath',
   FrontmatterCategory = 'frontmatter___category',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterDescription = 'frontmatter___description',
   FrontmatterFeature = 'frontmatter___feature',
   FrontmatterGallery = 'frontmatter___gallery',
   FrontmatterGalleryAbsolutePath = 'frontmatter___gallery___absolutePath',
@@ -2161,6 +2240,94 @@ export enum MdxFieldsEnum {
   FrontmatterHeroImageSize = 'frontmatter___heroImage___size',
   FrontmatterHeroImageSourceInstanceName = 'frontmatter___heroImage___sourceInstanceName',
   FrontmatterHeroImageUid = 'frontmatter___heroImage___uid',
+  FrontmatterMetaImageAbsolutePath = 'frontmatter___metaImage___absolutePath',
+  FrontmatterMetaImageAccessTime = 'frontmatter___metaImage___accessTime',
+  FrontmatterMetaImageAtime = 'frontmatter___metaImage___atime',
+  FrontmatterMetaImageAtimeMs = 'frontmatter___metaImage___atimeMs',
+  FrontmatterMetaImageBase = 'frontmatter___metaImage___base',
+  FrontmatterMetaImageBirthTime = 'frontmatter___metaImage___birthTime',
+  FrontmatterMetaImageBirthtime = 'frontmatter___metaImage___birthtime',
+  FrontmatterMetaImageBirthtimeMs = 'frontmatter___metaImage___birthtimeMs',
+  FrontmatterMetaImageBlksize = 'frontmatter___metaImage___blksize',
+  FrontmatterMetaImageBlocks = 'frontmatter___metaImage___blocks',
+  FrontmatterMetaImageChangeTime = 'frontmatter___metaImage___changeTime',
+  FrontmatterMetaImageChildImageSharpChildren = 'frontmatter___metaImage___childImageSharp___children',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildImageSharpGatsbyImageData = 'frontmatter___metaImage___childImageSharp___gatsbyImageData',
+  FrontmatterMetaImageChildImageSharpId = 'frontmatter___metaImage___childImageSharp___id',
+  FrontmatterMetaImageChildMdxBody = 'frontmatter___metaImage___childMdx___body',
+  FrontmatterMetaImageChildMdxChildren = 'frontmatter___metaImage___childMdx___children',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildMdxExcerpt = 'frontmatter___metaImage___childMdx___excerpt',
+  FrontmatterMetaImageChildMdxFileAbsolutePath = 'frontmatter___metaImage___childMdx___fileAbsolutePath',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildMdxHeadings = 'frontmatter___metaImage___childMdx___headings',
+  FrontmatterMetaImageChildMdxHtml = 'frontmatter___metaImage___childMdx___html',
+  FrontmatterMetaImageChildMdxId = 'frontmatter___metaImage___childMdx___id',
+  FrontmatterMetaImageChildMdxMdxAst = 'frontmatter___metaImage___childMdx___mdxAST',
+  FrontmatterMetaImageChildMdxRawBody = 'frontmatter___metaImage___childMdx___rawBody',
+  FrontmatterMetaImageChildMdxSlug = 'frontmatter___metaImage___childMdx___slug',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildMdxTableOfContents = 'frontmatter___metaImage___childMdx___tableOfContents',
+  FrontmatterMetaImageChildMdxTimeToRead = 'frontmatter___metaImage___childMdx___timeToRead',
+  FrontmatterMetaImageChildren = 'frontmatter___metaImage___children',
+  FrontmatterMetaImageChildrenImageSharp = 'frontmatter___metaImage___childrenImageSharp',
+  FrontmatterMetaImageChildrenImageSharpChildren = 'frontmatter___metaImage___childrenImageSharp___children',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildrenImageSharpGatsbyImageData = 'frontmatter___metaImage___childrenImageSharp___gatsbyImageData',
+  FrontmatterMetaImageChildrenImageSharpId = 'frontmatter___metaImage___childrenImageSharp___id',
+  FrontmatterMetaImageChildrenMdx = 'frontmatter___metaImage___childrenMdx',
+  FrontmatterMetaImageChildrenMdxBody = 'frontmatter___metaImage___childrenMdx___body',
+  FrontmatterMetaImageChildrenMdxChildren = 'frontmatter___metaImage___childrenMdx___children',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildrenMdxExcerpt = 'frontmatter___metaImage___childrenMdx___excerpt',
+  FrontmatterMetaImageChildrenMdxFileAbsolutePath = 'frontmatter___metaImage___childrenMdx___fileAbsolutePath',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildrenMdxHeadings = 'frontmatter___metaImage___childrenMdx___headings',
+  FrontmatterMetaImageChildrenMdxHtml = 'frontmatter___metaImage___childrenMdx___html',
+  FrontmatterMetaImageChildrenMdxId = 'frontmatter___metaImage___childrenMdx___id',
+  FrontmatterMetaImageChildrenMdxMdxAst = 'frontmatter___metaImage___childrenMdx___mdxAST',
+  FrontmatterMetaImageChildrenMdxRawBody = 'frontmatter___metaImage___childrenMdx___rawBody',
+  FrontmatterMetaImageChildrenMdxSlug = 'frontmatter___metaImage___childrenMdx___slug',
+  /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+  FrontmatterMetaImageChildrenMdxTableOfContents = 'frontmatter___metaImage___childrenMdx___tableOfContents',
+  FrontmatterMetaImageChildrenMdxTimeToRead = 'frontmatter___metaImage___childrenMdx___timeToRead',
+  FrontmatterMetaImageChildrenChildren = 'frontmatter___metaImage___children___children',
+  FrontmatterMetaImageChildrenId = 'frontmatter___metaImage___children___id',
+  FrontmatterMetaImageCtime = 'frontmatter___metaImage___ctime',
+  FrontmatterMetaImageCtimeMs = 'frontmatter___metaImage___ctimeMs',
+  FrontmatterMetaImageDev = 'frontmatter___metaImage___dev',
+  FrontmatterMetaImageDir = 'frontmatter___metaImage___dir',
+  FrontmatterMetaImageExt = 'frontmatter___metaImage___ext',
+  FrontmatterMetaImageExtension = 'frontmatter___metaImage___extension',
+  FrontmatterMetaImageGid = 'frontmatter___metaImage___gid',
+  FrontmatterMetaImageId = 'frontmatter___metaImage___id',
+  FrontmatterMetaImageIno = 'frontmatter___metaImage___ino',
+  FrontmatterMetaImageInternalContent = 'frontmatter___metaImage___internal___content',
+  FrontmatterMetaImageInternalContentDigest = 'frontmatter___metaImage___internal___contentDigest',
+  FrontmatterMetaImageInternalDescription = 'frontmatter___metaImage___internal___description',
+  FrontmatterMetaImageInternalFieldOwners = 'frontmatter___metaImage___internal___fieldOwners',
+  FrontmatterMetaImageInternalIgnoreType = 'frontmatter___metaImage___internal___ignoreType',
+  FrontmatterMetaImageInternalMediaType = 'frontmatter___metaImage___internal___mediaType',
+  FrontmatterMetaImageInternalOwner = 'frontmatter___metaImage___internal___owner',
+  FrontmatterMetaImageInternalType = 'frontmatter___metaImage___internal___type',
+  FrontmatterMetaImageMode = 'frontmatter___metaImage___mode',
+  FrontmatterMetaImageModifiedTime = 'frontmatter___metaImage___modifiedTime',
+  FrontmatterMetaImageMtime = 'frontmatter___metaImage___mtime',
+  FrontmatterMetaImageMtimeMs = 'frontmatter___metaImage___mtimeMs',
+  FrontmatterMetaImageName = 'frontmatter___metaImage___name',
+  FrontmatterMetaImageNlink = 'frontmatter___metaImage___nlink',
+  FrontmatterMetaImageParentChildren = 'frontmatter___metaImage___parent___children',
+  FrontmatterMetaImageParentId = 'frontmatter___metaImage___parent___id',
+  FrontmatterMetaImagePrettySize = 'frontmatter___metaImage___prettySize',
+  FrontmatterMetaImagePublicUrl = 'frontmatter___metaImage___publicURL',
+  FrontmatterMetaImageRdev = 'frontmatter___metaImage___rdev',
+  FrontmatterMetaImageRelativeDirectory = 'frontmatter___metaImage___relativeDirectory',
+  FrontmatterMetaImageRelativePath = 'frontmatter___metaImage___relativePath',
+  FrontmatterMetaImageRoot = 'frontmatter___metaImage___root',
+  FrontmatterMetaImageSize = 'frontmatter___metaImage___size',
+  FrontmatterMetaImageSourceInstanceName = 'frontmatter___metaImage___sourceInstanceName',
+  FrontmatterMetaImageUid = 'frontmatter___metaImage___uid',
   FrontmatterPublish = 'frontmatter___publish',
   FrontmatterSubtitle = 'frontmatter___subtitle',
   FrontmatterTags = 'frontmatter___tags',
@@ -2257,10 +2424,12 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   category?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
+  description?: Maybe<Scalars['String']>;
   feature?: Maybe<Scalars['Boolean']>;
   gallery?: Maybe<Array<Maybe<File>>>;
   heroImage?: Maybe<File>;
   heroImagePos?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<File>;
   publish?: Maybe<Scalars['Boolean']>;
   subtitle?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -2278,10 +2447,12 @@ export type MdxFrontmatterDateArgs = {
 export type MdxFrontmatterFilterInput = {
   category?: InputMaybe<StringQueryOperatorInput>;
   date?: InputMaybe<DateQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
   feature?: InputMaybe<BooleanQueryOperatorInput>;
   gallery?: InputMaybe<FileFilterListInput>;
   heroImage?: InputMaybe<FileFilterInput>;
   heroImagePos?: InputMaybe<StringQueryOperatorInput>;
+  metaImage?: InputMaybe<FileFilterInput>;
   publish?: InputMaybe<BooleanQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   tags?: InputMaybe<StringQueryOperatorInput>;
@@ -3077,14 +3248,16 @@ export enum SiteFieldsEnum {
   Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataArtHomeHomeUrlParam = 'siteMetadata___artHome___homeUrlParam',
+  SiteMetadataArtHomeMetaTitle = 'siteMetadata___artHome___metaTitle',
   SiteMetadataArtHomeSubtitle = 'siteMetadata___artHome___subtitle',
   SiteMetadataArtHomeTitle = 'siteMetadata___artHome___title',
   SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataDesignHomeHomeUrlParam = 'siteMetadata___designHome___homeUrlParam',
+  SiteMetadataDesignHomeMetaTitle = 'siteMetadata___designHome___metaTitle',
   SiteMetadataDesignHomeSubtitle = 'siteMetadata___designHome___subtitle',
   SiteMetadataDesignHomeTitle = 'siteMetadata___designHome___title',
   SiteMetadataHomeUrlParamName = 'siteMetadata___homeUrlParamName',
-  SiteMetadataSubtitle = 'siteMetadata___subtitle',
+  SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataTitle = 'siteMetadata___title',
   TrailingSlash = 'trailingSlash'
 }
@@ -3861,19 +4034,21 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   designHome?: Maybe<SiteSiteMetadataDesignHome>;
   homeUrlParamName?: Maybe<Scalars['String']>;
-  subtitle?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataArtHome = {
   __typename?: 'SiteSiteMetadataArtHome';
   homeUrlParam?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataArtHomeFilterInput = {
   homeUrlParam?: InputMaybe<StringQueryOperatorInput>;
+  metaTitle?: InputMaybe<StringQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -3881,12 +4056,14 @@ export type SiteSiteMetadataArtHomeFilterInput = {
 export type SiteSiteMetadataDesignHome = {
   __typename?: 'SiteSiteMetadataDesignHome';
   homeUrlParam?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataDesignHomeFilterInput = {
   homeUrlParam?: InputMaybe<StringQueryOperatorInput>;
+  metaTitle?: InputMaybe<StringQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -3896,7 +4073,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: InputMaybe<StringQueryOperatorInput>;
   designHome?: InputMaybe<SiteSiteMetadataDesignHomeFilterInput>;
   homeUrlParamName?: InputMaybe<StringQueryOperatorInput>;
-  subtitle?: InputMaybe<StringQueryOperatorInput>;
+  siteUrl?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3963,17 +4140,17 @@ export type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PagesQueryQuery = { __typename?: 'Query', allSiteFunction: { __typename?: 'SiteFunctionConnection', nodes: Array<{ __typename?: 'SiteFunction', functionRoute: string }> }, allSitePage: { __typename?: 'SitePageConnection', nodes: Array<{ __typename?: 'SitePage', path: string }> } };
 
-export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null };
+export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null };
 
 export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SiteMetadataQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, subtitle?: string | null, homeUrlParamName?: string | null, artHome?: { __typename?: 'SiteSiteMetadataArtHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null } | null, designHome?: { __typename?: 'SiteSiteMetadataDesignHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null } | null } | null } | null };
+export type SiteMetadataQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, description?: string | null, siteUrl?: string | null, homeUrlParamName?: string | null, artHome?: { __typename?: 'SiteSiteMetadataArtHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null, metaTitle?: string | null } | null, designHome?: { __typename?: 'SiteSiteMetadataDesignHome', title?: string | null, subtitle?: string | null, homeUrlParam?: string | null, metaTitle?: string | null } | null } | null } | null };
 
 export type ArtHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArtHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> }, otherProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null } | null } | null }> } };
+export type ArtHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> }, otherProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null } | null } | null }> } };
 
 export type BlogPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3983,7 +4160,12 @@ export type BlogPageQuery = { __typename?: 'Query', allFile: { __typename?: 'Fil
 export type DesignHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DesignHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
+export type DesignHomepageQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
+
+export type DesignHomepageIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DesignHomepageIndexQuery = { __typename?: 'Query', heroImages: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', id: string, name: string, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null }> }, featuredProjects: { __typename?: 'FileConnection', nodes: Array<{ __typename?: 'File', sourceInstanceName: string, childMdx?: { __typename?: 'Mdx', id: string, slug?: string | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null }> } };
 
 export type ListingsPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4002,4 +4184,4 @@ export type ProjectTemplateQueryVariables = Exact<{
 }>;
 
 
-export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null };
+export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null };
