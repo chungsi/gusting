@@ -1,22 +1,24 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 
+import OgImageArt from '../images/ogImage_square_art.jpg'
+
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 type SeoProps = {
-  title: string | undefined
+  title: string | null | undefined
   slug: string,
   description?: string | null | undefined
+  image?: string | null | undefined
   homeTitle?: string | null | undefined
   home?: boolean
-  // TODO: Add image capabilities
-  // image?:
 }
 
 const Seo = ({
   title,
-  description,
   slug,
+  description,
+  image,
   home,
   homeTitle
 }: SeoProps) => {
@@ -28,8 +30,8 @@ const Seo = ({
   const seo = {
     title: title ?? siteSeo?.title ?? undefined,
     description: description ?? undefined,
-    canonicalUrl: useSiteMetadata()?.siteUrl + slug
-    // image: image ?? siteSeo?.placeholderImage?.asset.url,
+    canonicalUrl: siteSeo?.siteUrl + slug,
+    image: image ?? OgImageArt,
   }
 
   return (
@@ -37,21 +39,16 @@ const Seo = ({
       <title>{seo.title}</title>
       <meta name='description' content={seo.description} />
 
-      {/*
-      {seo.image &&
-        <meta name='image' content={seo.image} />
-        <meta name='thumbnail' content={seo.image} />
-        <meta property='og:image' content={seo.image} />
-        <meta property='twitter:image' content={seo.image} />
-      }
-      */}
+      <meta name='image' content={seo.image} />
 
       <meta property='og:title' content={seo.title} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={seo.canonicalUrl} />
+      <meta property='og:image' content={seo.image} />
       <meta property='og:description' content={seo.description} />
 
       <meta property='twitter:description' content={seo.description} />
+      <meta property='twitter:image' content={seo.image} />
       <meta property='twitter:site' content='@chungsi_' />
       <meta property='twitter:card' content='summary' />
 

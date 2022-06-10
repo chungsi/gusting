@@ -8,6 +8,12 @@ export const query = graphql`
       description
       category
       tags
+      metaImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
       heroImagePos
       heroImage {
         childImageSharp {

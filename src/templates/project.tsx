@@ -64,6 +64,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
         description={mdx?.frontmatter?.description}
         homeTitle={getHomeTitle(homeSlug)}
         slug={location.pathname + location.search}
+        image={mdx?.frontmatter?.metaImage?.publicURL}
       />
 
       <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>

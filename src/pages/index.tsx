@@ -5,6 +5,7 @@ import { getSrcSet } from 'gatsby-plugin-image'
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
 import Logo from '../images/svg/logo.inline.svg'
+import OgImageDesign from '../images/ogImage_square_design.jpg'
 import Seo from '../components/Seo'
 import TiltingCard from '../components/Card/TiltingCard'
 
@@ -65,6 +66,7 @@ const DesignHomepageIndex = ({
         home
         title={designHome?.metaTitle ?? ''}
         slug={location.pathname}
+        image={OgImageDesign}
       />
 
       <div className={concat(

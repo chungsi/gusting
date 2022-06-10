@@ -8,6 +8,7 @@ import BaseCard from '../components/Card/BaseCard'
 import FloatingCard from '../components/Card/FloatingCard'
 import Footer from '../components/Footer'
 import Logo from '../components/Logo'
+import OgImageArt from '../images/ogImage_square_art.jpg'
 import Seo from '../components/Seo'
 
 import { ArtHomepageQuery } from '../@types/graphql-generated-types'
@@ -75,6 +76,7 @@ const ArtHomepage = ({
         home
         title={artHome?.metaTitle ?? ''}
         slug={location.pathname}
+        image={OgImageArt}
       />
 
       <div className={concat(
