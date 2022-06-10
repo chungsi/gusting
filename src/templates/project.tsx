@@ -46,8 +46,6 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
     })
   }
 
-  console.log('test mdx graphql object', mdx?.frontmatter)
-
   return (
     <ContentLayout
       homeUrl={homeSlug}
