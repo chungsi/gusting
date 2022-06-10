@@ -6,7 +6,7 @@ import OgImageArt from '../images/ogImage_square_art.jpg'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 type SeoProps = {
-  title: string | null | undefined
+  title: string | undefined
   slug: string,
   description?: string | null | undefined
   image?: string | null | undefined
@@ -24,18 +24,15 @@ const Seo = ({
 }: SeoProps) => {
   const siteSeo = useSiteMetadata()
 
-  var titleTemplate = `%s | ${homeTitle ?? siteSeo?.title}`
-  if (home) titleTemplate = '%s'
-
   const seo = {
-    title: title ?? siteSeo?.title ?? undefined,
+    title: home ? title : `${title} | ${homeTitle ?? siteSeo?.title}`,
     description: description ?? undefined,
     canonicalUrl: siteSeo?.siteUrl + slug,
     image: image ?? OgImageArt,
   }
 
   return (
-    <Helmet titleTemplate={titleTemplate}>
+    <Helmet>
       <title>{seo.title}</title>
       <meta name='description' content={seo.description} />
 
