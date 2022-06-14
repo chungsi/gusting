@@ -17,7 +17,6 @@ gallery:
   - ./../assets/allcourt/swot_matrix.jpg
   - ./../assets/allcourt/screens.jpg
   - ./../assets/allcourt/journey_map_spread.png
-  - ./../assets/allcourt/journey_map_spread@0,25x.jpg
   - ./../assets/allcourt/manual_stats.png
   - ./../assets/allcourt/sketch.jpg
   - ./../assets/allcourt/match_creation.gif
@@ -37,9 +36,9 @@ feature: true
 
 ## My Roles
 
-visual design & UI  
-web & prototype development  
-UX: user research & interviews
+Visual design & UI  
+Web & prototype development  
+UX: User research & interviews
 
 
 ## Pitch
@@ -58,9 +57,9 @@ UX: user research & interviews
 
 </div>
 
-<div>
+<div id='prototype'>
 
-  something in the second grid...
+  <iframe id='finalDesign' src='https://chungsi.github.io/allcourtinteractive/sessions-firstTime.html' frameborder='0' height='625' width='370' />
 
 </div>
 
@@ -76,25 +75,33 @@ I designed the visuals and illustrations for our progress blog, and designed the
 
 ## Process
 
-### Background and Scope
+\# [Background and Scope](#background--scope)  
+\# [Objective and Final Design](#objective--final-design)  
+\# [Research Process](#research-process)  
+\# [Implementation Process](#implementation-process)
+
+
+### Background & Scope
 
 Is there a place for personal consumer technology in competitive tennis, where rigorous practice, fitness and coaching are the key methods to augment performance?
 
 Our research brought to light what matters to tennis players and what subset of stakeholders we will be designing for. As such, the following parameters define the context of our work:
 
-* **“Competitive” tennis players, who aren't necessarily elite or even tournament contenders.** The National Tennis Rating Program (NTRP) rates players on a scale of 1.0 (just starting tennis) to 7.0 (living as a professional). However, any player who is highly motivated to improve could be considered “competitive”, regardless of rating. While our solution is designed to meet the needs of players across all ratings, the most benefit will be for players above NTRP 4.0 (consistent and comfortable with a variety of shot types) and their coaches.
-* **Parents and coaches of competitive junior players, who tend to be very involved.** Many elite tennis players must reach peak development levels in their teens. As a result, parents and coaches spend immense effort planning and developing dedicated training regimens for young players to reach professional levels. Our solution helps these stakeholders support their child or student(s) with ease.
+* **“Competitive” tennis players, who aren't necessarily elite or even tournament contenders.**  
+    The National Tennis Rating Program (NTRP) rates players on a scale of 1.0 (just starting tennis) to 7.0 (living as a professional). However, any player who is highly motivated to improve could be considered “competitive”, regardless of rating. While our solution is designed to meet the needs of players across all ratings, the most benefit will be for players above NTRP 4.0 (consistent and comfortable with a variety of shot types) and their coaches.
+* **Parents and coaches of competitive junior players, who tend to be very involved.**  
+    Many elite tennis players must reach peak development levels in their teens. As a result, parents and coaches spend immense effort planning and developing dedicated training regimens for young players to reach professional levels. Our solution helps these stakeholders support their child or student(s) with ease.
 
 Through online questionnaires and in-person interviews, it was apparent that appropriate UX design had the potential to relieve several unmet needs of our parties.
 
-#### Aspects within our scope
+#### Aspects Within our Scope
 **Stats-tracking smartphone applications currently on the market are difficult to learn.** Our interview responses highlighted a lack of onboarding experience with current apps. Even when included, these tutorials were difficult to find, incomplete or unrelated to the task at hand.
 
 <MdxImage gatsbyImageData={props.gallery.image1} />
 
 **Statistics are inconvenient to take every match.** Interviewees also reported a lack of customization for features in current stat-tracking apps. There were either overloaded with options or critically underwhelmed.
 
-#### Aspects outside our scope
+#### Aspects Outside our Scope
 **It is challenging to prescribe the “correct” coaching and development material for everyone.** Tennis training is not “one size fits all” – recommendations will differ depending on current trends, localities, and play styles. Our solution will not make recommendations based on data tracked. Rather, the data should complement existing training regimens, and decision making should be left to players, coaches and parents.
 
 
@@ -103,19 +110,17 @@ Our design takes advantage of the opportunities in the market by addressing issu
 
 <MdxImage gatsbyImageData={props.gallery.image2} />
 
----
 
-### Objective and Final Design
+### Objective & Final Design
 
 The main purpose of our design tool is to help competitive tennis players, parents and their coaches make objective decisions to improve player performance. The tool will allow users to record, analyze and communicate match histories with only what they find useful.
 
 To meet our objectives, we implemented a statistics tracking and analysis prototype that records score and critical details, such as errors, winners, service percentage, etc. There are four parts to the experience: 1) match creation, 2) score-keeping, 3) viewing play-by-play results, and 4) statistical analysis. We address the issues found in our research (more detailed process below), and conducted numerous user tests between our iterations to refine usability and overall experience.
 
-Below are screenshots of parts of the experience of our [final prototype](#finalDesign). Take a look at the [breakdown of our final prototype](#breakdown).
+Below are screenshots of parts of the experience of our [final prototype](#prototype). Take a look at the [breakdown of our final prototype](#final-design-breakdown).
 
 <MdxImage gatsbyImageData={props.gallery.image3} />
 
----
 
 ### Research Process
 
@@ -125,7 +130,7 @@ Interaction time is critical for our design; the match is being tracked live by 
 1. **Match between system and the real world (Mental Model)**  
     We need to keep in close line with the audience’s mental model to make sure they can maintain full concentration on the match and only glance at our application.
 2. **Helping users recognize, diagnose and recover from errors**  
-    Due to the live nature of recording statistics, an error can grind all progress to a halt and invalidate the data. 
+    Due to the live nature of recording statistics, an error can grind all progress to a halt and invalidate the data.
 3. **Visibility of system status**  
     The user must always be aware of the system status. It means fewer errors and fewer errors means more accurate data.
 4. **Flexibility and efficiency of use**
@@ -142,9 +147,8 @@ To break down the pain points of current tennis statistics-tracking software, we
 
 ##### Journey Map
 
-<MdxImage gatsbyImageData={props.gallery.image4} />
+<MdxImage shadow link={props.gallery.image4} gatsbyImageData={props.gallery.image4} />
 
----
 
 ### Implementation Process
 
@@ -155,25 +159,25 @@ Within three design sprints, we created various prototypes, conducted numerous u
 
 As our sprints progressed, our prototypes and ideation include excel spreadsheets of manual tennis score-keeping, sketches of the proposed score-keeping feature, and static-page prototypes. The final prototype is coded with HTML, CSS and JS to better reflect the interactions and nature of the desired experience.
 
-<MdxImage gatsbyImageData={props.gallery.image6} />
+<MdxImage shadow gatsbyImageData={props.gallery.image5} />
 
-<MdxImage gatsbyImageData={props.gallery.image7} />
+<MdxImage shadow gatsbyImageData={props.gallery.image6} />
 
 ---
 
-### Final Design
+## Final Design Breakdown
 
-In our final prototype [(interact with it above)](#finalDesign), we created a functioning browser interactive prototype to reflect our desired functionality and experience. A static high-fidelity prototype only tells us half the story – added animations and complex interactions draw a better picture for how the design performs.
+In our final prototype [(interact with it above)](#prototype), we created a functioning browser interactive prototype to reflect our desired functionality and experience. A static high-fidelity prototype only tells us half the story – added animations and complex interactions draw a better picture for how the design performs.
 
-#### Visual design, colour choice, and readability
+### Visual design, Colour Choice, and Readability
 
 Ensuring high contrast between test and UI elements during scorekeeping was a priority, as we knew from research that the design needed to be used outside on bright sunny days – optimal conditions for tennis. We tested our colour palette and colour-contrast under bright light, and picked a font with distinct letter forms for ease of reading.
+
+### Match Creation
 
 <MdxGrid two>
 
 <div>
-
-  #### Match creation
 
   With match creation, our goals were to: 1) maximize the clarity of the interface, and 2) guide first-time users through the process without hindering advanced or frequent users in a tool that is considerably feature-rich compared to its competitors.
 
@@ -183,24 +187,42 @@ Ensuring high contrast between test and UI elements during scorekeeping was a pr
 
 <div>
 
-  <MdxImage imageURL={props.gallery.image8} />
+  <MdxImage imageURL={props.gallery.image7} />
 
 </div>
 
 </MdxGrid>
 
 
-#### Score-keeping
-
-Scorekeeping is the bread and butter of our design as a smooth, easy-to-learn and easy-to-recall input system. A user can be sitting on the side of the court for three or more hours. If inputting points is tedious and mentally draining, then tracking the score and higher-fidelity stats for an entire match becomes a chore.
-
-To combat difficulties with user fatigue, we introduced a question-based interaction experience. This streamlines statistical input, reduces mental strain and shortens interactions with the app. Animations bring attention to changes in the state of the score tracker as they simultaneously watch the match.
+### Score-Keeping
 
 <MdxGrid two>
 
 <div>
 
-  <MdxImage imageURL={props.gallery.image9} />
+  Scorekeeping is the bread and butter of our design as a smooth, easy-to-learn and easy-to-recall input system. A user can be sitting on the side of the court for three or more hours. If inputting points is tedious and mentally draining, then tracking the score and higher-fidelity stats for an entire match becomes a chore.
+
+  To combat difficulties with user fatigue, we introduced a question-based interaction experience. This streamlines statistical input, reduces mental strain and shortens interactions with the app. Animations bring attention to changes in the state of the score tracker as they simultaneously watch the match.
+
+</div>
+
+<div>
+
+  <MdxImage imageURL={props.gallery.image8} />
+  {/* <MdxImage imageURL={props.gallery.image9} /> */}
+
+</div>
+
+</MdxGrid>
+
+
+### Match Results
+
+<MdxGrid two>
+
+<div>
+
+  The Results tab offers a valuable play-by-play view of the match, summarizing every point and how they were earned. Users can expand or collapse the multi-level list view, progressively disclosing highlights from each game of every set. Animations and consistent visual cues (via icons) aid in the quick understanding of the at-a-glance information.
 
 </div>
 
@@ -213,26 +235,7 @@ To combat difficulties with user fatigue, we introduced a question-based interac
 </MdxGrid>
 
 
-<MdxGrid two>
-
-<div>
-
-  #### Match results
-
-  The Results tab offers a valuable play-by-play view of the match, summarizing every point and how they were earned. Users can expand or collapse the multi-level list view, progressively disclosing highlights from each game of every set. Animations and consistent visual cues (via icons) aid in the quick understanding of the at-a-glance information.
-
-</div>
-
-<div>
-
-  <MdxImage imageURL={props.gallery.image11} />
-
-</div>
-
-</MdxGrid>
-
-
-#### Statistics analysis
+### Statistics Analysis
 
 From the statistical analysis, a coach or player can review the match and assess how the player performed.
 
@@ -244,13 +247,13 @@ To access a stronger breakdown of how one of the players played, the user can ch
 
 <div>
 
-  <MdxImage gatsbyImageData={props.gallery.image12} />
+  <MdxImage shadow gatsbyImageData={props.gallery.image11} />
 
 </div>
 
 <div>
 
-  <MdxImage gatsbyImageData={props.gallery.image13} />
+  <MdxImage shadow gatsbyImageData={props.gallery.image12} />
 
 </div>
 
