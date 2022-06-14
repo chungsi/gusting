@@ -36,6 +36,7 @@ const MdxImage = ({
   // } else if (rightOffset) {
   //   offsetClasses = '-mr-[calc(var(--space-container-offset)_/_2_-_1rem)]'
 
+  // TODO: streamline this feature????
   var imageLink: string | undefined
   if (link && typeof link == 'object') {
     imageLink = getSrc(link)
