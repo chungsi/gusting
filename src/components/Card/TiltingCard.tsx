@@ -5,7 +5,6 @@ import CategoryIcon from '../CategoryIcon'
 import HeroImage from './HeroImage'
 
 import { concat } from '../../utils/helpers'
-import { ProjectMdxFrontmatterFragment } from '../../@types/graphql-generated-types'
 
 const TiltingCard = ({
   link,

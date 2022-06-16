@@ -13,13 +13,19 @@ type ProjectHeaderProps = {
     tags?: (string | null)[] | null | undefined
     heroImage?: object | null | undefined
   }
+  withHeroImage?: boolean
   className?: string
 }
 
 const ProjectHeader = ({
   frontmatter: { title, subtitle, category, tags, heroImage },
+  withHeroImage,
   className
 }: ProjectHeaderProps) => {
+
+  // var subtitleFormatClasses = concat(
+  //   'pr-10 md:pl-0'
+  // )
 
   return (
     <header className={concat('relative', className ?? '')}>
@@ -55,24 +61,24 @@ const ProjectHeader = ({
       </h1>
 
       {subtitle &&
-        <p className='italic text-lg'>{subtitle}</p>
+        <p className={concat('italic text-lg')}>{subtitle}</p>
       }
 
       {tags &&
-        <p className='text-sm'>
+        <p className={concat('text-sm')}>
           {tags.map(tag => `${tag} / `)}
         </p>
       }
 
-      {heroImage &&
+      {withHeroImage && heroImage &&
         <img
           aria-hidden
           src={getSrc(heroImage as IGatsbyImageData)}
           alt=''
           className={concat(
             'absolute right-[-2rem] top-[-1rem] z-[-1] opacity-70',
-            'hidden max-w-[7rem]',
-            'sm:block md:max-w-[10rem]',
+            'block max-w-[7rem]',
+            'md:max-w-[10rem]',
           )}
         />
       }

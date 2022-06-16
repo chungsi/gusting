@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { graphql, PageProps } from 'gatsby'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -12,6 +13,7 @@ import MdxGrid from '../components/Mdx/MdxGrid'
 import ProjectToc from '../components/ProjectToc'
 import Seo from '../components/Seo'
 
+import * as styles from './project.module.css'
 import { concat, getGalleryImagesArrayForMdx, getHomeUrlParam, getHomeTitle } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
@@ -38,9 +40,13 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
   return (
     <ContentLayout
       homeUrl={homeSlug}
-      header={<ProjectHeader frontmatter={mdx?.frontmatter!} className='mb-md' />}
+      // header={<ProjectHeader frontmatter={mdx?.frontmatter!} className='mb-md' />}
       bodyClassName={mdx?.frontmatter?.category ?? ''}
-      className='max-w-[100rem]'
+      className={concat(
+        styles.projectGrid,
+        'max-w-[100rem]',
+        'relative',
+      )}
     >
 
       {/* TODO: maybe move this to content layout and just pass in a data object? */}
@@ -52,20 +58,51 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
         image={mdx?.frontmatter?.metaImage?.publicURL}
       />
 
-      <section className={concat(
+      {/* <section className={concat(
+        styles.projectGrid,
         'relative',
-        'grid gap-8 lg:[grid-template-columns:5fr_2fr]'
-      )}>
+        // 'grid gap-8 lg:[grid-template-columns:5fr_2fr]'
+      )}> */}
 
-        <div className='lg:order-2'>
+        <div className={concat(
+          styles.projectHero,
+          'relative'
+        )}>
+          {mdx?.frontmatter?.heroImage &&
+            <img
+              aria-hidden
+              src={getSrc(mdx.frontmatter.heroImage as IGatsbyImageData)}
+              alt=''
+              className={concat(
+                'absolute right-0 top-[-1rem] opacity-70 ',
+                'block max-w-[7rem]',
+                'md:max-w-[10rem]',
+                'lg:fixed lg:right-auto lg:top-auto'
+              )}
+            />
+          }
+        </div>
+
+
+        <ProjectHeader
+          frontmatter={mdx?.frontmatter!}
+          className={concat(
+            styles.projectHead,
+            'mb-md',
+          )}
+        />
+
+
+        <div className={`${styles.projectToc}`}>
           <ProjectToc
             content={mdx?.tableOfContents.items}
             maxDepth={2}
-            className='lg:fixed'
+            className={`lg:fixed`}
           />
         </div>
 
-        <section className='prose lg:order-1'>
+
+        <section className={`prose ${styles.projectBody}`}>
           <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
             <MDXRenderer gallery={galleryImages}>
               {mdx?.body ?? ''}
@@ -73,7 +110,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
           </MDXProvider>
         </section>
 
-      </section>
+      {/* </section> */}
 
       {/* <ProjectPagination
         pathPrefix='project'

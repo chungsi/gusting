@@ -124,6 +124,7 @@ const config: GatsbyConfig = {
             options: {
               className: `autolink`,
               elements: [`h1`, `h2`, `h3`, `h4`],
+              enableCustomId: true,
             },
           },
         ],

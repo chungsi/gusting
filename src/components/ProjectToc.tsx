@@ -21,17 +21,18 @@ const ProjectToc = ({
   className
 }: ProjectTocProps) => {
 
-  console.log('testing project toc data structure', content)
-
   return (
     <menu className={concat(
-      'px-4 border-l',
+      'pl-2 pr-4 border-l text-sm',
       className ?? '')
     }>
+      <span aria-hidden className='bg-white opacity-80 absolute w-full h-full top-0 left-0 -z-[2]' />
+
       {printOutItems({
         items:content,
         maxDepth
       })}
+
     </menu>
   )
 }
@@ -52,12 +53,31 @@ const printOutItems = ({
     menuItems.push(
       <li
         key={i}
-        className='my-1'
+        className={concat(
+          '[--bg-rotate:-1.5deg] even:[--bg-rotate:2deg] third:[--bg-rotate:-5deg]',
+          currentDepth == 1 ? 'my-2' : '',
+        )}
       >
         <>
-          <Link to={item.url}>{item.title}</Link>
+          <Link
+            to={item.url}
+            className={concat(
+              'relative inline-block group px-3 py-[.125rem]',
+              currentDepth == 1 ? 'font-extrabold' : '',
+            )}
+          >
+            {item.title}
+
+            {/* Hover bg style */}
+            <span className={concat(
+              'absolute block top-0 left-0 w-full h-full -z-[1]',
+              'group-hover:bg-th-highlight rotate-[length:var(--bg-rotate)]'
+            )} />
+
+          </Link>
+
           {item.items && maxDepth >= nextDepth &&
-            <ul className='pl-4'>
+            <ul className='ml-4'>
               {printOutItems({
                 items: item.items,
                 maxDepth,

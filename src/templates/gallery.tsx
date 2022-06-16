@@ -35,7 +35,13 @@ const GalleryTemplate = ({ data: {mdx}, location }: PageProps<GalleryTemplatePro
   return (
     <ContentLayout
       homeUrl={homeSlug}
-      header={<ProjectHeader frontmatter={mdx?.frontmatter!} className='mb-md' />}
+      header={
+        <ProjectHeader
+          withHeroImage
+          frontmatter={mdx?.frontmatter!}
+          className='mb-md'
+        />
+      }
       bodyClassName={mdx?.frontmatter?.category ?? ''}
       className='max-w-7xl'
     >
