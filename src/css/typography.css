@@ -178,15 +178,19 @@
       background-color: var(--c-highlight-color);
       padding: var(--space-md);
 
-      /* // reset if nested */
+      /* reset if nested */
       code { background-color: transparent; }
     }
 
     .autolink {
       bottom: 0;
       padding-bottom: var(--space-xxs-rel);
-      /* Reset default plugin positioning */
+      /* Reset default autolink-plugin positioning */
       top: auto;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
     }
   }
 }

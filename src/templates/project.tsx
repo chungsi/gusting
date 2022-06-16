@@ -76,7 +76,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
               className={concat(
                 'absolute right-0 top-[-1rem] opacity-70 ',
                 'block max-w-[7rem]',
-                'md:max-w-[10rem]',
+                'md:max-w-[9rem]',
                 'lg:fixed lg:right-auto lg:top-auto'
               )}
             />
@@ -102,7 +102,10 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
         </div>
 
 
-        <section className={`prose ${styles.projectBody}`}>
+        <section className={concat(
+          'prose',
+          styles.projectBody
+        )}>
           <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
             <MDXRenderer gallery={galleryImages}>
               {mdx?.body ?? ''}

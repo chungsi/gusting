@@ -26,7 +26,7 @@ const ProjectToc = ({
       'pl-2 pr-4 border-l text-sm',
       className ?? '')
     }>
-      <span aria-hidden className='bg-white opacity-80 absolute w-full h-full top-0 left-0 -z-[2]' />
+      {/* <span aria-hidden className='bg-white opacity-80 absolute w-full h-full top-0 left-0 -z-[2]' /> */}
 
       {printOutItems({
         items:content,
