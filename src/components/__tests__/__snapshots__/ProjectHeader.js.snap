@@ -2,7 +2,7 @@
 
 exports[`ProjectHeader renders correctly 1`] = `
 <header
-  className=""
+  className="relative"
 >
   <div
     aria-hidden={true}
