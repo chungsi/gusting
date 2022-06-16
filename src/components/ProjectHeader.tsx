@@ -22,7 +22,7 @@ const ProjectHeader = ({
 }: ProjectHeaderProps) => {
 
   return (
-    <header className={className ?? ''}>
+    <header className={concat('relative', className ?? '')}>
       {category &&
         <CategoryIcon
           category={category}

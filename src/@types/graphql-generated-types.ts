@@ -811,6 +811,7 @@ export enum FileFieldsEnum {
   ChildMdxFrontmatterPublish = 'childMdx___frontmatter___publish',
   ChildMdxFrontmatterSubtitle = 'childMdx___frontmatter___subtitle',
   ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
+  ChildMdxFrontmatterTemplateType = 'childMdx___frontmatter___templateType',
   ChildMdxFrontmatterTitle = 'childMdx___frontmatter___title',
   /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
   ChildMdxHeadings = 'childMdx___headings',
@@ -1095,6 +1096,7 @@ export enum FileFieldsEnum {
   ChildrenMdxFrontmatterPublish = 'childrenMdx___frontmatter___publish',
   ChildrenMdxFrontmatterSubtitle = 'childrenMdx___frontmatter___subtitle',
   ChildrenMdxFrontmatterTags = 'childrenMdx___frontmatter___tags',
+  ChildrenMdxFrontmatterTemplateType = 'childrenMdx___frontmatter___templateType',
   ChildrenMdxFrontmatterTitle = 'childrenMdx___frontmatter___title',
   /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
   ChildrenMdxHeadings = 'childrenMdx___headings',
@@ -2331,6 +2333,7 @@ export enum MdxFieldsEnum {
   FrontmatterPublish = 'frontmatter___publish',
   FrontmatterSubtitle = 'frontmatter___subtitle',
   FrontmatterTags = 'frontmatter___tags',
+  FrontmatterTemplateType = 'frontmatter___templateType',
   FrontmatterTitle = 'frontmatter___title',
   /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
   Headings = 'headings',
@@ -2433,6 +2436,7 @@ export type MdxFrontmatter = {
   publish?: Maybe<Scalars['Boolean']>;
   subtitle?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  templateType?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
 
@@ -2456,6 +2460,7 @@ export type MdxFrontmatterFilterInput = {
   publish?: InputMaybe<BooleanQueryOperatorInput>;
   subtitle?: InputMaybe<StringQueryOperatorInput>;
   tags?: InputMaybe<StringQueryOperatorInput>;
+  templateType?: InputMaybe<StringQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -4142,6 +4147,8 @@ export type PagesQueryQuery = { __typename?: 'Query', allSiteFunction: { __typen
 
 export type ProjectMdxFrontmatterFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null };
 
+export type ProjectMdxFrontmatterGalleryFragment = { __typename?: 'Mdx', frontmatter?: { __typename?: 'MdxFrontmatter', gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null } | null };
+
 export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4179,9 +4186,16 @@ export type BlogPostQueryVariables = Exact<{
 
 export type BlogPostQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, date?: any | null } | null } | null };
 
+export type GalleryTemplateQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GalleryTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, tableOfContents?: any | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null } | null } | null };
+
 export type ProjectTemplateQueryVariables = Exact<{
   id?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null } | null } | null };
+export type ProjectTemplateQuery = { __typename?: 'Query', mdx?: { __typename?: 'Mdx', body: string, tableOfContents?: any | null, frontmatter?: { __typename?: 'MdxFrontmatter', title: string, subtitle?: string | null, description?: string | null, category?: string | null, tags?: Array<string | null> | null, heroImagePos?: string | null, metaImage?: { __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, heroImage?: { __typename?: 'File', childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null, gallery?: Array<{ __typename?: 'File', publicURL?: string | null, childImageSharp?: { __typename?: 'ImageSharp', gatsbyImageData: any } | null } | null> | null } | null } | null };

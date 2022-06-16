@@ -1,3 +1,9 @@
+import { PageProps } from 'gatsby'
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { ProjectMdxFrontmatterGalleryFragment } from '../@types/graphql-generated-types'
+
 /**
  * Concatenate class names together with a space between each.
  *
@@ -65,7 +71,55 @@ export const generatePath = (
  */
 export const getProjectPath = (slug: string, queryParams?: QueryParams[]) => {
   return generatePath('project', slug, queryParams)
-};
+}
+
+
+// TODO: write tests for this...
+export const getGalleryImagesArrayForMdx = (
+  frontmatter: ProjectMdxFrontmatterGalleryFragment["frontmatter"]
+): Record<string, string | IGatsbyImageData> => {
+
+  var galleryImages: Record<string, string | IGatsbyImageData> = {}
+
+  if (frontmatter?.gallery) {
+    frontmatter.gallery.forEach((image, i) => {
+      // TODO: better way to check existence and cast as type?
+      // console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
+      if (image?.childImageSharp != null) {
+        galleryImages[`image${i + 1}`] =
+          getImage(image as IGatsbyImageData) ?? ""
+      } else {
+        galleryImages[`image${i + 1}`] = image?.publicURL ?? ""
+      }
+    })
+  }
+
+  return galleryImages
+}
+
+
+// TODO: write tests for this...
+export const getHomeUrlParam = (
+  location: PageProps["location"],
+  paramKey: string
+): string | null => {
+  var homeUrlParam: string | null = null
+
+  if (location.href) {
+    const urlParams = new URL(location.href).searchParams
+    homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
+  }
+
+  return homeUrlParam
+}
+
+
+// TODO: write tests for this...
+export const getHomeTitle = (homeKey: string | null): string | null => {
+  if (homeKey === "design") return useSiteMetadata()?.designHome?.title ?? null
+  else if (homeKey === "art") return useSiteMetadata()?.artHome?.title ?? null
+  return null
+}
 
 
 // If need to use functions in gatsby-node, need this format for js,

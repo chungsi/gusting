@@ -24,9 +24,12 @@ const ContentLayout = ({
 
   return (
     <Base
-      bodyClassName={bodyClassName}
+      bodyClassName={concat(
+        'border-b-8 border-solid border-th-primary',
+        bodyClassName ?? ''
+      )}
       className={concat(
-        'pt-4xl mx-auto max-w-6xl px-[length:var(--space-container-offset)]',
+        'pt-4xl pb-2xl px-[length:var(--space-container-offset)] mx-auto',
         className ?? ''
       )}
     >
@@ -42,7 +45,11 @@ const ContentLayout = ({
         <Logo />
       </Link>
 
-      {header &&
+      {header}
+
+      {children}
+
+      {/* {header &&
         <div className={concat(
           'relative mb-md'
         )}>
@@ -52,7 +59,7 @@ const ContentLayout = ({
 
       <section className='project-content prose'>
         {children}
-      </section>
+      </section> */}
 
     </Base>
   )

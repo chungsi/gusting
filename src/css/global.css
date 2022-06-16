@@ -6,14 +6,14 @@
 @tailwind utilities;
 
 
-.container {
+/* .container {
   position: relative;
   max-width: 60rem;
   padding: 0 var(--space-lg);
   z-index: 1;
-}
+} */
 
-.project-container {
+/* .project-container {
   margin-top: var(--space-xl);
   margin-left: auto;
   margin-right: auto;
@@ -48,4 +48,4 @@
     &.cover, &.cover + p { margin-left: 50%; text-align: right; }
     &.back { margin-right: 50%; }
   }
-}
+} */
