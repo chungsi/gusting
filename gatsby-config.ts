@@ -72,16 +72,16 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ["auto", "webp", "avif"],
+          formats: ["auto", "webp"],
         },
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
