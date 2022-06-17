@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { getImage, IGatsbyImageData, ImageDataLike } from 'gatsby-plugin-image'
 import { graphql, PageProps } from 'gatsby'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -10,11 +10,13 @@ import ProjectHeader from '../components/ProjectHeader'
 import MdxImage from '../components/Mdx/MdxImage'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
+import ProjectToc from '../components/ProjectToc'
 import Seo from '../components/Seo'
 
-import { concat } from '../utils/helpers'
-import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
+import * as styles from './project.module.css'
+import { concat, getGalleryImagesArrayForMdx, getHomeUrlParam, getHomeTitle } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
 
 
 // TODO: Remove PageContext if I'm not using it; otherwise need to fix it
@@ -33,30 +35,21 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
 
   // Parsing the gallery images into an object of (GatsbyImage components)
   // so they can be accessed in the MDX file
-  var galleryImages: Record<string, string | IGatsbyImageData> = {}
-  if (mdx?.frontmatter?.gallery) {
-    mdx.frontmatter.gallery.forEach((image, i) => {
-      // TODO: better way to check existence and cast as type?
-      // console.log('testing condition check', image?.childImageSharp, image?.childImageSharp?.gatsbyImageData)
-      if (image?.childImageSharp != null) {
-        galleryImages[`image${i+1}`] = getImage(image as IGatsbyImageData) ?? ''
-      } else {
-        galleryImages[`image${i+1}`] = image?.publicURL ?? ''
-      }
-    })
-  }
+  var galleryImages = getGalleryImagesArrayForMdx(mdx?.frontmatter)
 
   return (
     <ContentLayout
       homeUrl={homeSlug}
-      header={<ProjectHeader frontmatter={mdx?.frontmatter!}/>}
-      bodyClassName={concat(
-        mdx?.frontmatter?.category ?? '',
-        'border-b-8 border-solid border-th-primary'
+      // header={<ProjectHeader frontmatter={mdx?.frontmatter!} className='mb-md' />}
+      bodyClassName={mdx?.frontmatter?.category ?? ''}
+      className={concat(
+        styles.projectGrid,
+        'max-w-[100rem]',
+        'relative',
       )}
-      className='max-w-6xl pb-2xl'
     >
 
+      {/* TODO: maybe move this to content layout and just pass in a data object? */}
       <Seo
         title={mdx?.frontmatter?.title}
         description={mdx?.frontmatter?.description}
@@ -65,11 +58,62 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
         image={mdx?.frontmatter?.metaImage?.publicURL}
       />
 
-      <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
-        <MDXRenderer gallery={galleryImages}>
-          {mdx?.body ?? ''}
-        </MDXRenderer>
-      </MDXProvider>
+      {/* <section className={concat(
+        styles.projectGrid,
+        'relative',
+        // 'grid gap-8 lg:[grid-template-columns:5fr_2fr]'
+      )}> */}
+
+        <div className={concat(
+          styles.projectHero,
+          'relative'
+        )}>
+          {mdx?.frontmatter?.heroImage &&
+            <img
+              aria-hidden
+              src={getSrc(mdx.frontmatter.heroImage as IGatsbyImageData)}
+              alt=''
+              className={concat(
+                'absolute right-0 top-[-1rem] opacity-70 ',
+                'block max-w-[7rem]',
+                'md:max-w-[9rem]',
+                'lg:fixed lg:right-auto lg:top-auto'
+              )}
+            />
+          }
+        </div>
+
+
+        <ProjectHeader
+          frontmatter={mdx?.frontmatter!}
+          className={concat(
+            styles.projectHead,
+            'mb-md',
+          )}
+        />
+
+
+        <div className={`${styles.projectToc}`}>
+          <ProjectToc
+            content={mdx?.tableOfContents.items}
+            maxDepth={2}
+            className={`lg:fixed`}
+          />
+        </div>
+
+
+        <section className={concat(
+          'prose',
+          styles.projectBody
+        )}>
+          <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
+            <MDXRenderer gallery={galleryImages}>
+              {mdx?.body ?? ''}
+            </MDXRenderer>
+          </MDXProvider>
+        </section>
+
+      {/* </section> */}
 
       {/* <ProjectPagination
         pathPrefix='project'
@@ -82,41 +126,14 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
   )
 }
 
-const getHomeUrlParam = (
-  location: PageProps["location"],
-  paramKey: string
-): string | null => {
-  var homeUrlParam: string | null = null
-
-  if (location.href) {
-    const urlParams = (new URL(location.href)).searchParams
-    homeUrlParam = urlParams.has(paramKey) ? urlParams.get(paramKey) : null
-  }
-
-  return homeUrlParam
-}
-
-const getHomeTitle = (homeKey: string | null) => {
-  if (homeKey === "design")
-    return useSiteMetadata()?.designHome?.title ?? null
-  else if (homeKey === "art")
-    return useSiteMetadata()?.artHome?.title ?? null
-  return null
-}
 
 export const query = graphql`
   query ProjectTemplate ($id: String) {
     mdx(id: {eq: $id}) {
       body
+      tableOfContents
       ...ProjectMdxFrontmatter
-      frontmatter {
-        gallery {
-          publicURL
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
-      }
+      ...ProjectMdxFrontmatterGallery
     }
   }
 `

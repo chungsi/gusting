@@ -72,16 +72,16 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ["auto", "webp", "avif"],
+          formats: ["auto", "webp"],
         },
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -124,6 +124,7 @@ const config: GatsbyConfig = {
             options: {
               className: `autolink`,
               elements: [`h1`, `h2`, `h3`, `h4`],
+              enableCustomId: true,
             },
           },
         ],

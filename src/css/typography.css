@@ -43,8 +43,10 @@
   --h-xl:  calc(var(--h-lg) * var(--type-scale));
   --h-lg:  calc(var(--h-md) * var(--type-scale));
   --h-md:  var(--type-base-size);
-  --h-sm:  calc(var(--h-md) / var(--type-scale));
-  --h-xs:  calc(var(--h-sm) / var(--type-scale));
+  /* --h-sm:  calc(var(--h-md) / var(--type-scale)); */
+  --h-sm:  calc(var(--h-md) - 0.125rem);
+  /* --h-xs:  calc(var(--h-sm) / var(--type-scale)); */
+  --h-xs:  calc(var(--h-md) / var(--type-scale));
 
   --max-text-width: 40rem;
 }
@@ -110,7 +112,7 @@
 
   a {
     transition: var(--transition);
-    color: theme('colors.th.link');
+    /* color: theme('colors.th.link'); */
 
     /* &:hover,
     &:focus,
@@ -135,7 +137,10 @@
     h4,
     h5,
     h6 {
-      margin: var(--space-xl-rel) 0 var(--space-md) 0;
+      /* margin: var(--space-xl-rel) 0 var(--space-md) 0; */
+      padding-top: var(--space-md-rel);
+      margin-top: var(--space-md-rel);
+      margin-bottom: var(--space-md);
     }
 
     p {
@@ -146,6 +151,7 @@
     }
 
     a {
+      color: theme('colors.th.link');
       text-decoration: underline wavy theme('colors.th.link') 0.025em;
     }
 
@@ -172,8 +178,19 @@
       background-color: var(--c-highlight-color);
       padding: var(--space-md);
 
-      /* // reset if nested */
+      /* reset if nested */
       code { background-color: transparent; }
+    }
+
+    .autolink {
+      bottom: 0;
+      padding-bottom: var(--space-xxs-rel);
+      /* Reset default autolink-plugin positioning */
+      top: auto;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
     }
   }
 }

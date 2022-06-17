@@ -1,0 +1,41 @@
+.project-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "head"
+    "toc "
+    "body";
+
+  /* @screen md {
+    grid-template-columns: 3fr 1fr;
+  } */
+
+  @screen lg {
+    column-gap: 3rem;
+    grid-template-columns: 5fr 2fr;
+    grid-template-areas:
+      "head hero"
+      "body toc";
+  }
+}
+
+  .project-head {
+    grid-area: head;
+  }
+
+  .project-hero {
+    grid-area: head;
+
+    @screen lg {
+      grid-area: hero;
+    }
+  }
+
+  .project-body {
+    grid-area: body;
+  }
+
+  .project-toc {
+    grid-area: toc;
+  }

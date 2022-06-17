@@ -23,6 +23,7 @@ const customCreatePages = async (graphql, actions, dir) => {
             id
             frontmatter {
               title
+              templateType
             }
           }
         }
@@ -37,7 +38,7 @@ const customCreatePages = async (graphql, actions, dir) => {
   allEntries.forEach((node, index) => {
     createPage({
       path: `${dir}/${node.childMdx.slug}`,
-      component: path.resolve(`./src/templates/${dir}.tsx`),
+      component: path.resolve(`./src/templates/${node.childMdx.frontmatter.templateType ?? dir}.tsx`),
       context: {
         id: node.childMdx.id,
         next: index === 0 ? null : allEntries[index - 1],
