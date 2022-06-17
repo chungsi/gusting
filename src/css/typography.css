@@ -186,7 +186,7 @@
       bottom: 0;
       padding-bottom: var(--space-xxs-rel);
       /* Reset default autolink-plugin positioning */
-      top: auto;
+      top: auto !important;
     }
 
     h2:first-of-type {
