@@ -8,6 +8,7 @@ const HeroImage = ({ image, pos }: { image: object, pos?: string | null}) => {
     <img
       aria-hidden
       alt=''
+      // Cast the image property so we can pass the parent object in instead of the .gatsbyImageData prop
       src={getSrc(image as IGatsbyImageData)}
       className={concat(
         'absolute block max-w-[7.25rem] -z-[1] transition',

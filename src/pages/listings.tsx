@@ -3,9 +3,9 @@ import { Link, graphql, PageProps } from 'gatsby'
 
 import Layout from '../components/Layout'
 
-import { ListingsPageQuery } from '../@types/graphql-generated-types'
-
-const ListingsPage = ({ data: {allFile} }: PageProps<{allFile:ListingsPageQuery["allFile"]}>) => {
+const ListingsPage = ({
+  data: { allFile }
+}: PageProps<{ allFile: Queries.ListingsPageQuery["allFile"] }>) => {
 
   return (
     <Layout>

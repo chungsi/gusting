@@ -2,27 +2,28 @@ import type { GatsbyConfig } from 'gatsby'
 
 // module.exports = {
 const config: GatsbyConfig = {
+  graphqlTypegen: true,
   siteMetadata: {
-    title: 'chungsi',
+    title: "chungsi",
     // TODO: is this needed?
-    description: 'web dev & design & art',
-    siteUrl: 'https://www.chungsi.io',
-    homeUrlParamName: 'home',
+    description: "web dev & design & art",
+    siteUrl: "https://www.chungsi.io",
+    homeUrlParamName: "home",
     artHome: {
-      title: 'chungsi',
-      subtitle: 'designer / storymaker / artist',
-      metaTitle: 'chungsi | designer & storymaker',
-      homeUrlParam: 'art',
+      title: "chungsi",
+      subtitle: "designer / storymaker / artist",
+      metaTitle: "chungsi | designer & storymaker",
+      homeUrlParam: "art",
       // TODO: Do I want a meta description for the pages?
       // metaDescription: '',
     },
     designHome: {
-      title: 'ashley',
-      subtitle: 'web developer / designer / storymaker',
-      metaTitle: 'ashley | web dev & design',
-      homeUrlParam: 'design',
+      title: "ashley",
+      subtitle: "web developer / designer / storymaker",
+      metaTitle: "ashley | web dev & design",
+      homeUrlParam: "design",
       // metaDescription: '',
-    }
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -38,14 +39,14 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'chungsi | web dev & design & art',
-        short_name: 'chungsi',
-        description: 'a portfolio',
-        start_url: '/',
+        name: "chungsi | web dev & design & art",
+        short_name: "chungsi",
+        description: "a portfolio",
+        start_url: "/",
         // TODO: update favicon later with multiple sizes
-        icon: 'src/images/icon.png',
+        icon: "src/images/icon.png",
         theme_color_in_head: false,
-      }
+      },
     },
     // {
     //   resolve: `gatsby-plugin-sass`,
@@ -140,6 +141,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-};
+}
 
 export default config

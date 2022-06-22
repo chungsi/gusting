@@ -2,9 +2,8 @@ import * as React from 'react'
 import { Link, graphql, PageProps } from 'gatsby'
 
 import Layout from '../components/Layout'
-import { BlogPageQuery } from '../@types/graphql-generated-types'
 
-const BlogPage = ({ data: {allFile} }: PageProps<{allFile:BlogPageQuery["allFile"]}>) => {
+const BlogPage = ({ data: {allFile} }: PageProps<{allFile:Queries.BlogPageQuery["allFile"]}>) => {
 
   return (
     <Layout>

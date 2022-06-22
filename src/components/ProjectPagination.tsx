@@ -4,13 +4,12 @@ import { Link } from 'gatsby'
 import ProjectExcerpt from './ProjectExcerpt'
 
 import { concat } from '../utils/helpers'
-import { Mdx } from '../@types/graphql-generated-types'
 
 type ProjectPaginationProps = {
   pathPrefix?: string
   pathSuffix?: string
-  next?: Mdx
-  prev?: Mdx
+  next?: Queries.Mdx
+  prev?: Queries.Mdx
 }
 
 /* TODO: Redesign this to be more descriptive */

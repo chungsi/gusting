@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import { concat } from '../utils/helpers'
 
-type TableOfContents = {
+export type TableOfContents = {
   url: string
   title: string
   items?: TableOfContents[] | null | undefined

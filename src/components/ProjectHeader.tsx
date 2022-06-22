@@ -8,10 +8,10 @@ import { concat } from '../utils/helpers'
 type ProjectHeaderProps = {
   frontmatter: {
     title: string
-    subtitle?: string | null | undefined
-    category?: string | null | undefined
-    tags?: (string | null)[] | null | undefined
-    heroImage?: object | null | undefined
+    subtitle?: string | null
+    category?: string | null
+    tags?: readonly (string | null)[] | null
+    heroImage?: object | null
   }
   withHeroImage?: boolean
   className?: string

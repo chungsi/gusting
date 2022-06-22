@@ -12,12 +12,10 @@ import Seo from '../components/Seo'
 
 import { concat, getGalleryImagesArrayForMdx, getHomeUrlParam, getHomeTitle } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import type { GalleryTemplateQuery } from '../@types/graphql-generated-types'
 
 
-// TODO: 
 type GalleryTemplateProps = {
-  mdx: GalleryTemplateQuery["mdx"]
+  mdx: Queries.GalleryTemplateQuery["mdx"]
   location?: PageProps["location"]
 }
 

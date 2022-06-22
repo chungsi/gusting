@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { getImage, getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
@@ -10,21 +10,20 @@ import Seo from '../components/Seo'
 import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat, getProjectPath } from '../utils/helpers'
-import { DesignHomepageQuery } from '../@types/graphql-generated-types'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
-// TODO: REPLACE THIS PAGE WITH A PROPER HOMEPAGE
+// TODO: consolidate or make common type for art and design homepages
 type DesignHomepageProps = {
   // TODO: why can't this one use the "nodes" to get that array?
   // Always throws errors with the returned data being an object and not an array
-  heroImages: DesignHomepageQuery["heroImages"]
-  featuredProjects: DesignHomepageQuery["featuredProjects"]
+  heroImages: Queries.DesignHomepageQuery["heroImages"]
+  featuredProjects: Queries.DesignHomepageQuery["featuredProjects"]
   // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
   location: PageProps["location"]
 }
 
-const DesignHomepageIndex = ({
+const DesignHomepage2 = ({
   data: {
     heroImages,
     featuredProjects
@@ -37,30 +36,33 @@ const DesignHomepageIndex = ({
   const designHomeParamValue = designHome?.homeUrlParam
   // const homeUrlParam = `?${useSiteMetadata()?.homeUrlParamName}=${designHome?.homeUrlParam}`
 
-
   // TODO: some way to use the tailwind config variables in here?
   const heroImagesSrcSet = [
     {
       media: '(min-width: 70rem)',
-      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 44rem)',
-      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData!),
     },
   ]
+
+  const mapMediaBpsToImagesSrcset = ({bps, images}: {bps: {media:string}[], images: {}[]}) => {
+    //
+  }
 
   return (
     <Base id='theme-design'>
@@ -142,7 +144,7 @@ const DesignHomepageIndex = ({
 }
 
 export const data = graphql`
-  query DesignHomepageIndex {
+  query DesignHomepage2 {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/branch/"}}
       sort: {fields: name, order: DESC}
@@ -176,4 +178,4 @@ export const data = graphql`
   }
 `
 
-export default DesignHomepageIndex
+export default DesignHomepage2

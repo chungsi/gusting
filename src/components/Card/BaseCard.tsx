@@ -3,11 +3,10 @@ import { Link } from 'gatsby'
 import ProjectExcerpt from '../ProjectExcerpt'
 
 import { concat } from '../../utils/helpers'
-import { ProjectMdxFrontmatterFragment } from '../../@types/graphql-generated-types'
 
 export type BaseCardProps = {
   link: string
-  frontmatter: ProjectMdxFrontmatterFragment["frontmatter"]
+  frontmatter: Queries.ProjectMdxFrontmatterFragment["frontmatter"]
   accents?: string | JSX.Element
   id?: string | null | undefined
   className?: string

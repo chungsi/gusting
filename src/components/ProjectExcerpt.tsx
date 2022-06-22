@@ -1,11 +1,12 @@
+import { title } from 'process'
 import * as React from 'react'
 import { concat } from '../utils/helpers'
 
 type ProjectExcerptProps = {
   frontmatter: {
     title: string
-    subtitle?: string | null | undefined
-    tags?: (string | null)[] | null | undefined
+    subtitle: string | null
+    tags: readonly (string | null)[] | null
   }
   h1?: boolean
   h2?: boolean
@@ -16,7 +17,11 @@ type ProjectExcerptProps = {
 }
 
 const ProjectExcerpt = ({
-  frontmatter: { title, subtitle, tags },
+  frontmatter: {
+    title,
+    subtitle,
+    tags
+  },
   h1, h2, h3, h4, h5, h6
 }: ProjectExcerptProps) => {
   var HeaderTag: keyof JSX.IntrinsicElements = 'h3'
