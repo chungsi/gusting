@@ -4,24 +4,24 @@ import type { GatsbyConfig } from 'gatsby'
 const config: GatsbyConfig = {
   graphqlTypegen: true,
   siteMetadata: {
-    title: "chungsi",
+    title: 'chungsi',
     // TODO: is this needed?
-    description: "web dev & design & art",
-    siteUrl: "https://www.chungsi.io",
-    homeUrlParamName: "home",
+    description: 'web dev & design & art',
+    siteUrl: 'https://www.chungsi.io',
+    homeUrlParamName: 'home',
     artHome: {
-      title: "chungsi",
-      subtitle: "designer / storymaker / artist",
-      metaTitle: "chungsi | designer & storymaker",
-      homeUrlParam: "art",
+      title: 'chungsi',
+      subtitle: 'designer / storymaker / artist',
+      metaTitle: 'chungsi | designer & storymaker',
+      homeUrlParam: 'art',
       // TODO: Do I want a meta description for the pages?
       // metaDescription: '',
     },
     designHome: {
-      title: "ashley",
-      subtitle: "web developer / designer / storymaker",
-      metaTitle: "ashley | web dev & design",
-      homeUrlParam: "design",
+      title: 'ashley',
+      subtitle: 'web developer / designer / storymaker',
+      metaTitle: 'ashley | web dev & design',
+      homeUrlParam: 'design',
       // metaDescription: '',
     },
   },
@@ -33,18 +33,18 @@ const config: GatsbyConfig = {
       options: {
         isTSX: true,
         allExtensions: true,
-        jsxPragma: "jsx",
+        jsxPragma: 'jsx',
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "chungsi | web dev & design & art",
-        short_name: "chungsi",
-        description: "a portfolio",
-        start_url: "/",
+        name: 'chungsi | web dev & design & art',
+        short_name: 'chungsi',
+        description: 'a portfolio',
+        start_url: '/',
         // TODO: update favicon later with multiple sizes
-        icon: "src/images/icon.png",
+        icon: 'src/images/icon.png',
         theme_color_in_head: false,
       },
     },
@@ -65,11 +65,11 @@ const config: GatsbyConfig = {
           modules: true,
         },
         postCssPlugins: [
-          require("postcss-import"),
-          require("postcss-pow"),
-          require("tailwindcss/nesting"),
-          require("tailwindcss"),
-          require("autoprefixer"),
+          require('postcss-import'),
+          require('postcss-pow'),
+          require('tailwindcss/nesting'),
+          require('tailwindcss'),
+          require('autoprefixer'),
         ],
       },
     },
@@ -77,7 +77,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ["auto", "webp"],
+          formats: ['auto', 'webp'],
         },
       },
     },
@@ -107,10 +107,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [".md", ".mdx"],
+        extensions: ['.md', '.mdx'],
         // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
         // and a string entry in the plugins array.
-        plugins: ["gatsby-remark-images"],
+        plugins: ['gatsby-remark-images'],
         gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
@@ -132,7 +132,7 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /\.inline\.svg$/,
