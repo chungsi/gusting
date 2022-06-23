@@ -2,6 +2,7 @@ import type { GatsbyConfig } from 'gatsby'
 
 // module.exports = {
 const config: GatsbyConfig = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: 'chungsi',
     // TODO: is this needed?
@@ -22,7 +23,7 @@ const config: GatsbyConfig = {
       metaTitle: 'ashley | web dev & design',
       homeUrlParam: 'design',
       // metaDescription: '',
-    }
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,7 +33,7 @@ const config: GatsbyConfig = {
       options: {
         isTSX: true,
         allExtensions: true,
-        jsxPragma: "jsx",
+        jsxPragma: 'jsx',
       },
     },
     {
@@ -45,7 +46,7 @@ const config: GatsbyConfig = {
         // TODO: update favicon later with multiple sizes
         icon: 'src/images/icon.png',
         theme_color_in_head: false,
-      }
+      },
     },
     // {
     //   resolve: `gatsby-plugin-sass`,
@@ -64,11 +65,11 @@ const config: GatsbyConfig = {
           modules: true,
         },
         postCssPlugins: [
-          require("postcss-import"),
-          require("postcss-pow"),
-          require("tailwindcss/nesting"),
-          require("tailwindcss"),
-          require("autoprefixer"),
+          require('postcss-import'),
+          require('postcss-pow'),
+          require('tailwindcss/nesting'),
+          require('tailwindcss'),
+          require('autoprefixer'),
         ],
       },
     },
@@ -76,7 +77,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ["auto", "webp"],
+          formats: ['auto', 'webp'],
         },
       },
     },
@@ -106,10 +107,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [".md", ".mdx"],
+        extensions: ['.md', '.mdx'],
         // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
         // and a string entry in the plugins array.
-        plugins: ["gatsby-remark-images"],
+        plugins: ['gatsby-remark-images'],
         gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
@@ -131,7 +132,7 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /\.inline\.svg$/,
@@ -140,6 +141,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-};
+}
 
 export default config

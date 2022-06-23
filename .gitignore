@@ -1,3 +1,6 @@
 node_modules/
 .cache/
 public
+
+# From Gatsby doc: We recommend adding src/gatsby-types.d.ts to your .gitignore as it’s machine generated code and duplicated information that is already existent in e.g. your page queries.
+src/gatsby-types.d.ts

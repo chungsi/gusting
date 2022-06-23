@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as scss from './art.module.css'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { getSrcSet } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
@@ -11,15 +11,14 @@ import Logo from '../components/Logo'
 import OgImageArt from '../images/ogImage_square_art.jpg'
 import Seo from '../components/Seo'
 
-import { ArtHomepageQuery } from '../@types/graphql-generated-types'
 import { concat, getProjectPath } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 
 type ArtHomepageProps = {
-  heroImages: ArtHomepageQuery["heroImages"]
-  featuredProjects: ArtHomepageQuery["featuredProjects"]
-  otherProjects: ArtHomepageQuery["otherProjects"]
+  heroImages: Queries.ArtHomepageQuery["heroImages"]
+  featuredProjects: Queries.ArtHomepageQuery["featuredProjects"]
+  otherProjects: Queries.ArtHomepageQuery["otherProjects"]
   location: PageProps["location"]
 }
 
@@ -39,23 +38,23 @@ const ArtHomepage = ({
   const heroImagesSrcSet = [
     {
       media: '(min-width: 96rem)',
-      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[0]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 50rem)',
-      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[1]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 39rem)',
-      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[2]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 30rem)',
-      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[3]?.childImageSharp?.gatsbyImageData!),
     },
     {
       media: '(min-width: 0rem)',
-      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData),
+      srcset: getSrcSet(heroImages?.nodes[4]?.childImageSharp?.gatsbyImageData!),
     },
   ]
 

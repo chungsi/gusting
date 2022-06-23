@@ -10,18 +10,17 @@ import ProjectHeader from '../components/ProjectHeader'
 import MdxImage from '../components/Mdx/MdxImage'
 import MdxGalleryImage from '../components/Mdx/MdxGalleryImage'
 import MdxGrid from '../components/Mdx/MdxGrid'
-import ProjectToc from '../components/ProjectToc'
+import ProjectToc, { TableOfContents } from '../components/ProjectToc'
 import Seo from '../components/Seo'
 
 import * as styles from './project.module.css'
 import { concat, getGalleryImagesArrayForMdx, getHomeUrlParam, getHomeTitle } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import type { ProjectTemplateQuery } from '../@types/graphql-generated-types'
 
 
 // TODO: Remove PageContext if I'm not using it; otherwise need to fix it
 type ProjectTemplateProps = {
-  mdx: ProjectTemplateQuery["mdx"]
+  mdx: Queries.ProjectTemplateQuery["mdx"]
   location?: PageProps["location"]
   pageContext?: PageProps["pageContext"]
 }
@@ -71,7 +70,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
           {mdx?.frontmatter?.heroImage &&
             <img
               aria-hidden
-              src={getSrc(mdx.frontmatter.heroImage as IGatsbyImageData)}
+              src={getSrc(mdx.frontmatter.heroImage?.childImageSharp?.gatsbyImageData!)}
               alt=''
               className={concat(
                 'absolute right-0 top-[-1rem] opacity-70 ',
@@ -95,7 +94,7 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
 
         <div className={`${styles.projectToc}`}>
           <ProjectToc
-            content={mdx?.tableOfContents.items}
+            content={mdx?.tableOfContents?.items as TableOfContents[]}
             maxDepth={2}
             className={`lg:fixed`}
           />
