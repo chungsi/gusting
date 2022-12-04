@@ -17,14 +17,15 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 type DesignHomepageProps = {
   heroImages: Queries.DesignHomepageQuery["heroImages"]
   featuredProjects: Queries.DesignHomepageQuery["featuredProjects"]
-  // otherProjects: DesignHomepageQuery["otherProjects"]["nodes"]
+  otherProjects: Queries.DesignHomepageQuery["otherProjects"]
   location: PageProps["location"]
 }
 
 const DesignHomepage = ({
   data: {
     heroImages,
-    featuredProjects
+    featuredProjects,
+    otherProjects
   },
   location
 }: PageProps<DesignHomepageProps>) => {
@@ -134,6 +135,29 @@ const DesignHomepage = ({
           </div>
         </section>
 
+
+        <section className='mt-20'>
+          <h2 className='sr-only'>Other Projects</h2>
+
+          <div className={concat(
+            'grid grid-cols-1 gap-2xl items-center',
+            'sm:grid-cols-2',
+            'lg:grid-cols-3'
+          )}>
+            {otherProjects?.nodes.map((project, i) => (
+              <TiltingCard
+                key={i}
+                id={project?.childMdx?.slug}
+                link={getProjectPath(
+                  project?.childMdx?.slug ?? '',
+                  [{name: designHomeParamName ?? '', value: designHomeParamValue ?? ''}]
+                )}
+                frontmatter={project?.childMdx?.frontmatter!}
+              />
+            ))}
+          </div>
+        </section>
+
         <Footer />
 
       </section>
@@ -144,7 +168,10 @@ const DesignHomepage = ({
 export const data = graphql`
   query DesignHomepage {
     heroImages: allFile(
-      filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/branch/"}}
+      filter: {
+        sourceInstanceName: {eq: "assets"},
+        name: {regex: "/branch/"}
+      }
       sort: {fields: name, order: DESC}
     ) {
       nodes {
@@ -160,12 +187,38 @@ export const data = graphql`
         sourceInstanceName: {eq: "project"},
         extension: {eq: "mdx"},
         name: {regex: "/^[^_]/"},
-        childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
+        childMdx: {
+          frontmatter: {
+            publish: {eq: true},
+            featureDesign: {eq: true}
+          }
+        }
       }
       sort: {fields: childMdx___frontmatter___date, order: ASC}
     ) {
       nodes {
-        sourceInstanceName
+        childMdx {
+          id
+          slug
+          ...ProjectMdxFrontmatter
+        }
+      }
+    }
+    otherProjects: allFile(
+      filter: {
+        sourceInstanceName: {eq: "project"},
+        extension: {eq: "mdx"},
+        name: {regex: "/^[^_]/"},
+        childMdx: {
+          frontmatter: {
+            publish: {eq: true},
+            featureDesign: {eq: true}
+          }
+        }
+      }
+      sort: {fields: childMdx___frontmatter___date, order: ASC}
+    ) {
+      nodes {
         childMdx {
           id
           slug
