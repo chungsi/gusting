@@ -108,12 +108,12 @@ const ArtHomepage = ({
           <FloatingCard
             key={i}
             className={scss.projectCard}
-            id={project?.childMdx?.slug}
+            id={project?.childMdx?.fields?.slug}
             link={getProjectPath(
-              project?.childMdx?.slug ?? '',
+              project?.childMdx?.fields?.slug ?? '',
               [{name: artHomeParamName ?? '', value: artHomeParamValue ?? ''}]
             )}
-            frontmatter={project?.childMdx?.frontmatter}
+            frontmatter={project?.childMdx?.frontmatter!}
           />
         ))}
       </section>
@@ -124,8 +124,8 @@ const ArtHomepage = ({
         {otherProjects?.nodes.map((project, i) =>
           <BaseCard
             key={i}
-            link={`/project/${project?.childMdx?.slug}`}
-            frontmatter={project?.childMdx?.frontmatter}
+            link={`/project/${project?.childMdx?.fields?.slug}`}
+            frontmatter={project?.childMdx?.frontmatter!}
           />
         )}
 
@@ -140,7 +140,7 @@ export const data = graphql`
   query ArtHomepage {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/skypuddle/"}}
-      sort: {fields: name, order: DESC}
+      sort: {name: DESC}
     ) {
       nodes {
         id
@@ -161,12 +161,12 @@ export const data = graphql`
           category: {in: ["art", "storytelling"]}
         }}
       }
-      sort: {fields: childMdx___frontmatter___date, order: DESC}
+      # sort: { childMdx: { frontmatter: { date: DESC } }}
     ) {
       nodes {
         childMdx {
           id
-          slug
+          fields { slug }
           ...ProjectMdxFrontmatter
         }
         sourceInstanceName
@@ -181,7 +181,7 @@ export const data = graphql`
           feature: {ne: true}
         }}
       }
-      sort: {fields: childMdx___frontmatter___date, order: DESC}
+      # sort: { childMdx: { frontmatter: { date: DESC } }}
     ) {
       nodes {
         childMdx {
@@ -192,7 +192,7 @@ export const data = graphql`
             tags
           }
           id
-          slug
+          fields { slug }
         }
         sourceInstanceName
       }

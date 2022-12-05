@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
 import ContentLayout from '../components/Layout/ContentLayout'
@@ -23,9 +22,15 @@ type ProjectTemplateProps = {
   mdx: Queries.ProjectTemplateQuery["mdx"]
   location?: PageProps["location"]
   pageContext?: PageProps["pageContext"]
+  children?: string
 }
 
-const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<ProjectTemplateProps>) => {
+const ProjectTemplate = ({
+  data: {mdx},
+  location,
+  pageContext,
+  children
+}: PageProps<ProjectTemplateProps>) => {
 
   // Get the param for which homepage the user navigated to ths page from;
   // The query param is set on the individual homepages
@@ -106,9 +111,10 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
           styles.projectBody
         )}>
           <MDXProvider components={{MdxImage, MdxGalleryImage, MdxGrid}}>
-            <MDXRenderer gallery={galleryImages}>
+            {/* <MDXRenderer gallery={galleryImages}>
               {mdx?.body ?? ''}
-            </MDXRenderer>
+            </MDXRenderer> */}
+            {children}
           </MDXProvider>
         </section>
 
@@ -129,7 +135,6 @@ const ProjectTemplate = ({ data: {mdx}, location, pageContext }: PageProps<Proje
 export const query = graphql`
   query ProjectTemplate ($id: String) {
     mdx(id: {eq: $id}) {
-      body
       tableOfContents
       ...ProjectMdxFrontmatter
       ...ProjectMdxFrontmatterGallery

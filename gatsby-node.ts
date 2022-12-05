@@ -1,6 +1,19 @@
 import type { GatsbyNode } from 'gatsby'
 import * as path from 'path'
 // const path = require('path')
+import { slugify } from './src/utils/helpers'
+
+const { createFilePath } = require('gatsby-source-filesystem')
+
+exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
+  if (node.internal.type === 'Mdx') {
+     createNodeField({
+      node,
+      name: `slug`,
+      value: createFilePath({ node, getNode })
+     })
+  }
+}
 
 /* TODO: Proper sorting of entries -> put an actual date field in entries? */
 const customCreatePages = async (graphql, actions, dir) => {
@@ -14,16 +27,18 @@ const customCreatePages = async (graphql, actions, dir) => {
           name: {regex: "/^[^_]/"},
           childMdx: {frontmatter: {publish: {eq: true}}}
         }
-        sort: {fields: childMdx___frontmatter___date, order: ASC}
       ) {
         nodes {
           id
           childMdx {
-            slug
             id
+            fields { slug }
             frontmatter {
               title
               templateType
+            }
+            internal {
+              contentFilePath
             }
           }
         }
@@ -36,9 +51,10 @@ const customCreatePages = async (graphql, actions, dir) => {
   const allEntries = query.data.allFile.nodes
 
   allEntries.forEach((node, index) => {
+    const entryTemplate = path.resolve(`./src/templates/${node.childMdx.frontmatter.templateType ?? dir}.tsx`)
     createPage({
-      path: `${dir}/${node.childMdx.slug}`,
-      component: path.resolve(`./src/templates/${node.childMdx.frontmatter.templateType ?? dir}.tsx`),
+      path: slugify(`${dir}/${node.childMdx.fields.slug}`),
+      component: `${entryTemplate}?__contentFilePath=${node.childMdx.internal.contentFilePath}`,
       context: {
         id: node.childMdx.id,
         next: index === 0 ? null : allEntries[index - 1],
@@ -49,7 +65,7 @@ const customCreatePages = async (graphql, actions, dir) => {
 }
 
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions }) => {
-  await customCreatePages(graphql, actions, 'blog')
+  // await customCreatePages(graphql, actions, 'blog')
   await customCreatePages(graphql, actions, 'project')
 }
 

@@ -93,24 +93,21 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/content/blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `project`,
         path: `${__dirname}/content/project`,
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `blog`,
+    //     path: `${__dirname}/content/blog`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.md', '.mdx'],
-        // gatsby-remark-images needs to be both a sub-plugin of gatsby-plugin-mdx
-        // and a string entry in the plugins array.
-        plugins: ['gatsby-remark-images'],
         gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
@@ -129,6 +126,12 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        // mdxOptions: {
+        //   remarkPlugins: [
+        //     require(`remark-frontmatter`),
+        //     require(`remark-mdx-frontmatter`)
+        //   ],
+        // },
       },
     },
     {

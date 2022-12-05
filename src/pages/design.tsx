@@ -123,9 +123,9 @@ const DesignHomepage = ({
             {featuredProjects?.nodes.map((project, i) => (
               <TiltingCard
                 key={i}
-                id={project?.childMdx?.slug}
+                id={project?.childMdx?.fields?.slug}
                 link={getProjectPath(
-                  project?.childMdx?.slug ?? '',
+                  project?.childMdx?.fields?.slug ?? '',
                   [{name: designHomeParamName ?? '', value: designHomeParamValue ?? ''}]
                 )}
                 frontmatter={project?.childMdx?.frontmatter!}
@@ -145,7 +145,7 @@ export const data = graphql`
   query DesignHomepage {
     heroImages: allFile(
       filter: {sourceInstanceName: {eq: "assets"}, name: {regex: "/branch/"}}
-      sort: {fields: name, order: DESC}
+      sort: { name: DESC}
     ) {
       nodes {
         id
@@ -162,13 +162,13 @@ export const data = graphql`
         name: {regex: "/^[^_]/"},
         childMdx: {frontmatter: {publish: {eq: true}, feature: {eq: true}}}
       }
-      sort: {fields: childMdx___frontmatter___date, order: ASC}
+      # sort: { childMdx: { frontmatter: { date: ASC } }}
     ) {
       nodes {
         sourceInstanceName
         childMdx {
           id
-          slug
+          fields { slug }
           ...ProjectMdxFrontmatter
         }
       }

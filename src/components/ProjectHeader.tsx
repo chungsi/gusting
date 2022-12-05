@@ -7,7 +7,7 @@ import { concat } from '../utils/helpers'
 
 type ProjectHeaderProps = {
   frontmatter: {
-    title: string
+    title: string | null
     subtitle?: string | null
     category?: string | null
     tags?: readonly (string | null)[] | null

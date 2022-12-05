@@ -6,7 +6,7 @@ import OgImageArt from '../images/ogImage_square_art.jpg'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 type SeoProps = {
-  title: string | undefined
+  title: string | null | undefined
   slug: string,
   description?: string | null | undefined
   image?: string | null | undefined
@@ -38,7 +38,7 @@ const Seo = ({
 
       <meta name='image' content={seo.image} />
 
-      <meta property='og:title' content={seo.title} />
+      <meta property='og:title' content={seo.title ?? ''} />
       <meta property='og:type' content='website' />
       <meta property='og:url' content={seo.canonicalUrl} />
       <meta property='og:image' content={seo.image} />
