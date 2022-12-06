@@ -2,17 +2,21 @@ import * as React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 
-type TestTemplateProps = {
+type TestProps = {
   mdx: Queries.TestTemplateQuery["mdx"]
-  children?: any
+  children?: React.ReactNode | React.ReactNode[]
 }
 
-const TestTemplate = ({
-  data: {mdx},
+export default function TestTemplate ({
+  data: { mdx },
   children
-}: PageProps<TestTemplateProps>) => {
+}: PageProps<TestProps>) {
+
   return (
-    <MDXProvider>{children}</MDXProvider>
+    <>
+      <h1>{mdx?.frontmatter?.title}</h1>
+      <MDXProvider>{children}</MDXProvider>
+    </>
   )
 }
 
@@ -21,10 +25,9 @@ export const query = graphql`
     mdx(id: {eq: $id}) {
       frontmatter {
         title
-        subtitle
       }
     }
   }
 `
 
-export default TestTemplate
+// export default TestTemplate

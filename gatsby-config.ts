@@ -97,6 +97,13 @@ const config: GatsbyConfig = {
         path: `${__dirname}/content/project`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `test`,
+        path: `${__dirname}/content/test`,
+      },
+    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
@@ -106,33 +113,27 @@ const config: GatsbyConfig = {
     // },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.md', '.mdx'],
-        gatsbyRemarkPlugins: [
-          {
-            // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1000,
-            },
-          },
-          {
-            // https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/?=gatsby-remark
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              className: `autolink`,
-              elements: [`h1`, `h2`, `h3`, `h4`],
-              enableCustomId: true,
-            },
-          },
-        ],
-        // mdxOptions: {
-        //   remarkPlugins: [
-        //     require(`remark-frontmatter`),
-        //     require(`remark-mdx-frontmatter`)
-        //   ],
-        // },
-      },
+      // options: {
+      //   extensions: ['.md', '.mdx'],
+      //   gatsbyRemarkPlugins: [
+      //     {
+      //       // https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=gatsby-remark
+      //       resolve: `gatsby-remark-images`,
+      //       options: {
+      //         maxWidth: 1000,
+      //       },
+      //     },
+      //     {
+      //       // https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/?=gatsby-remark
+      //       resolve: `gatsby-remark-autolink-headers`,
+      //       options: {
+      //         className: `autolink`,
+      //         elements: [`h1`, `h2`, `h3`, `h4`],
+      //         // enableCustomId: true,
+      //       },
+      //     },
+      //   ],
+      // },
     },
     {
       resolve: 'gatsby-plugin-react-svg',
