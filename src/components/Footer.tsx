@@ -1,10 +1,18 @@
 import * as React from 'react'
-import { format } from 'date-fns'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const Footer = () => {
+  const buildDateQuery = useStaticQuery(graphql`
+    query BuildDateQuery {
+      currentBuildDate {
+        currentDate
+      }
+    }
+  `)
+
   return (
     <footer className='mt-3xl mb-xl py-lg font-light border-t border-solid border-th-highlight'>
-      <p>Last updated: {format(new Date(), 'MMMM yyyy')}</p>
+      <p>Last updated: {buildDateQuery.currentBuildDate.currentDate}</p>
       <p>
         Sketchblog:
         [<a href={`https://www.instagram.com/chungsi_/`} target='_blank' rel='noreferrer'>instagram</a>]

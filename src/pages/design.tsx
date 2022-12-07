@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { getImage, getSrcSet } from 'gatsby-plugin-image'
+import { getImage, getSrcSet, StaticImage } from 'gatsby-plugin-image'
 
 import Base from '../components/Layout/BaseLayout'
 import Footer from '../components/Footer'
@@ -11,21 +11,21 @@ import TiltingCard from '../components/Card/TiltingCard'
 
 import { concat, getProjectPath } from '../utils/helpers'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import BaseCard from '../components/Card/BaseCard'
+import CategoryIcon from '../components/CategoryIcon'
 
 
 // TODO: consolidate or make common type for art and design homepages
 type DesignHomepageProps = {
   heroImages: Queries.DesignHomepageQuery["heroImages"]
-  featuredProjects: Queries.DesignHomepageQuery["featuredProjects"]
-  otherProjects: Queries.DesignHomepageQuery["otherProjects"]
+  projects: Queries.DesignHomepageQuery["projects"]
   location: PageProps["location"]
 }
 
 const DesignHomepage = ({
   data: {
     heroImages,
-    featuredProjects,
-    otherProjects
+    projects
   },
   location
 }: PageProps<DesignHomepageProps>) => {
@@ -62,6 +62,29 @@ const DesignHomepage = ({
   const mapMediaBpsToImagesSrcset = ({bps, images}: {bps: {media:string}[], images: {}[]}) => {
     //
   }
+
+  const primaryProjectSlugs = [
+    'allcourt',
+    'threads-to-heaven',
+    'abaab',
+  ]
+  const secondaryProjectSlugs = [
+    'makers-assist',
+    'reclaimed',
+    'razzmatazz',
+    'bitter',
+  ]
+
+  const primaryProjects = projects.nodes.filter((project, i) => (
+    primaryProjectSlugs.includes(project.childMdx!.slug!) ))
+  primaryProjects.sort((a, b) => (
+    primaryProjectSlugs.indexOf(a.childMdx?.slug ?? '') - primaryProjectSlugs.indexOf(b.childMdx?.slug ?? ``) ))
+
+  const secondaryProjects = projects.nodes.filter((project, i) => (
+    secondaryProjectSlugs.includes(project.childMdx!.slug!) ))
+  secondaryProjects.sort((a, b) => (
+    secondaryProjectSlugs.indexOf(a.childMdx?.slug ?? '') - secondaryProjectSlugs.indexOf(b.childMdx?.slug ?? ``) ))
+
 
   return (
     <Base id='theme-design'>
@@ -121,7 +144,7 @@ const DesignHomepage = ({
             'sm:grid-cols-2',
             'lg:grid-cols-3'
           )}>
-            {featuredProjects?.nodes.map((project, i) => (
+            {primaryProjects.map((project, i) => (
               <TiltingCard
                 key={i}
                 id={project?.childMdx?.slug}
@@ -140,23 +163,35 @@ const DesignHomepage = ({
           <h2 className='sr-only'>Other Projects</h2>
 
           <div className={concat(
-            'grid grid-cols-1 gap-2xl items-center',
-            'sm:grid-cols-2',
-            'lg:grid-cols-3'
+            'max-w-2xl'
           )}>
-            {otherProjects?.nodes.map((project, i) => (
-              <TiltingCard
+            {secondaryProjects.map((project, i) => (
+              <BaseCard
                 key={i}
                 id={project?.childMdx?.slug}
                 link={getProjectPath(
                   project?.childMdx?.slug ?? '',
                   [{name: designHomeParamName ?? '', value: designHomeParamValue ?? ''}]
                 )}
+                accents={<CategoryIcon
+                  category={project.childMdx?.frontmatter?.category ?? ''}
+                  className='absolute w-5 left-[-.25rem]'
+                />}
                 frontmatter={project?.childMdx?.frontmatter!}
+                className='border-t border-cedar-100'
+                oneLineTags
               />
             ))}
           </div>
         </section>
+
+
+        <div className={concat(
+          `fixed right-0 bottom-12 w-36 -z-10 hidden`,
+          `lg:block`
+        )}>
+          <StaticImage src="../../content/assets/branch-extra.jpg" alt="" />
+        </div>
 
         <Footer />
 
@@ -182,7 +217,7 @@ export const data = graphql`
         }
       }
     }
-    featuredProjects: allFile(
+    projects: allFile(
       filter: {
         sourceInstanceName: {eq: "project"},
         extension: {eq: "mdx"},
@@ -190,29 +225,6 @@ export const data = graphql`
         childMdx: {
           frontmatter: {
             publish: {eq: true},
-            featureDesign: {eq: true}
-          }
-        }
-      }
-      sort: {fields: childMdx___frontmatter___date, order: ASC}
-    ) {
-      nodes {
-        childMdx {
-          id
-          slug
-          ...ProjectMdxFrontmatter
-        }
-      }
-    }
-    otherProjects: allFile(
-      filter: {
-        sourceInstanceName: {eq: "project"},
-        extension: {eq: "mdx"},
-        name: {regex: "/^[^_]/"},
-        childMdx: {
-          frontmatter: {
-            publish: {eq: true},
-            featureDesign: {eq: true}
           }
         }
       }

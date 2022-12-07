@@ -8,6 +8,7 @@ export type BaseCardProps = {
   link: string
   frontmatter: Queries.ProjectMdxFrontmatterFragment["frontmatter"]
   accents?: string | JSX.Element
+  oneLineTags?: boolean
   id?: string | null | undefined
   className?: string
   children?: React.ReactNode | React.ReactNode[]
@@ -19,7 +20,8 @@ const BaseCard = ({
   className,
   frontmatter,
   accents,
-  children
+  oneLineTags,
+  children,
 }: BaseCardProps) => {
   // const { title, subtitle, category, tags } = frontmatter ?? {}
 
@@ -35,7 +37,7 @@ const BaseCard = ({
     >
 
       {accents}
-      <ProjectExcerpt frontmatter={ frontmatter! } />
+      <ProjectExcerpt frontmatter={frontmatter!} oneLineTags={oneLineTags} />
       {children}
 
     </Link>
