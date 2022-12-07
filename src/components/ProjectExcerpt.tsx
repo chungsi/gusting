@@ -14,6 +14,7 @@ type ProjectExcerptProps = {
   h4?: boolean
   h5?: boolean
   h6?: boolean
+  oneLineTags?: boolean
 }
 
 const ProjectExcerpt = ({
@@ -22,7 +23,8 @@ const ProjectExcerpt = ({
     subtitle,
     tags
   },
-  h1, h2, h3, h4, h5, h6
+  h1, h2, h3, h4, h5, h6,
+  oneLineTags
 }: ProjectExcerptProps) => {
   var HeaderTag: keyof JSX.IntrinsicElements = 'h3'
 
@@ -71,7 +73,7 @@ const ProjectExcerpt = ({
       {tags &&
         <ul className='text-sm list-none p-0'>
           {tags.map((tag, i) => (
-            <li key={i}>
+            <li key={i} className={oneLineTags ? `inline-block pr-2` : ''}>
               {tag}
               {/* Print a forward-slash after the text if it's not last */}
               {(i+1)<tags.length ? ' /' : ''}

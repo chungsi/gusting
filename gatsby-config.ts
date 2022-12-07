@@ -3,6 +3,9 @@ import type { GatsbyConfig } from 'gatsby'
 // module.exports = {
 const config: GatsbyConfig = {
   graphqlTypegen: true,
+  // graphqlTypegen: {
+  //   typesOutputPath: `${__dirname}/src/@types/`
+  // },
   siteMetadata: {
     title: 'chungsi',
     // TODO: is this needed?
@@ -48,15 +51,14 @@ const config: GatsbyConfig = {
         theme_color_in_head: false,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-sass`,
-    //   options: {
-    //     postCssPlugins: [
-    //       require('tailwindcss'),
-    //       require('./tailwind.config.js')
-    //     ]
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-build-date`,
+      options: {
+        formatting: {
+          format: 'MMMM YYYY'
+        }
+      }
+    },
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
