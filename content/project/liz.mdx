@@ -1,0 +1,120 @@
+---
+title: liz design system
+subtitle: subtitle
+description: description
+metaImage: './../assets/allcourt/ogImage_square_allcourt.jpg'
+
+heroImage: './../assets/clayCourt.png'
+heroImagePos: top
+
+category: dev
+tags:
+  - design system
+  - web dev
+  - ux/ui
+
+templateType: project
+
+gallery:
+  - ./../assets/liz/image.jpg
+
+publish: true
+feature: true
+featureArt: false
+featureDesign: true
+---
+
+## The Project
+
+As a hybrid designer-developer on the digital marketing team, I built the foundations of a scalable design system for the company's 15-year-old website to provide a consistent brand experience while reducing development redundancy. I led the development of both the visual style as well as the front-end and back-end implementation of newly created designs. This included creating the CSS architecture and modular Laravel (Blade) components. While this was taking place, I simultaneously created and maintained the subsite where the documentation lived.
+
+As the team grew to include more designers, developers, and writers, the design system also expanded to include accessibility, visual, and writing guidelines. It became so successful that it was consulted by other product and sales teams within the company, spurring more conversations about investing in design.
+
+
+## Detailed Breakdown
+
+### The Problem & Approach
+
+Before beginning the project, we assessed the following issues:
+
+- Many different eras of branding across thousands of pages, with varying colour schemes;
+- Platforms between pages were not consistent (some were hard-coded PHP/HTML & CSS with no templating engine, while others lived in WordPress);
+- Overall page and component designs varied due to inconsistent & standalone CSS files;
+- Lack of consolidated design & development guidelines and standards in the company, even from the other web & software products.
+
+As it wouldn't be feasible to update thousands of pages at once, the project was started with the intent of being a long-term, living project. Our first steps included:
+
+1. Creating a simple style guide with basic colour schemes, typography, and component patterns that all new pages would follow
+2. Using the front-end framework Foundation for their interactive components & accessibility tools, customising as needed
+3. Introducing a templating engine to have a single source of code for these new components. We chose Laravel and Blade as the site was already built completely in PHP. This would also allow us to connect the WP templates to our components.
+
+Throughout the process, I maintained a documentation subsite that would develop along with the scope of the design system.
+
+### The Documentation Subsite
+
+Early on in the project, I was adamant about setting time aside to create good documentation to aid onboarding, development, and day-to-day design. After all, readable, up-to-date documentation is just as important as readable, up-to-date code.
+
+The documentation began as a mockup of basic typography and colours but naturally evolved to become a living subsite containing design guidelines, component library, code standards, accessibility rules, and writing guidelines.
+
+#### Custom Documentation Generators
+
+To make documenting our code easier, I implemented systems that would make it as automated as possible.
+
+For SASS tools and important variables, I used SassDoc to generate a JSON object that would be consumed on the front-end.
+
+To track our Blade components, I created a custom PHP parser similar to SassDoc that would allow doc comments within component files to be output as a consumable object.
+
+
+### Design Components & Their Code Couterparts
+
+The team invested in upgrading our raw PHP site to implement Laravel and turn WP into a headless CMS to ensure all web components were pulled from a single source of code. Doing so gave us more tools, templating, and control to manage both content and design. This made it possible for the existing website to continue being serviced while we built new components and visual elements in the design system.
+
+#### Process
+
+I followed [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) principles to create our component library starting with the most basic elements before working up to more complex components. Additionally, components were updated and developed as needed when new pages were built and old pages revamped. This allowed the team to continue to assist with UX/UI improvements while addressing work requests for the website.
+
+As more components were made and page templates mapped out, the team was able to complete tasks faster enabling both developers and designers to evaluate and improve overall UX in more depth. Notable updates we made as a result of this increased focus was the structure of the website's main navigation and new interactive components like a cost calculator on pricing pages.
+
+#### Working with WordPress
+
+When we began this project, web content and data were spread between WordPress and hard-coded pages. To streamline the maintenance of the website as a whole, we focused on migrating all appropriate hard-coded pages to WordPress. Since marketers and other stakeholders were familiar with the UI in WordPress, it made sense to allow them to continue to work within it. This enabled stakeholders to make content changes to more pages than before without relying on developers.
+
+Before migrating content, I learned the needs of other stakeholders by having discussions with our team's writer and designer. This allowed me to determine what modular components would best suit various types of content and configuration. From here I created a system of WordPress Metaboxes with options that enabled stakeholders to customise content and page layout. Everything created in WordPress was integrated with our new design system in Laravel.
+
+With this setup, WordPress became a headless CMS that Laravel queried data from.
+
+
+### CSS Artchitecture (SASS & Foundation)
+
+The existing website had no consolidated CSS system so I created a new one using SASS and Zurb's Foundation Framework. This toolkit would enable us to:
+
+- Unify our visual styles and UI behaviour (responsive) through SASS features and consistent implementation of classes;
+- Create accessibility-focused components based on Foundation's pattern library; and
+- Improve overall site performance by removing the bloated Bootstrap 3 packages.
+
+#### SASS Organisation Structure
+
+I organised the SASS files following the Inverted Triangle CSS structure (ITCSS) by Harry Roberts and used the Block-Element-Modifier (BEM) naming convention for classes. ITCSS emphasises hierarchical layering of specificity to reduce code redundancy and inadvertently leaking styles, while BEM makes hierarchy and style-application immediately apparent. I chose these guidelines to keep code precise, maintainable, and scalable for ongoing development, referencing different companies' approaches and methodologies.
+
+#### Building the SASS Tools
+
+I then built SASS variables, mixins, and functions to aid the creation of elements and components. These included typography, colour palettes, spacing utilities, a grid system, and repeatable UI styles like dropshadows & borders.
+
+#### Particular CSS Limitations
+
+At the time, the site needed to be IE8 compatible due to the company's customer base so using CSS custom properties was unsupported. Tailwind was also in it's early stages of alpha so wasn't a reliable tool yet for our large website. Instead, we used a similar tool, Tachyons, for internal development.
+
+
+### The Wider Impact
+
+Similar to the website, product development lacked a standardized process for implementing consistent design features. Our development and use of a design system proved to be valuable in supporting an agile environment which led these teams to eventually adopt our design system, too.
+
+While our design system was specifically built for the website, it was nevertheless a meaningful springboard for more design discussions throughout the company.
+
+#### Reflections
+
+With hindsight, more experience, and new web technologies added to my skillset I would approach certain aspects of this project differently, such as aligning the tech stack with other web product teams and designing the documentation subsite to enable non-developer stakeholders to contribute.
+
+Other web product teams used completely different tech stacks based around Javascript frameworks (such as Angular and Ruby on Rails), so not only were we unable to share our design system components with them, but we also couldn't cross-polinate developer knowledge. Although the marketing team chose to stay with a PHP stack because of the sheer amount of legacy code, if I was experienced with React and CMS integrations, I would have advocated for a Javascript framework at least.
+
+The documentation subsite grew to include content and accessibility guidelines ontop of development standards, but wasn't designed to be easily updated for non-developers. With the stack that we had, I could have implemented a lightweight CMS, like Statamic, to handle non-autogenerated pages.
