@@ -66,6 +66,7 @@ const DesignHomepage = ({
   }
 
   const primaryProjectSlugs = [
+    'ses-quiz',
     'liz',
     'allcourt',
     'threads-to-heaven',

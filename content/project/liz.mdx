@@ -1,7 +1,7 @@
 ---
 title: liz design system
-subtitle: subtitle
-description: description
+subtitle: scalable tools for a web product
+description: As a hybrid designer-developer on the digital marketing team, I built the foundations of a scalable design system for the company's 15-year-old website to provide a consistent brand experience while reducing development redundancy.
 metaImage: './../assets/allcourt/ogImage_square_allcourt.jpg'
 
 heroImage: './../assets/clayCourt.png'
@@ -16,7 +16,16 @@ tags:
 templateType: project
 
 gallery:
-  - ./../assets/liz/image.jpg
+  - ./../assets/liz/overview.png
+  - ./../assets/liz/liz_v1_button.png
+  - ./../assets/liz/liz_v2_button.png
+  - ./../assets/liz/final_liz_button.png
+  - ./../assets/liz/sass_doc_code.png
+  - ./../assets/liz/sass_doc_output.png
+  - ./../assets/liz/blade_docs_code.png
+  - ./../assets/liz/blade_docs_output.png
+  - ./../assets/liz/component_sketches.png
+  - ./../assets/liz/sass_reference.png
 
 publish: true
 feature: true
@@ -29,6 +38,8 @@ featureDesign: true
 As a hybrid designer-developer on the digital marketing team, I built the foundations of a scalable design system for the company's 15-year-old website to provide a consistent brand experience while reducing development redundancy. I led the development of both the visual style as well as the front-end and back-end implementation of newly created designs. This included creating the CSS architecture and modular Laravel (Blade) components. While this was taking place, I simultaneously created and maintained the subsite where the documentation lived.
 
 As the team grew to include more designers, developers, and writers, the design system also expanded to include accessibility, visual, and writing guidelines. It became so successful that it was consulted by other product and sales teams within the company, spurring more conversations about investing in design.
+
+<MdxImage gatsbyImageData={props.gallery.image1} />
 
 
 ## Detailed Breakdown
@@ -56,13 +67,50 @@ Early on in the project, I was adamant about setting time aside to create good d
 
 The documentation began as a mockup of basic typography and colours but naturally evolved to become a living subsite containing design guidelines, component library, code standards, accessibility rules, and writing guidelines.
 
+<MdxGrid two>
+
+<div>
+
+  <MdxImage shadow link={props.gallery.image2} gatsbyImageData={props.gallery.image2} />
+
+</div>
+<div>
+
+  <MdxImage shadow link={props.gallery.image3} gatsbyImageData={props.gallery.image3} />
+
+</div>
+
+</MdxGrid>
+
+<MdxImage link={props.gallery.image4} gatsbyImageData={props.gallery.image4} />
+
+
 #### Custom Documentation Generators
 
 To make documenting our code easier, I implemented systems that would make it as automated as possible.
 
 For SASS tools and important variables, I used SassDoc to generate a JSON object that would be consumed on the front-end.
 
+<MdxGrid two>
+
+<div>
+
+  <MdxImage shadow link={props.gallery.image5} gatsbyImageData={props.gallery.image5} />
+
+</div>
+<div>
+
+  <MdxImage shadow link={props.gallery.image6} gatsbyImageData={props.gallery.image6} />
+
+</div>
+
+</MdxGrid>
+
 To track our Blade components, I created a custom PHP parser similar to SassDoc that would allow doc comments within component files to be output as a consumable object.
+
+  <MdxImage shadow gatsbyImageData={props.gallery.image7} />
+  <MdxImage shadow gatsbyImageData={props.gallery.image8} />
+
 
 
 ### Design Components & Their Code Couterparts
@@ -74,6 +122,9 @@ The team invested in upgrading our raw PHP site to implement Laravel and turn WP
 I followed [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) principles to create our component library starting with the most basic elements before working up to more complex components. Additionally, components were updated and developed as needed when new pages were built and old pages revamped. This allowed the team to continue to assist with UX/UI improvements while addressing work requests for the website.
 
 As more components were made and page templates mapped out, the team was able to complete tasks faster enabling both developers and designers to evaluate and improve overall UX in more depth. Notable updates we made as a result of this increased focus was the structure of the website's main navigation and new interactive components like a cost calculator on pricing pages.
+
+<MdxImage shadow gatsbyImageData={props.gallery.image9} />
+
 
 #### Working with WordPress
 
@@ -95,6 +146,9 @@ The existing website had no consolidated CSS system so I created a new one using
 #### SASS Organisation Structure
 
 I organised the SASS files following the Inverted Triangle CSS structure (ITCSS) by Harry Roberts and used the Block-Element-Modifier (BEM) naming convention for classes. ITCSS emphasises hierarchical layering of specificity to reduce code redundancy and inadvertently leaking styles, while BEM makes hierarchy and style-application immediately apparent. I chose these guidelines to keep code precise, maintainable, and scalable for ongoing development, referencing different companies' approaches and methodologies.
+
+<MdxImage shadow gatsbyImageData={props.gallery.image10} />
+
 
 #### Building the SASS Tools
 

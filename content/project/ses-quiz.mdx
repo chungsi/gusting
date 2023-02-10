@@ -1,0 +1,153 @@
+---
+title: react.js quiz app
+subtitle: an application for pilot-students
+description:
+
+heroImage: './../assets/clayCourt.png'
+heroImagePos: top
+
+category: dev
+tags:
+  - web dev
+
+templateType: project
+
+gallery:
+  - ./../assets/ses-quiz/
+
+publish: true
+feature: true
+featureArt: false
+featureDesign: true
+---
+
+## The Project
+
+I was tasked with creating an online quiz application for Sharper Edge Solutions, a company that provides pilots-in-training with exam preparation books & resources in both print & digital formats. The feature will first be trialled before becoming a paid subscription service.
+
+I used React & Typescript to build the quiz app, and Redux/RTK to manage the quiz' state and query the data from an API. I also designed the database structures to best suit the stakeholders' intended functionality.
+
+A necessary step in creating the React app was to migrate the existing PugJS website into React & GatsbyJS. This would exponentially improve the development speed of both the app and future site updates with a more powerful toolkit (using React as opposed to vanilla Javascript), and would also enable stakeholders to edit content through Gatsby's CMS integrations.
+
+This is an ongoing project that implements the quiz first, then will be followed by UI/UX updates to the web brand after.
+
+## The Quiz & Data Structure Design
+
+The brief included these capabilities:
+
+- Students can select from a series of quizzes, take the quiz, and then receive a score upon submission. They can also retake the quiz infinitely.
+- After the quiz is submitted, the student's answer for each question should be accompanied with an explanation for why it is right or wrong in order to encourage them to retake the quiz until they get a perfect score.
+- Questions and answers should be able to include images and text formatting, such as diagrams and bolded text.
+- Some questions may be worth more than 1 point.
+- Quizzes and new questions will be added regularly so there must be a method for stakeholders to create and update data.
+- Questions should be stored in a singular database so they can be queried and used across multiple quizzes.
+- If/when the quizzes will be locked behind a paywall, there must be adequate security of the data.
+- Users should access the quizzes through the website.
+
+### The Quiz Data Structures
+
+We first constructed two data structures that would later be translated into databases:
+
+1. A Quiz object will contain the metadata of each quiz.
+
+  ```tsx
+  interface Quiz {
+    id: Date();
+    title?: string;
+    description?: string;
+    tags?: string[];
+    questions: question_id[];
+    maxScore: number;
+  }
+  ```
+
+2. And the Question object.
+
+  ```tsx
+  interface Question {
+    id: number;
+    text: string | HTML;
+    tags?: string[];
+    points: number;
+    answers: {
+      text: string | HTML;
+      reason: string;
+      isCorrect: boolean;
+    }[];
+  }
+  ```
+
+Note: Since the HTML stored within the database is not user generated, I was comfortable unsafely writing this to the quiz in order to store images and formatting markup.
+
+
+### Client-Side States & Redux
+
+At first, I setup the data structures using JSON so I could show a prototype to the stakeholders quickly. However, I  scrapped that and implemented Redux when I determined that:
+
+1. I would need to access the user's quiz data states across multiple components, such as their most current score on a particular quiz.
+2. Redux is designed to manage and update an application's states, and the Redux Toolkit (RTK) enables API queries.
+3. RTK would allow the proprietary and sensitive data to remain hidden behind an API query until I needed it, such as keeping the correct answers hidden until the user submitted their quiz.
+
+I designed a data structure for the client quiz states that would store the user's progress through the quiz. For instance, the `questions` object array tracks what answer the user selected for a particular question, and will store its correctness once the quiz is submitted.
+
+```tsx
+interface ClientQuiz {
+  quizzes: {
+    id: number;
+    score: number;
+    numberOfAttempts: number;
+    isComplete: boolean;
+    questions: {
+      id: number;
+      clientAnswerIndex: number;
+      clientAnswerCorrect: boolean;
+      reason: string;
+    }[];
+  }[];
+}
+```
+
+Unneccessary quiz data, such as every answer's `reason` will never be stored to prevent web scraping and protect the IP of the company.
+
+Thus, I made reducers that save the minimum amount of information required. For example, when handling the scoring of a user's quiz, only the data for whether the answer is correct and the selected answer's explanation are saved to the client state, as opposed to saving which answer is the correct one and all the explanation text for every answer.
+
+```tsx
+const quizClientStateSlice = createSlice({
+  name: `clientQuiz`,
+  initialState,
+  reducers: {
+    setAnswerCorrectState(
+      state,
+      action: PayloadAction<{
+        quizId: number;
+        questionId: number;
+        answerCorrect: boolean;
+      }>,
+    ) {...},
+    setAnswerStateAfterScoring(
+      state,
+      action: PayloadAction<{
+        quizId: number;
+        questionId: number;
+        reason: string;
+      }>,
+    ) {...},
+	},
+});
+```
+
+
+## Site Migration & Basic CMS Setup
+
+At first, I considered creating the quiz app without touching the existing PugJS website. This would mean using vanilla Javascript, but the feature requirements would be too complicated and time-consuming to implement with that limited toolkit. Or, I could create a separate React website/subsite, but since I would need to recreate all the web branding and components anyways, I decided to migrate the existing website to Gatsby & React.
+
+Within the migration, I also implemented an MDX content system to enable stakeholders to edit the website's content without needing a developer. This checked off their separate wishlist items of being able to write “News” articles regularly and update textbook information quickly.
+
+## What's Next
+
+A UX/UI audit and redesign will be the next phase of the project. We will look at:
+
+- Create Storybook stories for each component;
+- Refreshing the visual styles to be more modern while keeping the same branding;
+- Polishing the user flow of the Shop & News sections; and
+- Iterating on the user flow of the Quiz application as Google Analytics data comes in from useage.

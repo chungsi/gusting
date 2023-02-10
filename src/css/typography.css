@@ -169,17 +169,20 @@
 
     code {
       display: inline-block;
-      background-color: var(--c-highlight-color);
+      background-color: var(--c-bg-color);
       padding: 0 var(--space-xs);
       border-radius: var(--space-xxs-rel);
     }
 
     pre {
-      background-color: var(--c-highlight-color);
+      background-color: var(--c-bg-color);
       padding: var(--space-md);
+      max-width: var(--max-text-width);
 
       /* reset if nested */
-      code { background-color: transparent; }
+      code {
+        background-color: transparent;
+      }
     }
 
     .autolink {
