@@ -3,8 +3,13 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./content/**/*.mdx"
+    // Need to scope what tailwind watches to avoid infinite rebuilding
+    // caused by the gatsby's typegen (cuz this version doesn't let you
+    // put it anywhere you like)
+    "./src/components/**/*.{html,js,jsx,tsx}",
+    "./src/templates/**/*.{html,js,jsx,tsx}",
+    "./src/pages/**/*.{html,js,jsx,tsx}",
+    // "./content/**/*.mdx"
   ],
   theme: {
     fontSize: {

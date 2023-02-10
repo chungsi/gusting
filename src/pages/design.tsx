@@ -70,9 +70,9 @@ const DesignHomepage = ({
     'liz',
     'allcourt',
     'threads-to-heaven',
+    'abaab',
   ]
   const secondaryProjectSlugs = [
-    'abaab',
     'makers-assist',
     'reclaimed',
     'razzmatazz',

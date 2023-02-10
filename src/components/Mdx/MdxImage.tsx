@@ -8,6 +8,7 @@ type MdxImageProps = {
   gatsbyImageData: IGatsbyImageData
   imageURL?: string
   link?: boolean | string | IGatsbyImageData
+  caption?: string
   paragraphWidth?: boolean
   offset?: boolean
   halfOffset?: boolean
@@ -18,6 +19,7 @@ const MdxImage = ({
   gatsbyImageData,
   imageURL,
   link,
+  caption,
   paragraphWidth,
   offset,
   halfOffset,
@@ -48,16 +50,16 @@ const MdxImage = ({
     <article className='relative mt-lg first:mt-0'>
       {gatsbyImageData &&
         <GatsbyImage
-        image={gatsbyImageData}
-        alt=""
-        // alt={caption ?? ''}
-        loading='lazy'
-        className={concat(
-          shadow ? 'shadow-lg' : '',
-          offsetClasses
-        )}
+          image={gatsbyImageData}
+          alt={caption ?? ''}
+          loading='lazy'
+          className={concat(
+            shadow ? 'shadow-lg' : '',
+            offsetClasses
+          )}
         />
       }
+      {/* TODO: what is imageURL & imageLink??? I forget */}
       {imageURL &&
         <img
           src={imageURL}
@@ -75,6 +77,9 @@ const MdxImage = ({
             'absolute w-full h-full top-0 left-0'
           )}
         />
+      }
+      {caption &&
+        <p className="text-sm text-gray-400">{caption}</p>
       }
     </article>
   )

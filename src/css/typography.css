@@ -157,10 +157,12 @@
 
     ul,
     ol {
-      list-style: disc;
       padding-left: var(--space-lg);
       max-width: var(--max-text-width);
     }
+
+    ul { list-style: disc; }
+    ol { list-style: decimal; }
 
     blockquote {
       color: theme('colors.th.text');

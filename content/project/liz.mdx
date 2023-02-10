@@ -39,7 +39,10 @@ As a hybrid designer-developer on the digital marketing team, I built the founda
 
 As the team grew to include more designers, developers, and writers, the design system also expanded to include accessibility, visual, and writing guidelines. It became so successful that it was consulted by other product and sales teams within the company, spurring more conversations about investing in design.
 
-<MdxImage gatsbyImageData={props.gallery.image1} />
+<MdxImage
+  gatsbyImageData={props.gallery.image1}
+  caption={'An overview of some of the pages within the Liz Design System subsite.'}
+/>
 
 
 ## Detailed Breakdown
@@ -71,18 +74,33 @@ The documentation began as a mockup of basic typography and colours but naturall
 
 <div>
 
-  <MdxImage shadow link={props.gallery.image2} gatsbyImageData={props.gallery.image2} />
+  <MdxImage
+    shadow
+    link={props.gallery.image2}
+    gatsbyImageData={props.gallery.image2}
+    caption={'The first version of Liz that was a single-page site with limited components and written for raw HTML.'}
+  />
 
 </div>
+
 <div>
 
-  <MdxImage shadow link={props.gallery.image3} gatsbyImageData={props.gallery.image3} />
+  <MdxImage
+    shadow
+    link={props.gallery.image3}
+    gatsbyImageData={props.gallery.image3}
+    caption={'A later version with multiple pages and more details for both designs & component usage.'}
+  />
 
 </div>
 
 </MdxGrid>
 
-<MdxImage link={props.gallery.image4} gatsbyImageData={props.gallery.image4} />
+<MdxImage
+  link={props.gallery.image4}
+  gatsbyImageData={props.gallery.image4}
+  caption={'The latest iteration of the design system with extensive sections on content, design, and coding. It also includes both visual & code references.'}
+/>
 
 
 #### Custom Documentation Generators
@@ -95,12 +113,23 @@ For SASS tools and important variables, I used SassDoc to generate a JSON object
 
 <div>
 
-  <MdxImage shadow link={props.gallery.image5} gatsbyImageData={props.gallery.image5} />
+  <MdxImage
+    shadow
+    link={props.gallery.image5}
+    gatsbyImageData={props.gallery.image5}
+    caption={'The SassDoc comments on mixins & variables.'}
+  />
 
 </div>
+
 <div>
 
-  <MdxImage shadow link={props.gallery.image6} gatsbyImageData={props.gallery.image6} />
+  <MdxImage
+    shadow
+    link={props.gallery.image6}
+    gatsbyImageData={props.gallery.image6}
+    caption={'I parsed the SassDoc JSON object to create custom documentation visuals.'}
+  />
 
 </div>
 
@@ -108,8 +137,17 @@ For SASS tools and important variables, I used SassDoc to generate a JSON object
 
 To track our Blade components, I created a custom PHP parser similar to SassDoc that would allow doc comments within component files to be output as a consumable object.
 
-  <MdxImage shadow gatsbyImageData={props.gallery.image7} />
-  <MdxImage shadow gatsbyImageData={props.gallery.image8} />
+<MdxImage
+  shadow
+  gatsbyImageData={props.gallery.image7}
+  caption={'The comment formatting within Blade components that include the variables and options to be passed to the component.'}
+/>
+
+<MdxImage
+  shadow
+  gatsbyImageData={props.gallery.image8}
+  caption={'Documentation outputs the comments in expandable blocks, and includes any JS dependency files.'}
+/>
 
 
 
@@ -123,7 +161,11 @@ I followed [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) p
 
 As more components were made and page templates mapped out, the team was able to complete tasks faster enabling both developers and designers to evaluate and improve overall UX in more depth. Notable updates we made as a result of this increased focus was the structure of the website's main navigation and new interactive components like a cost calculator on pricing pages.
 
-<MdxImage shadow gatsbyImageData={props.gallery.image9} />
+<MdxImage
+  shadow
+  gatsbyImageData={props.gallery.image9}
+  caption={'Early sketches of component cataloguing and standardisation.'}
+/>
 
 
 #### Working with WordPress
@@ -147,7 +189,11 @@ The existing website had no consolidated CSS system so I created a new one using
 
 I organised the SASS files following the Inverted Triangle CSS structure (ITCSS) by Harry Roberts and used the Block-Element-Modifier (BEM) naming convention for classes. ITCSS emphasises hierarchical layering of specificity to reduce code redundancy and inadvertently leaking styles, while BEM makes hierarchy and style-application immediately apparent. I chose these guidelines to keep code precise, maintainable, and scalable for ongoing development, referencing different companies' approaches and methodologies.
 
-<MdxImage shadow gatsbyImageData={props.gallery.image10} />
+<MdxImage
+  shadow
+  gatsbyImageData={props.gallery.image10}
+  caption={'The methodologies and organisation of SASS are explained on the Sass Reference page.'}
+/>
 
 
 #### Building the SASS Tools
