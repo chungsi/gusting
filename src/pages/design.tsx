@@ -30,6 +30,8 @@ const DesignHomepage = ({
   location
 }: PageProps<DesignHomepageProps>) => {
 
+  console.log('data test: ', projects);
+
   const designHome = useSiteMetadata()?.designHome
   const designHomeParamName = useSiteMetadata()?.homeUrlParamName
   const designHomeParamValue = designHome?.homeUrlParam
@@ -64,6 +66,8 @@ const DesignHomepage = ({
   }
 
   const primaryProjectSlugs = [
+    'liz',
+    'ses-quiz',
     'allcourt',
     'threads-to-heaven',
     'abaab',

@@ -2,17 +2,18 @@ import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Footer = () => {
-  const buildDateQuery = useStaticQuery(graphql`
-    query BuildDateQuery {
-      currentBuildDate {
-        currentDate
-      }
-    }
-  `)
+  // const buildDateQuery = useStaticQuery(graphql`
+  //   query BuildDateQuery {
+  //     currentBuildDate {
+  //       currentDate
+  //     }
+  //   }
+  // `)
 
   return (
     <footer className='mt-3xl mb-xl py-lg font-light border-t border-solid border-th-highlight'>
-      <p>Last updated: {buildDateQuery.currentBuildDate.currentDate}</p>
+      {/* <p>Last updated: {buildDateQuery.currentBuildDate.currentDate}</p> */}
+      <p>Last updated: Feb 2023</p>
       <p>
         Sketchblog:
         [<a href={`https://www.instagram.com/chungsi_/`} target='_blank' rel='noreferrer'>instagram</a>]

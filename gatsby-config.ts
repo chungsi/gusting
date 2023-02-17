@@ -51,14 +51,14 @@ const config: GatsbyConfig = {
         theme_color_in_head: false,
       },
     },
-    {
-      resolve: `gatsby-plugin-build-date`,
-      options: {
-        formatting: {
-          format: 'MMMM YYYY'
-        }
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-build-date`,
+    //   options: {
+    //     formatting: {
+    //       format: 'MMMM YYYY'
+    //     }
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-postcss`,
       options: {

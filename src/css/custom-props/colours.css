@@ -51,10 +51,10 @@ $dev: $purple; */
 }
 
 .dev {
-  --primary-color: theme('colors.allium.500');
-  --link-color: theme('colors.allium.600');
-  --c-bg-color: theme('colors.allium.50');
-  --c-highlight-color: theme('colors.allium.100');
+  --primary-color: theme('colors.pine.500');
+  --link-color: theme('colors.pine.600');
+  --c-bg-color: theme('colors.pine.50');
+  --c-highlight-color: theme('colors.pine.100');
   svg { fill: var(--primary-color); }
 }
 
