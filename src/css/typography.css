@@ -161,6 +161,8 @@
       max-width: var(--max-text-width);
     }
 
+    li { @apply mb-2; }
+
     ul { list-style: disc; }
     ol { list-style: decimal; }
 
@@ -178,6 +180,8 @@
 
     pre {
       background-color: var(--c-bg-color);
+      border: 2px solid var(--c-highlight-color);
+      border-radius: .5rem;
       padding: var(--space-md);
       max-width: var(--max-text-width);
 

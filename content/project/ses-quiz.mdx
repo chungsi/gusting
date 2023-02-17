@@ -1,19 +1,20 @@
 ---
-title: react.js quiz app
+title: React.js Quiz App
 subtitle: an application for pilot-students
-description:
+description: I used React & Typescript to build an online quiz application for pilots-in-training.
 
-heroImage: './../assets/clayCourt.png'
-heroImagePos: top
+heroImage: './../assets/ses-quiz/ga_logo_transparent.png'
+heroImagePos: right
 
 category: dev
 tags:
-  - web dev
+  - front-end web dev
+  - user experience
 
 templateType: project
 
 gallery:
-  - ./../assets/ses-quiz/
+  - ./../assets/ses-quiz/setsl_quiz_userflow_c.jpg
 
 publish: true
 feature: true
@@ -22,6 +23,8 @@ featureDesign: true
 ---
 
 ## The Project
+
+**stack**: ReactJS/Gatsby, Redux/RTK, Typescript, TailwindCSS, GraphQL
 
 I was tasked with creating an online quiz application for Sharper Edge Solutions, a company that provides pilots-in-training with exam preparation books & resources in both print & digital formats. The feature will first be trialled before becoming a paid subscription service.
 
@@ -43,6 +46,13 @@ The brief included these capabilities:
 - Questions should be stored in a singular database so they can be queried and used across multiple quizzes.
 - If/when the quizzes will be locked behind a paywall, there must be adequate security of the data.
 - Users should access the quizzes through the website.
+
+<MdxImage
+  shadow
+  link={props.gallery.image1}
+  gatsbyImageData={props.gallery.image1}
+  caption={'A diagram of the userflow of the quiz app, showing the interface and functional requirements.'}
+/>
 
 ### The Quiz Data Structures
 
