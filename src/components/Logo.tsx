@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 const Logo = ({ className }: { className?: string }) => (
   <svg
     version="1.1"

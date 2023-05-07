@@ -3,7 +3,7 @@ import { Link, graphql, PageProps } from 'gatsby'
 
 import Layout from '../components/Layout'
 
-const BlogPage = ({ data: {allFile} }: PageProps<{allFile:Queries.BlogPageQuery["allFile"]}>) => {
+const BlogPage = ({ data: {allFile} }: PageProps<{allFile:Queries.BlogPageQuery['allFile']}>) => {
 
   return (
     <Layout>

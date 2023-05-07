@@ -1,22 +1,21 @@
+// Logo.stories.ts|tsx
 
-import * as React from 'react'// Button.stories.ts|tsx
+import type { Meta, StoryObj } from '@storybook/react';
 
-import type { Meta, StoryObj } from '@storybook/react'
+import Logo from './Logo';
 
-import { Button } from './Button'
-
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof Logo> = {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Button',
-  component: Button,
-}
+  title: 'Logo',
+  component: Logo,
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof Logo>
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -24,5 +23,5 @@ type Story = StoryObj<typeof Button>
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  render: () => <Button primary label='Button' />,
-}
+  render: () => <Logo />,
+};
