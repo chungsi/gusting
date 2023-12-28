@@ -1,4 +1,3 @@
-import { title } from 'process'
 import * as React from 'react'
 import { concat } from '../utils/helpers'
 
@@ -26,7 +25,7 @@ const ProjectExcerpt = ({
   h1, h2, h3, h4, h5, h6,
   oneLineTags
 }: ProjectExcerptProps) => {
-  var HeaderTag: keyof JSX.IntrinsicElements = 'h3'
+  let HeaderTag: keyof JSX.IntrinsicElements = 'h3'
 
   if (h1) HeaderTag = 'h1'
   else if (h2) HeaderTag = 'h2'
@@ -43,7 +42,8 @@ const ProjectExcerpt = ({
         calls to define their own HTML tags and classes...
         Would that be useful for me at this point?
         */}
-      <HeaderTag className={concat(
+      <HeaderTag className={
+        concat(
           'relative text-xl m-0',
           // '[text-decoration:wavy_underline_transparent] transition-colors',
           // 'group-hover:[text-decoration:wavy_underline_var(--primary-color)]'
@@ -63,8 +63,8 @@ const ProjectExcerpt = ({
 
       {subtitle &&
         <p className={concat(
-        'italic font-light leading-snug',
-        'mx-0 mt-2xs mb-md'
+          'italic font-light leading-snug',
+          'mx-0 mt-2xs mb-md'
         )}>
           {subtitle}
         </p>

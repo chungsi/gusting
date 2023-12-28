@@ -1,8 +1,8 @@
 // Logo.stories.ts|tsx
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import Logo from './Logo';
+import Logo from './Logo'
 
 const meta: Meta<typeof Logo> = {
   /* 👇 The title prop is optional.
@@ -11,9 +11,9 @@ const meta: Meta<typeof Logo> = {
    */
   title: 'Logo',
   component: Logo,
-};
+}
 
-export default meta;
+export default meta
 
 type Story = StoryObj<typeof Logo>
 
@@ -23,5 +23,6 @@ type Story = StoryObj<typeof Logo>
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  render: () => <Logo />,
-};
+  name: 'The owl logo',
+  render: () => <Logo className='w-20' />,
+}

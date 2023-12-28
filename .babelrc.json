@@ -12,12 +12,12 @@
     [
       "@babel/preset-typescript",
       {
-        "isTsx": true,
+        "isTsx": true
       }
     ],
     "@babel/preset-react"
   ],
-  "plugins": [
-    "babel-plugin-remove-graphql-queries"
-  ]
+  // "plugins": [
+  //   "babel-plugin-remove-graphql-queries"
+  // ]
 }

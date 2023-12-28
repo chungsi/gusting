@@ -66,13 +66,7 @@ const config: GatsbyConfig = {
           import: true,
           modules: true,
         },
-        postCssPlugins: [
-          require('postcss-import'),
-          require('postcss-pow'),
-          require('tailwindcss/nesting'),
-          require('tailwindcss'),
-          require('autoprefixer'),
-        ],
+        // plugins defined in postcss.config.js
       },
     },
     {

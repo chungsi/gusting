@@ -10,7 +10,7 @@ type CategoryIconProps = {
 }
 
 const CategoryIcon = ({category, className}: CategoryIconProps) => {
-  var shape: JSX.Element = <Triangle />
+  let shape: JSX.Element = <Triangle />
 
   switch (category) {
     case 'storytelling':

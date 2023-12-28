@@ -7,7 +7,7 @@ import Base from '../components/Layout/BaseLayout'
 import BaseCard from '../components/Card/BaseCard'
 import FloatingCard from '../components/Card/FloatingCard'
 import Footer from '../components/Footer'
-import Logo from '../components/Logo'
+import Logo from '../components/Logo/Logo'
 import OgImageArt from '../images/ogImage_square_art.jpg'
 import Seo from '../components/Seo'
 

@@ -60,7 +60,7 @@ $dev: $purple; */
 
 .design {
   --primary-color: theme('colors.cedar.400');
-  --link-color: theme('colors.cedar.700');
+  --link-color: theme('colors.cedar.600');
   --c-bg-color: theme('colors.cedar.50');
   --c-highlight-color: theme('colors.cedar.100');
   svg { fill:var(--primary-color); }
@@ -85,10 +85,10 @@ $dev: $purple; */
 }
 
 #theme-design {
-  --primary-color: theme('colors.cedar.600');
-  --header-color: theme('colors.cedar.950');
-  --text-color: theme('colors.cedar.800');
-  --link-color: theme('colors.cedar.600');
-  --meta-color: theme('colors.cedar.900');
+  --primary-color: theme('colors.cedar.500');
+  --header-color: theme('colors.cedar.900');
+  --text-color: theme('colors.cedar.700');
+  --link-color: theme('colors.cedar.500');
+  --meta-color: theme('colors.cedar.800');
   svg { fill: var(--primary-color); }
 }

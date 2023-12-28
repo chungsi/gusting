@@ -6,7 +6,7 @@ import { concat } from '../../utils/helpers'
 
 export type BaseCardProps = {
   link: string
-  frontmatter: Queries.ProjectMdxFrontmatterFragment["frontmatter"]
+  frontmatter: Queries.ProjectMdxFrontmatterFragment['frontmatter']
   accents?: string | JSX.Element
   oneLineTags?: boolean
   id?: string | null | undefined

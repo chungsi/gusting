@@ -6,10 +6,10 @@ module.exports = {
     // Need to scope what tailwind watches to avoid infinite rebuilding
     // caused by the gatsby's typegen (cuz this version doesn't let you
     // put it anywhere you like)
-    "./src/components/**/*.{html,js,jsx,tsx}",
-    "./src/templates/**/*.{html,js,jsx,tsx}",
-    "./src/pages/**/*.{html,js,jsx,tsx}",
-    // "./content/**/*.mdx"
+    './src/components/**/*.{html,js,jsx,tsx}',
+    './src/templates/**/*.{html,js,jsx,tsx}',
+    './src/pages/**/*.{html,js,jsx,tsx}',
+    // './content/**/*.mdx'
   ],
   theme: {
     fontSize: {
@@ -62,11 +62,11 @@ module.exports = {
           50: '#FAFCE8',
           100: '#F4F7D1',
           400: '#C9D817',
-          600: '#93BB30',
-          700: '#799B3B',
-          800: '#68853D',
-          900: '#415A20',
-          950: '#304413'
+          500: '#93BB30',
+          600: '#799B3B',
+          700: '#68853D',
+          800: '#415A20',
+          900: '#304413'
         },
 
         th: {
