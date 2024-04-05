@@ -1,0 +1,241 @@
+/*/////////////////////////////////////////////////////////////////////////////
+ * Font Face Declarations
+ *
+ *    Fanwood Text:   only comes in regular weight
+ *    JetBrains Mono: uses variable fonts for both normal and italic styles
+ */
+
+@font-face {
+  font-family: 'Fanwood Text';
+  src: url('/fonts/FanwoodText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-variant: common-ligatures tabular-nums;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMono_VariableFont.woff2') format('woff2-variations');
+  font-weight: 200 700;
+  font-variant: common-ligatures;
+  font-kerning: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMono_VariableFont.woff2') format('woff2-variations');
+  font-weight: 200 700;
+  font-variant: common-ligatures;
+  font-kerning: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono[wght].woff2')
+      format('woff2 supports variations'),
+    url('/fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Italic[wght].woff2')
+      format('woff2 supports variations'),
+    url('/fonts/JetBrainsMono-Italic[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-style: italic;
+}
+
+:root {
+  --p-line-height: var(--s-lg);
+
+  /* // --type-base-size: #{$type-base-size}; */
+  --type-base-size: 1rem;
+  --h-5xl: calc(var(--h-4xl) * var(--type-scale));
+  --h-4xl: calc(var(--h-3xl) * var(--type-scale));
+  --h-3xl: calc(var(--h-2xl) * var(--type-scale));
+  --h-2xl: calc(var(--h-xl) * var(--type-scale));
+  --h-xl: calc(var(--h-lg) * var(--type-scale));
+  --h-lg: calc(var(--h-md) * var(--type-scale));
+  --h-md: var(--type-base-size);
+  /* --h-sm:  calc(var(--h-md) / var(--type-scale)); */
+  --h-sm: calc(var(--h-md) - 0.125rem);
+  /* --h-xs:  calc(var(--h-sm) / var(--type-scale)); */
+  --h-xs: calc(var(--h-md) / var(--type-scale));
+
+  --max-text-width: 40rem;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+ * Default Values
+ */
+
+@layer base {
+  /* // TODO: Split some of these stylings to be prose specific (only for content) */
+  .h0 {
+    --header-size: theme('fontSize.5xl');
+  }
+  h1 {
+    --header-size: theme('fontSize.4xl');
+  }
+  h2 {
+    --header-size: theme('fontSize.3xl');
+  }
+  h3 {
+    --header-size: theme('fontSize.2xl');
+  }
+  h4 {
+    --header-size: theme('fontSize.lg');
+  }
+  h5 {
+    --header-size: theme('fontSize.md');
+  }
+  h6 {
+    --header-size: theme('fontSize.sm');
+  }
+
+  .h0,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: var(--header-size);
+    line-height: 1;
+    color: theme('colors.th.header');
+  }
+
+  .h0,
+  h1,
+  h2,
+  h3 {
+    font-family: theme('fontFamily.serif');
+    font-weight: normal;
+    letter-spacing: 0.025em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.mono');
+    font-weight: theme('fontWeight.bold');
+  }
+
+  p {
+    color: theme('colors.th.text');
+    line-height: var(--p-line-height);
+  }
+
+  ul,
+  ol {
+    color: theme('colors.th.text');
+    line-height: var(--p-line-height);
+  }
+
+  strong {
+    font-weight: theme('fontWeight.extrabold');
+  }
+
+  a {
+    transition: var(--transition);
+    /* color: theme('colors.th.link'); */
+
+    /* &:hover,
+    &:focus,
+    &:active {
+    } */
+  }
+
+  hr {
+    margin: theme('spacing.2xl') 0;
+    color: theme('colors.th.primary');
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .prose {
+    .h0,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      /* margin: var(--space-xl-rel) 0 var(--space-md) 0; */
+      padding-top: var(--space-md-rel);
+      margin-top: var(--space-md-rel);
+      margin-bottom: var(--space-md);
+    }
+
+    p {
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-md);
+      max-width: var(--max-text-width);
+      font-weight: theme('fontWeight.normal');
+    }
+
+    a {
+      color: theme('colors.th.link');
+      text-decoration: underline wavy theme('colors.th.link') 0.025em;
+    }
+
+    ul,
+    ol {
+      padding-left: var(--space-lg);
+      max-width: var(--max-text-width);
+    }
+
+    li {
+      @apply mb-2;
+    }
+
+    ul {
+      list-style: disc;
+    }
+    ol {
+      list-style: decimal;
+    }
+
+    blockquote {
+      color: theme('colors.th.text');
+      margin: var(--space-md) var(--space-lg);
+    }
+
+    code {
+      display: inline-block;
+      background-color: var(--c-bg-color);
+      padding: 0 var(--space-xs);
+      border-radius: var(--space-xxs-rel);
+    }
+
+    pre {
+      background-color: var(--c-bg-color);
+      border: 2px solid var(--c-highlight-color);
+      border-radius: 0.5rem;
+      padding: var(--space-md);
+      max-width: var(--max-text-width);
+
+      /* reset if nested */
+      code {
+        background-color: transparent;
+      }
+    }
+
+    .autolink {
+      bottom: 0;
+      padding-bottom: var(--space-xxs-rel);
+      /* Reset default autolink-plugin positioning */
+      top: auto !important;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+  }
+}

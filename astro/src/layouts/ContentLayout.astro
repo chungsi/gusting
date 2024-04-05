@@ -1,0 +1,40 @@
+---
+import logoSvg from '@assets/images/svg/logo.svg?raw'
+import clsx from 'clsx'
+import BaseLayout from './BaseLayout.astro'
+
+type Props = {
+  bodyClassName?: string
+  className?: string
+}
+
+const { bodyClassName, className }: Props = Astro.props
+---
+
+<BaseLayout
+  bodyClassName={clsx(
+    'border-b-8 border-solid border-th-primary',
+    bodyClassName,
+  )}
+  className={clsx(
+    'pt-4xl pb-2xl px-[var(--space-container-offset)] mx-auto',
+    className,
+  )}
+>
+  <a
+    href=''
+    class={clsx(
+      'fixed block z-50 top-lg pl-0 md:pl-2',
+      'min-w-[var(--space-xl)] w-2xl max-w-2xl',
+      '-ml-2 lg:-ml-[var(--space-container-offset)] xl:-ml-[calc(var(--space-container-offset)_/_1.6)]',
+    )}
+  >
+    <Fragment set:html={logoSvg} />
+  </a>
+
+  <slot name='header' />
+
+  <section class='prose'>
+    <slot />
+  </section>
+</BaseLayout>

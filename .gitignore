@@ -1,6 +1,28 @@
-node_modules/
 .cache/
 public
+
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
 
 # From Gatsby doc: We recommend adding src/gatsby-types.d.ts to your .gitignore as it’s machine generated code and duplicated information that is already existent in e.g. your page queries.
 src/gatsby-types.d.ts

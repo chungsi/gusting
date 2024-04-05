@@ -1,0 +1,10 @@
+---
+type ShapeProps = {
+  category: 'dev' | 'design' | 'storytelling'
+  className?: string
+}
+
+const { category, className }: ShapeProps = Astro.props
+---
+
+{category === 'dev' && <Fragment />}

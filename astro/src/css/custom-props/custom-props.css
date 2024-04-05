@@ -1,0 +1,11 @@
+/*/////////////////////////////////////////////////////////////////////////////
+ * Global Custom Properties
+ *
+ *    This is the catch-all for global custom properties of the project.
+ *    These should generally be dynamic properties that change with breakpoints
+ *    or states, or can be colour-theme related.
+ */
+
+@import "colours.css";
+@import "shared-styles.css";
+@import "spacing.css";

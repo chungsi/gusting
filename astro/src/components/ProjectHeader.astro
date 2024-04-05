@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import clsx from 'clsx'
+
+// Pass the project data as props?
+type Props = { project: CollectionEntry<'projects'>['data'] }
+
+const { project } = Astro.props as Props
+const { title, category, subtitle, tags } = project
+---
+
+<header class='relative'>
+  <h1 class='relative inline-block mb-xs'>
+    {title}
+    <span class='font-mono italic font-light text-sm inline-block p-[0_1em]'>
+      &#123;{category}&#125;
+    </span>
+    <!-- Decorative highlight -->
+    <span
+      aria-hidden
+      class={clsx(
+        'absolute block top-[-12px] left-[-10px] w-full h-full',
+        'rotate-[-2deg] z-[-1] bg-th-highlight',
+      )}></span>
+  </h1>
+  <p class='italic text-lg tracking-wider'>{subtitle}</p>
+  <p class='text-sm'>
+    {tags.map((tag) => `${tag} / `)}
+  </p>
+  <!-- TODO: Also a header image goes here? -->
+</header>
