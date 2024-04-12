@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import clsx from 'clsx'
+import CategoryIcon from './CategoryIcon.astro'
 
 // Pass the project data as props?
 type Props = { project: CollectionEntry<'projects'>['data'] }
@@ -10,6 +11,10 @@ const { title, category, subtitle, tags } = project
 ---
 
 <header class='relative'>
+  <CategoryIcon
+    category={category}
+    className='absolute w-7 -top-8 left-2 lg:w-8 lg:top-2 lg:left-[-4.5rem]'
+  />
   <h1 class='relative inline-block mb-xs'>
     {title}
     <span class='font-mono italic font-light text-sm inline-block p-[0_1em]'>

@@ -1,0 +1,13 @@
+---
+type Props = {
+  src: string
+  caption: string
+  link?: boolean
+}
+
+const { src, caption, link } = Astro.props as Props
+---
+
+<article class='relative mt-lg first:mt-0'>
+  <p class='text-sm text-gray-400'>{caption}</p>
+</article>

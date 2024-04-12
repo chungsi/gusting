@@ -11,6 +11,9 @@ tags:
   - ux/ui
 ---
 
+import MdxImage from '@components/mdx/MdxImage.astro'
+export const components = {img: MdxImage}
+
 ## The Project
 
 **stack**: Laravel & PHP, SASS & CSS3, HTML5, JS & JQuery, WordPress
@@ -48,6 +51,11 @@ Early on in the project, I was adamant about setting time aside to create good d
 
 The documentation began as a mockup of basic typography and colours but naturally evolved to become a living subsite containing design guidelines, component library, code standards, accessibility rules, and writing guidelines.
 
-![The first version of Liz that was a single-page site with limited components and written for raw HTML.](@assets/liz/liz_v1_button.png)
+<div class='grid gap-8 grid-cols-1 md:grid-cols-2'>
 
-![A later version with multiple pages and more details for both designs & component usage.](@assets/liz/liz_v2_button.png)
+  ![The first version of Liz that was a single-page site with limited components and written for raw HTML.](@assets/liz/liz_v1_button.png)
+
+  ![A later version with multiple pages and more details for both designs & component usage.](@assets/liz/liz_v2_button.png)
+
+</div>
+
