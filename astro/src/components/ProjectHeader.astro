@@ -1,16 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import clsx from 'clsx'
 import CategoryIcon from './CategoryIcon.astro'
 
 // Pass the project data as props?
-type Props = { project: CollectionEntry<'projects'>['data'] }
+type Props = { project: CollectionEntry<'projects'>['data']; class?: string }
 
-const { project } = Astro.props as Props
+const { project, class: className }: Props = Astro.props
 const { title, category, subtitle, tags } = project
 ---
 
-<header class='relative'>
+<header class:list={['relative', className]}>
   <CategoryIcon
     category={category}
     className='absolute w-7 -top-8 left-2 lg:w-8 lg:top-2 lg:left-[-4.5rem]'
@@ -23,10 +22,11 @@ const { title, category, subtitle, tags } = project
     <!-- Decorative highlight -->
     <span
       aria-hidden
-      class={clsx(
+      class:list={[
         'absolute block top-[-12px] left-[-10px] w-full h-full',
         'rotate-[-2deg] z-[-1] bg-th-highlight',
-      )}></span>
+      ]}
+    ></span>
   </h1>
   <p class='italic text-lg tracking-wider'>{subtitle}</p>
   <p class='text-sm'>

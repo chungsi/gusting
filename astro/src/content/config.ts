@@ -2,12 +2,18 @@ import { defineCollection, z } from "astro:content"
 
 const projectsCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
     category: z.string(),
-    tags: z.array(z.string())
+    tags: z.array(z.string()),
+    // image helper for content collections:
+    // https://docs.astro.build/en/guides/images/#images-in-content-collections
+    heroImage: image(),
+    heroImagePos: z.string(),
+    // to tell the page template how to render the contents
+    templateType: z.enum(['project', 'gallery'])
   }),
 })
 

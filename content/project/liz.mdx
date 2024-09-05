@@ -44,9 +44,10 @@ As the team grew to include more designers, developers, and writers, the design 
 
 <MdxImage
   gatsbyImageData={props.gallery.image1}
-  caption={'An overview of some of the pages within the Liz Design System subsite.'}
+  caption={
+    'An overview of some of the pages within the Liz Design System subsite.'
+  }
 />
-
 
 ## Detailed Breakdown
 
@@ -84,23 +85,29 @@ The documentation began as a mockup of basic typography and colours but naturall
 
 <div>
 
-  <MdxImage
-    shadow
-    link={props.gallery.image2}
-    gatsbyImageData={props.gallery.image2}
-    caption={'The first version of Liz that was a single-page site with limited components and written for raw HTML.'}
-  />
+{' '}
+<MdxImage
+  shadow
+  link={props.gallery.image2}
+  gatsbyImageData={props.gallery.image2}
+  caption={
+    'The first version of Liz that was a single-page site with limited components and written for raw HTML.'
+  }
+/>
 
 </div>
 
 <div>
 
-  <MdxImage
-    shadow
-    link={props.gallery.image3}
-    gatsbyImageData={props.gallery.image3}
-    caption={'A later version with multiple pages and more details for both designs & component usage.'}
-  />
+{' '}
+<MdxImage
+  shadow
+  link={props.gallery.image3}
+  gatsbyImageData={props.gallery.image3}
+  caption={
+    'A later version with multiple pages and more details for both designs & component usage.'
+  }
+/>
 
 </div>
 
@@ -109,9 +116,10 @@ The documentation began as a mockup of basic typography and colours but naturall
 <MdxImage
   link={props.gallery.image4}
   gatsbyImageData={props.gallery.image4}
-  caption={'The latest iteration of the design system with extensive sections on content, design, and coding. It also includes both visual & code references.'}
+  caption={
+    'The latest iteration of the design system with extensive sections on content, design, and coding. It also includes both visual & code references.'
+  }
 />
-
 
 #### Custom Documentation Generators
 
@@ -123,23 +131,27 @@ For SASS tools and important variables, I used SassDoc to generate a JSON object
 
 <div>
 
-  <MdxImage
-    shadow
-    link={props.gallery.image5}
-    gatsbyImageData={props.gallery.image5}
-    caption={'The SassDoc comments on mixins & variables.'}
-  />
+{' '}
+<MdxImage
+  shadow
+  link={props.gallery.image5}
+  gatsbyImageData={props.gallery.image5}
+  caption={'The SassDoc comments on mixins & variables.'}
+/>
 
 </div>
 
 <div>
 
-  <MdxImage
-    shadow
-    link={props.gallery.image6}
-    gatsbyImageData={props.gallery.image6}
-    caption={'I parsed the SassDoc JSON object to create custom documentation visuals.'}
-  />
+{' '}
+<MdxImage
+  shadow
+  link={props.gallery.image6}
+  gatsbyImageData={props.gallery.image6}
+  caption={
+    'I parsed the SassDoc JSON object to create custom documentation visuals.'
+  }
+/>
 
 </div>
 
@@ -150,16 +162,18 @@ To track our Blade components, I created a custom PHP parser similar to SassDoc 
 <MdxImage
   shadow
   gatsbyImageData={props.gallery.image7}
-  caption={'The comment formatting within Blade components that include the variables and options to be passed to the component.'}
+  caption={
+    'The comment formatting within Blade components that include the variables and options to be passed to the component.'
+  }
 />
 
 <MdxImage
   shadow
   gatsbyImageData={props.gallery.image8}
-  caption={'Documentation outputs the comments in expandable blocks, and includes any JS dependency files.'}
+  caption={
+    'Documentation outputs the comments in expandable blocks, and includes any JS dependency files.'
+  }
 />
-
-
 
 ### Design Components & Their Code Couterparts
 
@@ -177,7 +191,6 @@ As more components were made and page templates mapped out, the team was able to
   caption={'Early sketches of component cataloguing and standardisation.'}
 />
 
-
 #### Working with WordPress
 
 When we began this project, web content and data were spread between WordPress and hard-coded pages. To streamline the maintenance of the website as a whole, we focused on migrating all appropriate hard-coded pages to WordPress. Since marketers and other stakeholders were familiar with the UI in WordPress, it made sense to allow them to continue to work within it. This enabled stakeholders to make content changes to more pages than before without relying on developers.
@@ -185,7 +198,6 @@ When we began this project, web content and data were spread between WordPress a
 Before migrating content, I learned the needs of other stakeholders by having discussions with our team's writer and designer. This allowed me to determine what modular components would best suit various types of content and configuration. From here I created a system of WordPress Metaboxes with options that enabled stakeholders to customise content and page layout. Everything created in WordPress was integrated with our new design system in Laravel.
 
 With this setup, WordPress became a headless CMS that Laravel queried data from.
-
 
 ### CSS Artchitecture (SASS & Foundation)
 
@@ -202,9 +214,10 @@ I organised the SASS files following the Inverted Triangle CSS structure (ITCSS)
 <MdxImage
   shadow
   gatsbyImageData={props.gallery.image10}
-  caption={'The methodologies and organisation of SASS are explained on the Sass Reference page.'}
+  caption={
+    'The methodologies and organisation of SASS are explained on the Sass Reference page.'
+  }
 />
-
 
 #### Building the SASS Tools
 
@@ -213,7 +226,6 @@ I then built SASS variables, mixins, and functions to aid the creation of elemen
 #### Particular CSS Limitations
 
 At the time, the site needed to be IE8 compatible due to the company's customer base so using CSS custom properties was unsupported. Tailwind was also in it's early stages of alpha so wasn't a reliable tool yet for our large website. Instead, we used a similar tool, Tachyons, for internal development.
-
 
 ### The Wider Impact
 

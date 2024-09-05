@@ -1,18 +1,35 @@
 ---
-# Specify layout here instead of a custom tag
-# layout: ContentLayout
+# Cannot use the "layout:" feature, as that requires the mdx file to be in the pages/ folder
 title: Liz Design System
 subtitle: scalable tools for a web product
 description: As a hybrid designer-developer on the digital marketing team, I built the foundations of a scalable design system for the company's 15-year-old website to provide a consistent brand experience while reducing development redundancy.
+
+heroImage: './../../assets/liz/liz_icon.png'
+heroImagePos: top
+
 category: dev
 tags:
   - design system
   - front-end web dev
   - ux/ui
+
+templateType: project
 ---
 
 import MdxImage from '@components/mdx/MdxImage.astro'
-export const components = {img: MdxImage}
+export const components = { img: MdxImage }
+
+import i_bladeDocCode from '@assets/liz/blade_docs_code.png'
+import i_bladeDocOutput from '@assets/liz/blade_docs_output.png'
+import i_componentSketches from '@assets/liz/component_sketches.png'
+import i_buttonFinal from '@assets/liz/final_liz_button.png'
+import i_siteOrgDiagram from '@assets/liz/liz_diagramDrawing_c.jpg'
+import i_buttonV1 from '@assets/liz/liz_v1_button.png'
+import i_buttonV2 from '@assets/liz/liz_v2_button.png'
+import i_overview from '@assets/liz/overview.png'
+import i_sassDocCode from '@assets/liz/sass_doc_code.png'
+import i_sassDocOutput from '@assets/liz/sass_doc_output.png'
+import i_sassRefs from '@assets/liz/sass_reference.png'
 
 ## The Project
 
@@ -22,7 +39,10 @@ As a hybrid designer-developer on the digital marketing team, I built the founda
 
 As the team grew to include more designers, developers, and writers, the design system also expanded to include accessibility, visual, and writing guidelines. It became so successful that it was consulted by other product and sales teams within the company, spurring more conversations about investing in design.
 
-![An overview of some of the pages within the Liz Design System subsite.](@assets/liz/overview.png)
+<MdxImage
+  src={i_overview}
+  caption='An overview of some of the pages within the Liz Design System subsite.'
+/>
 
 ## Detailed Breakdown
 
@@ -43,7 +63,11 @@ As it wouldn't be feasible to update thousands of pages at once, the project was
 
 Throughout the process, I maintained a documentation subsite that would develop along with the scope of the design system.
 
-![A before-and-after comparison of the site organisation.](@assets/liz/liz_diagramDrawing_c.jpg)
+<MdxImage
+  src={i_siteOrgDiagram}
+  caption='A before-and-after comparison of the site organisation.'
+  shadow
+/>
 
 ### The Documentation Subsite
 
@@ -52,10 +76,122 @@ Early on in the project, I was adamant about setting time aside to create good d
 The documentation began as a mockup of basic typography and colours but naturally evolved to become a living subsite containing design guidelines, component library, code standards, accessibility rules, and writing guidelines.
 
 <div class='grid gap-8 grid-cols-1 md:grid-cols-2'>
-
-  ![The first version of Liz that was a single-page site with limited components and written for raw HTML.](@assets/liz/liz_v1_button.png)
-
-  ![A later version with multiple pages and more details for both designs & component usage.](@assets/liz/liz_v2_button.png)
-
+  <MdxImage
+    shadow
+    src={i_buttonV1}
+    caption='The first version of Liz that was a single-page site with limited components and written for raw HTML.'
+  />
+  <MdxImage
+    shadow
+    src={i_buttonV2}
+    caption='A later version with multiple pages and more details for both designs & component usage.'
+  />
 </div>
 
+<MdxImage
+  src={i_buttonFinal}
+  caption='The latest iteration of the design system with extensive sections on content, design, and coding. It also includes both visual & code references.'
+/>
+
+#### Custom Documentation Generators
+
+To make documenting our code easier, I implemented systems that would make it as automated as possible.
+
+For SASS tools and important variables, I used SassDoc to generate a JSON object that would be consumed on the front-end.
+
+<div class='grid gap-8 grid-cols-1 md:grid-cols-2'>
+  <MdxImage
+    shadow
+    src={i_sassDocCode}
+    caption='The SassDoc comments on mixins & variables.'
+  />
+  <MdxImage
+    shadow
+    src={i_sassDocOutput}
+    caption='I parsed the SassDoc JSON object to create custom documentation visuals.'
+  />
+</div>
+
+To track our Blade components, I created a custom PHP parser similar to SassDoc that would allow doc comments within component files to be output as a consumable object.
+
+<MdxImage
+  shadow
+  src={i_bladeDocCode}
+  caption={
+    'The comment formatting within Blade components that include the variables and options to be passed to the component.'
+  }
+/>
+
+<MdxImage
+  shadow
+  src={i_bladeDocOutput}
+  caption={
+    'Documentation outputs the comments in expandable blocks, and includes any JS dependency files.'
+  }
+/>
+
+### Design Components & Their Code Couterparts
+
+The team invested in upgrading our raw PHP site to implement Laravel and turn WP into a headless CMS to ensure all web components were pulled from a single source of code. Doing so gave us more tools, templating, and control to manage both content and design. This made it possible for the existing website to continue being serviced while we built new components and visual elements in the design system.
+
+#### Process
+
+I followed [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) principles to create our component library starting with the most basic elements before working up to more complex components. Additionally, components were updated and developed as needed when new pages were built and old pages revamped. This allowed the team to continue to assist with UX/UI improvements while addressing work requests for the website.
+
+As more components were made and page templates mapped out, the team was able to complete tasks faster enabling both developers and designers to evaluate and improve overall UX in more depth. Notable updates we made as a result of this increased focus was the structure of the website's main navigation and new interactive components like a cost calculator on pricing pages.
+
+<MdxImage
+  shadow
+  src={i_componentSketches}
+  caption={'Early sketches of component cataloguing and standardisation.'}
+/>
+
+#### Working with WordPress
+
+When we began this project, web content and data were spread between WordPress and hard-coded pages. To streamline the maintenance of the website as a whole, we focused on migrating all appropriate hard-coded pages to WordPress. Since marketers and other stakeholders were familiar with the UI in WordPress, it made sense to allow them to continue to work within it. This enabled stakeholders to make content changes to more pages than before without relying on developers.
+
+Before migrating content, I learned the needs of other stakeholders by having discussions with our team's writer and designer. This allowed me to determine what modular components would best suit various types of content and configuration. From here I created a system of WordPress Metaboxes with options that enabled stakeholders to customise content and page layout. Everything created in WordPress was integrated with our new design system in Laravel.
+
+With this setup, WordPress became a headless CMS that Laravel queried data from.
+
+### CSS Artchitecture (SASS & Foundation)
+
+The existing website had no consolidated CSS system so I created a new one using SASS and Zurb's Foundation Framework. This toolkit would enable us to:
+
+- Unify our visual styles and UI behaviour (responsive) through SASS features and consistent implementation of classes;
+- Create accessibility-focused components based on Foundation's pattern library; and
+- Improve overall site performance by removing the bloated Bootstrap 3 packages.
+
+#### SASS Organisation Structure
+
+I organised the SASS files following the Inverted Triangle CSS structure (ITCSS) by Harry Roberts and used the Block-Element-Modifier (BEM) naming convention for classes. ITCSS emphasises hierarchical layering of specificity to reduce code redundancy and inadvertently leaking styles, while BEM makes hierarchy and style-application immediately apparent. I chose these guidelines to keep code precise, maintainable, and scalable for ongoing development, referencing different companies' approaches and methodologies.
+
+<MdxImage
+  shadow
+  src={i_sassRefs}
+  caption={
+    'The methodologies and organisation of SASS are explained on the Sass Reference page.'
+  }
+/>
+
+#### Building the SASS Tools
+
+I then built SASS variables, mixins, and functions to aid the creation of elements and components. These included typography, colour palettes, spacing utilities, a grid system, and repeatable UI styles like dropshadows & borders.
+
+#### Particular CSS Limitations
+
+At the time, the site needed to be IE8 compatible due to the company's customer base so using CSS custom properties was unsupported. Tailwind was also in it's early stages of alpha so wasn't a reliable tool yet for our large website. Instead, we used a similar tool, Tachyons, for internal development.
+
+### The Wider Impact
+
+Similar to the website, product development lacked a standardized process for implementing consistent design features. Our development and use of a design system proved to be valuable in supporting an agile environment which led these teams to eventually adopt our design system, too.
+
+While our design system was specifically built for the website, it was nevertheless a meaningful springboard for more design discussions throughout the company.
+
+#### Reflections
+
+With hindsight, more experience, and new web technologies added to my skillset I would approach certain aspects of this project differently, such as aligning the tech stack with other web product teams and designing the documentation subsite to enable non-developer stakeholders to contribute.
+
+Other web product teams used completely different tech stacks based around Javascript frameworks (such as Angular and Ruby on Rails), so not only were we unable to share our design system components with them, but we also couldn't cross-polinate developer knowledge. Although the marketing team chose to stay with a PHP stack because of the sheer amount of legacy code, if I was experienced with React and CMS integrations, I would have advocated for a Javascript framework at least.
+
+The documentation subsite grew to include content and accessibility guidelines ontop of development standards, but wasn't designed to be easily updated for non-developers. With the stack that we had, I could have implemented a lightweight CMS, like Statamic, to handle non-autogenerated pages.

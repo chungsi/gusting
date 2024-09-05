@@ -7,12 +7,15 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.chungsi.io',
+  output: 'static',
   markdown: {
     shikiConfig: {
       wrap: true,
       theme: 'rose-pine-dawn'
     },
-    remarkPlugins: [remarkUnwrapImages],
+    remarkPlugins: [
+      remarkUnwrapImages
+    ],
   },
   integrations: [
     tailwind({
