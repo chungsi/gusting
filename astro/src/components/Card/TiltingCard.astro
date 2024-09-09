@@ -1,0 +1,77 @@
+---
+import { shapeShift } from '@components/animation/custom.astro'
+import CategoryIcon from '@components/CategoryIcon.astro'
+import type { HTMLAttributes } from 'astro/types'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+// should I extend the 'a' tag? hmmm
+type Props = {
+  link: string
+  project: CollectionEntry<'projects'>
+} & HTMLAttributes<'div'>
+
+const { link, project, id, class: className, ...rest }: Props = Astro.props
+const { title, subtitle, tags, category, heroImage, heroImagePos } = project.data
+
+---
+
+<a
+  {...rest}
+  href={link}
+  class:list={[
+    'relative block px-lg py-xl [text-decoration:none] group',
+    // Tilting card classes
+    '[--bg-rotate:-1.5deg] even:[--bg-rotate:2deg] third:[--bg-rotate:-5deg]',
+    category,
+    className
+  ]}
+>
+  {/* <slot name='accents' /> */}
+  <CategoryIcon category={category} class='absolute w-5 left-[-.25rem]' />
+
+  <h3 class='relative text-xl m-0'>{title}</h3>
+  {subtitle && <p class='italic font-light leading-snug mx-0 mt-2xs mb-md'>{subtitle}</p>}
+
+  {tags && (
+    <ul class='text-sm list-none p-0'>
+      {tags.map((tag, i) => (
+        <li class='inline-block pr-2'>
+          {tag}
+          {/* Print a forward-slash after the text if it's not last */}
+          {((i+1) < tags.length) && ' /'}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  {/* BG box */}
+  <span
+    transition:name={`project-highlight-${project.slug}`}
+    transition:animate={shapeShift}
+    aria-hidden
+    class:list={[
+      'absolute block h-full w-full top-0 left-0 -z-[1]',
+      'bg-th-bg',
+      'rotate-[var(--bg-rotate)]',
+    ]}
+  />
+
+  {/* Bottom right image */}
+  <Image
+    role='presentation'
+    src={heroImage}
+    alt=''
+    class:list={[
+      'absolute block max-w-[7.25rem] -z-[1] transition',
+      'group-hover:translate-x-1 group-hover:-translate-y-1',
+
+      'right-0', // Default
+      heroImagePos === 'top' ? '!-right-8 -top-8' : '',
+      heroImagePos === 'bottom' ? 'right-0 -bottom-6' : '',
+      heroImagePos === 'right' ? '!-right-10 bottom-0' : '',
+    ]}
+  />
+
+  <slot />
+</a>

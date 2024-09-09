@@ -23,10 +23,7 @@ const { src, caption, offset, cover, backCover }: Props = Astro.props
       backCover && 'md:mr-[50%]',
     ]}
   >
-    <Image
-      src={src}
-      alt={caption ?? ''}
-    />
+    <Image src={src} alt={caption ?? ''} />
   </div>
   {
     caption && (

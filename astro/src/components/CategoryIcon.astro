@@ -1,17 +1,18 @@
 ---
+import type { ProjectCategory } from '@utils/helpers'
+import { ProjectCategoryEnum } from '@utils/helpers'
+
 import hexagon from '@assets/images/svg/icon-hexagon.inline.svg?raw'
 import pentagon from '@assets/images/svg/icon-pentagon.inline.svg?raw'
 import trapezoid from '@assets/images/svg/icon-trapezoid.inline.svg?raw'
 import triangle from '@assets/images/svg/icon-triangle.inline.svg?raw'
-import type { ProjectCategory } from '@utils/helpers'
-import { ProjectCategoryEnum } from '@utils/helpers'
 
 type ShapeProps = {
   category: ProjectCategory
-  className?: string
+  class?: string
 }
 
-const { category, className } = Astro.props as ShapeProps
+const { category, class: className } = Astro.props as ShapeProps
 
 const num = ProjectCategoryEnum[category]
 ---

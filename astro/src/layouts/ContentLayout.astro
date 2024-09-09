@@ -4,11 +4,25 @@ import clsx from 'clsx'
 import BaseLayout from './BaseLayout.astro'
 
 type Props = {
+  home?: 'design' | 'art'
   bodyClass?: string
   class?: string
 }
 
-const { bodyClass, class: className }: Props = Astro.props
+const { home, bodyClass, class: className }: Props = Astro.props
+
+// let logoUrl = '/'
+// switch (home) {
+//   case 'design':
+//     logoUrl = '/design'
+//     break;
+//   case 'art':
+//     logoUrl = '/art'
+//     break;
+//   default:
+//     break;
+// }
+
 ---
 
 <BaseLayout
@@ -19,12 +33,13 @@ const { bodyClass, class: className }: Props = Astro.props
   ]}
 >
   <a
-    href=''
-    class={clsx(
+    id='logo'
+    href='/'
+    class:list={[
       'fixed block z-50 top-lg pl-0 md:pl-2',
       'min-w-[var(--space-xl)] w-2xl max-w-2xl',
       '-ml-2 lg:-ml-[var(--space-container-offset)] xl:-ml-[calc(var(--space-container-offset)_/_1.6)]'
-    )}
+    ]}
   >
     <Fragment set:html={logoSvg} />
   </a>
@@ -33,3 +48,19 @@ const { bodyClass, class: className }: Props = Astro.props
 
   <slot />
 </BaseLayout>
+
+<!-- <script is:inline>
+  const logo = document.getElementById('logo')
+  const urlParams = new URL(document.location.href).searchParams
+  let logoUrl = '/'
+
+  if (urlParams.get('home') === 'design') {
+    logoUrl = '/design'
+  } else if (urlParams.get('home') === 'art') {
+    logoUrl = '/art'
+  }
+
+  // Set the logo link to point to the correct home page
+  logo?.setAttribute('href', logoUrl)
+  console.log('should set the logo link to ', logoUrl, logo, urlParams)
+</script> -->

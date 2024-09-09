@@ -3,16 +3,19 @@ import type { CollectionEntry } from 'astro:content'
 import CategoryIcon from './CategoryIcon.astro'
 
 // Pass the project data as props?
-type Props = { project: CollectionEntry<'projects'>['data']; class?: string }
+type Props = {
+  project: CollectionEntry<'projects'>
+  class?: string
+}
 
 const { project, class: className }: Props = Astro.props
-const { title, category, subtitle, tags } = project
+const { title, category, subtitle, tags } = project.data
 ---
 
 <header class:list={['relative', className]}>
   <CategoryIcon
     category={category}
-    className='absolute w-7 -top-8 left-2 lg:w-8 lg:top-2 lg:left-[-4.5rem]'
+    class='absolute w-7 -top-8 left-2 lg:w-8 lg:top-2 lg:left-[-4.5rem]'
   />
   <h1 class='relative inline-block mb-xs'>
     {title}
@@ -21,6 +24,7 @@ const { title, category, subtitle, tags } = project
     </span>
     <!-- Decorative highlight -->
     <span
+      transition:name={`project-highlight-${project.slug}`}
       aria-hidden
       class:list={[
         'absolute block top-[-12px] left-[-10px] w-full h-full',

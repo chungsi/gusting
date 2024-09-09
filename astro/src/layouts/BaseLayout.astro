@@ -5,13 +5,12 @@ import { ViewTransitions } from 'astro:transitions'
 import clsx from 'clsx'
 
 type Props = {
-  title?: string
   class?: string
   bodyClass?: string
   id?: string
 }
 
-const { title, class: className, bodyClass, id } = Astro.props as Props
+const { class: className, bodyClass, id } = Astro.props as Props
 ---
 
 <!doctype html>
@@ -55,3 +54,18 @@ const { title, class: className, bodyClass, id } = Astro.props as Props
     ></span>
   </body>
 </html>
+
+<style is:global>
+  @keyframes shapeShift {
+    from {
+      position: relative;
+      z-index: -100;
+      transition: all 0.2s ease-in-out;
+    }
+    to {
+      position: relative;
+      z-index: -100;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+</style>

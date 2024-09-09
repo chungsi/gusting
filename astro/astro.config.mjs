@@ -24,5 +24,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     mdx()
-  ]
+  ],
+  redirects: {
+    '/': '/design'
+  }
 })
