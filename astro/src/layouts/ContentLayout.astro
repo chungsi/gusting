@@ -4,24 +4,11 @@ import clsx from 'clsx'
 import BaseLayout from './BaseLayout.astro'
 
 type Props = {
-  home?: 'design' | 'art'
   bodyClass?: string
   class?: string
 }
 
-const { home, bodyClass, class: className }: Props = Astro.props
-
-// let logoUrl = '/'
-// switch (home) {
-//   case 'design':
-//     logoUrl = '/design'
-//     break;
-//   case 'art':
-//     logoUrl = '/art'
-//     break;
-//   default:
-//     break;
-// }
+const { bodyClass, class: className }: Props = Astro.props
 
 ---
 
@@ -49,18 +36,18 @@ const { home, bodyClass, class: className }: Props = Astro.props
   <slot />
 </BaseLayout>
 
-<!-- <script is:inline>
-  const logo = document.getElementById('logo')
-  const urlParams = new URL(document.location.href).searchParams
-  let logoUrl = '/'
+<script is:inline>
+  // Inline to have the script run on page because ViewTransitions causes
+  // some module loading interference...
 
-  if (urlParams.get('home') === 'design') {
-    logoUrl = '/design'
-  } else if (urlParams.get('home') === 'art') {
-    logoUrl = '/art'
-  }
+  // Var because need to redefine variables as the script is rerun on load.
+  var logo = document.getElementById('logo')
+  var urlParams = new URL(document.location.href).searchParams
 
   // Set the logo link to point to the correct home page
-  logo?.setAttribute('href', logoUrl)
-  console.log('should set the logo link to ', logoUrl, logo, urlParams)
-</script> -->
+  if (urlParams.get('home') === 'design') {
+    logo?.setAttribute('href', '/design')
+  } else if (urlParams.get('home') === 'art') {
+    logo?.setAttribute('href', '/art')
+  }
+</script>
