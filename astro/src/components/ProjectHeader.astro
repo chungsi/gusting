@@ -1,6 +1,7 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import CategoryIcon from './CategoryIcon.astro'
+
+import type { CollectionEntry } from 'astro:content'
 
 // Pass the project data as props?
 type Props = {
@@ -24,7 +25,7 @@ const { title, category, subtitle, tags } = project.data
     </span>
     <!-- Decorative highlight -->
     <span
-      transition:name={`project-highlight-${project.slug}`}
+      transition:name={`project-highlight-${project.id}`}
       aria-hidden
       class:list={[
         'absolute block top-[-12px] left-[-10px] w-full h-full',

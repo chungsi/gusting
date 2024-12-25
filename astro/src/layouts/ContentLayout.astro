@@ -1,6 +1,7 @@
 ---
 import logoSvg from '@assets/images/svg/logo.svg?raw'
 import clsx from 'clsx'
+
 import BaseLayout from './BaseLayout.astro'
 
 type Props = {
@@ -41,8 +42,8 @@ const { bodyClass, class: className }: Props = Astro.props
   // some module loading interference...
 
   // Var because need to redefine variables as the script is rerun on load.
-  var logo = document.getElementById('logo')
-  var urlParams = new URL(document.location.href).searchParams
+  const logo = document.getElementById('logo')
+  const urlParams = new URL(document.location.href).searchParams
 
   // Set the logo link to point to the correct home page
   if (urlParams.get('home') === 'design') {

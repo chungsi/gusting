@@ -1,10 +1,5 @@
 ---
-import TiltingCard from '@components/Card/TiltingCard.astro'
-import { Image } from 'astro:assets'
-import { getCollection } from 'astro:content'
-import Footer from 'src/components/Footer.astro'
-import BaseLayout from 'src/layouts/BaseLayout.astro'
-
+// eslint-disable-next-line
 import i_heroX from '@assets/branch-extra.jpg'
 import i_hero_s1x from '@assets/branch/branch-s@1.0x.jpg'
 import i_hero_s15x from '@assets/branch/branch-s@1.5x.jpg'
@@ -12,6 +7,11 @@ import i_hero1x from '@assets/branch/branch@1.0x.jpg'
 import i_hero15x from '@assets/branch/branch@1.5x.jpg'
 import i_hero2x from '@assets/branch/branch@2x.jpg'
 import logoSvg from '@assets/images/svg/logo.svg?raw'
+import TiltingCard from '@components/Card/TiltingCard.astro'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import Footer from 'src/components/Footer.astro'
+import BaseLayout from 'src/layouts/BaseLayout.astro'
 
 let heroImgsSrcSet = [
   {
@@ -94,7 +94,7 @@ let allProjects = await getCollection('projects')
       ]}>
         {allProjects.map(project => (
           <TiltingCard
-            link={`/projects/${project.slug}?home=design`}
+            link={`/projects/${project.id}?home=design`}
             project={project}
           />
         ))}

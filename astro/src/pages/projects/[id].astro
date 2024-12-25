@@ -1,18 +1,20 @@
 ---
 import ProjectHeader from '@components/ProjectHeader.astro'
 import ProjectToc from '@components/ProjectToc.astro'
-import type { GetStaticPaths } from 'astro'
 import { Image } from 'astro:assets'
-import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import ContentLayout from 'src/layouts/ContentLayout.astro'
 
+import type { GetStaticPaths } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+
 export const getStaticPaths = (async () => {
+  // TODO: Add sorting to getCollection
   const projects = await getCollection('projects')
   return projects.map((project) => ({
     params: {
       // This creates a path/page for collection entry
-      slug: project.slug,
+      id: project.id,
     },
     props: {
       project,
@@ -20,13 +22,10 @@ export const getStaticPaths = (async () => {
   }))
 }) satisfies GetStaticPaths
 
-// type Params = InferGetStaticParamsType<typeof getStaticPaths>
-// type Props = InferGetStaticPropsType<typeof getStaticPaths>
-
 type Props = { project: CollectionEntry<'projects'> }
 
 const { project }: Props = Astro.props
-const { Content, headings } = await project.render()
+const { Content, headings } = await render(project)
 
 // This gets the structure from the collection schema
 const { category, heroImage, templateType } = project.data

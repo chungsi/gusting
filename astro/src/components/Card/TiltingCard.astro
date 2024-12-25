@@ -1,8 +1,9 @@
 ---
 import { shapeShift } from '@components/animation/custom.astro'
 import CategoryIcon from '@components/CategoryIcon.astro'
-import type { HTMLAttributes } from 'astro/types'
 import { Image } from 'astro:assets'
+
+import type { HTMLAttributes } from 'astro/types'
 import type { CollectionEntry } from 'astro:content'
 
 // should I extend the 'a' tag? hmmm
@@ -47,7 +48,7 @@ const { title, subtitle, tags, category, heroImage, heroImagePos } = project.dat
 
   {/* BG box */}
   <span
-    transition:name={`project-highlight-${project.slug}`}
+    transition:name={`project-highlight-${project.id}`}
     transition:animate={shapeShift}
     aria-hidden
     class:list={[

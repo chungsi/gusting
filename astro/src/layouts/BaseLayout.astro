@@ -1,7 +1,6 @@
 ---
 import Seo from '@components/Seo.astro'
 import '@css/global.css'
-import { ViewTransitions } from 'astro:transitions'
 import clsx from 'clsx'
 
 type Props = {
@@ -37,7 +36,6 @@ const { class: className, bodyClass, id } = Astro.props as Props
     <slot name='seo'>
       <Seo />
     </slot>
-    <ViewTransitions />
   </head>
   <body class={clsx('text-th-text font-mono text-md font-normal', bodyClass)}>
     <main
