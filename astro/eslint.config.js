@@ -12,8 +12,6 @@ export default [
   importPlugin.flatConfigs.typescript,
   ...ts.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
-  // ...eslintPluginAstro.configs[ 'jsx-a11y-recommended' ],
-  { ignores: [ "**/*.d.ts" ] },
   {
     files: [ '**/*.{ts,tsx,astro}' ],
     plugins: {

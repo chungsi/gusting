@@ -11,6 +11,7 @@ import type { CollectionEntry } from 'astro:content'
 export const getStaticPaths = (async () => {
   // TODO: Add sorting to getCollection
   const projects = await getCollection('projects')
+
   return projects.map((project) => ({
     params: {
       // This creates a path/page for collection entry

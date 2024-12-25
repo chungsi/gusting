@@ -12,7 +12,7 @@ type Props = {
   project: CollectionEntry<'projects'>
 } & HTMLAttributes<'div'>
 
-const { link, project, id, class: className, ...rest }: Props = Astro.props
+const { link, project, class: className, ...rest }: Props = Astro.props
 const { title, subtitle, tags, category, heroImage, heroImagePos } = project.data
 
 ---

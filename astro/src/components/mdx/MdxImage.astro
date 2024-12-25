@@ -1,8 +1,9 @@
 ---
+import { Picture } from 'astro:assets'
+import clsx from 'clsx'
+
 import type { ImageMetadata } from 'astro'
 import type { HTMLAttributes } from 'astro/types'
-import { Image } from 'astro:assets'
-import clsx from 'clsx'
 
 type Props = {
   src: ImageMetadata
@@ -23,16 +24,20 @@ switch (offset) {
     break
   case 'max-text':
     offsetClasses = 'max-w-[var(--max-text-width)]'
+    break
   default:
     break
 }
 ---
 
-<article class='relative mt-lg'>
-  <Image
+<figure class='relative mt-lg'>
+  {/* NOTE/TODO: Some weird 'sizes' progessions because of my layout; be sure to update if layout changes */}
+  <Picture
     src={src}
     alt={caption as string}
     class={clsx(shadow && 'shadow-lg', offsetClasses)}
+    widths={[600, 900, 1024]}
+    sizes={`(max-width: 600px) 600px, (max-width: 900px) 900px, (max-width: 1024px) 1024px, 900px`}
   />
-  {caption && <p class='text-sm text-gray-400'>{caption}</p>}
-</article>
+  {caption && <figcaption class='text-sm text-gray-400 my-sm'>{caption}</figcaption>}
+</figure>
