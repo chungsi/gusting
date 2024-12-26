@@ -1,0 +1,50 @@
+---
+type Props = {
+  link: string
+  title: string
+  subtitle?: string
+  category: string
+  tags?: string[]
+  class?: string
+}
+
+const { link, title, subtitle, category, tags, class: className } = Astro.props
+---
+
+<article class:list={['group relative block px-lg py-xl decoration-wavy', category, className]}>
+  <h3 class='m-0 mb-sm text-xl'>
+    <a
+      href={link}
+      class=''
+    >
+      <span
+        class='absolute inset-0'
+        aria-hidden
+      ></span>
+      {title}
+    </a>
+  </h3>
+  {
+    subtitle && (
+      <p class='th-commit-mono mx-0 mb-xl mt-2xs font-light italic leading-snug'>{subtitle}</p>
+    )
+  }
+
+  <slot name='post-title' />
+
+  {
+    tags && (
+      <ul class='list-none p-0 text-sm tracking-tight'>
+        {tags.map((tag, i) => (
+          <li class='inline-block pr-2'>
+            {tag}
+            {/* Print a forward-slash after the text if it's not last */}
+            {i + 1 < tags.length && ' /'}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <slot />
+</article>

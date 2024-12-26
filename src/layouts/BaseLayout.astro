@@ -1,0 +1,71 @@
+---
+import Seo from '@components/Seo.astro'
+import '@css/global.css'
+import { ClientRouter } from 'astro:transitions'
+
+type Props = {
+  class?: string
+  bodyClass?: string
+  id?: string
+}
+
+const { class: className, bodyClass, id } = Astro.props as Props
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content='Astro description'
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <!-- TODO: Update favicon -->
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/logo.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+    <slot name='seo'>
+      <Seo />
+    </slot>
+    <ClientRouter />
+  </head>
+  <body class:list={['th-commit-mono font-mono text-md font-normal text-th-text', bodyClass]}>
+    <main
+      class={className}
+      id={id}
+    >
+      <!-- Slot here like in blade -->
+      <slot />
+    </main>
+    <!-- Color overlay -->
+    <span
+      class='pointer-events-none fixed left-0 top-0 h-full w-full bg-[#FFFAEB] mix-blend-multiply'
+      aria-hidden
+    ></span>
+  </body>
+</html>
+
+<style is:global>
+  @keyframes shapeShift {
+    from {
+      position: relative;
+      z-index: -100;
+      transition: all 0.2s ease-in-out;
+    }
+    to {
+      position: relative;
+      z-index: -100;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+</style>

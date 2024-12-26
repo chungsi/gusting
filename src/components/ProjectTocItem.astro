@@ -1,0 +1,40 @@
+---
+import type { TocItem } from '@utils/generateToc'
+
+type Props = {
+  heading: TocItem
+}
+
+const { heading }: Props = Astro.props
+---
+
+<li
+  class:list={[
+    '[--bg-rotate:-1.5deg] even:[--bg-rotate:2deg] third:[--bg-rotate:-5deg]',
+    heading.depth == 2 && 'my-2',
+  ]}
+>
+  <a
+    href={`#${heading.slug}`}
+    class:list={[
+      'group relative inline-block px-3 py-[.125rem] no-underline',
+      heading.depth == 2 && 'font-extrabold',
+    ]}
+  >
+    {heading.text}
+    <span
+      class:list={[
+        'absolute left-0 top-0 -z-[1] block h-full w-full',
+        'rotate-[var(--bg-rotate)] group-hover:bg-th-highlight',
+      ]}></span>
+  </a>
+  {
+    heading?.children.length > 0 && (
+      <ul class='ml-4'>
+        {heading.children.map((h) => (
+          <Astro.self heading={h} />
+        ))}
+      </ul>
+    )
+  }
+</li>

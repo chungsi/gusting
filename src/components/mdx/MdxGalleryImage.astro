@@ -1,0 +1,57 @@
+---
+import { Picture } from 'astro:assets'
+
+import type { ImageMetadata } from 'astro'
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = {
+  src: ImageMetadata
+  // TODO: Fix this prop, cuz this is used for page number & not actual caption
+  caption?: string
+  offset?: boolean
+  cover?: boolean
+  backCover?: boolean
+} & HTMLAttributes<'img'>
+
+const { src, caption, offset, cover, backCover }: Props = Astro.props
+---
+
+<figure class='mb-2xl block'>
+  <div
+    class:list={[
+      'shadow-xl',
+      offset && '-mx-[calc(var(--space-container-offset)_-_1rem)]',
+      cover && 'md:ml-[50%]',
+      backCover && 'md:mr-[50%]',
+    ]}
+  >
+    <Picture
+      src={src}
+      alt={caption ?? ''}
+      formats={['avif', 'webp']}
+      widths={[768, 980, 1248, src.width]}
+      sizes={`(max-width: 768px) 768px, (max-width: 980px) 980px, (max-width: 1248px) 1248px, ${src.width}px`}
+    />
+  </div>
+  <figcaption>
+    {
+      caption && (
+        <p
+          class:list={[
+            'text-gray-400',
+            cover && 'md:ml-[calc(50%_+_var(--space-xl))]',
+            // Add some space between caption and any other text
+            '!mb-xl',
+            // Offset to right a bit in portrait mode
+            !offset ? 'md:ml-2xl' : '',
+          ]}
+        >
+          {caption}
+        </p>
+      )
+    }
+    <div class:list={[cover && 'md:ml-[calc(50%_+_var(--space-xl))]']}>
+      <slot />
+    </div>
+  </figcaption>
+</figure>

@@ -1,0 +1,180 @@
+---
+// eslint-disable-next-line
+import i_heroX from '@assets/branch-extra.jpg'
+import i_hero_sm from '@assets/branch/branch-s@1.0x.jpg'
+import i_hero_md from '@assets/branch/branch-s@1.5x.jpg'
+import i_hero_lg from '@assets/branch/branch@1.0x.jpg'
+import i_hero_xl from '@assets/branch/branch@1.5x.jpg'
+import i_hero_2xl from '@assets/branch/branch@2x.jpg'
+import BaseCard from '@components/Card/BaseCard.astro'
+import CardWithHero from '@components/Card/CardWithHero.astro'
+import CategoryIcon from '@components/CategoryIcon.astro'
+import Footer from '@components/Footer.astro'
+import Logo from '@components/Svg/Logo.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+// import { shapeShift } from '@components/animation/custom.astro'
+
+const heroImgsSrcSet = [
+  {
+    media: '(min-width: 70rem)',
+    srcset: i_hero_2xl.src,
+  },
+  {
+    media: '(min-width: 50rem)',
+    srcset: i_hero_xl.src,
+  },
+  {
+    media: '(min-width: 44rem)',
+    srcset: i_hero_lg.src,
+  },
+  {
+    media: '(min-width: 30rem)',
+    srcset: i_hero_md.src,
+  },
+  {
+    media: '(min-width: 0rem)',
+    srcset: i_hero_sm.src,
+  },
+]
+
+const allProjects = await getCollection('projects')
+
+// Arrays to manually filter and sort projects
+const primaryProjectIds = ['liz', 'threads-to-heaven', 'abaab']
+const secondaryProjectIds = ['allcourt', 'reclaimed', 'razzmatazz', 'bitter']
+
+const primaryProjects = allProjects.filter((project) => primaryProjectIds.includes(project.id))
+primaryProjects.sort((a, b) => primaryProjectIds.indexOf(a.id) - primaryProjectIds.indexOf(b.id))
+
+const secondaryProjects = allProjects.filter((project) => secondaryProjectIds.includes(project.id))
+secondaryProjects.sort(
+  (a, b) => secondaryProjectIds.indexOf(a.id) - secondaryProjectIds.indexOf(b.id),
+)
+---
+
+<BaseLayout
+  id='theme-design'
+  class='overflow-x-hidden'
+>
+  <!-- Insert SEO -->
+
+  <div class:list={['relative left-0 top-0 -z-[1] sm-th:fixed']}>
+    <Logo
+      class:list={[
+        'absolute z-[1] m-[4.5rem_0_0_3rem] w-11',
+        'sm-th:m-[3rem_0_0_6rem] md-th:m-[4.125rem_0_0_9rem] lg-th:m-[5.125rem_0_0_10.5rem]',
+      ]}
+    />
+
+    <div
+      role='presentation'
+      class:list={['relative w-[18.75rem] md-th:w-[21rem] lg-th:w-[24rem]']}
+    >
+      <picture>
+        {
+          heroImgsSrcSet.map(({ media, srcset }) => (
+            <source
+              media={media}
+              srcset={srcset}
+            />
+          ))
+        }
+        <Image
+          src={i_hero_sm}
+          alt='background of branches'
+        />
+      </picture>
+    </div>
+  </div>
+
+  <section
+    class:list={[
+      'z-[1] max-w-5xl px-lg',
+      'sm-th:ml-40 sm-th:mt-12',
+      'md-th:ml-48 md-th:mt-16',
+      'lg-th:ml-60 lg-th:mt-20',
+    ]}
+  >
+    <header>
+      <h1>chungsi</h1>
+      <p class='italic tracking-wider'>web developer / designer / storymaker</p>
+    </header>
+
+    <section class='mt-20'>
+      <h2 class='sr-only'>Featured Projects</h2>
+
+      <div
+        class:list={[
+          'grid grid-cols-1 items-center gap-xl sm:grid-cols-2 lg:grid-cols-3 lg:gap-2xl',
+        ]}
+      >
+        {
+          primaryProjects.map((project) => (
+            <CardWithHero
+              link={`/projects/${project.id}`}
+              title={project.data.title}
+              subtitle={project.data.subtitle}
+              category={project.data.category}
+              tags={project.data.tags}
+              heroImage={project.data.heroImage}
+              heroImagePos={project.data.heroImagePos}
+              class='[--bg-rotate:-1.5deg] even:[--bg-rotate:2deg] third:[--bg-rotate:-5deg]'
+            >
+              {/* BG box */}
+              {/* transition:name={`project-highlight-${project.id}`} */}
+              <span
+                aria-hidden
+                class:list={[
+                  'absolute left-0 top-0 -z-[1] block h-full w-full',
+                  'rotate-[var(--bg-rotate)] bg-th-bg',
+                ]}
+              />
+              <CategoryIcon
+                category={project.data.category}
+                class='absolute -left-1 top-10 w-5'
+              />
+            </CardWithHero>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='mt-20'>
+      <h2 class='sr-only'>Other Projects</h2>
+
+      <div class='max-w-2xl'>
+        {
+          secondaryProjects.map((project) => (
+            <BaseCard
+              link={`/projects/${project.id}?home=design`}
+              title={project.data.title}
+              subtitle={project.data.subtitle}
+              category={project.data.category}
+              tags={project.data.tags}
+              class='border-t border-solid border-th-highlight'
+            >
+              <CategoryIcon
+                category={project.data.category}
+                class='absolute -left-1 top-10 w-5'
+              />
+            </BaseCard>
+          ))
+        }
+      </div>
+    </section>
+
+    <div
+      role='presentation'
+      class:list={[`absolute right-0 -z-10 w-36 md:fixed md:bottom-12`]}
+    >
+      <Image
+        src={i_heroX}
+        alt=''
+      />
+    </div>
+
+    <Footer />
+  </section>
+</BaseLayout>

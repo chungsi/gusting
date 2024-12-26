@@ -1,0 +1,41 @@
+---
+import CategoryIcon from './CategoryIcon.astro'
+
+import type { CollectionEntry } from 'astro:content'
+
+// Pass the project data as props?
+type Props = {
+  project: CollectionEntry<'projects'>
+  class?: string
+}
+
+const { project, class: className }: Props = Astro.props
+const { title, category, subtitle, tags } = project.data
+---
+
+<header class:list={['relative', className]}>
+  <CategoryIcon
+    category={category}
+    class='absolute -top-8 left-2 w-7 lg:left-[-4.5rem] lg:top-2 lg:w-8'
+  />
+  <h1 class='relative mb-xs inline-block'>
+    {title}
+    <span class='inline-block p-[0_1em] font-mono text-sm font-light italic'>
+      &#123;{category}&#125;
+    </span>
+    <!-- Decorative highlight -->
+    <!-- transition:name={`project-highlight-${project.id}`} -->
+    <span
+      aria-hidden
+      class:list={[
+        'absolute left-[-10px] top-[-12px] block h-full w-full',
+        'z-[-1] rotate-[-2deg] bg-th-highlight',
+      ]}
+    ></span>
+  </h1>
+  <p class='text-lg italic tracking-wider'>{subtitle}</p>
+  <p class='text-sm'>
+    {tags.map((tag) => `${tag} / `)}
+  </p>
+  <!-- TODO: Also a header image goes here? -->
+</header>
