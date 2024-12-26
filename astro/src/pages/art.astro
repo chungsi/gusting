@@ -1,5 +1,5 @@
 ---
-// import logoSvg from '@assets/images/svg/logo.svg?raw'
+import OgImageArt from '@assets/images/ogImage_square_art.jpg'
 import i_hero_sm from '@assets/skypuddle/skypuddle-s@0.75x.jpg'
 import i_hero_md from '@assets/skypuddle/skypuddle-s@1.0x.jpg'
 import i_hero_lg from '@assets/skypuddle/skypuddle-s@1.5x.jpg'
@@ -7,6 +7,7 @@ import i_hero_xl from '@assets/skypuddle/skypuddle@0.5x.jpg'
 import i_hero_2xl from '@assets/skypuddle/skypuddle@1.0x.jpg'
 import CardWithHero from '@components/Card/CardWithHero.astro'
 import Footer from '@components/Footer.astro'
+import Seo from '@components/Seo.astro'
 import Logo from '@components/Svg/Logo.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
@@ -37,7 +38,7 @@ const heroImgsSrcSet = [
 
 const allProjects = await getCollection('projects')
 
-const featureIds = ['bitter', 'abaab', 'razzmatazz', 'reclaimed']
+const featureIds = ['abaab', 'reclaimed', 'razzmatazz', 'bitter']
 const artProjects = allProjects.filter(
   (project) =>
     (project.data.category === 'art' || project.data.category === 'storytelling') &&
@@ -58,7 +59,9 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
     '2xl-th:ml-[52%] 2xl-th:mt-[12%]',
   ]}
 >
-  <!-- Insert SEO -->
+  <Fragment slot='seo'>
+    <Seo image={OgImageArt} />
+  </Fragment>
 
   <div class='fixed left-0 top-0 -z-[1] h-auto w-full 2xl-th:w-[86vw]'>
     <picture>
@@ -72,7 +75,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
       }
       <Image
         src={i_hero_sm}
-        alt='background of branches'
+        alt='background of sky reflections'
       />
     </picture>
   </div>

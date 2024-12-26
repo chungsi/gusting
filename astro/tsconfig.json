@@ -10,18 +10,11 @@
       }
     ],
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@css/*": [
-        "src/css/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+      "@css/*": ["src/css/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
