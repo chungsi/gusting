@@ -1,5 +1,6 @@
 ---
 import logoSvg from '@assets/images/svg/logo.svg?raw'
+import Seo from '@components/Seo.astro'
 import clsx from 'clsx'
 
 import BaseLayout from './BaseLayout.astro'
@@ -10,23 +11,26 @@ type Props = {
 }
 
 const { bodyClass, class: className }: Props = Astro.props
-
 ---
 
 <BaseLayout
   bodyClass={clsx('border-b-8 border-solid border-th-primary', bodyClass)}
-  class:list={[
-    'pt-4xl pb-2xl px-[var(--space-container-offset)] mx-auto',
-    className,
-  ]}
+  class:list={['mx-auto px-[var(--space-container-offset)] pb-2xl pt-4xl', className]}
 >
+  <slot
+    name='seo'
+    slot='seo'
+  >
+    <Seo />
+  </slot>
+
   <a
     data-logo
     href='/'
     class:list={[
-      'fixed block z-50 top-lg pl-0 md:pl-2',
-      'min-w-[var(--space-xl)] w-2xl max-w-2xl',
-      '-ml-2 lg:-ml-[var(--space-container-offset)] xl:-ml-[calc(var(--space-container-offset)_/_1.6)]'
+      'fixed top-lg z-50 block pl-0 md:pl-2',
+      'w-2xl min-w-[var(--space-xl)] max-w-2xl',
+      '-ml-2 lg:-ml-[var(--space-container-offset)] xl:-ml-[calc(var(--space-container-offset)_/_1.6)]',
     ]}
   >
     <Fragment set:html={logoSvg} />
@@ -45,6 +49,7 @@ const { bodyClass, class: className }: Props = Astro.props
   const urlParams = new URL(document.location.href).searchParams
 
   // Set the logo link to point to the correct home page
+  // NOTE: Set the /design home to just be / (index)
   if (urlParams.get('home') === 'design') {
     logo?.setAttribute('href', '/design')
   } else if (urlParams.get('home') === 'art') {

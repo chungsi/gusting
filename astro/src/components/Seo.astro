@@ -1,42 +1,73 @@
 ---
 import OgImageArt from '@assets/images/ogImage_square_art.jpg'
+
 import type { ImageMetadata } from 'astro'
 
 type Props = {
   title?: string
   description?: string
   image?: ImageMetadata
-  home?: string
   homeTitle?: string
 }
 
 const {
-  title = 'chungsi',
-  description = 'web dev & design & art',
+  title,
+  description = 'works combining web dev, design, and art',
   image = OgImageArt,
-  home,
-  homeTitle,
-}: Props = Astro.props
+  homeTitle = 'chungsi | web dev & design',
+} = Astro.props
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
-console.log('Astro url', Astro.url)
 console.log('image', image)
+
+const siteTitle = (title ? `${title} | ` : '') + homeTitle
 ---
 
-<title>{title}</title>
+<title>{siteTitle}</title>
 
-<!-- prettier-ignore -->
-<meta name='description' content={description} />
+<meta
+  name='description'
+  content={description}
+/>
 
-<meta name='image' content={image.src} />
+<meta
+  name='image'
+  content={image.src}
+/>
 
-<meta property='og:title' content={title} />
-<meta property='og:type' content='website' />
-<meta property='og:url' content={canonicalUrl} />
-<meta property='og:image' content={image.src} />
-<meta property='og:description' content={description} />
+<meta
+  property='og:title'
+  content={siteTitle}
+/>
+<meta
+  property='og:type'
+  content='website'
+/>
+<meta
+  property='og:url'
+  content={Astro.url.href}
+/>
+<meta
+  property='og:image'
+  content={image.src}
+/>
+<meta
+  property='og:description'
+  content={description}
+/>
 
-<meta property='twitter:description' content={description} />
-<meta property='twitter:image' content={image.src} />
-<meta property='twitter:site' content='@chungsi_' />
-<meta property='twitter:card' content='summary' />
+<meta
+  property='twitter:description'
+  content={description}
+/>
+<meta
+  property='twitter:image'
+  content={image.src}
+/>
+<meta
+  property='twitter:site'
+  content='@chungsi_'
+/>
+<meta
+  property='twitter:card'
+  content='summary'
+/>

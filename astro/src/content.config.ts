@@ -11,8 +11,9 @@ const projectsCollection = defineCollection({
     tags: z.array(z.string()),
     // image helper for content collections:
     // https://docs.astro.build/en/guides/images/#images-in-content-collections
-    heroImage: image(),
-    heroImagePos: z.string(),
+    heroImage: image().optional(),
+    heroImagePos: z.string().optional(),
+    metaImage: image().optional(),
     // to tell the page template how to render the contents
     templateType: z.enum(['project', 'gallery'])
   }),
