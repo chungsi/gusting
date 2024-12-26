@@ -28,7 +28,7 @@ const { src, caption, offset, cover, backCover }: Props = Astro.props
     <Picture
       src={src}
       alt={caption ?? ''}
-      formats={['webp', 'avif']}
+      formats={['avif', 'webp']}
       widths={[768, 980, 1248, src.width]}
       sizes={`(max-width: 768px) 768px, (max-width: 980px) 980px, (max-width: 1248px) 1248px, ${src.width}px`}
     />

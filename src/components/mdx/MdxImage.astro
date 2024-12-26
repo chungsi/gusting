@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import type { ImageMetadata } from 'astro'
 import type { HTMLAttributes } from 'astro/types'
 
-type Props = HTMLAttributes<'img'> &{
+type Props = HTMLAttributes<'img'> & {
   src: ImageMetadata
   link?: boolean
   caption?: string
@@ -32,19 +32,30 @@ switch (offset) {
 ---
 
 <section class='relative mt-lg'>
-  {/* NOTE/TODO: Some weird 'sizes' progessions because of my layout; be sure to update if layout changes */}
+  {
+    /* NOTE/TODO: Some weird 'sizes' progessions because of my layout; be sure to update if layout changes */
+  }
   <Picture
     src={src}
-    alt={caption as string ?? ''}
+    alt={(caption as string) ?? ''}
     class={clsx(shadow && 'shadow-lg', offsetClasses)}
-    formats={['webp', 'avif']}
+    formats={['avif', 'webp']}
     widths={[600, 900, 1024]}
     sizes={`(max-width: 600px) 600px, (max-width: 900px) 900px, (max-width: 1024px) 1024px, 900px`}
   />
-  {link && (
-    <a href={src.src} target='_blank' class=''>
-      <span aria-hidden='true' class='absolute inset-0'></span>
-    </a>
-  )}
-  {caption && <p class='text-sm text-gray-400 my-sm'>{caption}</p>}
+  {
+    link && (
+      <a
+        href={src.src}
+        target='_blank'
+        class=''
+      >
+        <span
+          aria-hidden='true'
+          class='absolute inset-0'
+        />
+      </a>
+    )
+  }
+  {caption && <p class='my-sm text-sm text-gray-400'>{caption}</p>}
 </section>
