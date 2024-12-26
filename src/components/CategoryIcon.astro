@@ -1,0 +1,25 @@
+---
+import hexagon from '@assets/images/svg/icon-hexagon.svg?raw'
+import pentagon from '@assets/images/svg/icon-pentagon.svg?raw'
+import trapezoid from '@assets/images/svg/icon-trapezoid.svg?raw'
+import triangle from '@assets/images/svg/icon-triangle.svg?raw'
+import { ProjectCategoryEnum } from '@utils/helpers'
+
+import type { ProjectCategory } from '@utils/helpers'
+
+type ShapeProps = {
+  category: ProjectCategory
+  class?: string
+}
+
+const { category, class: className } = Astro.props as ShapeProps
+
+const num = ProjectCategoryEnum[category]
+---
+
+<div class={className}>
+  {num === ProjectCategoryEnum.art && <Fragment set:html={triangle} />}
+  {num === ProjectCategoryEnum.dev && <Fragment set:html={trapezoid} />}
+  {num === ProjectCategoryEnum.design && <Fragment set:html={hexagon} />}
+  {num === ProjectCategoryEnum.storytelling && <Fragment set:html={pentagon} />}
+</div>

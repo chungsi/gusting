@@ -1,6 +1,0 @@
-@import "custom-props/custom-props.css";
-@import "typography.css";
-/* TODO: install the other import thing so I can move these */
-
-@tailwind base;
-@tailwind utilities;

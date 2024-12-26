@@ -100,9 +100,8 @@ $dev: $purple; */
   --text-color: theme('colors.cedar.800');
   --link-color: theme('colors.cedar.600');
   --meta-color: theme('colors.cedar.900');
-
-  --c-bg-color: theme('colors.pine.50');
-  --c-highlight-color: theme('colors.pine.100');
+  --c-bg-color: theme('colors.cedar.50');
+  --c-highlight-color: theme('colors.cedar.100');
   svg {
     fill: var(--primary-color);
   }

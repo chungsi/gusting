@@ -1,0 +1,3 @@
+# ignore for better formatting...
+/src/components/Seo.astro
+**/*.mdx

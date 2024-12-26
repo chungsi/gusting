@@ -1,3 +1,3 @@
 # chungsi's portfolio repo
 
-Made using Gatsby in Typescript.
+Made using Astro in Typescript.
