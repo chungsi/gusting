@@ -21,7 +21,7 @@ const { bodyClass, class: className }: Props = Astro.props
   ]}
 >
   <a
-    id='logo'
+    data-logo
     href='/'
     class:list={[
       'fixed block z-50 top-lg pl-0 md:pl-2',
@@ -37,12 +37,11 @@ const { bodyClass, class: className }: Props = Astro.props
   <slot />
 </BaseLayout>
 
-<script is:inline>
-  // Inline to have the script run on page because ViewTransitions causes
+<script>
+  // Mignt need to inline to have the script run on page because ViewTransitions causes
   // some module loading interference...
 
-  // Var because need to redefine variables as the script is rerun on load.
-  const logo = document.getElementById('logo')
+  const logo = document.querySelector('[data-logo]')
   const urlParams = new URL(document.location.href).searchParams
 
   // Set the logo link to point to the correct home page

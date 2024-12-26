@@ -28,6 +28,15 @@
         "jsxSingleQuote": true,
         "trailingComma": "all"
       }
+    },
+    {
+      "files": "*.mdx",
+      "options": {
+        "parser": "mdx",
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
     }
   ]
 }

@@ -33,9 +33,9 @@ $dev: $purple; */
 :root {
   --primary-color: theme('colors.buttercup.500');
   --header-color: rgba(0 0 0 / 1);
-  --text-color: rgba(0 0 0 / .7);
+  --text-color: rgba(0 0 0 / 0.7);
   --meta-color: #{$grey};
-  --link-color: rgba(0 0 0 / .7);
+  --link-color: rgba(0 0 0 / 0.7);
 
   --c-bg-color: #f2f2f2;
   --c-highlight-color: #f2f2f2;
@@ -47,7 +47,9 @@ $dev: $purple; */
   --link-color: theme('colors.buttercup.600');
   --c-bg-color: theme('colors.buttercup.50');
   --c-highlight-color: theme('colors.buttercup.100');
-  svg { fill: var(--primary-color); }
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 .dev {
@@ -55,7 +57,9 @@ $dev: $purple; */
   --link-color: theme('colors.pine.600');
   --c-bg-color: theme('colors.pine.50');
   --c-highlight-color: theme('colors.pine.100');
-  svg { fill: var(--primary-color); }
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 .design {
@@ -63,7 +67,9 @@ $dev: $purple; */
   --link-color: theme('colors.cedar.700');
   --c-bg-color: theme('colors.cedar.50');
   --c-highlight-color: theme('colors.cedar.100');
-  svg { fill:var(--primary-color); }
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 .storytelling {
@@ -71,7 +77,9 @@ $dev: $purple; */
   --link-color: theme('colors.mandarin.600');
   --c-bg-color: theme('colors.mandarin.50');
   --c-highlight-color: theme('colors.mandarin.100');
-  svg { fill:var(--primary-color); }
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 /* // Website Theme Colours */
@@ -81,7 +89,9 @@ $dev: $purple; */
   --text-color: theme('colors.cobalt.900');
   --meta-color: theme('colors.cobalt.800');
   --link-color: theme('colors.cobalt.600');
-  svg { fill: var(--primary-color); }
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 #theme-design {
@@ -90,5 +100,10 @@ $dev: $purple; */
   --text-color: theme('colors.cedar.800');
   --link-color: theme('colors.cedar.600');
   --meta-color: theme('colors.cedar.900');
-  svg { fill: var(--primary-color); }
+
+  --c-bg-color: theme('colors.pine.50');
+  --c-highlight-color: theme('colors.pine.100');
+  svg {
+    fill: var(--primary-color);
+  }
 }

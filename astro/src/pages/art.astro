@@ -1,0 +1,159 @@
+---
+// import logoSvg from '@assets/images/svg/logo.svg?raw'
+import i_hero_sm from '@assets/skypuddle/skypuddle-s@0.75x.jpg'
+import i_hero_md from '@assets/skypuddle/skypuddle-s@1.0x.jpg'
+import i_hero_lg from '@assets/skypuddle/skypuddle-s@1.5x.jpg'
+import i_hero_xl from '@assets/skypuddle/skypuddle@0.5x.jpg'
+import i_hero_2xl from '@assets/skypuddle/skypuddle@1.0x.jpg'
+import CardWithHero from '@components/Card/CardWithHero.astro'
+import Footer from '@components/Footer.astro'
+import Logo from '@components/Svg/Logo.astro'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import BaseLayout from 'src/layouts/BaseLayout.astro'
+
+const heroImgsSrcSet = [
+  {
+    media: '(min-width: 96rem)',
+    srcset: i_hero_2xl.src,
+  },
+  {
+    media: '(min-width: 50rem)',
+    srcset: i_hero_xl.src,
+  },
+  {
+    media: '(min-width: 39rem)',
+    srcset: i_hero_lg.src,
+  },
+  {
+    media: '(min-width: 30rem)',
+    srcset: i_hero_md.src,
+  },
+  {
+    media: '(min-width: 0rem)',
+    srcset: i_hero_sm.src,
+  },
+]
+
+const allProjects = await getCollection('projects')
+
+const featureIds = ['bitter', 'abaab', 'razzmatazz', 'reclaimed']
+const artProjects = allProjects.filter(
+  (project) =>
+    (project.data.category === 'art' || project.data.category === 'storytelling') &&
+    featureIds.includes(project.id),
+)
+artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
+---
+
+<BaseLayout
+  id='theme-art'
+  class:list={[
+    'ml-[2rem] mr-md mt-[24%] max-w-xl',
+    '2xs-th:ml-[20%]',
+    'xs-th:ml-[20%] xs-th:mr-2xl',
+    'md-th:ml-[48%] md-th:mr-xl md-th:mt-[16%]',
+    'lg-th:ml-[52%]',
+    'xl-th:ml-[60%]',
+    '2xl-th:ml-[52%] 2xl-th:mt-[12%]',
+  ]}
+>
+  <!-- Insert SEO -->
+
+  <div class='fixed left-0 top-0 -z-[1] h-auto w-full 2xl-th:w-[86vw]'>
+    <picture>
+      {
+        heroImgsSrcSet.map(({ media, srcset }) => (
+          <source
+            media={media}
+            srcset={srcset}
+          />
+        ))
+      }
+      <Image
+        src={i_hero_sm}
+        alt='background of branches'
+      />
+    </picture>
+  </div>
+
+  <header class='md-th:flex'>
+    <Logo class='mb-xl mr-sm w-12 md-th:-mt-2xs' />
+    <div>
+      <h1 class='tracking-widest'>chungsi</h1>
+      <p class='font-light'>designer / storymaker / artist</p>
+    </div>
+  </header>
+
+  <h2 class='sr-only'>Projects</h2>
+  <section class='featured-grid'>
+    {
+      artProjects.map((project) => (
+        // NOTE: Need to wrap in a div for Astro's css scoping
+        <div class='project-card'>
+          <CardWithHero
+            class='shadow-xl shadow-cobalt-800/20'
+            link={`/projects/${project.id}?home=art`}
+            title={project.data.title}
+            subtitle={project.data.subtitle}
+            category={project.data.category}
+            tags={project.data.tags}
+            heroImage={project.data.heroImage}
+            heroImagePos={project.data.heroImagePos}
+          />
+        </div>
+      ))
+    }
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .featured-grid {
+    margin-bottom: var(--space-3xl);
+    display: grid;
+    gap: 2rem;
+    max-width: var(--space-6xl);
+
+    @screen xs-th {
+      max-width: 100%;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: minmax(4rem, auto);
+      grid-template-areas:
+        'bk1 bk1 bk1 .   .   .  '
+        '.   .   .   bk2 bk2 bk2'
+        'bk3 bk3 bk3 bk2 bk2 bk2'
+        'bk3 bk3 bk3 bk4 bk4 bk4'
+        '.   .   .   bk4 bk4 bk4';
+    }
+
+    @screen lg-th {
+      gap: 1rem;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: minmax(4rem, auto);
+      grid-template-areas:
+        'bk1 bk1 bk1 bk1 .   .   .  '
+        '.   .   .   .   bk2 bk2 bk2'
+        'bk3 bk3 bk3 .   bk2 bk2 bk2'
+        'bk3 bk3 bk3 .   .   .   .  '
+        'bk3 bk3 bk3 bk4 bk4 bk4 .  '
+        '.   .   .   bk4 bk4 bk4 .  ';
+    }
+
+    & .project-card {
+      &:nth-of-type(1) {
+        grid-area: bk1;
+      }
+      &:nth-of-type(2) {
+        grid-area: bk2;
+      }
+      &:nth-of-type(3) {
+        grid-area: bk3;
+      }
+      &:nth-of-type(4) {
+        grid-area: bk4;
+      }
+    }
+  }
+</style>
