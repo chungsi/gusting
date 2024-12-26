@@ -1,3 +1,4 @@
+import containerQueries from '@tailwindcss/container-queries'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import plugin from 'tailwindcss/plugin'
 
@@ -75,10 +76,10 @@ export default {
 				}
 			},
 			fontFamily: {
-				serif: ['Fanwood Text', ...defaultTheme.fontFamily.serif],
-				heading: ['Fanwood Text', ...defaultTheme.fontFamily.serif],
-				mono: ['Commit Mono', ...defaultTheme.fontFamily.mono],
-				body: ['Commit Mono', ...defaultTheme.fontFamily.mono]
+				serif: [ 'Fanwood Text', ...defaultTheme.fontFamily.serif ],
+				heading: [ 'Fanwood Text', ...defaultTheme.fontFamily.serif ],
+				mono: [ 'Commit Mono', ...defaultTheme.fontFamily.mono ],
+				body: [ 'Commit Mono', ...defaultTheme.fontFamily.mono ]
 			},
 			spacing: {
 				'3xs': 'var(--space-3xs)',
@@ -106,6 +107,7 @@ export default {
 		},
 	},
 	plugins: [
+		containerQueries,
 		plugin(function ({ addVariant }) {
 			addVariant('third', '&:nth-child(3n)')
 		})

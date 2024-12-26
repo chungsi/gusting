@@ -16,24 +16,24 @@ const { title, category, subtitle, tags } = project.data
 <header class:list={['relative', className]}>
   <CategoryIcon
     category={category}
-    class='absolute w-7 -top-8 left-2 lg:w-8 lg:top-2 lg:left-[-4.5rem]'
+    class='absolute -top-8 left-2 w-7 lg:left-[-4.5rem] lg:top-2 lg:w-8'
   />
-  <h1 class='relative inline-block mb-xs'>
+  <h1 class='relative mb-xs inline-block'>
     {title}
-    <span class='font-mono italic font-light text-sm inline-block p-[0_1em]'>
+    <span class='inline-block p-[0_1em] font-mono text-sm font-light italic'>
       &#123;{category}&#125;
     </span>
     <!-- Decorative highlight -->
+    <!-- transition:name={`project-highlight-${project.id}`} -->
     <span
-      transition:name={`project-highlight-${project.id}`}
       aria-hidden
       class:list={[
-        'absolute block top-[-12px] left-[-10px] w-full h-full',
-        'rotate-[-2deg] z-[-1] bg-th-highlight',
+        'absolute left-[-10px] top-[-12px] block h-full w-full',
+        'z-[-1] rotate-[-2deg] bg-th-highlight',
       ]}
     ></span>
   </h1>
-  <p class='italic text-lg tracking-wider'>{subtitle}</p>
+  <p class='text-lg italic tracking-wider'>{subtitle}</p>
   <p class='text-sm'>
     {tags.map((tag) => `${tag} / `)}
   </p>

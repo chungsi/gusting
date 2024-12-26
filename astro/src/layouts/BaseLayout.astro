@@ -1,7 +1,7 @@
 ---
 import Seo from '@components/Seo.astro'
 import '@css/global.css'
-import clsx from 'clsx'
+import { ClientRouter } from 'astro:transitions'
 
 type Props = {
   class?: string
@@ -24,6 +24,7 @@ const { class: className, bodyClass, id } = Astro.props as Props
       name='viewport'
       content='width=device-width'
     />
+    <!-- TODO: Update favicon -->
     <link
       rel='icon'
       type='image/svg+xml'
@@ -36,8 +37,9 @@ const { class: className, bodyClass, id } = Astro.props as Props
     <slot name='seo'>
       <Seo />
     </slot>
+    <ClientRouter />
   </head>
-  <body class={clsx('text-th-text font-mono text-md font-normal', bodyClass)}>
+  <body class:list={['th-commit-mono font-mono text-md font-normal text-th-text', bodyClass]}>
     <main
       class={className}
       id={id}
@@ -47,7 +49,7 @@ const { class: className, bodyClass, id } = Astro.props as Props
     </main>
     <!-- Color overlay -->
     <span
-      class='fixed w-full h-full top-0 left-0 bg-[#FFFAEB] mix-blend-multiply pointer-events-none'
+      class='pointer-events-none fixed left-0 top-0 h-full w-full bg-[#FFFAEB] mix-blend-multiply'
       aria-hidden
     ></span>
   </body>

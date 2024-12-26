@@ -15,26 +15,34 @@
 
 @font-face {
   font-family: 'Commit Mono';
-  src: url('/fonts/CommitMono_VariableFont.woff2') format('woff2-variations');
+  src:
+    local('Commit Mono'),
+    url('/fonts/CommitMono_VariableFont.woff2') format(woff2) tech(variations);
   font-weight: 200 700;
-  font-variant: common-ligatures;
+  font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
   font-kerning: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Commit Mono';
-  src: url('/fonts/CommitMono_VariableFont.woff2') format('woff2-variations');
+  src:
+    local('Commit Mono'),
+    url('/fonts/CommitMono_VariableFont.woff2') format(woff2) tech(variations);
   font-weight: 200 700;
-  font-variant: common-ligatures;
+  font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
   font-kerning: normal;
   font-style: italic;
+  font-variation-settings: 'ital' 1;
+  font-synthesis: none;
 }
-
+/*
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono[wght].woff2')
-      format('woff2 supports variations'),
+  src:
+    url('/fonts/JetBrainsMono[wght].woff2') format('woff2 supports variations'),
     url('/fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
   font-weight: 100 800;
   font-style: normal;
@@ -42,12 +50,12 @@
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Italic[wght].woff2')
-      format('woff2 supports variations'),
+  src:
+    url('/fonts/JetBrainsMono-Italic[wght].woff2') format('woff2 supports variations'),
     url('/fonts/JetBrainsMono-Italic[wght].woff2') format('woff2-variations');
   font-weight: 100 800;
   font-style: italic;
-}
+} */
 
 :root {
   --p-line-height: var(--s-lg);
@@ -74,6 +82,17 @@
  */
 
 @layer base {
+  /* NOTE: For Commit Mono variable fonts rendering on Chromium, need to specify this. */
+  .th-commit-mono {
+    font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  }
+
+  /* NOTE: For Commit Mono variable fonts rendering on Chromium, need to specify this. */
+  :where(.italic) {
+    font-variation-settings: 'ital' 1;
+  }
+
   /* // TODO: Split some of these stylings to be prose specific (only for content) */
   .h0 {
     --header-size: theme('fontSize.5xl');
