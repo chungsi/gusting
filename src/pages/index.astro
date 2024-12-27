@@ -116,7 +116,7 @@ secondaryProjects.sort(
         {
           primaryProjects.map((project) => (
             <CardWithHero
-              link={`/projects/${project.id}`}
+              link={`/project/${project.id}`}
               title={project.data.title}
               subtitle={project.data.subtitle}
               category={project.data.category}
@@ -151,7 +151,7 @@ secondaryProjects.sort(
         {
           secondaryProjects.map((project) => (
             <BaseCard
-              link={`/projects/${project.id}?home=design`}
+              link={`/project/${project.id}?home=design`}
               title={project.data.title}
               subtitle={project.data.subtitle}
               category={project.data.category}
