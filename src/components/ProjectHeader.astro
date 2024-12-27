@@ -1,16 +1,16 @@
 ---
 import CategoryIcon from './CategoryIcon.astro'
 
-import type { CollectionEntry } from 'astro:content'
-
 // Pass the project data as props?
 type Props = {
-  project: CollectionEntry<'projects'>
+  title: string
+  category: string
+  subtitle: string
+  tags: string[]
   class?: string
 }
 
-const { project, class: className }: Props = Astro.props
-const { title, category, subtitle, tags } = project.data
+const { title, category, subtitle, tags, class: className }: Props = Astro.props
 ---
 
 <header class:list={['relative', className]}>

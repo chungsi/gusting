@@ -11,7 +11,9 @@ import type { CollectionEntry } from 'astro:content'
 
 export const getStaticPaths = (async () => {
   // TODO: Add sorting to getCollection
-  const projects = await getCollection('projects')
+  const projects = await getCollection('project')
+  console.log('projects: ', projects)
+  if (!projects) return []
 
   return projects.map((project) => ({
     params: {
@@ -24,9 +26,10 @@ export const getStaticPaths = (async () => {
   }))
 }) satisfies GetStaticPaths
 
-type Props = { project: CollectionEntry<'projects'> }
+type Props = { project: CollectionEntry<'project'> }
 
 const { project }: Props = Astro.props
+
 const { Content, headings } = await render(project)
 
 // This gets the structure from the collection schema
@@ -51,7 +54,10 @@ const galleryTemplate = templateType === 'gallery'
   </Fragment>
 
   <ProjectHeader
-    project={project}
+    title={project.data.title}
+    category={category}
+    subtitle={project.data.subtitle}
+    tags={project.data.tags}
     slot='header'
     class='project-head'
   />

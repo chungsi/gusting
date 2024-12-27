@@ -3,33 +3,25 @@ import tailwind from "@astrojs/tailwind"
 import { defineConfig } from 'astro/config'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
-import react from "@astrojs/react"
-
-import netlify from '@astrojs/netlify';
+import netlify from '@astrojs/netlify'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.chungsi.io',
   output: 'static',
+  adapter: netlify(),
 
   markdown: {
     shikiConfig: {
       wrap: true,
       theme: 'rose-pine-dawn'
     },
-    remarkPlugins: [remarkUnwrapImages]
+    remarkPlugins: [ remarkUnwrapImages ]
   },
 
-  integrations: [tailwind({
+  integrations: [ tailwind({
     nesting: true,
     // Disable injecting a basic `base.css` import on every page that has all tailwind
     applyBaseStyles: false
-  }), mdx(), react()],
-
-  redirects: {
-    // Doesn't work if I have the index.astro page defined
-    // '/': '/design'
-  },
-
-  adapter: netlify()
+  }), mdx() ],
 })
