@@ -12,7 +12,6 @@ import type { CollectionEntry } from 'astro:content'
 export const getStaticPaths = (async () => {
   // TODO: Add sorting to getCollection
   const projects = await getCollection('project')
-  console.log('projects: ', projects)
   if (!projects) return []
 
   return projects.map((project) => ({

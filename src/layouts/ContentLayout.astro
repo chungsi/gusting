@@ -53,8 +53,6 @@ const { bodyClass, class: className }: Props = Astro.props
     const logo = document.querySelector('[data-logo]')
     const urlParams = new URL(document.location.href).searchParams
 
-    console.log('logo ', logo, urlParams)
-
     // Set the logo link to point to the correct home page
     // NOTE: Set the /design home to just be / (index)
     // if (urlParams.get('home') === 'design') {

@@ -14,7 +14,6 @@ import Logo from '@components/Svg/Logo.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
-import { collections } from 'src/content.config'
 // import { shapeShift } from '@components/animation/custom.astro'
 
 const heroImgsSrcSet = [
@@ -41,8 +40,6 @@ const heroImgsSrcSet = [
 ]
 
 const allProjects = await getCollection('project')
-console.log(collections)
-// console.log(await getEntry('project', 'liz'))
 
 // Arrays to manually filter and sort projects
 const primaryProjectIds = ['liz', 'threads-to-heaven', 'abaab']
