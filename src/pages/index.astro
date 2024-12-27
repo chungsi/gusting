@@ -39,7 +39,7 @@ const heroImgsSrcSet = [
   },
 ]
 
-const allProjects = await getCollection('projects')
+const allProjects = await getCollection('project')
 
 // Arrays to manually filter and sort projects
 const primaryProjectIds = ['liz', 'threads-to-heaven', 'abaab']
@@ -113,7 +113,7 @@ secondaryProjects.sort(
         {
           primaryProjects.map((project) => (
             <CardWithHero
-              link={`/projects/${project.id}`}
+              link={`/project/${project.id}`}
               title={project.data.title}
               subtitle={project.data.subtitle}
               category={project.data.category}
@@ -148,7 +148,7 @@ secondaryProjects.sort(
         {
           secondaryProjects.map((project) => (
             <BaseCard
-              link={`/projects/${project.id}?home=design`}
+              link={`/project/${project.id}?home=design`}
               title={project.data.title}
               subtitle={project.data.subtitle}
               category={project.data.category}
