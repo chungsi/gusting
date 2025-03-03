@@ -1,4 +1,5 @@
 ---
+import logoSvg from '@assets/images/svg/logo.svg?raw'
 import ProjectHeader from '@components/ProjectHeader.astro'
 import ProjectToc from '@components/ProjectToc.astro'
 import Seo from '@components/Seo.astro'
@@ -52,6 +53,22 @@ const galleryTemplate = templateType === 'gallery'
     />
   </Fragment>
 
+  <div
+    class:list={[
+      'project-logo',
+      'top-lg pb-2xl sticky right-0 z-50 h-fit w-fit pl-0',
+      'lg:-ml-[calc(var(--spacing-container-offset)_/_2)] lg:-translate-x-1/3 xl:-translate-x-1/3',
+    ]}
+  >
+    <a
+      data-logo
+      href='/'
+      class:list={['block w-2xl max-w-[42rem] min-w-[var(--spacing-xl)]']}
+    >
+      <Fragment set:html={logoSvg} />
+    </a>
+  </div>
+
   <ProjectHeader
     title={project.data.title}
     category={category}
@@ -103,6 +120,7 @@ const galleryTemplate = templateType === 'gallery'
 
     grid-template-columns: 1fr;
     grid-template-areas:
+      'logo'
       'head'
       'toc '
       'body';
@@ -115,9 +133,14 @@ const galleryTemplate = templateType === 'gallery'
       column-gap: 3rem;
       grid-template-columns: 5fr 2fr;
       grid-template-areas:
+        'logo logo'
         'head hero'
         'body toc';
     }
+  }
+
+  .project-logo {
+    grid-area: logo;
   }
 
   .project-head {
