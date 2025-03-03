@@ -18,10 +18,10 @@ const { src, link, caption, shadow, offset }: Props = Astro.props
 let offsetClasses = ''
 switch (offset) {
   case 'full':
-    offsetClasses = '-mx-[calc(var(--space-container-offset)_-_1rem)]'
+    offsetClasses = '-mx-[calc(var(--spacing-container-offset)_-_1rem)]'
     break
   case 'half':
-    offsetClasses = '-mx-[calc(var(--space-container-offset)_/_2_-_1rem)]'
+    offsetClasses = '-mx-[calc(var(--spacing-container-offset)_/_2_-_1rem)]'
     break
   case 'max-text':
     offsetClasses = 'max-w-[var(--max-text-width)]'
@@ -31,7 +31,7 @@ switch (offset) {
 }
 ---
 
-<section class='relative mt-lg'>
+<section class='mt-lg relative'>
   {
     /* NOTE/TODO: Some weird 'sizes' progessions because of my layout; be sure to update if layout changes */
   }

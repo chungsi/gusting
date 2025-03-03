@@ -39,7 +39,7 @@ const { class: className, bodyClass, id } = Astro.props as Props
     </slot>
     <ClientRouter />
   </head>
-  <body class:list={['th-commit-mono font-mono text-md font-normal text-th-text', bodyClass]}>
+  <body class:list={['font-th-mono text-md text-th-text font-normal', bodyClass]}>
     <main
       class={className}
       id={id}
@@ -49,7 +49,7 @@ const { class: className, bodyClass, id } = Astro.props as Props
     </main>
     <!-- Color overlay -->
     <span
-      class='pointer-events-none fixed left-0 top-0 h-full w-full bg-[#FFFAEB] mix-blend-multiply'
+      class='pointer-events-none fixed top-0 left-0 h-full w-full bg-[#FFFAEB] mix-blend-multiply'
       aria-hidden
     ></span>
   </body>

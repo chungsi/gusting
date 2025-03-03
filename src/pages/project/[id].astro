@@ -1,4 +1,5 @@
 ---
+import logoSvg from '@assets/images/svg/logo.svg?raw'
 import ProjectHeader from '@components/ProjectHeader.astro'
 import ProjectToc from '@components/ProjectToc.astro'
 import Seo from '@components/Seo.astro'
@@ -42,7 +43,7 @@ const galleryTemplate = templateType === 'gallery'
   bodyClass={category}
   class:list={[
     projectTemplate && 'project-grid relative max-w-[100rem]',
-    galleryTemplate && 'max-w-7xl',
+    galleryTemplate && 'max-w-[80rem]',
   ]}
 >
   <Fragment slot='seo'>
@@ -51,6 +52,22 @@ const galleryTemplate = templateType === 'gallery'
       description={project.data.description}
     />
   </Fragment>
+
+  <div
+    class:list={[
+      'project-logo',
+      'top-lg pb-2xl sticky right-0 z-50 h-fit w-fit pl-0',
+      'lg:-ml-[calc(var(--spacing-container-offset)_/_2)] lg:-translate-x-1/3 xl:-translate-x-1/3',
+    ]}
+  >
+    <a
+      data-logo
+      href='/'
+      class:list={['block w-2xl max-w-[42rem] min-w-[var(--spacing-xl)]']}
+    >
+      <Fragment set:html={logoSvg} />
+    </a>
+  </div>
 
   <ProjectHeader
     title={project.data.title}
@@ -68,10 +85,10 @@ const galleryTemplate = templateType === 'gallery'
           src={heroImage}
           alt='some alt text'
           class:list={[
-            'absolute right-0 top-[-1rem] opacity-70',
+            'absolute top-[-1rem] right-0 opacity-70',
             'block max-w-[7rem]',
             'md:max-w-[9rem]',
-            'lg:fixed lg:right-auto lg:top-auto',
+            'lg:top-auto lg:right-auto',
           ]}
         />
       </div>
@@ -85,7 +102,6 @@ const galleryTemplate = templateType === 'gallery'
         <ProjectToc
           headings={headings}
           maxDepth={3}
-          class='lg:fixed'
         />
       </nav>
     )
@@ -97,11 +113,14 @@ const galleryTemplate = templateType === 'gallery'
 </ContentLayout>
 
 <style is:global>
+  @reference '../../css/global.css';
+
   .project-grid {
     display: grid;
 
     grid-template-columns: 1fr;
     grid-template-areas:
+      'logo'
       'head'
       'toc '
       'body';
@@ -110,13 +129,18 @@ const galleryTemplate = templateType === 'gallery'
     grid-template-columns: 3fr 1fr;
   } */
 
-    @screen lg {
+    @variant lg {
       column-gap: 3rem;
       grid-template-columns: 5fr 2fr;
       grid-template-areas:
+        'logo logo'
         'head hero'
         'body toc';
     }
+  }
+
+  .project-logo {
+    grid-area: logo;
   }
 
   .project-head {
@@ -126,8 +150,10 @@ const galleryTemplate = templateType === 'gallery'
   .project-hero {
     grid-area: head;
 
-    @screen lg {
+    @variant lg {
       grid-area: hero;
+      position: sticky;
+      top: var(--spacing-lg);
     }
   }
 
@@ -137,5 +163,11 @@ const galleryTemplate = templateType === 'gallery'
 
   .project-toc {
     grid-area: toc;
+
+    @variant lg {
+      position: sticky;
+      top: var(--spacing-4xl);
+      height: fit-content;
+    }
   }
 </style>

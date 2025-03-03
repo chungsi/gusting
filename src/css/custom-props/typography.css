@@ -1,0 +1,94 @@
+/*/////////////////////////////////////////////////////////////////////////////
+ * Font Face Declarations
+ *
+ *    Fanwood Text:   only comes in regular weight
+ *    JetBrains Mono: uses variable fonts for both normal and italic styles
+ */
+
+@font-face {
+  font-family: 'Fanwood Text';
+  src: url('/fonts/FanwoodText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-variant: common-ligatures tabular-nums;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src:
+    local('Commit Mono'),
+    url('/fonts/CommitMono_VariableFont.woff2') format(woff2) tech(variations);
+  font-weight: 200 700;
+  font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  font-kerning: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src:
+    local('Commit Mono'),
+    url('/fonts/CommitMono_VariableFont.woff2') format(woff2) tech(variations);
+  font-weight: 200 700;
+  font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  font-kerning: normal;
+  font-style: italic;
+  font-variation-settings: 'ital' 1;
+  font-synthesis: none;
+}
+/*
+@font-face {
+  font-family: 'JetBrains Mono';
+  src:
+    url('/fonts/JetBrainsMono[wght].woff2') format('woff2 supports variations'),
+    url('/fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src:
+    url('/fonts/JetBrainsMono-Italic[wght].woff2') format('woff2 supports variations'),
+    url('/fonts/JetBrainsMono-Italic[wght].woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-style: italic;
+} */
+
+:root {
+  --p-line-height: var(--s-lg);
+
+  --type-base-size: 1rem;
+  --max-text-width: 40rem;
+
+  /* NOTE: For Commit Mono variable fonts rendering on Chromium, need to specify this. */
+  :where(.italic) {
+    font-variation-settings: 'ital' 1;
+  }
+}
+
+@theme {
+  --text-5xl: calc(var(--text-4xl) * var(--type-scale));
+  --text-4xl: calc(var(--text-3xl) * var(--type-scale));
+  --text-3xl: calc(var(--text-2xl) * var(--type-scale));
+  --text-2xl: calc(var(--text-xl) * var(--type-scale));
+  --text-xl: calc(var(--text-lg) * var(--type-scale));
+  --text-lg: calc(var(--text-md) * var(--type-scale));
+  --text-md: var(--type-base-size);
+  --text-sm: calc(var(--text-md) - 0.125rem);
+  --text-xs: calc(var(--text-md) / var(--type-scale));
+
+  /* --text-sm:  calc(var(--text-md) / var(--type-scale)); */
+  /* --text-xs:  calc(var(--text-sm) / var(--type-scale)); */
+
+  --font-th-serif: 'Fanwood Text', var(--font-serif);
+  --font-th-heading: 'Fanwood Text', var(--font-serif);
+  --font-th-body: 'Commit Mono', var(--font-mono);
+
+  --font-th-mono: 'Commit Mono', var(--font-mono);
+  /* NOTE: For Commit Mono variable fonts rendering on Chromium, need to specify this. */
+  --font-th-mono--font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  --font-th-mono--font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+}

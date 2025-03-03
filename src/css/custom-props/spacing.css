@@ -6,10 +6,36 @@
  *    Relative: usually based on ems; base amount can be adjusted
  */
 
-@value v-type-scale: 1.25;
+/* Spacing for Tailwind */
+@theme {
+  --breakpoint-2xs-th: 30rem; /* 428px */
+  --breakpoint-xs-th: 39rem; /* 624px */
+  --breakpoint-sm-th: 44rem; /* 704px */
+  --breakpoint-md-th: 50rem; /* 800px */
+  --breakpoint-lg-th: 70rem; /* 1120px */
+  --breakpoint-xl-th: 96rem; /* 1536px */
+  --breakpoint-2xl-th: 120rem; /* 1920px */
 
-/* // scale, size, room, arrange, place, set, order, shift, translate, tofu, empty, width */
+  /* Note: These spacing values will override the --container-* props */
+  --spacing-3xs: calc(var(--s-3xs) * 1rem);
+  --spacing-2xs: calc(var(--s-xxs) * 1rem);
+  --spacing-xs: calc(var(--s-xs) * 1rem);
+  --spacing-sm: calc(var(--s-sm) * 1rem);
+  --spacing-md: calc(var(--s-md) * 1rem);
+  --spacing-lg: calc(var(--s-lg) * 1rem);
+  --spacing-xl: calc(var(--s-xl) * 1rem);
+  --spacing-2xl: calc(var(--s-2xl) * 1rem);
+  --spacing-3xl: calc(var(--s-3xl) * 1rem);
+  --spacing-4xl: calc(var(--s-4xl) * 1rem);
+  --spacing-5xl: calc(var(--s-5xl) * 1rem);
+  --spacing-6xl: calc(var(--s-6xl) * 1rem);
+}
+
 :root {
+  /* // Playing around with defaults: larger/smaller on mobile? */
+  --base-space-unit: 1rem;
+  --base-space-unit-rel: 1em;
+
   /* TODO: Adjust this for different screen sizes to improve readability */
   --type-scale: 1.25;
 
@@ -26,40 +52,28 @@
   --s-5xl: calc(pow(var(--type-scale), 12));
   --s-6xl: calc(pow(var(--type-scale), 14));
 
-  /* // Playing around with defaults: larger/smaller on mobile? */
-  --base-space-unit: 1rem;
-  --base-space-unit-rel: 1em;
-
-  --space-3xs: calc(var(--s-3xs) * var(--base-space-unit));
-  --space-2xs: calc(var(--s-xxs) * var(--base-space-unit));
-  --space-xs: calc(var(--s-xs) * var(--base-space-unit));
-  --space-sm: calc(var(--s-sm) * var(--base-space-unit));
-  --space-md: calc(var(--s-md) * var(--base-space-unit));
-  --space-lg: calc(var(--s-lg) * var(--base-space-unit));
-  --space-xl: calc(var(--s-xl) * var(--base-space-unit));
-  --space-2xl: calc(var(--s-2xl) * var(--base-space-unit));
-  --space-3xl: calc(var(--s-3xl) * var(--base-space-unit));
-  --space-4xl: calc(var(--s-4xl) * var(--base-space-unit));
-  --space-5xl: calc(var(--s-5xl) * var(--base-space-unit));
-  --space-6xl: calc(var(--s-6xl) * var(--base-space-unit));
-
-  --space-3xs-rel: calc(var(--s-3xs) * var(--base-space-unit-rel));
-  --space-xxs-rel: calc(var(--s-xxs) * var(--base-space-unit-rel));
-  --space-xs-rel: calc(var(--s-xs) * var(--base-space-unit-rel));
-  --space-sm-rel: calc(var(--s-sm) * var(--base-space-unit-rel));
-  --space-md-rel: calc(var(--s-md) * var(--base-space-unit-rel));
-  --space-lg-rel: calc(var(--s-lg) * var(--base-space-unit-rel));
-  --space-xl-rel: calc(var(--s-xl) * var(--base-space-unit-rel));
-  --space-2xl-rel: calc(var(--s-2xl) * var(--base-space-unit-rel));
-  --space-3xl-rel: calc(var(--s-3xl) * var(--base-space-unit-rel));
-  --space-4xl-rel: calc(var(--s-4xl) * var(--base-space-unit-rel));
-  --space-5xl-rel: calc(var(--s-5xl) * var(--base-space-unit-rel));
-  --space-6xl-rel: calc(var(--s-6xl) * var(--base-space-unit-rel));
-
+  --spacing-3xs-rel: calc(var(--s-3xs) * var(--base-space-unit-rel));
+  --spacing-xxs-rel: calc(var(--s-xxs) * var(--base-space-unit-rel));
+  --spacing-xs-rel: calc(var(--s-xs) * var(--base-space-unit-rel));
+  --spacing-sm-rel: calc(var(--s-sm) * var(--base-space-unit-rel));
+  --spacing-md-rel: calc(var(--s-md) * var(--base-space-unit-rel));
+  --spacing-lg-rel: calc(var(--s-lg) * var(--base-space-unit-rel));
+  --spacing-xl-rel: calc(var(--s-xl) * var(--base-space-unit-rel));
+  --spacing-2xl-rel: calc(var(--s-2xl) * var(--base-space-unit-rel));
+  --spacing-3xl-rel: calc(var(--s-3xl) * var(--base-space-unit-rel));
+  --spacing-4xl-rel: calc(var(--s-4xl) * var(--base-space-unit-rel));
+  --spacing-5xl-rel: calc(var(--s-5xl) * var(--base-space-unit-rel));
+  --spacing-6xl-rel: calc(var(--s-6xl) * var(--base-space-unit-rel));
 
   /* // Reused custom prop for layout functionality on containers and images */
-  --space-container-offset: var(--space-lg);
-  @screen md { --space-container-offset: var(--space-2xl); }
-  @screen lg { --space-container-offset: var(--space-3xl); }
-  @screen xl { --space-container-offset: var(--space-4xl); }
+  --spacing-container-offset: var(--spacing-lg);
+  @media (width >= theme(--breakpoint-md)) {
+    --spacing-container-offset: var(--spacing-2xl);
+  }
+  @media (width >= theme(--breakpoint-lg)) {
+    --spacing-container-offset: var(--spacing-3xl);
+  }
+  @media (width >= theme(--breakpoint-xl)) {
+    --spacing-container-offset: var(--spacing-4xl);
+  }
 }

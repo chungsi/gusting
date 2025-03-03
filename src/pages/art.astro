@@ -50,7 +50,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
 <BaseLayout
   id='theme-art'
   class:list={[
-    'ml-[2rem] mr-md mt-[24%] max-w-xl',
+    'mr-md mt-[24%] ml-[2rem] max-w-[36rem]',
     '2xs-th:ml-[20%]',
     'xs-th:ml-[20%] xs-th:mr-2xl',
     'md-th:ml-[48%] md-th:mr-xl md-th:mt-[16%]',
@@ -63,7 +63,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
     <Seo image={OgImageArt} />
   </Fragment>
 
-  <div class='fixed left-0 top-0 -z-[1] h-auto w-full 2xl-th:w-[86vw]'>
+  <div class='2xl-th:w-[86vw] fixed top-0 left-0 -z-1 h-auto w-full'>
     <picture>
       {
         heroImgsSrcSet.map(({ media, srcset }) => (
@@ -81,7 +81,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
   </div>
 
   <header class='md-th:flex'>
-    <Logo class='mb-xl mr-sm w-12 md-th:-mt-2xs' />
+    <Logo class='mb-xl mr-sm md-th:-mt-2xs w-12' />
     <div>
       <h1 class='tracking-widest'>chungsi</h1>
       <p class='font-light'>designer / storymaker / artist</p>
@@ -95,7 +95,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
         // NOTE: Need to wrap in a div for Astro's css scoping
         <div class='project-card'>
           <CardWithHero
-            class='shadow-xl shadow-cobalt-800/20'
+            class='shadow-cobalt-800/20 shadow-xl'
             link={`/project/${project.id}?home=art`}
             title={project.data.title}
             subtitle={project.data.subtitle}
@@ -113,13 +113,15 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
 </BaseLayout>
 
 <style>
+  @reference '../css/global.css';
+
   .featured-grid {
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--spacing-3xl);
     display: grid;
     gap: 2rem;
-    max-width: var(--space-6xl);
+    max-width: var(--spacing-6xl);
 
-    @screen xs-th {
+    @variant xs-th {
       max-width: 100%;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: minmax(4rem, auto);
@@ -131,7 +133,7 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
         '.   .   .   bk4 bk4 bk4';
     }
 
-    @screen lg-th {
+    @variant lg-th {
       gap: 1rem;
       grid-template-columns: repeat(7, 1fr);
       grid-template-rows: minmax(4rem, auto);

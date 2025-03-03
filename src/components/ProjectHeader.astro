@@ -16,11 +16,11 @@ const { title, category, subtitle, tags, class: className }: Props = Astro.props
 <header class:list={['relative', className]}>
   <CategoryIcon
     category={category}
-    class='absolute -top-8 left-2 w-7 lg:left-[-4.5rem] lg:top-2 lg:w-8'
+    class='absolute -top-8 left-2 w-7 lg:top-2 lg:left-[-3.5rem] lg:w-8 xl:left-[-4.5rem]'
   />
-  <h1 class='relative mb-xs inline-block'>
+  <h1 class='mb-xs relative inline-block'>
     {title}
-    <span class='inline-block p-[0_1em] font-mono text-sm font-light italic'>
+    <span class='font-th-mono inline-block p-[0_1em] text-sm font-light italic'>
       &#123;{category}&#125;
     </span>
     <!-- Decorative highlight -->
@@ -28,12 +28,12 @@ const { title, category, subtitle, tags, class: className }: Props = Astro.props
     <span
       aria-hidden
       class:list={[
-        'absolute left-[-10px] top-[-12px] block h-full w-full',
-        'z-[-1] rotate-[-2deg] bg-th-highlight',
+        'absolute top-[-12px] left-[-10px] block h-full w-full',
+        'bg-th-highlight z-[-1] rotate-[-2deg]',
       ]}
     ></span>
   </h1>
-  <p class='text-lg italic tracking-wider'>{subtitle}</p>
+  <p class='text-lg tracking-wider italic'>{subtitle}</p>
   <p class='text-sm'>
     {tags.map((tag) => `${tag} / `)}
   </p>
