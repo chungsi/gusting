@@ -6,6 +6,7 @@
  *    or states, or can be colour-theme related.
  */
 
-@import "colours.css";
-@import "shared-styles.css";
-@import "spacing.css";
+@import './colours.css';
+@import './shared-styles.css';
+@import './spacing.css';
+@import './typography.css';

@@ -1,6 +1,5 @@
 ---
 import generateToc from '@utils/generateToc'
-import clsx from 'clsx'
 
 import ProjectTocItem from './ProjectTocItem.astro'
 
@@ -18,6 +17,6 @@ let printHeadings = headings.filter((heading) => heading.depth <= maxDepth)
 let toc = generateToc(printHeadings)
 ---
 
-<menu class={clsx('pl-2 pr-4 border-l text-sm', className)}>
+<menu class:list={['border-l pr-4 pl-2 text-sm', className]}>
   {toc.map((heading) => <ProjectTocItem heading={heading} />)}
 </menu>

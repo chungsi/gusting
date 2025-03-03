@@ -26,57 +26,113 @@ $storytelling: $orange;
 $dev: $purple; */
 
 /*/////////////////////////////////////////////////////////////////////////////
+ * Tailwind Colour Variables
+ */
+
+@theme {
+  --color-buttercup-50: #fffcf1;
+  --color-buttercup-100: #fffae5;
+  --color-buttercup-400: #ffec40;
+  --color-buttercup-500: #ffd540;
+  --color-buttercup-600: #f6a507;
+
+  --color-mandarin-50: #fff6f1;
+  --color-mandarin-100: #feede2;
+  --color-mandarin-500: #faa56f;
+  --color-mandarin-600: #f66c20;
+
+  --color-allium-50: #f8f5fc;
+  --color-allium-100: #f5effa;
+  --color-allium-500: #b894de;
+  --color-allium-600: #9d6bd1;
+
+  --color-pine-50: #f0fded;
+  --color-pine-100: #e1f9dc;
+  --color-pine-500: #68c35b;
+  --color-pine-600: #3b9b43;
+
+  --color-cobalt-500: #7598ff;
+  --color-cobalt-600: #3366ff;
+  --color-cobalt-700: #0a3fdb;
+  --color-cobalt-800: #0c34ac;
+  --color-cobalt-900: #082477;
+
+  --color-cedar-50: #fafce8;
+  --color-cedar-100: #f4f7d1;
+  --color-cedar-400: #c9d817;
+  --color-cedar-600: #93bb30;
+  --color-cedar-700: #799b3b;
+  --color-cedar-800: #68853d;
+  --color-cedar-900: #415a20;
+  --color-cedar-950: #304413;
+}
+
+/*
+  Note: Need inline so Tailwind will properly resolve the prop reference
+  https://tailwindcss.com/docs/theme#referencing-other-variables
+*/
+@theme inline {
+  --color-th-primary: var(--primary-color);
+  --color-th-header: var(--header-color);
+  --color-th-text: var(--text-color);
+  --color-th-meta: var(--meta-color);
+  --color-th-link: var(--link-color);
+  --color-th-bg: var(--c-bg-color);
+  --color-th-highlight: var(--c-highlight-color);
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
  * Colour Custom Properties
  */
 
 /* // Note: Space separated values only supported by CSS Colors Lvl 4 */
 :root {
-  --primary-color: theme('colors.buttercup.500');
+  --primary-color: var(--color-buttercup-500);
   --header-color: rgba(0 0 0 / 1);
   --text-color: rgba(0 0 0 / 0.7);
-  --meta-color: #{$grey};
+  --meta-color: #787878;
   --link-color: rgba(0 0 0 / 0.7);
 
   --c-bg-color: #f2f2f2;
   --c-highlight-color: #f2f2f2;
 }
 
-/* // Category Theme Colours */
+/* Category Theme Colours */
 .art {
-  --primary-color: theme('colors.buttercup.500');
-  --link-color: theme('colors.buttercup.600');
-  --c-bg-color: theme('colors.buttercup.50');
-  --c-highlight-color: theme('colors.buttercup.100');
+  --primary-color: var(--color-buttercup-500);
+  --link-color: var(--color-buttercup-600);
+  --c-bg-color: var(--color-buttercup-50);
+  --c-highlight-color: var(--color-buttercup-100);
   svg {
     fill: var(--primary-color);
   }
 }
 
 .dev {
-  --primary-color: theme('colors.pine.500');
-  --link-color: theme('colors.pine.600');
-  --c-bg-color: theme('colors.pine.50');
-  --c-highlight-color: theme('colors.pine.100');
+  --primary-color: var(--color-pine-500);
+  --link-color: var(--color-pine-600);
+  --c-bg-color: var(--color-pine-50);
+  --c-highlight-color: var(--color-pine-100);
   svg {
     fill: var(--primary-color);
   }
 }
 
 .design {
-  --primary-color: theme('colors.cedar.400');
-  --link-color: theme('colors.cedar.700');
-  --c-bg-color: theme('colors.cedar.50');
-  --c-highlight-color: theme('colors.cedar.100');
+  --primary-color: var(--color-cedar-400);
+  --link-color: var(--color-cedar-700);
+  --c-bg-color: var(--color-cedar-50);
+  --c-highlight-color: var(--color-cedar-100);
   svg {
     fill: var(--primary-color);
   }
 }
 
 .storytelling {
-  --primary-color: theme('colors.mandarin.500');
-  --link-color: theme('colors.mandarin.600');
-  --c-bg-color: theme('colors.mandarin.50');
-  --c-highlight-color: theme('colors.mandarin.100');
+  --primary-color: var(--color-mandarin-500);
+  --link-color: var(--color-mandarin-600);
+  --c-bg-color: var(--color-mandarin-50);
+  --c-highlight-color: var(--color-mandarin-100);
   svg {
     fill: var(--primary-color);
   }
@@ -84,24 +140,24 @@ $dev: $purple; */
 
 /* // Website Theme Colours */
 #theme-art {
-  --primary-color: theme('colors.cobalt.600');
-  --header-color: theme('colors.cobalt.700');
-  --text-color: theme('colors.cobalt.900');
-  --meta-color: theme('colors.cobalt.800');
-  --link-color: theme('colors.cobalt.600');
+  --primary-color: var(--color-cobalt-600);
+  --header-color: var(--color-cobalt-700);
+  --text-color: var(--color-cobalt-900);
+  --meta-color: var(--color-cobalt-800);
+  --link-color: var(--color-cobalt-600);
   svg {
     fill: var(--primary-color);
   }
 }
 
 #theme-design {
-  --primary-color: theme('colors.cedar.600');
-  --header-color: theme('colors.cedar.950');
-  --text-color: theme('colors.cedar.800');
-  --link-color: theme('colors.cedar.600');
-  --meta-color: theme('colors.cedar.900');
-  --c-bg-color: theme('colors.cedar.50');
-  --c-highlight-color: theme('colors.cedar.100');
+  --primary-color: var(--color-cedar-600);
+  --header-color: var(--color-cedar-950);
+  --text-color: var(--color-cedar-800);
+  --link-color: var(--color-cedar-600);
+  --meta-color: var(--color-cedar-900);
+  --c-bg-color: var(--color-cedar-50);
+  --c-highlight-color: var(--color-cedar-100);
   svg {
     fill: var(--primary-color);
   }

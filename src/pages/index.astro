@@ -60,17 +60,17 @@ secondaryProjects.sort(
 >
   <!-- Insert SEO -->
 
-  <div class:list={['relative left-0 top-0 -z-[1] sm-th:fixed']}>
+  <div class:list={['sm-th:fixed relative top-0 left-0 -z-1']}>
     <Logo
       class:list={[
-        'absolute z-[1] m-[4.5rem_0_0_3rem] w-11',
+        'absolute z-1 m-[4.5rem_0_0_3rem] w-11',
         'sm-th:m-[3rem_0_0_6rem] md-th:m-[4.125rem_0_0_9rem] lg-th:m-[5.125rem_0_0_10.5rem]',
       ]}
     />
 
     <div
       role='presentation'
-      class:list={['relative w-[18.75rem] md-th:w-[21rem] lg-th:w-[24rem]']}
+      class:list={['md-th:w-[21rem] lg-th:w-[24rem] relative w-[18.75rem]']}
     >
       <picture>
         {
@@ -91,7 +91,7 @@ secondaryProjects.sort(
 
   <section
     class:list={[
-      'z-[1] max-w-5xl px-lg',
+      'px-lg z-1 max-w-[64rem]',
       'sm-th:ml-40 sm-th:mt-12',
       'md-th:ml-48 md-th:mt-16',
       'lg-th:ml-60 lg-th:mt-20',
@@ -99,7 +99,7 @@ secondaryProjects.sort(
   >
     <header>
       <h1>chungsi</h1>
-      <p class='italic tracking-wider'>web developer / designer / storymaker</p>
+      <p class='tracking-wider italic'>web developer / designer / storymaker</p>
     </header>
 
     <section class='mt-20'>
@@ -107,7 +107,7 @@ secondaryProjects.sort(
 
       <div
         class:list={[
-          'grid grid-cols-1 items-center gap-xl sm:grid-cols-2 lg:grid-cols-3 lg:gap-2xl',
+          'gap-xl lg:gap-2xl grid grid-cols-1 items-center sm:grid-cols-2 lg:grid-cols-3',
         ]}
       >
         {
@@ -120,20 +120,20 @@ secondaryProjects.sort(
               tags={project.data.tags}
               heroImage={project.data.heroImage}
               heroImagePos={project.data.heroImagePos}
-              class='[--bg-rotate:-1.5deg] even:[--bg-rotate:2deg] third:[--bg-rotate:-5deg]'
+              class='third:[--bg-rotate:-5deg] [--bg-rotate:-1.5deg] even:[--bg-rotate:2deg]'
             >
               {/* BG box */}
               {/* transition:name={`project-highlight-${project.id}`} */}
               <span
                 aria-hidden
                 class:list={[
-                  'absolute left-0 top-0 -z-[1] block h-full w-full',
-                  'rotate-[var(--bg-rotate)] bg-th-bg',
+                  'absolute top-0 left-0 -z-1 block h-full w-full',
+                  'bg-th-bg rotate-[var(--bg-rotate)]',
                 ]}
               />
               <CategoryIcon
                 category={project.data.category}
-                class='absolute -left-1 top-10 w-5'
+                class='absolute top-10 -left-1 w-5'
               />
             </CardWithHero>
           ))
@@ -144,7 +144,7 @@ secondaryProjects.sort(
     <section class='mt-20'>
       <h2 class='sr-only'>Other Projects</h2>
 
-      <div class='max-w-2xl'>
+      <div class='max-w-[42rem]'>
         {
           secondaryProjects.map((project) => (
             <BaseCard
@@ -153,11 +153,11 @@ secondaryProjects.sort(
               subtitle={project.data.subtitle}
               category={project.data.category}
               tags={project.data.tags}
-              class='border-t border-solid border-th-highlight'
+              class='border-th-highlight border-t border-solid'
             >
               <CategoryIcon
                 category={project.data.category}
-                class='absolute -left-1 top-10 w-5'
+                class='absolute top-10 -left-1 w-5'
               />
             </BaseCard>
           ))

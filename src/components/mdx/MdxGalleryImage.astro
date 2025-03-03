@@ -20,7 +20,7 @@ const { src, caption, offset, cover, backCover }: Props = Astro.props
   <div
     class:list={[
       'shadow-xl',
-      offset && '-mx-[calc(var(--space-container-offset)_-_1rem)]',
+      offset && '-mx-[calc(var(--spacing-container-offset)_-_1rem)]',
       cover && 'md:ml-[50%]',
       backCover && 'md:mr-[50%]',
     ]}
@@ -39,9 +39,9 @@ const { src, caption, offset, cover, backCover }: Props = Astro.props
         <p
           class:list={[
             'text-gray-400',
-            cover && 'md:ml-[calc(50%_+_var(--space-xl))]',
+            cover && 'md:ml-[calc(50%_+_var(--spacing-xl))]',
             // Add some space between caption and any other text
-            '!mb-xl',
+            'mb-xl!',
             // Offset to right a bit in portrait mode
             !offset ? 'md:ml-2xl' : '',
           ]}
@@ -50,7 +50,7 @@ const { src, caption, offset, cover, backCover }: Props = Astro.props
         </p>
       )
     }
-    <div class:list={[cover && 'md:ml-[calc(50%_+_var(--space-xl))]']}>
+    <div class:list={[cover && 'md:ml-[calc(50%_+_var(--spacing-xl))]']}>
       <slot />
     </div>
   </figcaption>

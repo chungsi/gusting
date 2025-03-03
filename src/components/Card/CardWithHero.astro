@@ -54,13 +54,13 @@ const {
         src={heroImage}
         alt=''
         class:list={[
-          'absolute -z-[1] block max-w-[7.25rem] transition',
+          'absolute -z-1 block max-w-[7.25rem] transition',
           'group-hover:-translate-y-1 group-hover:translate-x-1',
 
           'right-0', // Default
-          heroImagePos === 'top' ? '!-right-8 -top-8' : '',
+          heroImagePos === 'top' ? '-right-8! -top-8' : '',
           heroImagePos === 'bottom' ? '-bottom-6 right-0' : '',
-          heroImagePos === 'right' ? '!-right-10 bottom-0' : '',
+          heroImagePos === 'right' ? '-right-10! bottom-0' : '',
         ]}
       />
     )
