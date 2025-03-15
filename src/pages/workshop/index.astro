@@ -1,0 +1,51 @@
+---
+// import moonfairy from '@assets/workshop/moonfairy.riv'
+import ContentLayout from '@layouts/ContentLayout.astro'
+---
+
+<ContentLayout class='relative max-w-[80rem]'>
+  <section class:list={['relative aspect-3/2 max-h-[58rem] w-full rounded-xl', 'bg-[#06060D]']}>
+    <div
+      class:list={[
+        'absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full',
+        'bg-linear-170/oklch from-[#242548] from-15% via-[#1B1D53] to-[#5A6197]',
+      ]}
+    >
+    </div>
+    <p class='font-th-display absolute text-8xl text-white italic'>03</p>
+    <canvas
+      id='canvas'
+      class='relative z-10 h-full w-full'
+    ></canvas>
+  </section>
+</ContentLayout>
+
+<script>
+  import { Rive } from '@rive-app/webgl2'
+
+  const riveInstance = new Rive({
+    src: '/workshop/moonfairy.riv',
+    canvas: document.getElementById('canvas') as HTMLCanvasElement,
+    useOffscreenRenderer: true,
+    artboard: 'Base',
+    // animations: ['idle', 'blink'],
+    stateMachines: 'animation',
+    autoplay: true,
+    onLoad: () => {
+      console.log('Rive loaded')
+      riveInstance.resizeDrawingSurfaceToCanvas()
+    },
+  })
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+  /* @reference '../../css/global.css'; */
+
+  .font-th-display {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-optical-sizing: auto;
+    font-weight: 600;
+  }
+</style>

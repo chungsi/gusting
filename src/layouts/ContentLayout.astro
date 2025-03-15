@@ -29,21 +29,3 @@ const { bodyClass, class: className }: Props = Astro.props
   <slot name='header' />
   <slot />
 </BaseLayout>
-
-<script>
-  // Use event listener's on Astro's page-loading to properly rerun scripts
-  // when using View Transitions
-  document.addEventListener('astro:after-swap', () => {
-    const logo = document.querySelector('[data-logo]')
-    const urlParams = new URL(document.location.href).searchParams
-
-    // Set the logo link to point to the correct home page
-    // NOTE: Set the /design home to just be / (index)
-    // if (urlParams.get('home') === 'design') {
-    //   logo?.setAttribute('href', '/design')
-    // } else
-    if (urlParams.get('home') === 'art') {
-      logo?.setAttribute('href', '/art')
-    }
-  })
-</script>

@@ -21,6 +21,9 @@
   "dependencies": {
     "@astrojs/netlify": "^6.0.1",
     "@astrojs/react": "^4.2.1",
+    "@rive-app/canvas": "^2.26.4",
+    "@rive-app/canvas-lite": "^2.26.4",
+    "@rive-app/webgl2": "^2.26.4",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.4.1",
     "react": "^18.3.1",
