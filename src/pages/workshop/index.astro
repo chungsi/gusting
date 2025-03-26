@@ -12,30 +12,95 @@ import ContentLayout from '@layouts/ContentLayout.astro'
       ]}
     >
     </div>
-    <p class='font-th-display absolute text-8xl text-white italic'>03</p>
+    <p class='font-th-display top-md left-lg absolute text-9xl text-white italic'>09</p>
+    <p class='font-th-display bottom-xl right-lg absolute text-8xl text-white italic'>moonlight</p>
     <canvas
       id='canvas'
       class='relative z-10 h-full w-full'
+      width='980'
+      height='650'
     ></canvas>
   </section>
 </ContentLayout>
 
 <script>
-  import { Rive } from '@rive-app/webgl2'
+  import RiveWebGl from '@rive-app/webgl2-advanced'
 
-  const riveInstance = new Rive({
-    src: '/workshop/moonfairy.riv',
-    canvas: document.getElementById('canvas') as HTMLCanvasElement,
-    useOffscreenRenderer: true,
-    artboard: 'Base',
-    // animations: ['idle', 'blink'],
-    stateMachines: 'animation',
-    autoplay: true,
-    onLoad: () => {
-      console.log('Rive loaded')
-      riveInstance.resizeDrawingSurfaceToCanvas()
-    },
-  })
+  async function main() {
+    const riveInstance = await RiveWebGl({
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      locateFile: (_) => `https://unpkg.com/@rive-app/webgl2-advanced@2.26.5/rive.wasm`,
+    })
+
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement
+
+    const renderer = riveInstance.makeRenderer(canvas, true)
+    const bytes = await (await fetch(new Request('/workshop/moonfairy.riv'))).arrayBuffer()
+    const file = await riveInstance.load(new Uint8Array(bytes))
+    const artboard = file.defaultArtboard()
+    const animation = new riveInstance.LinearAnimationInstance(
+      artboard.animationByName('idle'),
+      artboard,
+    )
+    // const stateMachine = new riveInstance.StateMachineInstance(
+    //   artboard.stateMachineByName('animation'),
+    //   artboard,
+    // )
+    console.log(file, animation)
+
+    let lastTime = 0
+    function renderLoop(time: number) {
+      if (!lastTime) {
+        lastTime = time
+      }
+      const elapsedTimeMs = time - lastTime
+      const elapsedTimeSec = elapsedTimeMs / 1000
+      lastTime = time
+
+      renderer.clear()
+      if (artboard) {
+        if (animation) {
+          animation.advance(elapsedTimeSec)
+          animation.apply(1)
+        }
+        artboard.advance(elapsedTimeSec)
+        renderer.save()
+        renderer.align(
+          riveInstance.Fit.contain,
+          riveInstance.Alignment.center,
+          {
+            minX: 0,
+            minY: 0,
+            maxX: canvas.width,
+            maxY: canvas.height,
+          },
+          artboard.bounds,
+        )
+        artboard.draw(renderer)
+        renderer.restore()
+      }
+
+      renderer.flush()
+      riveInstance.requestAnimationFrame(renderLoop)
+    }
+    riveInstance.requestAnimationFrame(renderLoop)
+  }
+
+  main()
+
+  // const riveInstance = new Rive({
+  //   src: '/workshop/moonfairy.riv',
+  //   canvas: document.getElementById('canvas') as HTMLCanvasElement,
+  //   useOffscreenRenderer: true,
+  //   artboard: 'Base',
+  //   // animations: ['idle', 'blink'],
+  //   stateMachines: 'animation',
+  //   autoplay: true,
+  //   onLoad: () => {
+  //     console.log('Rive loaded')
+  //     riveInstance.resizeDrawingSurfaceToCanvas()
+  //   },
+  // })
 </script>
 
 <style>

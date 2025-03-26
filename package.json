@@ -24,6 +24,7 @@
     "@rive-app/canvas": "^2.26.4",
     "@rive-app/canvas-lite": "^2.26.4",
     "@rive-app/webgl2": "^2.26.4",
+    "@rive-app/webgl2-advanced": "^2.26.5",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.4.1",
     "react": "^18.3.1",
