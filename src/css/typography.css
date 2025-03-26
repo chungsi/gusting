@@ -82,6 +82,7 @@
   hr {
     margin: var(--spacing-2xl) 0;
     color: var(--color-th-primary);
+    border-color: var(--color-th-primary);
   }
 
   img {

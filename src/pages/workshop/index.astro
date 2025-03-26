@@ -1,30 +1,107 @@
 ---
-// import moonfairy from '@assets/workshop/moonfairy.riv'
 import ContentLayout from '@layouts/ContentLayout.astro'
 ---
 
-<ContentLayout class='relative max-w-[80rem]'>
-  <section class:list={['relative aspect-3/2 max-h-[58rem] w-full rounded-xl', 'bg-[#06060D]']}>
-    <div
+<ContentLayout
+  class='relative max-w-[80rem]'
+  bodyClass='art'
+>
+  <header>
+    <h1 class='relative inline-block'>
+      workshop
+      <span
+        aria-hidden
+        class:list={[
+          'absolute top-[-12px] left-[-10px] block h-full w-full',
+          'bg-th-highlight z-[-1] rotate-[-2deg]',
+        ]}
+      ></span>
+    </h1>
+    <p>beep beep boop boop.</p>
+    <hr class='border-double' />
+  </header>
+
+  <article>
+    <header class='mb-lg'>
+      <h2 class='font-th-mono text-lg font-semibold'><date>03.27.2025</date></h2>
+      <p>Creative Coding Challenge 09 / Rive cont'd</p>
+    </header>
+    <section
       class:list={[
-        'absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full',
-        'bg-linear-170/oklch from-[#242548] from-15% via-[#1B1D53] to-[#5A6197]',
+        'relative aspect-3/2 max-h-[58rem] w-full rounded-xl',
+        'outline-cobalt-500/70 bg-[#06060D] outline-4 -outline-offset-[1rem] outline-double',
       ]}
     >
-    </div>
-    <p class='font-th-display top-md left-lg absolute text-9xl text-white italic'>09</p>
-    <p class='font-th-display bottom-xl right-lg absolute text-8xl text-white italic'>moonlight</p>
-    <canvas
-      id='canvas'
-      class='relative z-10 h-full w-full'
-      width='980'
-      height='650'
-    ></canvas>
-  </section>
+      <div
+        class:list={[
+          'absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full',
+          'bg-linear-170/oklch from-[#242548] from-15% via-[#1B1D53] to-[#5A6197]',
+          'outline-cobalt-500/40 bg-[#06060D] outline-4 -outline-offset-[1rem] outline-dotted',
+        ]}
+      >
+      </div>
+      <p class='font-th-display top-md left-lg absolute text-9xl font-thin text-white italic'>09</p>
+      <p class='font-th-display bottom-xl right-lg absolute text-8xl text-white italic'>
+        moonlight
+      </p>
+      <canvas
+        id='canvas'
+        class='relative z-10 h-full w-full'
+        width='980'
+        height='650'
+      ></canvas>
+    </section>
+    <section class='mt-md'>
+      <label>
+        Left-Right
+        <input
+          type='range'
+          id='blend'
+          name='blend'
+          min='0'
+          max='50'
+          value='0'
+        />
+      </label>
+    </section>
+  </article>
 </ContentLayout>
 
 <script>
+  import { Rive } from '@rive-app/webgl2'
+
+  const blendInput = document.getElementById('blend') as HTMLInputElement
+
+  const riveInstance = new Rive({
+    src: '/workshop/moonfairy.riv',
+    canvas: document.getElementById('canvas') as HTMLCanvasElement,
+    useOffscreenRenderer: true,
+    artboard: 'Blend',
+    // animations: ['idle', 'blink'],
+    stateMachines: 'animation',
+    autoplay: true,
+    onLoad: () => {
+      console.log('Rive loaded')
+      riveInstance.resizeDrawingSurfaceToCanvas()
+
+      const blendRiveInput = riveInstance
+      .stateMachineInputs('animation')
+      .find((input) => input.name === 'blend')
+      console.log(blendRiveInput)
+
+      blendInput.addEventListener('input', (e) => {
+        console.log((e.target as HTMLInputElement)?.value)
+        if (blendRiveInput) {
+          blendRiveInput.value = (e.target as HTMLInputElement)?.valueAsNumber
+        }
+      })
+    },
+  })
+</script>
+
+<!-- <script>
   import RiveWebGl from '@rive-app/webgl2-advanced'
+  // import riveWasm from '@rive-app/webgl2-advanced/rive.wasm?url'
 
   async function main() {
     const riveInstance = await RiveWebGl({
@@ -88,20 +165,7 @@ import ContentLayout from '@layouts/ContentLayout.astro'
 
   main()
 
-  // const riveInstance = new Rive({
-  //   src: '/workshop/moonfairy.riv',
-  //   canvas: document.getElementById('canvas') as HTMLCanvasElement,
-  //   useOffscreenRenderer: true,
-  //   artboard: 'Base',
-  //   // animations: ['idle', 'blink'],
-  //   stateMachines: 'animation',
-  //   autoplay: true,
-  //   onLoad: () => {
-  //     console.log('Rive loaded')
-  //     riveInstance.resizeDrawingSurfaceToCanvas()
-  //   },
-  // })
-</script>
+</script> -->
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
@@ -111,6 +175,6 @@ import ContentLayout from '@layouts/ContentLayout.astro'
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-optical-sizing: auto;
-    font-weight: 600;
+    /* font-weight: 600; */
   }
 </style>
