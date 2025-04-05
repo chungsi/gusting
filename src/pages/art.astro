@@ -120,6 +120,11 @@ artProjects.sort((a, b) => featureIds.indexOf(a.id) - featureIds.indexOf(b.id))
     display: grid;
     gap: 2rem;
     max-width: var(--spacing-6xl);
+    grid-template-areas:
+      'bk1'
+      'bk2'
+      'bk3'
+      'bk4';
 
     @variant xs-th {
       max-width: 100%;
